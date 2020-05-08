@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Contact Section -->
+<section class="page-section" id="contact">
+  <div class="container">
+
+    <!-- Contact Section Heading -->
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <h1 class="page-section-heading text-center text-uppercase mb-0">
+          تواصل معنا
+          <hr />
+        </h1>
+      </div>
+    </div>
+
+    <!-- Icon Divider -->
+    <div class="divider-custom">
+
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon">
+
+      </div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+    <!-- Contact Section Form -->
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="
+              {% if message.tags %} 
+                {{ message.tags }}
+              {% endif %}
+              
+                alert alert-success
+              
+              
+
+               alert-dismissible fade show messages
+              " role="alert">
+
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+
+        {% endif %}
+
+        <form id='contact-id' class="contact-form" method="post">
+          {% csrf_token %}
+          {{form|crispy}}
+          <br />
+          <button type="submit" id="sendMessageButton">أرسل</button>
+          <br /><br />
+      </div>
+      </form>
+    </div>
+  </div>
+
+  </div>
+</section>
+{% endblock %}

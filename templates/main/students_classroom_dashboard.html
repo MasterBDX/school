@@ -1,0 +1,100 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    الطلاب و النتائج
+                    <hr />
+                </h1>
+
+            </div>
+
+            <div id='schedules-id' class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <p class="">
+                            <a href="{% url 'students:add' %}" class="add-button">
+                                <i class="fas fa-plus"></i>
+                                ﻹضافة طالب الجديد
+                            </a>
+                        </p>
+
+                    </div>
+                    <div class="col-md-6">
+                        {% url 'students:search' as std_search %}
+                        {% include 'snippets/student_search_form.html' with action=std_search %}
+                    </div>
+                    {% if classes %}
+                    {% for class in classes %}
+                    {% if class.classrooms.all and class.students.all %}
+                    <div class="col-md-12">
+                        <div class="">
+                            <h4>
+                                الصف
+                                {{class.name}}
+
+                            </h4>
+                        </div>
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th scope="col">إسم الفصل </th>
+                                    <th scope="col">عدد الطلبة</th>
+                                    <th scope="col">جدول الطلبة</th>
+                                    <th scope="col"> النتائج لهذا الصف </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cm in class.classrooms.all %}
+
+                                <tr>
+
+                                    <td>
+
+                                        {{cm.name}}
+
+                                    </td>
+
+                                    <td>{{cm.get_stds_count}}</td>
+
+                                    <td><a class="btn btn-info"
+                                            href='{% url "main:students-dashboard" pk=cm.pk %}'>مشاهدة</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning"
+                                            href='{% url "students:results-activation-confirm" status=1 pk=cm.pk %}'>تنشيط
+                                            الكل</a>
+                                        <a class="btn btn-danger"
+                                            href='{% url "students:results-activation-confirm" status=0 pk=cm.pk %}'>إلغاء
+                                            تنشيط
+                                            الكل</a>
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

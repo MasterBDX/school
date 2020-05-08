@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<section>
+    <br />
+    <br />
+    <br />
+    <br />
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    {% if results_paper %}
+                    تعديل صحيفة
+                    الطالب
+                    {{student.get_std_name}}
+                    {% else %}
+                    أضف صحيفة جديد للطالب
+                    {{student.get_std_name}}
+                    {% endif %}
+                    <hr />
+
+                </h1>
+            </div>
+            <div class="col-md-8 m-auto">
+                <form enctype="multipart/form-data" method="POST" id='add-student-form'>
+                    {% csrf_token %}
+                    <div class=" m-auto">
+                        {{form|crispy}}
+                        <input type="hidden" name="std_id" value="{{std_id}}">
+                        <br />
+                        <hr />
+                    </div>
+
+                    <div class="  btn-test">
+                        <button class="btn btn-info add-post-btn" type="submit">
+                            {% if object %}
+                            تعديل
+                            {% else %}
+                            أضف
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+    {% block js %}
+
+    <script>
+        $(function () {
+            $("#id_birth_date").datepicker({
+                format: 'yyyy-mm-dd',
+            });
+        });
+    </script>
+    {% endblock %}
+    {% endblock %}

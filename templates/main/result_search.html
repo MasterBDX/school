@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_student_filters %}
+<section>
+    <br />
+    <br />
+    <br />
+    <br />
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    البحث عن صحيفة
+                    <hr />
+                </h1>
+            </div>
+            <div class='col-md-12'>
+                  {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+                {% endif %}
+            </div>
+            <div id='schedules-id' class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 m-auto">
+                        <form method="POST" action="{% url 'main:result-doc' %}">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <button type="submit" class="main-btn">بحث</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

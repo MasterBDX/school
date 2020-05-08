@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_arabic_name %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+
+                <h1 class="text-center">
+                    بالمنشورات
+                    <hr />
+                </h1>
+            </div>
+            <div class="col-md-12">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="add-post">
+
+                            <a href="{% url 'posts:add' %}" class="add-button">
+                                <i class="fas fa-plus"></i>
+                                لإضافة منشور جديد
+                            </a>
+
+                        </p>
+                    </div>
+                    {% if posts %}
+                    <div class="col-md-9">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#UC</th>
+                                    <th scope="col">العنوان</th>
+                                    <th scope="col">تاريخ الإنشاء</th>
+                                    <th scope="col">التحكم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for post in posts %}
+                                <tr>
+                                    <th scope="row">{{post.slug}}</th>
+                                    <td>{{post.title}}</td>
+                                    <td>{{post.timestamp}}</td>
+                                    <td>
+                                        <a href="{% url 'posts:edit' slug=post.slug %}?from_dash=1"
+                                            class="btn btn-info">
+                                            تعديل
+                                        </a>
+                                        <a href="{% url 'posts:delete' slug=post.slug %}?from_dash=1"
+                                            class="btn btn-danger">
+                                            حذف
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="col-md-12">
+                        <h4 class='text-center'>
+                            لم يتم إضافة أي منشورات بعد
+                        </h4>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

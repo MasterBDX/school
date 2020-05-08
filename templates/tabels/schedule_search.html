@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_student_filters %}
+
+<section>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    جداول الحصص
+                    <hr />
+                </h1>
+            </div>
+            <div class='col-md-12'>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div id='schedules-id' class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 m-auto">
+                        <form method="POST" id='schedule-search-form'>
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <button type="submit" class="main-btn">بحث</button>
+                        </form>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <div id='schedules-tabel-id' class="col-md-9 m-auto">
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

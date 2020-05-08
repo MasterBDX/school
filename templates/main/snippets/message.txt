@@ -1,0 +1,14 @@
+{% autoescape off %}
+
+{{name}} : الإسم
+<br>
+<br>
+{{phone}} : رقم الهاتف
+<br>
+<br>
+{{subject}} : الموضوع
+<br>
+<br>
+{{message}} : المحتوى
+
+{% endautoescape %}

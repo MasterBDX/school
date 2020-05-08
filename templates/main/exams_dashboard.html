@@ -1,0 +1,176 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_arabic_name %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    الإمتحانات
+                    <hr />
+                </h1>
+            </div>
+            <div class="col-md-12">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <p class="">
+                            <a href="{% url 'tabels:exams-tabels-add' %}" class="add-button">
+                                <i class="fas fa-plus"></i>
+                                لإضافة جدول إمتحانات
+                            </a>
+                        </p>
+                    </div>
+
+                    {% if classes %}
+                    {% for class in classes %}
+                    {% if class.exams_tabel.all %}
+
+                    <div class="col-md-12 text-right">
+                        <div>
+                            <br />
+                            <h4 class="text-right">
+                                إمتحانات
+                                الصف
+                                {{class.name}}
+
+                            </h4>
+                            {% if class.get_mid_exams.all %}
+                            <h6>الإمتحانات النصفية</h6>
+                            <p>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">السنة</th>
+                                            <th scope="col">الفترة</th>
+                                            <th scope="col">النوع</th>
+                                            <th scope="col">الفصل الدراسي</th>
+                                            <th scope="col">اخر معدل</th>
+                                            <th scope="col">اخر تعديل</th>
+                                            <th scope="col">التحكم</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for exam_tabel in class.get_mid_exams.all %}
+                                        <tr>
+                                            <td>{{exam_tabel.year}}</td>
+                                            <td>{{exam_tabel.semester|semester}}</td>
+                                            <td>{{exam_tabel.exam_type|human_exam_type}}</td>
+
+                                            <td>{{exam_tabel.class_room.name}}</td>
+
+
+                                            <td>
+                                                {% if not exam_tabel.last_update_by %}
+                                                لا أحد
+                                                {% else %}
+                                                {{exam_tabel.last_update_by}}
+                                                {% endif %}
+                                            </td>
+
+                                            <td>{{exam_tabel.updated|date:'Y-n-j | G:i A'}}</td>
+
+                                            <td>
+                                                <a href="{% url 'tabels:exams-tabels-edit' pk=exam_tabel.id %}"
+                                                    class="btn btn-info">
+                                                    تعديل
+                                                </a>
+                                                <a href="{% url 'tabels:exams-tabels-delete' pk=exam_tabel.id %}"
+                                                    class="btn btn-danger">
+                                                    حذف
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </p>
+                            {% endif %}
+                            {% if class.get_final_exams.all %}
+                            <h6>الإمتحانات النهائية</h6>
+                            <p>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">السنة</th>
+                                            <th scope="col">الفترة</th>
+                                            <th scope="col">النوع</th>
+                                            <th scope="col">الفصل الدراسي</th>
+                                            <th scope="col">اخر معدل</th>
+                                            <th scope="col">اخر تعديل</th>
+                                            <th scope="col">التحكم</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for exam_tabel in class.get_final_exams.all %}
+                                        <tr>
+                                            <td>{{exam_tabel.year}}</td>
+                                            <td>{{exam_tabel.semester|semester}}</td>
+                                            <td>{{exam_tabel.exam_type|human_exam_type}}</td>
+
+                                            <td>{{exam_tabel.class_room.name}}</td>
+
+
+                                            <td>
+                                                {% if not exam_tabel.last_update_by %}
+                                                لا أحد
+                                                {% else %}
+                                                {{exam_tabel.last_update_by}}
+                                                {% endif %}
+                                            </td>
+
+                                            <td>{{exam_tabel.updated|date:'Y-n-j | G:i A'}}</td>
+
+                                            <td>
+                                                <a href="{% url 'tabels:exams-tabels-edit' pk=exam_tabel.id %}"
+                                                    class="btn btn-info">
+                                                    تعديل
+                                                </a>
+                                                <a href="{% url 'tabels:exams-tabels-delete' pk=exam_tabel.id %}"
+                                                    class="btn btn-danger">
+                                                    حذف
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </p>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+                    {% endfor %}
+                    {% else %}
+                    <div class="col-md-12">
+                        <h4 class='text-center'>
+                            لا يوجد أي جداول إمتحانات
+                        </h4>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+{% load get_student_filters %}
+
+<section>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                إسم الطالب : {{object.student.get_std_name}}
+
+            </div>
+            <div class="col-md-3">
+                صفة القيد : {{object.entry }}
+            </div>
+            <div class="col-md-12"><br /><br /></div>
+
+            <div class="col-md-12 text-center">
+                {% if  object.semesters.active %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">الفترة</th>
+                            <th scope="col">المادة</th>
+                            <th scope="col">درجة الإمتحان</th>
+                            <th scope="col">درجة النجاح في الإمتحان</th>
+                            <th scope="col">الإحتياج للنجاح</th>
+                            <th scope="col">أعمال السنة</th>
+                            <th scope="col">درجةالنجاح في المادة</th>
+                            <th scope="col">الإجمالي</th>
+                            <th scope="col">الحالة</th>
+                        </tr>
+
+                    </thead>
+                    {% for semester in object.semesters.active %}
+                   
+                    {% if semester.order != '3' %}
+                    
+                        {% for sr in semester.subjects_results.all  %}
+                    
+                        <tr>
+                            {% if forloop.counter == 1 %}
+                            <th>
+                                {{semester.order|semester_counter}}
+                            </th>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+                            <td>{{sr.subject}}</td>
+                            <td>{{sr.std_exam_grade}} \ {{sr.exam_grade}}</td>
+                            <td>{{sr.exam_pass_grade}}</td>
+                            <td>{{sr.need_to_pass_exam}}</td>
+                          
+                                 <td>{{sr.std_year_works_grade}} \ {{sr.year_works_grade}} </td>
+                           
+                            <td>{{sr.grade_pass_subject}}</td>
+                            <td>{{sr.total_subject_grades}}</td>
+                            <td>
+                                {% if sr.passed %}
+                                ناجح
+                                {% else %}
+                                راسب
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                            <tr>
+                          <td colspan="2">
+
+                                  الفترة {{semester.order|semester_counter}} 
+                              
+
+                            </td>
+                            <td colspan="3">
+
+                                المجموع  &nbsp;:&nbsp;
+                                {{semester.general_average}}
+
+                            </td>
+                            <td colspan="3">
+
+                                المعدل  &nbsp;:&nbsp;
+                                {{semester.total_percentage}} %
+
+                            </td>
+                            <td colspan="4">
+                                التقدير &nbsp;:&nbsp; {{semester.get_estimate}}
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="9"></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <th colspan='9' class='text-center'> 
+                            الفترة
+                            {{semester.order|semester_counter}}</th>
+                        </tr>
+                        <tr>
+                            
+                            <th colspan='2' scope="col">المادة</th>
+                            <th scope="col">درجة الإمتحان</th>
+                            <th scope="col">درجة النجاح في الإمتحان</th>
+                            <th scope="col">الإحتياج للنجاح</th>
+                            <th scope="col">أعمال السنة</th>
+                            <th scope="col">درجةالنجاح في المادة</th>
+                            <th scope="col">الإجمالي</th>
+                            <th scope="col">الحالة</th>
+                        </tr>
+                        {% for sr in semester.subjects_results.all  %}
+                        <tr>
+                            <td colspan='2'>{{sr.subject}}</td>
+                            <td>{{sr.std_exam_grade}} \ {{sr.exam_grade}}</td>
+                            <td>{{sr.exam_pass_grade}}</td>
+                            <td>{{sr.need_to_pass_exam}}</td>
+                            
+                            <td>{{sr.get_total_subject_grades}}  </td>
+                         
+                            <td>{{sr.grade_pass_subject}}</td>
+                            <td>{{sr.total_subject_grades}}</td>
+                            <td>
+                                {% if sr.passed %}
+                                ناجح
+                                {% else %}
+                                راسب
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %} 
+                      
+                    
+                      
+                    </tbody>
+
+                    {% endfor %}
+                    <tbody>
+
+                      {% if object.part2 and object.get_part2_grades %}
+                             <tr>
+                            <th class='text-center' colspan="9">نتائج الدور الثاني</th>
+                             </tr> 
+                            <tr>                          
+                            {% for sr in object.get_part2_grades %}
+                    
+                            <td colspan='2'>{{sr.subject}}</td>
+                            <td>{{sr.std_exam_grade}} \ {{sr.exam_grade}}</td>
+                            <td>{{sr.exam_pass_grade}}</td>
+                            <td>{{sr.need_to_pass_exam}}</td>
+                            <td>{{sr.std_year_works_grade}} \ {{sr.year_works_grade}} </td>
+                            <td>{{sr.grade_pass_subject}}</td>
+                            <td>{{sr.total_subject_grades}}</td>
+                            <td>
+                                {% if sr.passed %}
+                                ناجح
+                                {% else %}
+                                راسب
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                         <tr>
+                            <td colspan="9"></td>
+                        </tr>
+                        {% endif %}
+                          {% if object.part3 and object.get_part3_grades %}
+                             <tr>
+                            <th class='text-center' colspan="9">نتائج الدور الثالث</th>
+                             </tr> 
+                            <tr>                          
+                            {% for sr in object.get_part3_grades %}
+                    
+                            <td colspan='2'>{{sr.subject}}</td>
+                            <td>{{sr.std_exam_grade}} \ {{sr.exam_grade}}</td>
+                            <td>{{sr.exam_pass_grade}}</td>
+                            <td>{{sr.need_to_pass_exam}}</td>
+                            <td>{{sr.std_year_works_grade}} \ {{sr.year_works_grade}} </td>
+                            <td>{{sr.grade_pass_subject}}</td>
+                            <td>{{sr.total_subject_grades}}</td>
+                            <td>
+                                {% if sr.passed %}
+                                ناجح
+                                {% else %}
+                                راسب
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                         <tr>
+                            <td colspan="9"></td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td colspan="3">
+
+                                المجموع الكلي  &nbsp;&nbsp;:&nbsp;&nbsp;
+                                {{object.general_average}}
+
+                            </td>
+                             <td colspan="3">
+
+                                المعدل الكلي  &nbsp;&nbsp;:&nbsp;&nbsp;
+                                {{object.total_percentage}}%
+
+                            </td>
+                            <td colspan="3">
+                                التقدير &nbsp;:&nbsp; {{object.get_estimate}}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                {% else %}
+                    <div><h4>
+                    عفو لم يتم الإعلان عن النتيجة بعد
+                    </h4></div>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

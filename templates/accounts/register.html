@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block title %}
+{% url 'accounts:login' as login %}
+{% if request.path == login %}
+تسجيل الدخول
+{% else %}
+التسجيل
+{% endif %}
+{% endblock %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 m-auto">
+                {% url 'accounts:login' as login %}
+
+                <h1 class="text-center">
+
+                    {% if request.path == login %}
+                    تسجيل الدخول
+                    {% else %}
+                    تسجيل مستخدم جديد
+                    {% endif %}
+                    <hr />
+                </h1>
+            </div>
+            <div class="col-md-6 m-auto">
+                {% if form %}
+                <form enctype="multipart/form-data" method="POST" id='add-post-form'>
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div style="height:50px;"></div>
+                    <div class="btn-test">
+                        <button class="btn btn-info add-post-btn" type="submit">
+                            {% if request.path == login %}
+                            تسجيل الدخول
+                            {% else %}
+                            تسجيل
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+                <br />
+                <div class="text-right">
+                    {% if request.path == login %}
+                    <a href="{% url 'accounts:password_reset' %}" class="btn btn-link add-post-btn">
+                        نسيت كلمة المرور
+
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if failure_limit %}
+                <div style='height: 200px;'>
+                    لقد إستنفدت عدد المحاولات المتاحة {{failure_limit}} لتسجيل الدخول
+                    يرجى المحاولة بعد {{cooloff_time_minutes}}
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}

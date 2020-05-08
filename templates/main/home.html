@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}الصفحة الرئيسية{% endblock %}
+{% block content %}
+{% include 'snippets/header.html' %}
+<div class="container">
+    {% for article in main_articles %}
+    <section>
+        <div class="row align-items-center">
+            <div class="col-lg-6 
+            {% if not forloop.counter == 2 %} 
+                order-lg-2
+            {% endif %}
+            ">
+                <div class="p-5">
+                    <img class="img-fluid " src="{{article.image.url}}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4"> {{article.title}}</h2>
+                    <p>{{article.description}}</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    {% endfor %}
+    <section>
+
+
+        {% if last_posts %}
+        <section>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <h1>&nbsp; أخر الأخبار </h1>
+                    <hr />
+                </div>
+
+                <div class="col-md-10 ">
+                    {% for post in  last_posts %}
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-8">
+                                <div class="card-body text-right">
+                                    <h5 class="card-title">{{post.title}}</h5>
+                                    <p class="card-text">{{post.overview|truncatewords:30}}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">{{post.timestamp}}
+                                        </small>
+                                    </p>
+
+                                </div>
+                            </div>
+                            {% if post.main_image %}
+                            <div class="col-md-4">
+                                <img src="{{post.main_image.url}}" class="card-img post-image" alt="...">
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+</div>
+
+{% endblock %}

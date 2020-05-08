@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_arabic_name %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    الصفوف الدراسية
+                    <hr />
+                </h1>
+
+            </div>
+            <div class="col-md-12">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <p class="">
+                            <a href="{% url 'tabels:add_class' %}" class="add-button">
+                                <i class="fas fa-plus fa-lg"></i>
+                                لإضافة صف جديد
+                            </a>
+                        </p>
+                    </div>
+                    {% if classes %}
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">إسم الصف</th>
+                                    <th scope="col">عدد المواد</th>
+                                    <th scope="col">ترتيب الظهور</th>
+                                    <th scope="col">درجات الفصل الأول</th>
+                                    <th scope="col">درجات الفصل الثانية</th>
+                                    <th scope="col">درجات الفصل الثالث</th>
+                                    <th scope="col">التحكم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cls in classes %}
+                                <tr>
+                                    <td>{{cls.name}}</td>
+                                    <th>{{cls.subjects_num}}</th>
+                                    <th>{{cls.order|human_counter}}</th>
+
+                                    <td>
+                                        <a href="{% url 'students:edit-class-grades' pk=cls.id order='1' %}"
+                                            class="btn btn-info">
+                                            إضافة أو تعديل
+
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'students:edit-class-grades' pk=cls.id order='2' %}"
+                                            class="btn btn-info">
+                                            إضافة أو تعديل
+
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a href="{% url 'students:edit-class-grades' pk=cls.id order='3' %}"
+                                            class="btn btn-info">
+                                            إضافة أو تعديل
+
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'tabels:edit_class' pk=cls.id %}?from_dash=1"
+                                            class="btn btn-info">
+                                            تعديل
+                                        </a>
+                                        <a href="{% url 'tabels:delete_class' pk=cls.id %}?from_dash=1"
+                                            class="btn btn-danger">
+                                            حذف
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

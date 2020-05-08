@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    تقسيم الطلاب
+                    <hr />
+                </h1>
+            </div>
+
+            <div id='schedules-id' class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 m-auto">
+                        {% url 'main:students-classroom-distribution' as scd %}
+                        {% include 'snippets/student_search_form.html' with action=scd %}
+                    </div>
+
+                    {% if classes %}
+                    {% for class in classes %}
+                    {% if class.classrooms.all %}
+                    <div class="col-md-12">
+                        <div class="">
+                            <h4>
+                                الصف
+                                {{class.name}}
+
+                            </h4>
+                        </div>
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th scope="col">إسم الفصل </th>
+                                    <th scope="col">عدد الطلبة</th>
+                                    <th scope="col">جدول الطلبة</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cm in class.classrooms.all %}
+                                <tr>
+
+                                    <td>
+
+                                        {{cm.name}}
+
+                                    </td>
+
+                                    <td>{{cm.get_stds_count}}</td>
+
+                                    <td><a class="btn btn-info"
+                                            href='{% url "main:students-classroom-distribution" pk=cm.pk %}'>مشاهدة</a>
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="col-md-12">
+                <div class="alert">
+                    <span class="display-4 text-center error-alert">
+                        لم يتم العثور على أي صف
+                    </span>
+                </div>    
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand " href="{% url 'main:home' %}">مدرسة
+            {{school_name}}
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarResponsive">
+            <ul class="navbar-nav  mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-newspaper"></i> أخر الأخبار</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-graduate"></i> شؤون الطلاب
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'main:result-search' %}"> تصفح النتائج </a>
+                        <a class="dropdown-item" href="{% url 'main:students-distribution' %}">تقسيم الطلاب </a>
+                        <a class="dropdown-item" href="{% url 'tabels:exams-tabel-detail' %}">جداول الإمتحانات </a>
+                        <a class="dropdown-item" href="{% url 'tabels:schedule-detail' %}">جداول الحصص </a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cogs"></i> لوحة التحكم
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'main:posts-dashboard' %}"> المنشورات </a>
+                        <a class="dropdown-item" href="{% url 'main:subjects-dashboard' %}">المواد الدراسية </a>
+                        <a class="dropdown-item" href="{% url 'main:exams-dashboard' %}">جداول الإمتحانات </a>
+                        <a class="dropdown-item" href="{% url 'main:classes-tabel-dashboard' %}">جداول الحصص </a>
+                        <a class="dropdown-item" href="{% url 'main:classes-dashboard' %}">الصفوف الدراسية </a>
+                        <a class="dropdown-item" href="{% url 'main:classrooms-dashboard' %}"> الفصول الدراسية </a>
+                        <a class="dropdown-item" href="{% url 'main:students-classrooms-dashboard' %}"> الطلبة و
+                            النتائج</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cogs"></i> المدير
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <a class="dropdown-item" href="{% url 'main:school-info-edit' %}">معلومات المدرسة</a>
+                        <a class="dropdown-item" href="{% url 'main:main-articles-edit' %}"> تغيير المقولات </a>
+                        <a class="dropdown-item" href="{% url 'main:users-dashboard' %}">المستخدمين</a>
+                        <a class="dropdown-item" href="{% url 'accounts:register' %}"><i class="fas fa-user-plus"></i>
+                            إضافة
+                            مستخدم</a>
+                    </div>
+                </li>
+
+                {% if not request.user.is_authenticated %}
+
+                {% url 'accounts:login' as login %}
+                {% if not login == request.path %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">تسجيل الدخول</a>
+                </li>
+                {% endif %}
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{request.user.username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'accounts:profile_edit' pk=request.user.id %}">الملف
+                            الشخصي </a>
+                        <a class="dropdown-item" href="{% url 'accounts:logout' %}">تسجيل الخروج </a>
+                    </div>
+                </li>
+
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-newspaper"></i> عربي</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-newspaper"></i> English</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

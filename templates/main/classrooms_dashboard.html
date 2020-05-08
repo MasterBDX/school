@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_arabic_name %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+                <h1 class="text-center">
+                    الفصول الدراسية
+                    <hr />
+                </h1>
+            </div>
+            <div class="col-md-12">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="">
+                            <a href="{% url 'tabels:classrooms-add' %}" class="add-button">
+                                <i class="fas fa-plus"></i> 
+                                لإضافة فصل جديد
+                            </a>
+                        </p>
+                    </div>
+                    {% if classrooms %}
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">إسم الفصل</th>
+                                    <th scope="col">الصف</th>
+                                    <th scope="col">ترتيب الظهور</th>
+
+                                    <th scope="col">التحكم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cls in classrooms %}
+                                <tr>
+                                    <td>{{cls.name}}</td>
+                                    <td>{{cls.the_class.name}}</td>
+
+                                    <th>{{cls.order|human_counter}}</th>
+
+
+                                    <td>
+                                        <a href="{% url 'tabels:classrooms-edit' pk=cls.id %}" class="btn btn-info">
+                                            تعديل
+                                        </a>
+                                        <a href="{% url 'tabels:classrooms-delete' pk=cls.id %}" class="btn btn-danger">
+                                            حذف
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

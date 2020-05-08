@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_arabic_name %}
+<section>
+    <br />
+    <br />
+    <br />
+    <br />
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+
+                <h1 class="">
+                    حذف جدول إمتحانات
+                </h1>
+            </div>
+            <div class="col-md-9">
+                <form method="POST" id='add-post-form'>
+                    {% csrf_token %}
+                    <p class="lead">
+                        هل أنت متأكد أنك تريد حذف جدول الإمتحانات
+                        {{object.exam_type}}ال
+                        للصف
+                        {{object.the_class.name}}
+                        الفترة
+                        {{object.semester|semester}}
+                        <hr />
+                    </p>
+                    <div class="btn-test">
+                        <button class="btn btn-info add-post-btn" type="submit">
+                            حذف
+                        </button>
+                    </div>
+                    <div style="height:100px;"></div>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+    {% endblock %}

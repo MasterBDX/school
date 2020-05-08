@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    {% if not request.GET.q %}
+                    تقسيم الطلاب
+                    للفصل
+                    {{classroom_name}}
+                    {% else %}
+                    نتائج البحث عن {{request.GET.q}}
+                    {% endif %}
+                    <hr />
+                </h1>
+            </div>
+
+            <div id='schedules-id' class="col-md-12">
+                <div class="row">
+                    {% if students %}
+
+                    <div class="col-md-12">
+
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">رقم القيد</th>
+                                    <th scope="col">إسم الطالب </th>
+                                    {% if request.GET.q %}
+                                    <th scope="col">الصف</th>
+                                    <th scope="col">الفصل الدراسي</th>
+                                    {% endif %}
+                                    <th scope="col">الجنس</th>
+                                    <th scope="col">الجنسية</th>
+                                    <th scope="col">الرقم الوطني</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for student in students %}
+                                <tr>
+                                    <th scope="row">{{student.id}}</th>
+                                    <td>
+
+                                        {{student.get_full_name}}
+
+                                    </td>
+                                    {% if request.GET.q %}
+                                    <td scope="col">{{student.the_class.name}}</td>
+                                    <td scope="col">{{student.classroom.name}}</td>
+                                    {% endif %}
+                                    <td>{{student.gender|arabic_gender}}</td>
+                                    <td>{{student.nationality}} </td>
+                                    <td>{{student.id_number}}</td>
+
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% else %}
+                    <div class="col-md-12">
+                        <h4 class="display-4 text-center">
+                            <br />
+                            لم يتم العثور على أي طالب
+                        </h4>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

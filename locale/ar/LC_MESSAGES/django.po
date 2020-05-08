@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-06 23:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: golden_pen/validators.py:13 golden_pen/validators.py:21
+msgid "يجب إستخدام حروف الأبجدية الإنجليزية فقط "
+msgstr ""
+
+#: golden_pen/validators.py:33
+#, python-format
+msgid ""
+"This password is too short. It must contain at least %(min_length)d "
+"character."
+msgid_plural ""
+"كلمة المرور هذه قصيرة جدًا. يجب أن تحتوي على %(min_length)d  أحرف على الأقل."
+msgstr[0] ""
+msgstr[1] ""
+
+#: golden_pen/validators.py:44
+#, python-format
+msgid "Your password must contain at least %(min_length)d character."
+msgid_plural "يجب أن تحتوي كلمة المرور على %(min_length)d من الأحرف على الأقل."
+msgstr[0] ""
+msgstr[1] ""
+
+#: golden_pen/validators.py:56
+msgid "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل ، 0-9."
+msgstr ""
+
+#: golden_pen/validators.py:62
+msgid "Your password must contain at least 1 digit, 0-9."
+msgstr ""
+
+#: golden_pen/validators.py:72 golden_pen/validators.py:80
+msgid "يجب أن تحتوي كلمة المرور الخاصة بك على رقم واحد على الأقل ، 0-9."
+msgstr ""
+
+#: golden_pen/validators.py:90
+msgid "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل ، A-Z."
+msgstr ""
+
+#: golden_pen/validators.py:98
+msgid "يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل ، من A إلى Z."
+msgstr ""
+
+#: golden_pen/validators.py:108 golden_pen/validators.py:116
+msgid "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل ، a-z."
+msgstr ""
+
+#: golden_pen/validators.py:125 golden_pen/validators.py:134
+msgid ""
+"يجب أن تحتوي كلمة المرور على رمز واحد على الأقل:()[]{}|\\`~!@#$%^&*_-+=;:'\","
+"<>./?"
+msgstr ""
+
+#: templates/accounts/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at\n"
+"%(site_name)s."
+msgstr ""
+
+#: templates/accounts/password_reset_email.html:5
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/accounts/password_reset_email.html:9
+msgid "Your username, in case you’ve forgotten:"
+msgstr ""
+
+#: templates/accounts/password_reset_email.html:11
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: templates/accounts/password_reset_email.html:13
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: templates/accounts/password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""

@@ -1,0 +1,196 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load get_student_filters %}
+<section>
+    <br />
+    <br />
+    <br />
+    <br />
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">
+                            <br />
+                            معلومات
+                            عن
+                            {{student.get_std_name}}
+                            <hr />
+                        </h1>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">الإسم الأول :
+                            {{student.first_name}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">إسم الأب :
+                            {{student.father_name}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">إسم الأم :
+                            {{student.mother_name}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">إسم الجد :
+                            {{student.grand_father_name}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">اللقب :
+                            {{student.surname}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">تاريخ الميلاد :
+                            {{student.birth_date|date:"j-n-Y"}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center">العمر :
+                            {{student.age}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center"> الجنس :
+                            {{student.gender|arabic_gender}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center"> الجنسية :
+                            {{student.nationality}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center"> رقم الهاتف :
+                            {{student.cell_phone}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center"> الصف :
+                            {{student.the_class}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center"> الرقم الوطني :
+                            {{student.id_number}}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead text-center"> مكان الولادة :
+                            {{student.place_of_birth}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <a href="{% url 'students:printable-detail' pk=student.id %}" class="btn btn-link">تهيئة للطباعة</a>
+            </div>
+            <div class="col-md-12">
+                <hr />
+                <br />
+                <h2 class="text-right"> النتائج الدراسية :
+                    <hr />
+                </h2>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <a href="{% url 'students:add-results-paper' %}?std_id={{student.id}}" class="btn btn-warning">
+                            إضافة صحيفة
+                        </a>
+                        <br />
+                        <br />
+                    </div>
+
+                    {% if student.papers.all %}
+                    <div class="col-md-12 text-right">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">الصف</th>
+                                    <th scope="col">السمستر الأول</th>
+                                    <th scope="col">السمستر الثاني</th>
+                                    <th scope="col">السمستر الثالث</th>
+                                    <th scope="col">
+                                       الدور الثاني </th>
+                                     <th scope="col">
+                                       الدور 
+                                        الثالث
+                                         </th>
+                                    
+                                    <th scope="col"> التحكم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in student.papers.all %}
+                                <tr>
+                                    <th scope="row">{{paper.the_class.name}}</th>
+                                    {% for semester in paper.semesters.all %}
+                                    <td class='text-center'>
+                                        <a href="{% url 'students:semester-edit' std_id=student.id pk=semester.id %}"
+                                            class="btn btn-info">
+                                            إضافة أو
+                                            تعديل الدرجات</a>
+                                            
+                                         <a class='semester-toggle btn btn-warning' href="{% url 'students:semester-active-toggle' pk=semester.id %}">
+                                            {% if not semester.active %}
+                                            إظهار
+                                             {% else %}
+                                             إخفاء
+                                             {% endif %}
+                                             </a>
+                                    </td>
+                                    {% endfor %}
+                                    <td class="text-center">
+                                        <a href="{% url 'students:compensatory-exam-add' part='2' pk=paper.id %}"
+                                            class='btn btn-info'>
+                                             إضافة
+                                             و
+                                             تعديل
+                                              </a>
+                                    </td>
+                                      <td class="text-center">
+                                        <a href="{% url 'students:compensatory-exam-add' part='3' pk=paper.id %}"
+                                            class='btn btn-info'>
+                                             إضافة
+                                             و
+                                             تعديل
+                                              </a>
+                                    </td>
+                                   
+                                    <td>
+                                        <a href="{% url 'students:edit-results-paper' pk=paper.id %}"
+                                            class="btn btn-info">
+                                            تعديل
+                                        </a>
+                                        <a href="{% url 'students:delete-results-paper' pk=paper.id %}"
+                                            class="btn btn-danger">
+                                            حذف
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="col-md-5">
+                        <p>لم يتم إضافة أي نتائج دراسية</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

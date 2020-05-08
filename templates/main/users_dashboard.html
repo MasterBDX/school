@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}المستخدمين{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load get_student_filters %}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="text-center">
+                    التحكم بالمستخدمين
+                    <hr />
+                </h1>
+
+            </div>
+
+            <div id='schedules-id' class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="">
+                            <a href="{% url 'accounts:register' %}" class="add-button">
+                                <i class="fas fa-plus"></i>
+                                ﻹضافة مستخدم جديد
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+
+                        <a href="{% url 'accounts:activetion-toggle' status=1 %}"
+                            class="btn btn-warning users-activetion-btn">تنشيط الكل
+                        </a>
+                        <a href="{% url 'accounts:activetion-toggle' status=0 %}"
+                            class="btn btn-info users-activetion-btn">إلغاء تنشيط الكل
+                        </a>
+
+                    </div>
+
+                    {% if users %}
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">إسم المستخدم </th>
+                                    <th scope="col">رقم الهاتف</th>
+                                    <th scope="col">البريد الإلكتروني</th>
+                                    <th scope="col">التحكم </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <th scope="row">{{user.id}}</th>
+                                    <td>
+
+                                        {{user.username}}
+
+                                    </td>
+
+                                    <td>{{user.phone_number}}</td>
+                                    <td>{{user.email}} </td>
+
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                {% if not user.is_active %}
+                                                <a href="{% url 'accounts:user-activetion-toggle' status=1 pk=user.id  %}"
+                                                    class="btn btn-info user-activetion-btn">
+                                                    تنشيط
+                                                </a>
+                                                {% else %}
+                                                <a href="{% url 'accounts:user-activetion-toggle' status=0 pk=user.id  %}"
+                                                    class="btn btn-info user-activetion-btn">
+                                                    إلغاء التنشيط
+                                                </a>
+                                                {% endif %}
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{% url 'accounts:delete' pk=user.pk %}" class="btn btn-danger">
+                                                    حذف
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    {% else %}
+                    <div class="col-md-12">
+                        <h4 class="text-center">
+                            لم يتم إضافة أي مستخدم بعد لهذا الفصل
+                        </h4>
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<section>
+    <br />
+    <br />
+    <br />
+    <br />
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1 class="text-center">
+                    {% if results_paper %}
+                    تعديل صحيفة
+                    الطالب
+                    {{student.get_std_name}}
+                    {% else %}
+                    أضف صحيفة جديد للطالب
+                    {{student.get_std_name}}
+                    {% endif %}
+                    <hr />
+
+                </h1>
+            </div>
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" method="POST" id='add-student-form'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12 m-auto">
+                            {{result_paper_form|crispy}}
+                            <br />
+                            <hr />
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-right">الفترة الأول
+                                <hr />
+                            </h4>
+                            {{ formset_1.management_form }}
+                            {% for form in formset_1 %}
+                            <div class="col-md-12">
+
+                                {{form|crispy}}
+                                <br />
+                                <hr />
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-right">
+                                الفترة الثانية
+                                <hr />
+                            </h4>
+                            {{ formset_2.management_form }}
+                            {% for form in formset_2 %}
+                            <div class="col-md-12">
+                                {{form|crispy}}
+                                <br />
+                                <hr />
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-right">الفترة الثالثة
+                                <hr />
+                            </h4>
+                            {{ formset_3.management_form }}
+                            {% for form in formset_3 %}
+                            <div class="col-md-12">
+                                {{form|crispy}}
+                                <br />
+                                <hr />
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-right">المادة
+                                <hr />
+                            </h4>
+                            {% for subject in subjects %}
+                            <div class="col-md-12 sub-form">
+                                <p class="lead">
+                                    {{subject}}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <div class="btn-test">
+                        <button class="btn btn-info add-post-btn" type="submit">
+                            {% if object %}
+                            تعديل
+                            {% else %}
+                            أضف
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+    {% block js %}
+
+    <script>
+        $(function () {
+            $("#id_birth_date").datepicker({
+                format: 'yyyy-mm-dd',
+            });
+        });
+    </script>
+    {% endblock %}
+    {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block index %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v6.0"></script>
+<!-- Navigation -->
+{% include 'snippets/navbar.html' %}
+{% url 'main:home' as home %}
+
+{% if not home == request.path %}
+<section>
+  <br />
+  <br />
+  <br />
+  <br />
+</section>
+{% endif %}
+{% endblock %}
