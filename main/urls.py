@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from django.conf import settings
 
 from .views import (HomeView, AboutusView, ClassesScheduleDashboardView,
@@ -8,7 +8,7 @@ from .views import (HomeView, AboutusView, ClassesScheduleDashboardView,
                     PostsDashboardView, SubjectsDashboardView,
                     StudentsDistributionView, StdsClassroomDistributionView,
                     ResultSearchView, get_result_view, UsersDashboard,
-                    SchoolInfoEditView, main_articles_edit_view)
+                    SchoolInfoEditView, main_articles_edit_view, lang_change_view)
 
 
 app_name = 'main'
@@ -42,7 +42,9 @@ urlpatterns = [
     path('result-doc', get_result_view, name='result-doc'),
     path('school-info/edit/', SchoolInfoEditView.as_view(), name='school-info-edit'),
     path('main-articles/edit/', main_articles_edit_view,
-         name='main-articles-edit')
+         name='main-articles-edit'),
+    re_path(r'^lang-change/(?P<lang>\w{2})/$', lang_change_view,
+            name='lang-change')
 
 
 

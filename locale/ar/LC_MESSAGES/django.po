@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-06 23:46+0000\n"
+"POT-Creation-Date: 2020-05-09 23:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,3 +99,118 @@ msgstr ""
 #, python-format
 msgid "Password reset on %(site_name)s"
 msgstr ""
+
+#: templates/main/contact.html:13 templates/snippets/footer.html:30
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+#: templates/main/contact.html:60
+msgid "Send"
+msgstr "أرسل"
+
+#: templates/main/home.html:54 templates/snippets/navbar.html:25
+msgid "Latest News"
+msgstr "أخر الأخبار"
+
+#: templates/main/home.html:70
+msgid "Published at"
+msgstr "نشرت في"
+
+#: templates/snippets/footer.html:25 templates/snippets/header.html:23
+msgid "About School"
+msgstr "حول المدرسة"
+
+#: templates/snippets/header.html:9
+msgid "Welcome to"
+msgstr "أهلا بكم في"
+
+#: templates/snippets/navbar.html:33
+msgid "Students"
+msgstr "الطلاب"
+
+#: templates/snippets/navbar.html:38
+msgid "Browse Results"
+msgstr "تصفح النتائج"
+
+#: templates/snippets/navbar.html:43
+msgid "Students Distribution"
+msgstr "تقسيم الطلاب"
+
+#: templates/snippets/navbar.html:49 templates/snippets/navbar.html:74
+msgid "Exam Schedules"
+msgstr "جداول الإمتحانات"
+
+#: templates/snippets/navbar.html:52 templates/snippets/navbar.html:79
+msgid "Class Schedules"
+msgstr "جداول الحصص"
+
+#: templates/snippets/navbar.html:61
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: templates/snippets/navbar.html:67
+msgid "Posts"
+msgstr "المنشورات"
+
+#: templates/snippets/navbar.html:70
+msgid "Subjects"
+msgstr "المواد الدراسية"
+
+#: templates/snippets/navbar.html:83
+msgid "The Classes"
+msgstr "الصفوف الدراسية"
+
+#: templates/snippets/navbar.html:87
+msgid "Classrooms"
+msgstr "الفصول الدراسية"
+
+#: templates/snippets/navbar.html:91
+msgid "Students & Results"
+msgstr "الطلاب والنتائج"
+
+#: templates/snippets/navbar.html:100
+msgid "Admin"
+msgstr "المشرف"
+
+#: templates/snippets/navbar.html:106
+msgid "School Info"
+msgstr "معلومات المدرسة"
+
+#: templates/snippets/navbar.html:109
+msgid "Change Quotes"
+msgstr "تغيير الاقتباسات"
+
+#: templates/snippets/navbar.html:114
+msgid "Users"
+msgstr "المستخدمين"
+
+#: templates/snippets/navbar.html:118
+msgid "Add User"
+msgstr "إضافة مستخدم"
+
+#: templates/snippets/navbar.html:130
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/snippets/navbar.html:143
+msgid "Profile"
+msgstr " الملف الشخصي"
+
+#: templates/snippets/navbar.html:146
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: templates/snippets/navbar.html:158
+msgid "Language"
+msgstr "اللغة"
+
+#: templates/snippets/navbar.html:163
+msgid "Arabic"
+msgstr "العربية"
+
+#: templates/snippets/navbar.html:166
+msgid "English"
+msgstr "الإنجليزية"
+
+#~ msgid "by"
+#~ msgstr "عبر"

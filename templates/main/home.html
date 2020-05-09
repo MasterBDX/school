@@ -1,8 +1,14 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load i18n %}
+{% load post_filters %}
+
 {% block title %}الصفحة الرئيسية{% endblock %}
+
 {% block content %}
+
 {% include 'snippets/header.html' %}
+
 <div class="container">
     {% for article in main_articles %}
     <section>
@@ -18,8 +24,21 @@
             </div>
             <div class="col-lg-6 order-lg-1">
                 <div class="p-5">
-                    <h2 class="display-4"> {{article.title}}</h2>
-                    <p>{{article.description}}</p>
+                    {% if article.english_title and article.english_desc %}
+                    <h2 class="">
+                        {{article.english_title}}
+                    </h2>
+                    <p>
+                        {{article.english_desc}}
+                    </p>
+                    {% else %}
+                    <h2 class="">
+                        {{article.title}}
+                    </h2>
+                    <p>
+                        {{article.description}}
+                    </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -27,17 +46,17 @@
     </section>
     {% endfor %}
     <section>
-
-
         {% if last_posts %}
         <section>
             <div class="row">
-                <div class="col-md-12 text-right">
-                    <h1>&nbsp; أخر الأخبار </h1>
+                <div class="col-md-8 text-right">
+                    <h1>
+                        {% trans 'Latest News' %}
+                    </h1>
                     <hr />
                 </div>
 
-                <div class="col-md-10 ">
+                <div class="col-md-8 ">
                     {% for post in  last_posts %}
                     <div class="card mb-3">
                         <div class="row no-gutters">
@@ -46,7 +65,14 @@
                                     <h5 class="card-title">{{post.title}}</h5>
                                     <p class="card-text">{{post.overview|truncatewords:30}}</p>
                                     <p class="card-text">
-                                        <small class="text-muted">{{post.timestamp}}
+                                        <small class="text-muted">
+
+                                            {% trans 'Published at' %} :
+                                            {% if request.session.lang == 'ar' %}
+                                            {{post.timestamp|ar_date}}
+                                            {% else %}
+                                            {{post.timestamp|date:'M / j / Y - h:i A'}}
+                                            {% endif %}
                                         </small>
                                     </p>
 

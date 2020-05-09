@@ -9,7 +9,9 @@ from django.template.loader import get_template
 from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.utils import translation
+from django.utils.http import is_safe_url
 
 from .formsets import MainArticleFormset
 from .forms import (Contact, ResultSearchForm, MainArticleForm,
@@ -242,3 +244,18 @@ def main_articles_edit_view(request):
             return redirect(request.path)
     context = {'formset': formset}
     return render(request, 'main/main_articles_edit.html', context)
+
+
+def lang_change_view(request, lang):
+    next_ = request.GET.get('next')
+    if lang in ['ar', 'en']:
+        request.session['lang'] = lang
+        translation.activate(lang)
+        is_safe = is_safe_url(url=next_,
+                              allowed_hosts=settings.ALLOWED_HOSTS,
+                              require_https=request.is_secure())
+        if not is_safe:
+            next_ = reverse('main:home')
+        return redirect(next_)
+
+    raise Http404

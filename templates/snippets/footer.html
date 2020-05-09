@@ -1,35 +1,35 @@
+{% load i18n %}
 <footer class="py-5 bg-black">
-    <!-- <div class="container">
-        <p class="m-0  text-white small">
-            <span class="text-right">
-                Copyright &copy; MasterBDX 2020
-                <br />
-                هذا الموقع صنع بال <i class="fas fa-heart"></i>بواسطة
-                MasterBDX
-            </span>
-            <span class="text-left">
-                hello world
-            </span>
-        </p>
 
-    </div> -->
-    <!-- /.container -->
     <div class="row">
         <div class="col-md-6 text-center">
 
             <p>Copyright &copy; MasterBDX 2020</p>
-            
+
             <p class>
-             هذا الموقع صنع بال <i class="fas fa-heart"></i> بواسطة
+                {% if request.session.lang == 'ar' %}
+                هذا الموقع صنع بال <i class="fas fa-heart"></i> بواسطة
                 MasterBDX
+                {% else %}
+                this website made with <i class="fas fa-heart"></i> by omarbd (Master BDX)
+                {% endif %}
             </p>
 
         </div>
         <div class="col-md-6 text-center">
 
             <ul class="list-unstyled">
-                <li><a href="{% url 'main:about_us' %}">حول المدرسة</a></li>
-                <li><a href="{% url 'main:contact' %}">للتواصل</a></li>
+                <li>
+                    <a href="{% url 'main:about_us' %}">
+
+                        {% trans 'About School' %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'main:contact' %}">
+                        {% trans 'Contact Us' %}
+                    </a>
+                </li>
             </ul>
 
         </div>

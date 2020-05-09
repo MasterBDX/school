@@ -1,3 +1,7 @@
+from django.utils.translation import ugettext as _
+from django.utils import translation
+
+
 class LangSessionMiddletware:
     def __init__(self, get_response):
 
@@ -7,8 +11,11 @@ class LangSessionMiddletware:
 
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        request.session['lang'] = 'en'
-        print(request.session.get('lang'))
+        if not request.session.get('lang'):
+            request.session['lang'] = 'ar'
+
+        translation.activate(request.session['lang'])
+
         response = self.get_response(request)
 
         # Code to be executed for each request/response after

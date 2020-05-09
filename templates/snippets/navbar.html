@@ -1,9 +1,15 @@
 {% load static %}
+{% load i18n %}
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-        <a class="navbar-brand " href="{% url 'main:home' %}">مدرسة
-            {{school_name}}
-
+        <a class="navbar-brand " href="{% url 'main:home' %}">
+            {% if request.session.lang == 'ar' %}
+            مدرسة
+            {{school_ar_name}}
+            {% else %}
+            {{school_en_name}}
+            School
+            {% endif %}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,51 +19,104 @@
             <ul class="navbar-nav  mr-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-newspaper"></i> أخر الأخبار</a>
+                    <a class="nav-link" href="{% url 'posts:list' %}">
+                        <i class="fas fa-newspaper"></i>
+
+                        {% trans 'Latest News' %}
+
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-graduate"></i> شؤون الطلاب
+                        <i class="fas fa-user-graduate"></i>
+                        {% trans 'Students' %}
+
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'main:result-search' %}"> تصفح النتائج </a>
-                        <a class="dropdown-item" href="{% url 'main:students-distribution' %}">تقسيم الطلاب </a>
-                        <a class="dropdown-item" href="{% url 'tabels:exams-tabel-detail' %}">جداول الإمتحانات </a>
-                        <a class="dropdown-item" href="{% url 'tabels:schedule-detail' %}">جداول الحصص </a>
+                        <a class="dropdown-item" href="{% url 'main:result-search' %}">
+                            {% trans 'Browse Results' %}
+
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:students-distribution' %}">
+                            {% trans  'Students Distribution' %}
+
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'tabels:exams-tabel-detail' %}">
+
+                            {% trans 'Exam Schedules' %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'tabels:schedule-detail' %}">
+                            {% trans 'Class Schedules' %}
+                        </a>
                     </div>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-cogs"></i> لوحة التحكم
+                        <i class="fas fa-cogs"></i>
+                        {% trans 'Dashboard' %}
+
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'main:posts-dashboard' %}"> المنشورات </a>
-                        <a class="dropdown-item" href="{% url 'main:subjects-dashboard' %}">المواد الدراسية </a>
-                        <a class="dropdown-item" href="{% url 'main:exams-dashboard' %}">جداول الإمتحانات </a>
-                        <a class="dropdown-item" href="{% url 'main:classes-tabel-dashboard' %}">جداول الحصص </a>
-                        <a class="dropdown-item" href="{% url 'main:classes-dashboard' %}">الصفوف الدراسية </a>
-                        <a class="dropdown-item" href="{% url 'main:classrooms-dashboard' %}"> الفصول الدراسية </a>
-                        <a class="dropdown-item" href="{% url 'main:students-classrooms-dashboard' %}"> الطلبة و
-                            النتائج</a>
+                        <a class="dropdown-item" href="{% url 'main:posts-dashboard' %}">
+
+                            {% trans 'Posts' %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:subjects-dashboard' %}">
+                            {% trans 'Subjects' %}
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:exams-dashboard' %}">
+                            {% trans 'Exam Schedules' %}
+
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:classes-tabel-dashboard' %}">
+                            {% trans 'Class Schedules' %}
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:classes-dashboard' %}">
+                            {% trans 'The Classes' %}
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:classrooms-dashboard' %}">
+                            {% trans 'Classrooms' %}
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:students-classrooms-dashboard' %}">
+                            {% trans 'Students & Results' %}
+
+                        </a>
 
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-cogs"></i> المدير
+                        <i class="fas fa-user-cog"></i> {% trans 'Admin' %}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item" href="{% url 'main:school-info-edit' %}">معلومات المدرسة</a>
-                        <a class="dropdown-item" href="{% url 'main:main-articles-edit' %}"> تغيير المقولات </a>
-                        <a class="dropdown-item" href="{% url 'main:users-dashboard' %}">المستخدمين</a>
-                        <a class="dropdown-item" href="{% url 'accounts:register' %}"><i class="fas fa-user-plus"></i>
-                            إضافة
-                            مستخدم</a>
+                        <a class="dropdown-item" href="{% url 'main:school-info-edit' %}">
+
+                            {% trans 'School Info' %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:main-articles-edit' %}">
+                            {% trans 'Change Quotes' %}
+
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:users-dashboard' %}">
+
+                            {% trans 'Users' %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'accounts:register' %}">
+
+                            {% trans 'Add User' %}
+                        </a>
                     </div>
                 </li>
 
@@ -66,7 +125,10 @@
                 {% url 'accounts:login' as login %}
                 {% if not login == request.path %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'accounts:login' %}">تسجيل الدخول</a>
+                    <a class="nav-link" href="{% url 'accounts:login' %}">
+
+                        {% trans 'Login' %}
+                    </a>
                 </li>
                 {% endif %}
                 {% else %}
@@ -76,19 +138,36 @@
                         <i class="fas fa-user"></i> {{request.user.username}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'accounts:profile_edit' pk=request.user.id %}">الملف
-                            الشخصي </a>
-                        <a class="dropdown-item" href="{% url 'accounts:logout' %}">تسجيل الخروج </a>
+                        <a class="dropdown-item" href="{% url 'accounts:profile_edit' pk=request.user.id %}">
+
+                            {% trans 'Profile' %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                            {% trans 'Logout' %}
+
+
+                        </a>
                     </div>
                 </li>
 
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-newspaper"></i> عربي</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-language"></i>
+                        {% trans 'Language' %}
+
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'main:lang-change' lang='ar' %}?next={{request.path}}">
+                            {% trans 'Arabic' %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'main:lang-change' lang='en' %}?next={{request.path}}">
+                            {% trans 'English' %}
+                        </a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-newspaper"></i> English</a>
-                </li>
+
 
             </ul>
         </div>

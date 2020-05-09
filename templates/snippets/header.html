@@ -1,28 +1,27 @@
-<!-- {% comment %} <header class="masthead text-center text-white">
-    <div class="masthead-content">
-        <div class="container ">
-            <h2 class="h2 text-center"> أهلا بكم في مدرسة</h2>
-            <h1 class='h1 text-center main-heading'>{{school_name}} <i class="fas fa-heart"></i></h1>
-            <a href="{% url 'main:about_us' %}" class="main-btn btn btn-primary btn-xl rounded-pill mt-5">
-                تعلم المزيد
-            </a>
-        </div>
-    </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
-</header> {% endcomment %} -->
+{% load i18n %}
 {% load static %}
 <header style="background-image: url({% static 'img/school.jpg' %});
                 background-size: cover;" class="header-img">
     <div class="overlay"></div>
     <div class="container">
         <div class="header-content text-center">
-            <h2 class="h2 text-center"> أهلا بكم في مدرسة</h2>
-            <h1 class='h1 text-center main-heading'>{{school_name}} </h1>
+            <h2 class="h2 text-center">
+                {% trans 'Welcome to' %}
+            </h2>
+            <h1 class='h1 text-center main-heading'>
+
+                {% if request.session.lang == 'ar' %}
+                مدرسة
+                {{school_ar_name}}
+                {% else %}
+                {{school_en_name}}
+                School
+                {% endif %}
+
+            </h1>
             <a href="{% url 'main:about_us' %}" class="main-btn btn btn-primary btn-xl rounded-pill mt-5">
-                تعلم المزيد
+                {% trans 'About School' %}
+
             </a>
         </div </div>
 </header>
