@@ -1,0 +1,14 @@
+p,
+section.dashboard h4,
+section.dashboard table th,
+section.dashboard table td,
+#contact-id,
+.btn-test,
+.paper-borders table tr td,
+small.text-muted,
+.about-us h5,
+.about-us div .school-address-heading,
+.about-us ul li,
+footer ul li{
+    text-align: right;
+}

@@ -146,7 +146,6 @@ body{
 /* End (Navbar) */
 
 p{
-    text-align: right;
     font-family: var(--main-font);
     color: #444;
     font-size: 17px;
@@ -159,7 +158,6 @@ h1.main-heading{
 }
 
 h1{
-    text-align: right ;
     font-family: var(--main-font);
     color: #333;
     margin-top: 20px;
@@ -263,10 +261,6 @@ button[type="submit"]:hover{
     color: #fff;
 }
 
-.add-button{
-
-}
-
 /* End (Form-Design) */
 
 .fb-p{
@@ -280,10 +274,6 @@ button[type="submit"]:hover{
 .fb-hr{
     margin-top: 0px;
     background-color: #ddd;
-}
-
-small.text-muted{
-    text-align: right;
 }
 
 /* Start (Card-Design) */
@@ -386,7 +376,6 @@ section.dashboard h4{
     color: #444;
     font-weight: normal;
     font-family: var(--main-font);
-    text-align: right;
     margin-bottom: 15px;
 }
 
@@ -483,7 +472,6 @@ section.dashboard table thead tr th{
 
 section.dashboard table th,
 section.dashboard table td{
-    text-align: right;
     font-family: var(--main-font);
     color: #444;
     border-top: 1px solid #ddd;
@@ -582,10 +570,6 @@ section.dashboard span.error-alert{
 
 /* End (Add-Student) */
 
-#contact-id{
-    text-align: right;
-}
-
 .more-height{
     height: 250px;
 }
@@ -593,7 +577,8 @@ section.dashboard span.error-alert{
 #sendMessageButton {
     background-color: #4c4c4c;
     border: solid 1px #FFF;
-                    }
+}
+
 label{
     float: right;
 }
@@ -610,7 +595,6 @@ label{
 
 .btn-test{
     width: 100%;
-    text-align: right;
 }
 #id_content_iframe{
     display: block;
@@ -642,7 +626,6 @@ label{
     border-bottom: 1px solid #aaa;
     font-size: 21px;
     color: #444;
-    text-align: right;
     font-family: var(--main-font);
     padding: 20px 17px;
     display: flex;
@@ -756,10 +739,50 @@ label{
 }
 /* End Exams Tabel Ajax  */
 
+/* Start (About-School-Page) */
+.about-us p.lead{
+    font-weight: lighter;
+    color: #555;
+    font-size: 20px;
+}
+
+.about-us p.lead span{
+    margin: 0 0 0 5px;
+    display: inline-block;
+    font-weight: bold;
+    color: #222;
+    font-size: 18px;
+    border-left: 2px solid var(--main-color);
+    padding-left: 10px;
+}
+
+.about-us div .school-address-heading{
+    font-family: var(--main-font);
+    font-weight: bold;
+    display: inline-block;
+    float: right;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.about-us ul li{
+    font-weight: lighter;
+    font-size: 16px;
+    color: #555;
+}
+
+.about-us h5{
+    font-family: var(--main-font);
+    color: #333;
+}
+
+/* End (About-School-Page) */
+
 /* Start (Footer) */
 
 footer{
-    margin-top: 50px;
+    margin-top: 50px
 }
 
 footer ul{
@@ -768,7 +791,6 @@ footer ul{
 }
 
 footer ul li{
-    text-align: right;
     margin-bottom: 10px;
 }
 

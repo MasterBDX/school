@@ -3,8 +3,8 @@
 {% block content %}
 {% load i18n %}
 <section>
-    <div class="container">
-        <div class="row text-right">
+    <div class="container about-us">
+        <div class="row">
             <div class="col-md-7 m-auto text-right">
                 <h1 class="text-center">
                     {% trans 'About School' %}
@@ -14,19 +14,16 @@
             <div class="col-md-7 m-auto">
 
                 <p class="lead">
-                    إسم المدرسة : {{object.name}}
+                  <span>إسم المدرسة</span> {{object.name}}
                 </p>
-
-            </div>
-            <div class="col-md-7 m-auto ">
                 <p class="lead">
-                    رقم هاتف المدرسة : {{object.school_phone}}
+                    <span>رقم هاتف المدرسة</span> {{object.school_phone}}
                 </p>
             </div>
-            <div class="col-md-7 m-auto ">
-
-                عنوان المدرسة :
-                <br />
+            <div class="col-md-7 m-auto">
+                <span class="school-address-heading">
+                    عنوان المدرسة
+                <span>
                 <ul>
                     <li>الشارع - {{object.street}}</li>
                     <li>المدينة - {{object.city}}</li>
@@ -41,15 +38,13 @@
                     </li>
                     {% endif %}
                 </ul>
-
-
             </div>
             <div class="col-md-7 m-auto">
 
-                <p>
-                    نبذة عن المدرسة : <br />
-                    {{object.content}}
-                </p>
+                <h5>
+                    نبذة عن المدرسة <br />
+                </h5>
+                    <p>{{object.content}}</p>
             </div>
         </div>
     </div>
