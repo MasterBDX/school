@@ -1,14 +1,16 @@
+{% load i18n %}
 {% autoescape off %}
-
-{{name}} : الإسم
+{% trans 'Name' %} : {{name}}
 <br>
 <br>
-{{phone}} : رقم الهاتف
+{% trans 'Phone Number' %} : {{phone}}
 <br>
 <br>
-{{subject}} : الموضوع
+{% trans 'Subject' %} : {{subject}}
 <br>
 <br>
-{{message}} : المحتوى
+{% trans 'Content' %} :
+<br />
+{{message}}
 
 {% endautoescape %}

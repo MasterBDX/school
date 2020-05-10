@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-09 23:33+0000\n"
+"POT-Creation-Date: 2020-05-10 00:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,6 +69,38 @@ msgid ""
 "يجب أن تحتوي كلمة المرور على رمز واحد على الأقل:()[]{}|\\`~!@#$%^&*_-+=;:'\","
 "<>./?"
 msgstr ""
+
+#: main/forms.py:12
+msgid "Name"
+msgstr "الإسم"
+
+#: main/forms.py:13
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: main/forms.py:15
+msgid "Please enter a valid email"
+msgstr "يرجى إدخال بريد إلكتروني صحيح"
+
+#: main/forms.py:18
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: main/forms.py:19
+msgid "Subject"
+msgstr "الموضوع"
+
+#: main/forms.py:20
+msgid "Content"
+msgstr "المحتوى"
+
+#: main/forms.py:27
+msgid "Please enter a valid phone number "
+msgstr "يرجي إدخال رقم هاتف صحيح"
+
+#: main/views.py:77
+msgid "Thank you for contacting us"
+msgstr "شكرا على تواصلك معنا "
 
 #: templates/accounts/password_reset_email.html:2
 #, python-format

@@ -11,8 +11,8 @@ from django.db.models import Q
 from django.http import Http404
 from django.urls import reverse_lazy, reverse
 from django.utils import translation
+from django.utils.translation import ugettext as _
 from django.utils.http import is_safe_url
-
 from .formsets import MainArticleFormset
 from .forms import (Contact, ResultSearchForm, MainArticleForm,
                     SchoolInfoForm, MainArticleForm)
@@ -58,7 +58,7 @@ def contact_view(request):
             message = form.cleaned_data.get('message')
             msg_context = {'name': name, 'subject': subject,
                            'message': message, 'phone': phone_num}
-            print(msg_context)
+
             txt_ = get_template(
                 'main/snippets/message.txt').render(msg_context)
             html_ = get_template(
@@ -68,14 +68,14 @@ def contact_view(request):
                 name,
                 txt_,
                 from_email,
-                ['masterbdxteam@gmail.com'],
+                [settings.MAIN_EMAIL],
                 html_message=html_,
                 fail_silently=False
             )
 
             messages.add_message(request, messages.SUCCESS,
-                                 'your message has been sent')
-            return redirect('/#contact')
+                                 _('Thank you for contacting us'))
+            return redirect('main:contact')
     context = {'form': form}
     return render(request, 'main/contact.html', context)
 

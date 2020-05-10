@@ -8,6 +8,9 @@ BASE_DIR = os.path.dirname(MYBASE)
 
 FOLDER_NAME = os.path.basename(MYBASE)
 
+
+MAIN_EMAIL = 'masterbdxteam@gmail.com'
+
 # Application definition
 
 INSTALLED_APPS = [
