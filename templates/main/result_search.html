@@ -35,7 +35,7 @@
                         <form method="POST" action="{% url 'main:result-doc' %}">
                             {% csrf_token %}
                             {{form|crispy}}
-                            <button type="submit" class="main-btn">بحث</button>
+                            <button type="submit">بحث</button>
                         </form>
                     </div>
                 </div>
