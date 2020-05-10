@@ -14,6 +14,7 @@ from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.utils.http import is_safe_url
 from .formsets import MainArticleFormset
+
 from .forms import (Contact, ResultSearchForm, MainArticleForm,
                     SchoolInfoForm, MainArticleForm)
 
@@ -44,6 +45,11 @@ class HomeView(TemplateView):
 
 class AboutusView(TemplateView):
     template_name = 'main/about_us.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["object"] = SchoolInfo.objects.all().first()
+        return context
 
 
 def contact_view(request):

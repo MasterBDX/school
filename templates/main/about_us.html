@@ -1,15 +1,55 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-
+{% load i18n %}
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 m-auto">
-                <h1 class="text-center">من نحن
+        <div class="row text-right">
+            <div class="col-md-7 m-auto text-right">
+                <h1 class="text-center">
+                    {% trans 'About School' %}
                     <hr />
                 </h1>
-                <p>مرحبابكم اليوم</p>
+            </div>
+            <div class="col-md-7 m-auto">
+
+                <p class="lead">
+                    إسم المدرسة : {{object.name}}
+                </p>
+
+            </div>
+            <div class="col-md-7 m-auto ">
+                <p class="lead">
+                    رقم هاتف المدرسة : {{object.school_phone}}
+                </p>
+            </div>
+            <div class="col-md-7 m-auto ">
+
+                عنوان المدرسة :
+                <br />
+                <ul>
+                    <li>الشارع - {{object.street}}</li>
+                    <li>المدينة - {{object.city}}</li>
+                    {% if object.municipality %}
+                    <li>
+                        البلدية - {{object.municipality}}
+                    </li>
+                    {% endif %}
+                    {% if object.province %}
+                    <li>
+                        المقاطعة - {{object.province}}
+                    </li>
+                    {% endif %}
+                </ul>
+
+
+            </div>
+            <div class="col-md-7 m-auto">
+
+                <p>
+                    نبذة عن المدرسة : <br />
+                    {{object.content}}
+                </p>
             </div>
         </div>
     </div>

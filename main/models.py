@@ -7,6 +7,7 @@ class SchoolInfo(models.Model):
     name = models.CharField(max_length=255)
     english_name = models.CharField(max_length=255)
     content = models.TextField(null=True, blank=True)
+    school_phone = models.CharField(max_length=255, null=True, blank=True)
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     municipality = models.CharField(max_length=255, null=True, blank=True)
