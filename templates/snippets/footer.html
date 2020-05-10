@@ -3,6 +3,21 @@
 
     <div class="row">
         <div class="col-md-6 text-center">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="{% url 'main:about_us' %}">
+                        {% trans 'About School' %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'main:contact' %}">
+                        {% trans 'Contact Us' %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-6 text-center">
 
             <p>Copyright &copy; MasterBDX 2020</p>
 
@@ -14,23 +29,6 @@
                 this website made with <i class="fas fa-heart"></i> by omarbd (Master BDX)
                 {% endif %}
             </p>
-
-        </div>
-        <div class="col-md-6 text-center">
-
-            <ul class="list-unstyled">
-                <li>
-                    <a href="{% url 'main:about_us' %}">
-
-                        {% trans 'About School' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'main:contact' %}">
-                        {% trans 'Contact Us' %}
-                    </a>
-                </li>
-            </ul>
 
         </div>
     </div>

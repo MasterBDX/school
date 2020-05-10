@@ -100,6 +100,11 @@ body{
     left: 0;
 }
 
+.header-img .header-content h2,
+.header-img .header-content h1{
+    text-transform: capitalize;
+}
+
 .header-img .header-content h2{
     color: var(--main-color);
 }
@@ -121,18 +126,21 @@ body{
 
 .dropdown-menu{
     border-bottom: 3px solid var(--main-color);
+    background-color: #333;
 }
 
 .dropdown-menu .dropdown-item{
-    transition: all 0.4s ease;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    text-align: center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    /* text-align: center; */
+    color: #fff;
 }
 
 .dropdown-menu .dropdown-item:hover{
-    background-color: var(--main-color);
+    background-color: transparent;
+    color: var(--main-color);
 }
 
 /* End (Navbar) */
@@ -178,7 +186,7 @@ h2{
     font-family: var(--main-font);
     font-size: 17px;
     font-weight: normal;
-    border: none;
+    border: 1px solid #fff;
     padding: 14px 35px;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -194,6 +202,13 @@ h2{
 .main-btn:hover{
     color: var(--main-color);
     background-color: #222 !important;
+    border: 1px solid #fff !important;
+}
+
+.main-btn:focus{
+    background-color: #222 !important;
+    border: 1px solid #fff !important;
+    box-shadow: none;
 }
 
 /* Start (Form-Design) */
@@ -747,37 +762,6 @@ footer{
     margin-top: 50px;
 }
 
-footer p{
-    color: #999;
-    font-family: var(--main-font);
-    font-size: 17px;
-    text-align: center;
-    margin-bottom: 0;
-    text-transform: capitalize;
-    transition: color 0.3s ease;
-    -webkit-transition: color 0.3s ease;
-    -moz-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-}
-
-footer p:hover{
-    color: #fff;
-}
-
-footer p i{
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-}
-
-footer p:hover i{
-    color: #d43131;
-    font-size: 20px;
-    padding-right: 4px;
-    padding-left: 4px;
-}
-
 footer ul{
     margin: auto;
     width: 40%;
@@ -801,6 +785,45 @@ footer ul li a{
 footer ul li a:hover{
     color: #fff !important;
     text-shadow: 0px 0px 0px #fff;
+}
+
+footer p{
+    color: #999;
+    font-family: var(--main-font);
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 0;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+}
+
+@media screen and (max-width: 991px){
+    footer ul li{
+        float: left;
+        text-align: center;
+        margin: 0 10px 20px;
+    }
+}
+
+footer p:hover{
+    color: #fff;
+}
+
+footer p i{
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+footer p:hover i{
+    color: #d43131;
+    font-size: 20px;
+    padding-right: 4px;
+    padding-left: 4px;
 }
 
 /* End (Footer) */

@@ -36,18 +36,16 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'main:result-search' %}">
                             {% trans 'Browse Results' %}
-
-
                         </a>
+                        
                         <a class="dropdown-item" href="{% url 'main:students-distribution' %}">
                             {% trans  'Students Distribution' %}
-
-
                         </a>
-                        <a class="dropdown-item" href="{% url 'tabels:exams-tabel-detail' %}">
 
+                        <a class="dropdown-item" href="{% url 'tabels:exams-tabel-detail' %}">
                             {% trans 'Exam Schedules' %}
                         </a>
+
                         <a class="dropdown-item" href="{% url 'tabels:schedule-detail' %}">
                             {% trans 'Class Schedules' %}
                         </a>
@@ -126,7 +124,7 @@
                 {% if not login == request.path %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:login' %}">
-
+                        <i class="fas fa-sign-in-alt"></i>
                         {% trans 'Login' %}
                     </a>
                 </li>

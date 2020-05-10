@@ -69,6 +69,7 @@
 
                                             {% trans 'Published at' %} :
                                             {% if request.session.lang == 'ar' %}
+                                            
                                             {{post.timestamp|ar_date}}
                                             {% else %}
                                             {{post.timestamp|date:'M / j / Y - h:i A'}}
