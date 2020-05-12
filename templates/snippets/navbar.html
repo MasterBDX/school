@@ -37,7 +37,7 @@
                         <a class="dropdown-item" href="{% url 'main:result-search' %}">
                             {% trans 'Browse Results' %}
                         </a>
-                        
+
                         <a class="dropdown-item" href="{% url 'main:students-distribution' %}">
                             {% trans  'Students Distribution' %}
                         </a>
@@ -157,10 +157,12 @@
 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'main:lang-change' lang='ar' %}?next={{request.path}}">
+                        <a class="dropdown-item"
+                            href="{% url 'main:lang-change' lang='ar' %}?next={{request.get_full_path}}">
                             {% trans 'Arabic' %}
                         </a>
-                        <a class="dropdown-item" href="{% url 'main:lang-change' lang='en' %}?next={{request.path}}">
+                        <a class="dropdown-item"
+                            href="{% url 'main:lang-change' lang='en' %}?next={{request.get_full_path}}">
                             {% trans 'English' %}
                         </a>
                     </div>

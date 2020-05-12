@@ -3,15 +3,18 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_student_filters %}
-
+{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
 
                 <h1 class="text-center">
-                    نتائج البحث عن
+                    {% trans 'Search results for' %}
+
+
                     {{request.GET.q}}
+
                     <hr />
                 </h1>
             </div>
@@ -29,52 +32,105 @@
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">إسم الطالب </th>
-                                    <th scope="col">الجنس</th>
-                                    <th scope="col">الصف</th>
-                                    <th scope="col">الرقم الوطني</th>
-                                    <th scope="col">التحكم </th>
+                                    <th scope="col">
+                                        {% trans 'ID' %}
+
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Fullname' %}
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Gender' %}
+
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Class' %}
+
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'NID' %}
+
+                                    </th>
+                                    {% if request.user.is_authenticated %}
+                                    <th scope="col">
+                                        {% trans 'Control' %}
+
+                                    </th>
+                                    {% endif %}
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for student in students %}
                                 <tr>
                                     <th scope="row">{{student.id}}</th>
-                                    <td>{{student.get_full_name}}</td>
 
-                                    <td>{{student.gender|arabic_gender}}</td>
                                     <td>
-                                        {{student.the_class.name}} </td>
+                                        {% if request.user.is_authenticated %}
+                                        <a href="{% url 'students:detail' pk=student.id %}">
+                                            {{student.get_full_name}}
+                                        </a>
+                                        {% else %}
+                                        {{student.get_full_name}}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{student.gender|lang_gender:request.session.lang|capfirst}}</td>
+                                    <td>
+
+                                        {% if request.session.lang == 'en' and  student.the_class.en_name %}
+                                        {{student.the_class.en_name|capfirst}}
+                                        {% else %}
+                                        {{student.the_class.name}}
+                                        {% endif %}
+                                    </td>
                                     <td>{{student.id_number}}</td>
+
+                                    {% if request.user.is_authenticated %}
                                     <td>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a href="{% url 'students:edit' pk=student.pk %}" class="btn btn-info">
-                                                    تعديل البيانات
+                                                    {% trans 'Edit' %}
                                                 </a>
 
                                             </div>
                                             <div class="col-md-4">
                                                 <a href="{% url 'students:delete' pk=student.pk %}"
                                                     class="btn btn-danger">
-                                                    حذف
+                                                    {% trans 'Delete' %}
+
+
                                                 </a>
                                             </div>
                                             <div class="col-md-4">
                                                 <a href="#" class="btn btn-warning">
-                                                    إضافة صحيفة
+                                                    {% trans 'Add Result' %}
+
                                                 </a>
                                             </div>
 
                                         </div>
                                     </td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
 
 
                             </tbody>
                         </table>
+                    </div>
+                    {% else %}
+                    <div class="col-md-12">
+                        <h4>
+
+                            {% trans  'Your search' %}
+                            - {{request.GET.q}} -
+                            {% trans 'did not match any results' %}
+
+                        </h4>
                     </div>
                     {% endif %}
 

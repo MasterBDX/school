@@ -30,8 +30,18 @@ class Contact(forms.Form):
 
 class ResultSearchForm(forms.Form):
     the_class = forms.ModelChoiceField(
-        queryset=TheClass.objects.all(), label='الصف')
-    id_num = forms.CharField(label='رقم القيد / الرقم الوطني')
+        queryset=TheClass.objects.all(),
+        label=_('Class'),
+        error_messages={'required': _('This field is required')})
+    id_num = forms.CharField(label=_('Registration number / national number'),
+                             error_messages={'required': _('This field is required')})
+
+    def clean_id_num(self):
+        id_num = self.cleaned_data.get('id_num')
+        if not id_num.isdigit():
+            raise forms.ValidationError(
+                _('This field must contain a positive integer'))
+        return id_num
 
 
 class SchoolInfoForm(forms.ModelForm):

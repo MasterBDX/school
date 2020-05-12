@@ -27,6 +27,8 @@ class Article(models.Model):
 
 class TheClass(models.Model):
     name = models.CharField(max_length=255)
+    en_name = models.CharField(max_length=255,
+                               blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     subjects = models.ManyToManyField(
         Article, blank=True)

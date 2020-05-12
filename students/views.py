@@ -58,8 +58,12 @@ class SearchStudentsView(ListView):
     template_name = 'students/search_students.html'
 
     def get_queryset(self, *args, **kwargs):
-        q = self.request.GET.get('q')
-        qs = Student.objects.filter(get_stds_filters(q))
+        request = self.request
+        q = request.GET.get('q')
+        if not q or q.isspace():
+            qs = Student.objects.none()
+        else:
+            qs = Student.objects.filter(get_stds_filters(q))
         return qs
 
 

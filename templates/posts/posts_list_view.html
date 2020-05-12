@@ -1,13 +1,14 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
             <div class="col-8">
                 <div class="">
-                    <h1> 
-                    المنشورات   
+                    <h1>
+                        {% trans 'Posts' %}
                     </h1>
                 </div>
                 <div class="">
@@ -21,8 +22,8 @@
                                     <div class="card-body text-right">
                                         <h5 class="card-title">{{post.title}}</h5>
                                         <p class="card-text">{{post.overview|truncatewords:20}}</p>
-                                        <p class="card-text"><small class="text-muted">{{post.timestamp|timesince}}
-                                                ago</small>
+                                        <p class="card-text"><small class="text-muted">{{post.timestamp}}
+                                            </small>
                                         </p>
 
                                     </div>
@@ -39,7 +40,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <p class="lead text-left fb-p">Facebook Page
+                <p class="lead text-left fb-p">{% trans  'Facebook Page' %}
                     <hr class="fb-hr" />
                 </p>
 

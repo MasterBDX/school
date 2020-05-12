@@ -14,38 +14,58 @@
             <div class="col-md-7 m-auto">
 
                 <p class="lead">
-                  <span>إسم المدرسة</span> {{object.name}}
+                    <span>
+                        {% trans 'School Name' %}
+
+
+                    </span> {{object.name}}
                 </p>
                 <p class="lead">
-                    <span>رقم هاتف المدرسة</span> {{object.school_phone}}
+                    <span>
+
+                        {% trans 'School Phone Number' %}
+                    </span> {{object.school_phone}}
                 </p>
             </div>
             <div class="col-md-7 m-auto">
                 <span class="school-address-heading">
-                    عنوان المدرسة
-                <span>
-                <ul>
-                    <li>الشارع - {{object.street}}</li>
-                    <li>المدينة - {{object.city}}</li>
-                    {% if object.municipality %}
-                    <li>
-                        البلدية - {{object.municipality}}
-                    </li>
-                    {% endif %}
-                    {% if object.province %}
-                    <li>
-                        المقاطعة - {{object.province}}
-                    </li>
-                    {% endif %}
-                </ul>
+
+                    {% trans 'School Address' %}
+                    <span>
+                        <ul>
+                            <li>
+
+
+                                {% trans 'Street' %}
+                                - {{object.street}}</li>
+                            <li>
+
+                                {% trans 'City' %}
+                                - {{object.city}}</li>
+                            {% if object.municipality %}
+                            <li>
+                                {% trans 'Municipality' %}
+                                - {{object.municipality}}
+                            </li>
+                            {% endif %}
+                            {% if object.province %}
+                            <li>
+                                {% trans 'Province' %}
+                                - {{object.province}}
+                            </li>
+                            {% endif %}
+                        </ul>
             </div>
             <div class="col-md-7 m-auto text-center">
-            <hr class="content-divder" />
+                <hr class="content-divder" />
 
                 <h5>
-                    نبذة عن المدرسة
+
+                    {% trans 'About School' %}
                 </h5>
+                {% if object.content %}
                 <p>{{object.content}}</p>
+                {% endif %}
             </div>
         </div>
     </div>

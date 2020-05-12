@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 00:17+0000\n"
+"POT-Creation-Date: 2020-05-12 19:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,8 @@ msgid ""
 "<>./?"
 msgstr ""
 
-#: main/forms.py:12
+#: main/forms.py:12 templates/main/snippets/html_message.html:3
+#: templates/main/snippets/message.txt:3
 msgid "Name"
 msgstr "الإسم"
 
@@ -82,15 +83,18 @@ msgstr "البريد الإلكتروني"
 msgid "Please enter a valid email"
 msgstr "يرجى إدخال بريد إلكتروني صحيح"
 
-#: main/forms.py:18
+#: main/forms.py:18 templates/main/snippets/html_message.html:6
+#: templates/main/snippets/message.txt:6
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: main/forms.py:19
+#: main/forms.py:19 templates/main/snippets/html_message.html:9
+#: templates/main/snippets/message.txt:9
 msgid "Subject"
 msgstr "الموضوع"
 
-#: main/forms.py:20
+#: main/forms.py:20 templates/main/snippets/html_message.html:12
+#: templates/main/snippets/message.txt:12
 msgid "Content"
 msgstr "المحتوى"
 
@@ -98,9 +102,29 @@ msgstr "المحتوى"
 msgid "Please enter a valid phone number "
 msgstr "يرجي إدخال رقم هاتف صحيح"
 
-#: main/views.py:77
+#: main/forms.py:34 templates/students/search_students.html:50
+msgid "Class"
+msgstr "الصف الدراسي"
+
+#: main/forms.py:35 main/forms.py:37
+msgid "This field is required"
+msgstr "هذا الحقل مطلوب"
+
+#: main/forms.py:36
+msgid "Registration number / national number"
+msgstr "رقم القيد / الرقم الوطني"
+
+#: main/forms.py:43
+msgid "This field must contain a positive integer"
+msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب"
+
+#: main/views.py:83
 msgid "Thank you for contacting us"
 msgstr "شكرا على تواصلك معنا "
+
+#: main/views.py:202
+msgid "You entered the data incorrectly Please check your information"
+msgstr "لقد قمت بإدخال البيانات بشكل خاطئ يرجى التأكد من بياناتك"
 
 #: templates/accounts/password_reset_email.html:2
 #, python-format
@@ -132,7 +156,40 @@ msgstr ""
 msgid "Password reset on %(site_name)s"
 msgstr ""
 
-#: templates/main/contact.html:13 templates/snippets/footer.html:30
+#: templates/main/about_us.html:10 templates/main/about_us.html:64
+#: templates/snippets/footer.html:9 templates/snippets/header.html:23
+msgid "About School"
+msgstr "حول المدرسة"
+
+#: templates/main/about_us.html:18
+msgid "School Name"
+msgstr "إسم المدرسة"
+
+#: templates/main/about_us.html:26
+msgid "School Phone Number"
+msgstr "رقم هاتف المدرسة"
+
+#: templates/main/about_us.html:33
+msgid "School Address"
+msgstr "عنوان المدرسة"
+
+#: templates/main/about_us.html:39
+msgid "Street"
+msgstr "الشارع"
+
+#: templates/main/about_us.html:43
+msgid "City"
+msgstr "المدينة"
+
+#: templates/main/about_us.html:47
+msgid "Municipality"
+msgstr "البلدية"
+
+#: templates/main/about_us.html:53
+msgid "Province"
+msgstr "المقاطعة"
+
+#: templates/main/contact.html:13 templates/snippets/footer.html:14
 msgid "Contact Us"
 msgstr "اتصل بنا"
 
@@ -148,9 +205,30 @@ msgstr "أخر الأخبار"
 msgid "Published at"
 msgstr "نشرت في"
 
-#: templates/snippets/footer.html:25 templates/snippets/header.html:23
-msgid "About School"
-msgstr "حول المدرسة"
+#: templates/main/result_search.html:14
+msgid "Find a result"
+msgstr "ابحث عن نتيجة"
+
+#: templates/main/result_search.html:34
+msgid "Search"
+msgstr "بحث"
+
+#: templates/main/students_distribution.html:13
+#: templates/snippets/navbar.html:42
+msgid "Students Distribution"
+msgstr "تقسيم الطلاب"
+
+#: templates/main/students_distribution.html:21
+msgid "Find a student"
+msgstr "ابحث عن طالب"
+
+#: templates/posts/posts_list_view.html:11 templates/snippets/navbar.html:65
+msgid "Posts"
+msgstr "المنشورات"
+
+#: templates/posts/posts_list_view.html:43
+msgid "Facebook Page"
+msgstr "صفحة الفيسبوك"
 
 #: templates/snippets/header.html:9
 msgid "Welcome to"
@@ -164,85 +242,125 @@ msgstr "الطلاب"
 msgid "Browse Results"
 msgstr "تصفح النتائج"
 
-#: templates/snippets/navbar.html:43
-msgid "Students Distribution"
-msgstr "تقسيم الطلاب"
-
-#: templates/snippets/navbar.html:49 templates/snippets/navbar.html:74
+#: templates/snippets/navbar.html:46 templates/snippets/navbar.html:72
 msgid "Exam Schedules"
 msgstr "جداول الإمتحانات"
 
-#: templates/snippets/navbar.html:52 templates/snippets/navbar.html:79
+#: templates/snippets/navbar.html:50 templates/snippets/navbar.html:77
 msgid "Class Schedules"
 msgstr "جداول الحصص"
 
-#: templates/snippets/navbar.html:61
+#: templates/snippets/navbar.html:59
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: templates/snippets/navbar.html:67
-msgid "Posts"
-msgstr "المنشورات"
-
-#: templates/snippets/navbar.html:70
+#: templates/snippets/navbar.html:68
 msgid "Subjects"
 msgstr "المواد الدراسية"
 
-#: templates/snippets/navbar.html:83
+#: templates/snippets/navbar.html:81
 msgid "The Classes"
 msgstr "الصفوف الدراسية"
 
-#: templates/snippets/navbar.html:87
+#: templates/snippets/navbar.html:85
 msgid "Classrooms"
 msgstr "الفصول الدراسية"
 
-#: templates/snippets/navbar.html:91
+#: templates/snippets/navbar.html:89
 msgid "Students & Results"
 msgstr "الطلاب والنتائج"
 
-#: templates/snippets/navbar.html:100
+#: templates/snippets/navbar.html:98
 msgid "Admin"
 msgstr "المشرف"
 
-#: templates/snippets/navbar.html:106
+#: templates/snippets/navbar.html:104
 msgid "School Info"
 msgstr "معلومات المدرسة"
 
-#: templates/snippets/navbar.html:109
+#: templates/snippets/navbar.html:107
 msgid "Change Quotes"
 msgstr "تغيير الاقتباسات"
 
-#: templates/snippets/navbar.html:114
+#: templates/snippets/navbar.html:112
 msgid "Users"
 msgstr "المستخدمين"
 
-#: templates/snippets/navbar.html:118
+#: templates/snippets/navbar.html:116
 msgid "Add User"
 msgstr "إضافة مستخدم"
 
-#: templates/snippets/navbar.html:130
+#: templates/snippets/navbar.html:128
 msgid "Login"
 msgstr "تسجيل الدخول"
 
-#: templates/snippets/navbar.html:143
+#: templates/snippets/navbar.html:141
 msgid "Profile"
 msgstr " الملف الشخصي"
 
-#: templates/snippets/navbar.html:146
+#: templates/snippets/navbar.html:144
 msgid "Logout"
 msgstr "تسجيل الخروج"
 
-#: templates/snippets/navbar.html:158
+#: templates/snippets/navbar.html:156
 msgid "Language"
 msgstr "اللغة"
 
-#: templates/snippets/navbar.html:163
+#: templates/snippets/navbar.html:161
 msgid "Arabic"
 msgstr "العربية"
 
-#: templates/snippets/navbar.html:166
+#: templates/snippets/navbar.html:164
 msgid "English"
 msgstr "الإنجليزية"
+
+#: templates/snippets/student_search_form.html:3
+msgid "You can search using std name | std id | std N.number"
+msgstr "يمكنك البحث بإستخدام إسم الطالب | رقم القيد | الرقم الوطني"
+
+#: templates/students/search_students.html:13
+msgid "Search results for"
+msgstr "نتائج البحث عن"
+
+#: templates/students/search_students.html:36
+msgid "ID"
+msgstr "رقم القيد"
+
+#: templates/students/search_students.html:41
+msgid "Fullname"
+msgstr "الإسم الكامل"
+
+#: templates/students/search_students.html:45
+msgid "Gender"
+msgstr "الجنس"
+
+#: templates/students/search_students.html:55
+msgid "NID"
+msgstr "الرقم الوطني"
+
+#: templates/students/search_students.html:60
+msgid "Control"
+msgstr "التحكم"
+
+#: templates/students/search_students.html:90
+msgid "Edit"
+msgstr "تعديل"
+
+#: templates/students/search_students.html:97
+msgid "Delete"
+msgstr "حذف"
+
+#: templates/students/search_students.html:104
+msgid "Add Result"
+msgstr "اضف نتيجة"
+
+#: templates/students/search_students.html:123
+msgid "Your search"
+msgstr "لم ينجح بحثك عن"
+
+#: templates/students/search_students.html:125
+msgid "did not match any results"
+msgstr "في إظهار أي نتائج"
 
 #~ msgid "by"
 #~ msgstr "عبر"

@@ -3,39 +3,36 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_student_filters %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
 
-            <div class="col-md-8 m-auto">
+            <div class="col-md-6  m-auto">
 
                 <h1 class="text-center">
-                    البحث عن صحيفة
+                    {% trans 'Find a result' %}
                     <hr />
                 </h1>
             </div>
-            <div class='col-md-12'>
-                  {% if messages %}
-                        <ul class="messages">
-                            {% for message in messages %}
-                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                                {% endfor %}
-                        </ul>
+            <div class='col-md-8'>
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </div>
                 {% endif %}
             </div>
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
-                    <div class="col-md-8 m-auto">
-                        <form method="POST" action="{% url 'main:result-doc' %}">
+                    <div class="col-md-6 m-auto">
+                        <form method="POST">
                             {% csrf_token %}
                             {{form|crispy}}
-                            <button type="submit">بحث</button>
+                            <button type="submit">
+                                {% trans 'Search' %}
+                            </button>
                         </form>
                     </div>
                 </div>

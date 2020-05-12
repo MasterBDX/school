@@ -3,23 +3,27 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_student_filters %}
-
+{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 m-auto">
+            <div class="col-md-6 m-auto">
 
                 <h1 class="text-center">
-                    تقسيم الطلاب
+                    {% trans 'Students Distribution' %}
                     <hr />
                 </h1>
             </div>
 
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
-                    <div class="col-md-8 m-auto">
-                        {% url 'main:students-classroom-distribution' as scd %}
-                        {% include 'snippets/student_search_form.html' with action=scd %}
+                    <div class="col-md-7 m-auto">
+                        <h4>{% trans  'Find a student' %}</h4>
+                    </div>
+                    <div class="col-md-7 m-auto">
+                        {% url 'students:search' as std_search %}
+
+                        {% include 'snippets/student_search_form.html' with action=std_search %}
                     </div>
 
                     {% if classes %}
@@ -74,11 +78,11 @@
                 </div>
                 {% else %}
                 <div class="col-md-12">
-                <div class="alert">
-                    <span class="display-4 text-center error-alert">
-                        لم يتم العثور على أي صف
-                    </span>
-                </div>    
+                    <div class="alert">
+                        <span class="display-4 text-center error-alert">
+                            لم يتم العثور على أي صف
+                        </span>
+                    </div>
                 </div>
                 {% endif %}
             </div>

@@ -172,12 +172,6 @@ class StdsClassroomDistributionView(ListView):
     context_object_name = 'students'
 
     def get_queryset(self, *args, **kwargs):
-        self.obj = ''
-        q = self.request.GET.get('q')
-        if q != None and q != ' ':
-            qs = Student.objects.filter(get_stds_filters(q))
-            return qs
-
         self.obj = get_object_or_404(
             ClassRoom, pk=self.kwargs.get('pk', '1'))
         return self.obj.students.same_class(self.obj.the_class.id)
@@ -189,30 +183,25 @@ class StdsClassroomDistributionView(ListView):
         return context
 
 
-class ResultSearchView(FormView):
-    form_class = ResultSearchForm
-    template_name = 'main/result_search.html'
-
-
 def get_result_view(request):
-    form = ResultSearchForm(request.POST)
+    form = ResultSearchForm(request.POST or None)
     result_paper = None
+    context = {'form': form}
     if request.method == 'POST':
         if form.is_valid():
             the_class = form.cleaned_data.get('the_class')
             std_id = form.cleaned_data.get('id_num')
             qs = ResultsPaper.objects.filter(the_class=the_class).filter(
                 Q(student__id=std_id) | Q(student__id_number=std_id))
-
             if qs.exists():
                 result_paper = qs.first()
+                context = {'object': result_paper}
+                return render(request, 'main/result_doc.html', context)
             else:
-                msg = 'لقد قمت بإدخال البيانات بشكل خاطئ يرجى التأكد من البيانات'
+                msg = _(
+                    'You entered the data incorrectly Please check your information')
                 messages.add_message(request, messages.WARNING, msg)
-                return redirect('main:result-search')
-
-    context = {'object': result_paper}
-    return render(request, 'main/result_doc.html', context)
+    return render(request, 'main/result_search.html', context)
 
 
 User = get_user_model()
