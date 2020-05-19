@@ -1,5 +1,6 @@
 body{
     overflow-x: hidden;
+    direction: ltr;
 }
 
 :root{
@@ -585,9 +586,7 @@ section.dashboard span.error-alert{
     border: solid 1px #FFF;
 }
 
-label{
-    float: right;
-}
+
 
 .form-check{
     display: inline;

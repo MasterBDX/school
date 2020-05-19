@@ -3,19 +3,13 @@
 {% block content %}
 {% load get_student_filters %}
 <section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
-<section>
     <div class="container">
         <div class="row">
             <div class="col-md-12 ">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="text-center">
-                            <br />
+
                             معلومات
                             عن
                             {{student.get_std_name}}
@@ -59,7 +53,7 @@
                     </div>
                     <div class="col-md-4">
                         <p class="lead text-center"> الجنس :
-                            {{student.gender|arabic_gender}}
+                            {{student.gender|lang_gender:request.session.lang}}
                         </p>
                     </div>
                     <div class="col-md-4">
@@ -117,12 +111,12 @@
                                     <th scope="col">السمستر الثاني</th>
                                     <th scope="col">السمستر الثالث</th>
                                     <th scope="col">
-                                       الدور الثاني </th>
-                                     <th scope="col">
-                                       الدور 
+                                        الدور الثاني </th>
+                                    <th scope="col">
+                                        الدور
                                         الثالث
-                                         </th>
-                                    
+                                    </th>
+
                                     <th scope="col"> التحكم</th>
                                 </tr>
                             </thead>
@@ -136,33 +130,34 @@
                                             class="btn btn-info">
                                             إضافة أو
                                             تعديل الدرجات</a>
-                                            
-                                         <a class='semester-toggle btn btn-warning' href="{% url 'students:semester-active-toggle' pk=semester.id %}">
+
+                                        <a class='semester-toggle btn btn-warning'
+                                            href="{% url 'students:semester-active-toggle' pk=semester.id %}">
                                             {% if not semester.active %}
                                             إظهار
-                                             {% else %}
-                                             إخفاء
-                                             {% endif %}
-                                             </a>
+                                            {% else %}
+                                            إخفاء
+                                            {% endif %}
+                                        </a>
                                     </td>
                                     {% endfor %}
                                     <td class="text-center">
                                         <a href="{% url 'students:compensatory-exam-add' part='2' pk=paper.id %}"
                                             class='btn btn-info'>
-                                             إضافة
-                                             و
-                                             تعديل
-                                              </a>
+                                            إضافة
+                                            و
+                                            تعديل
+                                        </a>
                                     </td>
-                                      <td class="text-center">
+                                    <td class="text-center">
                                         <a href="{% url 'students:compensatory-exam-add' part='3' pk=paper.id %}"
                                             class='btn btn-info'>
-                                             إضافة
-                                             و
-                                             تعديل
-                                              </a>
+                                            إضافة
+                                            و
+                                            تعديل
+                                        </a>
                                     </td>
-                                   
+
                                     <td>
                                         <a href="{% url 'students:edit-results-paper' pk=paper.id %}"
                                             class="btn btn-info">

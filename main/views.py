@@ -161,14 +161,14 @@ class StudentsDashboardView(ListView):
         return context
 
 
-class StudentsDistributionView(ListView):
-    template_name = 'main/students_distribution.html'
+class StudentsListView(ListView):
+    template_name = 'main/students_list.html'
     context_object_name = 'classes'
     queryset = TheClass.objects.all()
 
 
-class StdsClassroomDistributionView(ListView):
-    template_name = 'main/students_classroom_distribution.html'
+class StdsClassroomListView(ListView):
+    template_name = 'main/students_classroom_list.html'
     context_object_name = 'students'
 
     def get_queryset(self, *args, **kwargs):
@@ -180,6 +180,7 @@ class StdsClassroomDistributionView(ListView):
         context = super().get_context_data(*args, **kwargs)
         if self.obj:
             context['classroom_name'] = self.obj.name
+
         return context
 
 

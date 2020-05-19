@@ -3,20 +3,17 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_student_filters %}
-
+{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
             <div class="col-md-8 m-auto">
 
                 <h1 class="text-center">
-                    {% if not request.GET.q %}
-                    تقسيم الطلاب
-                    للفصل
+
+                    {% trans  'Students list for' %}
+
                     {{classroom_name}}
-                    {% else %}
-                    نتائج البحث عن {{request.GET.q}}
-                    {% endif %}
                     <hr />
                 </h1>
             </div>
@@ -31,15 +28,24 @@
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">رقم القيد</th>
-                                    <th scope="col">إسم الطالب </th>
-                                    {% if request.GET.q %}
-                                    <th scope="col">الصف</th>
-                                    <th scope="col">الفصل الدراسي</th>
-                                    {% endif %}
-                                    <th scope="col">الجنس</th>
-                                    <th scope="col">الجنسية</th>
-                                    <th scope="col">الرقم الوطني</th>
+                                    <th scope="col">
+                                        {% trans 'ID' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Fullname' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Gender' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Nationality' %}
+
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'NID' %}
+
+                                    </th>
 
                                 </tr>
                             </thead>
@@ -52,12 +58,9 @@
                                         {{student.get_full_name}}
 
                                     </td>
-                                    {% if request.GET.q %}
-                                    <td scope="col">{{student.the_class.name}}</td>
-                                    <td scope="col">{{student.classroom.name}}</td>
-                                    {% endif %}
-                                    <td>{{student.gender|arabic_gender}}</td>
-                                    <td>{{student.nationality}} </td>
+
+                                    <td>{{student.gender|lang_gender:request.session.lang}}</td>
+                                    <td>{{student.nationality|en_nly:request.session.lang}} </td>
                                     <td>{{student.id_number}}</td>
 
                                 </tr>
@@ -68,10 +71,11 @@
 
                     {% else %}
                     <div class="col-md-12">
-                        <h4 class="display-4 text-center">
-                            <br />
-                            لم يتم العثور على أي طالب
-                        </h4>
+                        <div class="alert">
+                            <span class="display-4 text-center error-alert">
+                                {% trans 'No Students found' %}
+                            </span>
+                        </div>
                     </div>
                     {% endif %}
                 </div>

@@ -6,6 +6,7 @@ from .models import Exam, TheClass
 from students import models
 
 
+
 @receiver(m2m_changed, sender=TheClass.subjects.through)
 def get_subjects_num(sender, instance, action, *args, **kwargs):
     instance.subjects_num = instance.subjects.count()

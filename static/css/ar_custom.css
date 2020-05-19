@@ -1,3 +1,7 @@
+body{
+    direction: rtl;
+}
+
 .dropdown-menu .dropdown-item,
 p,
 section.dashboard h4,
@@ -12,4 +16,8 @@ small.text-muted,
 .about-us ul li,
 footer ul li{
     text-align: right;
+}
+
+label{
+    float: right !important;
 }

@@ -80,11 +80,9 @@
                                     <td>{{student.gender|lang_gender:request.session.lang|capfirst}}</td>
                                     <td>
 
-                                        {% if request.session.lang == 'en' and  student.the_class.en_name %}
-                                        {{student.the_class.en_name|capfirst}}
-                                        {% else %}
+
                                         {{student.the_class.name}}
-                                        {% endif %}
+
                                     </td>
                                     <td>{{student.id_number}}</td>
 

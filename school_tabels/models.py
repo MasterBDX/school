@@ -1,6 +1,7 @@
-from django.db import models
-
 from .vars import *
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import get_language
 
 
 class Day(models.Model):
@@ -12,23 +13,30 @@ class Day(models.Model):
     class Meta:
         ordering = ['order', 'name']
 
+    # def __str__(self):
+    #     return self.name
+
     def __str__(self):
-        return self.name
+        return str(_(self.name))
 
 
 class Article(models.Model):
     name = models.CharField(max_length=255)
+    en_name = models.CharField(max_length=255)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        lang = get_language()
+        name = self.name
+        if lang == 'en':
+            name = self.en_name
+        return name
 
 
 class TheClass(models.Model):
     name = models.CharField(max_length=255)
-    en_name = models.CharField(max_length=255,
-                               blank=True, null=True)
+
     timestamp = models.DateTimeField(auto_now_add=True)
     subjects = models.ManyToManyField(
         Article, blank=True)
@@ -76,6 +84,7 @@ class ClassRoom(models.Model):
 
 class ExamTabel(models.Model):
     title = models.CharField(max_length=255)
+    en_title = models.CharField(max_length=255, blank=True, null=True)
     year = models.CharField(choices=YEARS, max_length=50)
     the_class = models.ForeignKey(
         TheClass, related_name='exams_tabel', on_delete=models.CASCADE)
@@ -105,7 +114,8 @@ class Exam(models.Model):
     exam_tabel = models.ForeignKey(ExamTabel, on_delete=models.CASCADE,
                                    related_name='exams',
                                    null=True, blank=True)
-    article = models.CharField(max_length=255,)
+    subject = models.CharField(max_length=255,)
+
     day = models.CharField(max_length=255, null=True, blank=True)
     start_time = models.TimeField()
     end_time = models.TimeField()
@@ -114,7 +124,7 @@ class Exam(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.article + ' ' + ' إمتحان ' + self.exam_tabel.__str__()
+        return self.subject + ' ' + ' إمتحان ' + self.exam_tabel.__str__()
 
 
 class SchoolSchedule(models.Model):

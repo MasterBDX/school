@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 19:06+0000\n"
+"POT-Creation-Date: 2020-05-19 00:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,9 +122,53 @@ msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب
 msgid "Thank you for contacting us"
 msgstr "شكرا على تواصلك معنا "
 
-#: main/views.py:202
+#: main/views.py:203
 msgid "You entered the data incorrectly Please check your information"
 msgstr "لقد قمت بإدخال البيانات بشكل خاطئ يرجى التأكد من بياناتك"
+
+#: school_tabels/forms.py:126 school_tabels/forms.py:140
+msgid "Classroom"
+msgstr "الفصل الدراسي"
+
+#: school_tabels/forms.py:135
+msgid "Year"
+msgstr "السنة"
+
+#: school_tabels/forms.py:138
+msgid "Exam Type"
+msgstr "نوع الإمتحان"
+
+#: school_tabels/forms.py:139
+msgid "Semester"
+msgstr "الفترة"
+
+#: school_tabels/vars.py:11
+msgid "First"
+msgstr "الأولى"
+
+#: school_tabels/vars.py:12
+msgid "Second"
+msgstr "الثانية"
+
+#: school_tabels/vars.py:13
+msgid "Third"
+msgstr "الثالثة"
+
+#: school_tabels/vars.py:33
+msgid "Midterm"
+msgstr "نصفي"
+
+#: school_tabels/vars.py:33
+msgid "Final"
+msgstr "نهائي"
+
+#: school_tabels/vars.py:34
+msgid "Second Round"
+msgstr "دور ثاني"
+
+#: school_tabels/vars.py:34
+msgid "Third Round"
+msgstr "دور ثالث"
 
 #: templates/accounts/password_reset_email.html:2
 #, python-format
@@ -205,6 +249,18 @@ msgstr "أخر الأخبار"
 msgid "Published at"
 msgstr "نشرت في"
 
+#: templates/main/posts-dashboard.html:13
+msgid "Posts Dashboard"
+msgstr "لوحة التحكم بالمنشورات"
+
+#: templates/main/posts-dashboard.html:33
+msgid "New post"
+msgstr "منشور جديد"
+
+#: templates/main/posts-dashboard.html:46
+msgid "Title"
+msgstr "العنوان"
+
 #: templates/main/result_search.html:14
 msgid "Find a result"
 msgstr "ابحث عن نتيجة"
@@ -213,20 +269,68 @@ msgstr "ابحث عن نتيجة"
 msgid "Search"
 msgstr "بحث"
 
-#: templates/main/students_distribution.html:13
-#: templates/snippets/navbar.html:42
-msgid "Students Distribution"
-msgstr "تقسيم الطلاب"
+#: templates/main/students_classroom_list.html:14
+msgid "Students list for"
+msgstr "قائمة الطلاب للفصل"
 
-#: templates/main/students_distribution.html:21
+#: templates/main/students_classroom_list.html:32
+#: templates/students/search_students.html:36
+msgid "ID"
+msgstr "رقم القيد"
+
+#: templates/main/students_classroom_list.html:35
+#: templates/students/search_students.html:41
+msgid "Fullname"
+msgstr "الإسم الكامل"
+
+#: templates/main/students_classroom_list.html:38
+#: templates/students/search_students.html:45
+msgid "Gender"
+msgstr "الجنس"
+
+#: templates/main/students_classroom_list.html:41
+msgid "Nationality"
+msgstr "الجنسية"
+
+#: templates/main/students_classroom_list.html:46
+#: templates/students/search_students.html:55
+msgid "NID"
+msgstr "الرقم الوطني"
+
+#: templates/main/students_classroom_list.html:76
+msgid "No Students found"
+msgstr "لم يتم العثور على أي طلاب "
+
+#: templates/main/students_list.html:13 templates/main/students_list.html:54
+#: templates/snippets/navbar.html:42
+msgid "Students List"
+msgstr "قائمة الطلبة"
+
+#: templates/main/students_list.html:21
 msgid "Find a student"
 msgstr "ابحث عن طالب"
 
-#: templates/posts/posts_list_view.html:11 templates/snippets/navbar.html:65
-msgid "Posts"
-msgstr "المنشورات"
+#: templates/main/students_list.html:46
+msgid "Classroom Name"
+msgstr "اسم الفصل"
+
+#: templates/main/students_list.html:50
+msgid "Students Number"
+msgstr "عدد الطلاب"
+
+#: templates/main/students_list.html:74
+msgid "View"
+msgstr "مشاهدة"
+
+#: templates/main/students_list.html:93
+msgid "No class found"
+msgstr "لم يتم العثور على فصل دراسي"
 
 #: templates/posts/posts_list_view.html:43
+msgid "No Posts found"
+msgstr "لم يتم العثور على أية منشورات"
+
+#: templates/posts/posts_list_view.html:50
 msgid "Facebook Page"
 msgstr "صفحة الفيسبوك"
 
@@ -243,16 +347,22 @@ msgid "Browse Results"
 msgstr "تصفح النتائج"
 
 #: templates/snippets/navbar.html:46 templates/snippets/navbar.html:72
+#: templates/tabels/exams_tabel_search.html:14
 msgid "Exam Schedules"
 msgstr "جداول الإمتحانات"
 
 #: templates/snippets/navbar.html:50 templates/snippets/navbar.html:77
+#: templates/tabels/schedule_search.html:12
 msgid "Class Schedules"
 msgstr "جداول الحصص"
 
 #: templates/snippets/navbar.html:59
 msgid "Dashboard"
 msgstr "لوحة التحكم"
+
+#: templates/snippets/navbar.html:65
+msgid "Posts"
+msgstr "المنشورات"
 
 #: templates/snippets/navbar.html:68
 msgid "Subjects"
@@ -306,11 +416,11 @@ msgstr "تسجيل الخروج"
 msgid "Language"
 msgstr "اللغة"
 
-#: templates/snippets/navbar.html:161
+#: templates/snippets/navbar.html:162
 msgid "Arabic"
 msgstr "العربية"
 
-#: templates/snippets/navbar.html:164
+#: templates/snippets/navbar.html:166
 msgid "English"
 msgstr "الإنجليزية"
 
@@ -322,45 +432,58 @@ msgstr "يمكنك البحث بإستخدام إسم الطالب | رقم ال
 msgid "Search results for"
 msgstr "نتائج البحث عن"
 
-#: templates/students/search_students.html:36
-msgid "ID"
-msgstr "رقم القيد"
-
-#: templates/students/search_students.html:41
-msgid "Fullname"
-msgstr "الإسم الكامل"
-
-#: templates/students/search_students.html:45
-msgid "Gender"
-msgstr "الجنس"
-
-#: templates/students/search_students.html:55
-msgid "NID"
-msgstr "الرقم الوطني"
-
 #: templates/students/search_students.html:60
 msgid "Control"
 msgstr "التحكم"
 
-#: templates/students/search_students.html:90
+#: templates/students/search_students.html:94
 msgid "Edit"
 msgstr "تعديل"
 
-#: templates/students/search_students.html:97
+#: templates/students/search_students.html:101
 msgid "Delete"
 msgstr "حذف"
 
-#: templates/students/search_students.html:104
+#: templates/students/search_students.html:108
 msgid "Add Result"
 msgstr "اضف نتيجة"
 
-#: templates/students/search_students.html:123
+#: templates/students/search_students.html:127
 msgid "Your search"
 msgstr "لم ينجح بحثك عن"
 
-#: templates/students/search_students.html:125
+#: templates/students/search_students.html:129
 msgid "did not match any results"
 msgstr "في إظهار أي نتائج"
+
+#: templates/tabels/exams_tabel_search.html:26
+#: templates/tabels/schedule_search.html:22
+msgid "Find"
+msgstr "ابحث"
+
+#~ msgid "Sunday"
+#~ msgstr "الأحد"
+
+#~ msgid "Monday"
+#~ msgstr "الإثنين"
+
+#~ msgid "Tuesday"
+#~ msgstr "الثلاثاء"
+
+#~ msgid "Wednsday"
+#~ msgstr "الأربعاء"
+
+#~ msgid "Thursay"
+#~ msgstr "الخميس"
+
+#~ msgid "Friday"
+#~ msgstr "الجمعة"
+
+#~ msgid "Saturday"
+#~ msgstr "السبت"
+
+#~ msgid "Students Distribution"
+#~ msgstr "تقسيم الطلاب"
 
 #~ msgid "by"
 #~ msgstr "عبر"

@@ -3,14 +3,14 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_arabic_name %}
-
+{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
             <div class="col-md-6 m-auto">
 
                 <h1 class="text-center">
-                    بالمنشورات
+                    {% trans 'Posts Dashboard' %}
                     <hr />
                 </h1>
             </div>
@@ -30,28 +30,44 @@
 
                             <a href="{% url 'posts:add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
-                                لإضافة منشور جديد
+                                {% trans 'New post' %}
                             </a>
 
                         </p>
                     </div>
                     {% if posts %}
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#UC</th>
-                                    <th scope="col">العنوان</th>
-                                    <th scope="col">تاريخ الإنشاء</th>
-                                    <th scope="col">التحكم</th>
+
+                                    <th scope="col">
+
+                                        {% trans 'Title' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Creation Date' %}
+                                        تاريخ الإنشاء
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Last Modified Date' %}
+                                        تاريخ أخر تعديل
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Publication Date' %}
+                                    </th>
+                                    <th scope="col">{% trans 'Control' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for post in posts %}
                                 <tr>
-                                    <th scope="row">{{post.slug}}</th>
+
                                     <td>{{post.title}}</td>
                                     <td>{{post.timestamp}}</td>
+                                    <td>{{post.updated}}</td>
+                                    <td>{{post.published_date}}</td>
                                     <td>
                                         <a href="{% url 'posts:edit' slug=post.slug %}?from_dash=1"
                                             class="btn btn-info">

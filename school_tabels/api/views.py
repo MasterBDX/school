@@ -10,6 +10,8 @@ class ScheduleApiView(APIView):
     def get(self, request, pk):
         obj = get_object_or_404(ClassRoom, pk=pk)
         qs = obj.days.all()
+        if not qs.exists():
+            return Response(status=404)
         schedule_obj = ScheduleSerialzer(qs, many=True)
         return Response(schedule_obj.data)
 

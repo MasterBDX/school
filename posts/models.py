@@ -21,6 +21,7 @@ class Post(models.Model):
     content = models.TextField(blank=True, null=True)
     main_image = ResizedImageField(size=[600, 350], blank=True, null=True)
     active = models.BooleanField(default=False)
+    published_date = models.DateTimeField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

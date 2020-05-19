@@ -1,5 +1,6 @@
 import datetime
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from .models import (
     Exam, ExamTabel,
@@ -122,8 +123,7 @@ class ChooseExamInfoForm(forms.Form):
 
 
 class ScheduleSearchForm(forms.Form):
-    class_room = forms.ModelChoiceField(label='الفصل الدراسي',
-                                        help_text='يرجى إختيار الفصل ثم الضعط على بحث',
+    class_room = forms.ModelChoiceField(label=_('Classroom'),
                                         queryset=ClassRoom.objects.all())
 
 
@@ -132,10 +132,10 @@ current_year = datetime.date.today().year
 
 class ExamsTabelSearchForm(forms.Form):
     year = forms.ChoiceField(
-        label='السنة', choices=YEARS, initial=current_year)
-    the_class = forms.ModelChoiceField(label='الصف الدراسي',
+        label=_('Year'), choices=YEARS, initial=current_year)
+    the_class = forms.ModelChoiceField(label='Class',
                                        queryset=TheClass.objects.all())
-    exam_type = forms.ChoiceField(choices=TYPE, label='نوع الإمتحان')
-    semester = forms.ChoiceField(choices=SEMESTERS, label='الفترة')
-    class_room = forms.ModelChoiceField(label='الفصل الدراسي',
+    exam_type = forms.ChoiceField(choices=TYPE, label=_('Exam Type'))
+    semester = forms.ChoiceField(choices=SEMESTERS, label=_('Semester'))
+    class_room = forms.ModelChoiceField(label=_('Classroom'),
                                         queryset=ClassRoom.objects.all())

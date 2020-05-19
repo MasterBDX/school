@@ -3,43 +3,32 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_student_filters %}
-
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
-
-            <div class="col-md-8 m-auto">
-
+            <div class="col-md-6 m-auto">
                 <h1 class="text-center">
-                    جداول الحصص
+                    {% trans 'Class Schedules' %}
                     <hr />
                 </h1>
             </div>
-            <div class='col-md-12'>
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div id='schedules-id' class="col-md-12">
+            <div id='schedules-id' class="col-md-8 m-auto">
                 <div class="row">
-                    <div class="col-md-8 m-auto">
-                        <form method="POST" id='schedule-search-form'>
-                            {% csrf_token %}
+                    <div class="col-md-7 m-auto">
+                        <form id='schedule-search-form'>
                             {{form|crispy}}
-                            <button type="submit">بحث</button>
+                            <input type="hidden" id='lang-input-id' name='lang' value='{{request.session.lang}}' />
+                            <button type="submit">{% trans 'Find' %}</button>
                         </form>
                         <br />
                         <br />
                     </div>
                 </div>
             </div>
+
+
             <div id='schedules-tabel-id' class="col-md-9 m-auto">
-
-
             </div>
         </div>
     </div>

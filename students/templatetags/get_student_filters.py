@@ -1,5 +1,6 @@
 from django import template
 
+from students.vars import EN_DIC_NATIONALITY
 register = template.Library()
 
 
@@ -33,3 +34,10 @@ def get_semester_counter(word):
                '2': 'الثانية',
                '3': 'الثالثة'}
     return our_dic.get(str(word), str(word))
+
+
+@register.filter(name='en_nly')
+def get_en_nationality(value, lang):
+    if lang == 'en':
+        value = EN_DIC_NATIONALITY.get(value)
+    return value

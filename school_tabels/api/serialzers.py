@@ -21,28 +21,28 @@ class ScheduleSerialzer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_class_1(self, obj):
-        return obj.class_1.name
+        return obj.class_1.__str__()
 
     def get_class_2(self, obj):
-        return obj.class_2.name
+        return obj.class_2.__str__()
 
     def get_class_3(self, obj):
-        return obj.class_3.name
+        return obj.class_3.__str__()
 
     def get_class_4(self, obj):
-        return obj.class_4.name
+        return obj.class_4.__str__()
 
     def get_class_5(self, obj):
-        return obj.class_5.name
+        return obj.class_5.__str__()
 
     def get_class_6(self, obj):
-        return obj.class_6.name
+        return obj.class_6.__str__()
 
     def get_class_7(self, obj):
-        return obj.class_7.name
+        return obj.class_7.__str__()
 
     def get_day(self, obj):
-        return obj.day.name
+        return obj.day.__str__()
 
     def get_class_room(self, obj):
         return obj.class_room.name
@@ -81,10 +81,10 @@ class ExamsTabelSerializer(serializers.ModelSerializer):
         return TYPE_DIC.get(obj.exam_type)
 
     def get_the_class(self, obj):
-        return obj.the_class.name
+        return {'ar_name': obj.the_class.name}
 
     def get_class_room(self, obj):
-        return obj.class_room.name
+        return {'ar_name': obj.class_room.name}
 
     def get_semester(self, obj):
         return SEMESTERS_DIC.get(obj.semester)
