@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.contrib.auth import (login, get_user_model, logout, authenticate)
 from django.contrib.auth.views import LoginView
-
+from django.conf import settings
 from django.urls import reverse, reverse_lazy
 from django.views.generic import UpdateView, DeleteView
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
+from django.utils.http import is_safe_url
 from defender.decorators import watch_login
+
 
 from .forms import (RegisterForm, LoginForm, UserEditForm, ChangePasswordForm)
 
@@ -45,7 +47,18 @@ def login_view(request):
             if user:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect(reverse('main:home'))
+                    next_ = request.POST.get('url')
+
+                    if next_:
+                        url_is_safe = is_safe_url(
+                            url=next_,
+                            allowed_hosts=settings.ALLOWED_HOSTS,
+                            require_https=request.is_secure(),
+                        )
+
+                        if url_is_safe:
+                            return redirect(next_)
+                    return redirect('/')
                 else:
                     return HttpResponse("Your account was inactive.")
             else:

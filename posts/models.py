@@ -3,8 +3,10 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import pre_save
 from django.utils.safestring import mark_safe
 from django.urls import reverse
-from .utils import unique_slug_generator
 from django_resized import ResizedImageField
+
+from .utils import main_image_random_name
+from .managers import PostManager
 
 User = get_user_model()
 
@@ -19,11 +21,14 @@ class Post(models.Model):
     overview = models.TextField()
 
     content = models.TextField(blank=True, null=True)
-    main_image = ResizedImageField(size=[600, 350], blank=True, null=True)
+    main_image = ResizedImageField(size=[600, 350], blank=True, null=True,
+                                   upload_to=main_image_random_name)
     active = models.BooleanField(default=False)
     published_date = models.DateTimeField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    objects = PostManager()
 
     class Meta:
         permissions = [('author', 'Can add post')]
@@ -37,11 +42,3 @@ class Post(models.Model):
 
     def safe_content(self):
         return mark_safe(self.content)
-
-
-def get_post_slug_receiver(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = unique_slug_generator(instance)
-
-
-pre_save.connect(get_post_slug_receiver, sender=Post)

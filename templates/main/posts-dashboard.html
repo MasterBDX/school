@@ -14,13 +14,18 @@
                     <hr />
                 </h1>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-7 m-auto ">
                 {% if messages %}
-                <ul class="messages">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    <p{% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
                         {% endfor %}
-                </ul>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                </div>
                 {% endif %}
             </div>
             <div class="col-md-12">
@@ -47,12 +52,12 @@
                                     </th>
                                     <th scope="col">
                                         {% trans 'Creation Date' %}
-                                        تاريخ الإنشاء
+
 
                                     </th>
                                     <th scope="col">
                                         {% trans 'Last Modified Date' %}
-                                        تاريخ أخر تعديل
+
                                     </th>
                                     <th scope="col">
                                         {% trans 'Publication Date' %}
@@ -69,13 +74,11 @@
                                     <td>{{post.updated}}</td>
                                     <td>{{post.published_date}}</td>
                                     <td>
-                                        <a href="{% url 'posts:edit' slug=post.slug %}?from_dash=1"
-                                            class="btn btn-info">
-                                            تعديل
+                                        <a href="{% url 'posts:edit' slug=post.slug %}" class="btn btn-info">
+                                            {% trans 'Edit' %}
                                         </a>
-                                        <a href="{% url 'posts:delete' slug=post.slug %}?from_dash=1"
-                                            class="btn btn-danger">
-                                            حذف
+                                        <a href="{% url 'posts:delete' slug=post.slug %}" class="btn btn-danger">
+                                            {% trans 'Delete' %}
                                         </a>
                                     </td>
                                 </tr>

@@ -36,7 +36,7 @@ urlpatterns = [
          name='classrooms-dashboard'),
     path('subjects-dashboard/', SubjectsDashboardView.as_view(),
          name='subjects-dashboard'),
-    path('posts-dashboard', PostsDashboardView.as_view(), name='posts-dashboard'),
+    path('posts-dashboard/', PostsDashboardView.as_view(), name='posts-dashboard'),
     path('users-dashboard', UsersDashboard.as_view(), name='users-dashboard'),
     path('result-search', get_result_view, name='result-search'),
     #     path('result-doc', get_result_view, name='result-doc'),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 00:18+0000\n"
+"POT-Creation-Date: 2020-05-20 18:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,7 +93,8 @@ msgstr "رقم الهاتف"
 msgid "Subject"
 msgstr "الموضوع"
 
-#: main/forms.py:20 templates/main/snippets/html_message.html:12
+#: main/forms.py:20 posts/forms.py:20
+#: templates/main/snippets/html_message.html:12
 #: templates/main/snippets/message.txt:12
 msgid "Content"
 msgstr "المحتوى"
@@ -118,13 +119,41 @@ msgstr "رقم القيد / الرقم الوطني"
 msgid "This field must contain a positive integer"
 msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب"
 
-#: main/views.py:83
+#: main/views.py:77
 msgid "Thank you for contacting us"
 msgstr "شكرا على تواصلك معنا "
 
-#: main/views.py:203
+#: main/views.py:197
 msgid "You entered the data incorrectly Please check your information"
 msgstr "لقد قمت بإدخال البيانات بشكل خاطئ يرجى التأكد من بياناتك"
+
+#: posts/forms.py:18 templates/main/posts-dashboard.html:51
+msgid "Title"
+msgstr "العنوان"
+
+#: posts/forms.py:19
+msgid "Overview"
+msgstr "المقدمة"
+
+#: posts/forms.py:21
+msgid "Activate"
+msgstr "تفعيل"
+
+#: posts/forms.py:22
+msgid "Main Image (Optional)"
+msgstr "الصورة الرئيسية (إختياري)"
+
+#: posts/views.py:31
+msgid "Post has been added"
+msgstr "تم إضافة المنشور"
+
+#: posts/views.py:48
+msgid "Post has been modified"
+msgstr "تم تعديل المنشور"
+
+#: posts/views.py:55
+msgid "Post has been deleted"
+msgstr "تم حذف المنشور"
 
 #: school_tabels/forms.py:126 school_tabels/forms.py:140
 msgid "Classroom"
@@ -253,13 +282,37 @@ msgstr "نشرت في"
 msgid "Posts Dashboard"
 msgstr "لوحة التحكم بالمنشورات"
 
-#: templates/main/posts-dashboard.html:33
+#: templates/main/posts-dashboard.html:38
 msgid "New post"
 msgstr "منشور جديد"
 
-#: templates/main/posts-dashboard.html:46
-msgid "Title"
-msgstr "العنوان"
+#: templates/main/posts-dashboard.html:54
+msgid "Creation Date"
+msgstr "تاريخ الإنشاء"
+
+#: templates/main/posts-dashboard.html:59
+msgid "Last Modified Date"
+msgstr "تاريخ أخر تعديل"
+
+#: templates/main/posts-dashboard.html:63
+msgid "Publication Date"
+msgstr "تاريخ النشر"
+
+#: templates/main/posts-dashboard.html:65
+#: templates/students/search_students.html:60
+msgid "Control"
+msgstr "التحكم"
+
+#: templates/main/posts-dashboard.html:78 templates/posts/add_post.html:31
+#: templates/students/search_students.html:94
+msgid "Edit"
+msgstr "تعديل"
+
+#: templates/main/posts-dashboard.html:81
+#: templates/posts/post_confirm_delete.html:25
+#: templates/students/search_students.html:101
+msgid "Delete"
+msgstr "حذف"
 
 #: templates/main/result_search.html:14
 msgid "Find a result"
@@ -325,6 +378,32 @@ msgstr "مشاهدة"
 #: templates/main/students_list.html:93
 msgid "No class found"
 msgstr "لم يتم العثور على فصل دراسي"
+
+#: templates/main/subjects-dashboard.html:12
+#, fuzzy
+#| msgid "Posts Dashboard"
+msgid "Subjects Dashboard"
+msgstr "لوحة التحكم بالمنشورات"
+
+#: templates/posts/add_post.html:13
+msgid "Post Edit"
+msgstr "تعديل المنشور"
+
+#: templates/posts/add_post.html:16
+msgid "Post Add"
+msgstr "أضف منشور"
+
+#: templates/posts/add_post.html:33
+msgid "Add"
+msgstr ""
+
+#: templates/posts/post_confirm_delete.html:12
+msgid "Delete Post"
+msgstr "حذف المنشور"
+
+#: templates/posts/post_confirm_delete.html:20
+msgid "Are you sure you want to delete this post ?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا المنشور ؟"
 
 #: templates/posts/posts_list_view.html:43
 msgid "No Posts found"
@@ -431,18 +510,6 @@ msgstr "يمكنك البحث بإستخدام إسم الطالب | رقم ال
 #: templates/students/search_students.html:13
 msgid "Search results for"
 msgstr "نتائج البحث عن"
-
-#: templates/students/search_students.html:60
-msgid "Control"
-msgstr "التحكم"
-
-#: templates/students/search_students.html:94
-msgid "Edit"
-msgstr "تعديل"
-
-#: templates/students/search_students.html:101
-msgid "Delete"
-msgstr "حذف"
 
 #: templates/students/search_students.html:108
 msgid "Add Result"

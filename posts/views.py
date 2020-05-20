@@ -3,28 +3,33 @@ from django.views.generic import (ListView, DetailView,
                                   CreateView, UpdateView,
                                   DeleteView,)
 from django.urls import reverse, reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .models import Post
 from .forms import AddPostForm
+from .mixins import OwnUserObjectMixin, OUOAndAdminMixin
 
 
 class PostsListView(ListView):
     context_object_name = 'posts'
-    model = Post
-    fields = '__all__'
+    queryset = Post.objects.active()
     template_name = 'posts/posts_list_view.html'
 
 
 class PostDetailView(DetailView):
-    model = Post
-    fields = '__all__'
+    queryset = Post.objects.active()
     context_object_name = 'post'
     template_name = 'posts/post_detail_view.html'
 
 
-class AddPostView(CreateView):
+class AddPostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = AddPostForm
     template_name = 'posts/add_post.html'
+    success_message = _('Post has been added')
+    success_url = reverse_lazy('main:posts-dashboard')
 
     def form_valid(self, form):
         """If the form is valid, save the associated model."""
@@ -35,26 +40,16 @@ class AddPostView(CreateView):
         return super().form_valid(form)
 
 
-class EditPostView(UpdateView):
+class EditPostView(LoginRequiredMixin, OwnUserObjectMixin, SuccessMessageMixin, UpdateView):
     queryset = Post.objects.all()
     form_class = AddPostForm
     template_name = 'posts/add_post.html'
-
-    def get_success_url(self):
-        from_dash = self.request.GET.get('from_dash')
-        if from_dash == '1':
-            url = reverse('main:posts-dahsboard')
-        else:
-            try:
-                url = self.object.get_absolute_url()
-            except AttributeError:
-                raise ImproperlyConfigured(
-                    "No URL to redirect to.  Either provide a url or define"
-                    " a get_absolute_url method on the Model.")
-        return url
+    success_url = reverse_lazy('main:posts-dashboard')
+    success_message = _('Post has been modified')
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, OUOAndAdminMixin, SuccessMessageMixin, DeleteView):
     queryset = Post.objects.all()
     template_name = 'posts/post_confirm_delete.html'
     success_url = reverse_lazy('main:posts-dashboard')
+    success_message = _('Post has been deleted')

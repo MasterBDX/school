@@ -2,23 +2,25 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-7 m-auto">
 
-                <h1 class="">
+                <h1 class="text-center">
                     {% if object %}
-                    تعديل المنشور
+                    {% trans 'Post Edit' %}
+
                     {% else %}
-                    أضف منشور
+                    {% trans 'Post Add' %}
+
                     {% endif %}
                     <hr />
 
                 </h1>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7 m-auto">
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
                     {{form|crispy}}
@@ -26,9 +28,9 @@
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
                             {% if object %}
-                            تعديل
+                            {% trans 'Edit' %}
                             {% else %}
-                            أضف
+                            {% trans 'Add' %}
                             {% endif %}
                         </button>
                     </div>
@@ -43,13 +45,15 @@
     <script>
         $(function () {
 
-            $('#id_main_image').fileuploader({
+            let myvar = $('#id_main_image').fileuploader({
                 limit: 1,
-                maxSize: 1,
-                fileMaxSize: 1,
+                maxSize: 2,
+                fileMaxSize: 2,
                 extensions: ['jpg', 'png', 'gif', 'tiff', 'psd'],
 
             });
+            console.log(myvar)
+
             const text = $('#myform').text()
 
 

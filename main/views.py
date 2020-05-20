@@ -4,6 +4,7 @@ from django.views.generic import (TemplateView, ListView,
                                   UpdateView)
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.contrib import messages
@@ -13,18 +14,15 @@ from django.urls import reverse_lazy, reverse
 from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.utils.http import is_safe_url
-from .formsets import MainArticleFormset
 
+
+from .formsets import MainArticleFormset
 from .forms import (Contact, ResultSearchForm, MainArticleForm,
                     SchoolInfoForm, MainArticleForm)
-
 from posts.models import Post
-
 from school_tabels.models import (Article, Exam, TheClass, ClassRoom)
-
 from students.models import Student, ResultsPaper
 from students.filters import get_stds_filters
-
 from .models import SchoolInfo, MainArticle
 
 
@@ -33,13 +31,9 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        main_artcles = MainArticle.objects.all()
-        if main_artcles.count() >= 3:
-            main_artcles = main_artcles[:3]
-
+        main_artcles = MainArticle.objects.all()[:3]
         context['main_articles'] = main_artcles
-        context['last_posts'] = Post.objects.all()[:3]
+        context['last_posts'] = Post.objects.active()[:3]
         return context
 
 
@@ -121,7 +115,7 @@ class SubjectsDashboardView(ListView):
     template_name = 'main/subjects-dashboard.html'
 
 
-class PostsDashboardView(ListView):
+class PostsDashboardView(LoginRequiredMixin, ListView):
     context_object_name = 'posts'
     queryset = Post.objects.all()
     template_name = 'main/posts-dashboard.html'

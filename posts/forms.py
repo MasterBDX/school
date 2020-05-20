@@ -1,19 +1,24 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Post
 
 
 class AddPostForm(forms.ModelForm):
-    title = forms.CharField(label=' العنوان')
-    overview = forms.CharField(label=' المقدمة', widget=forms.Textarea())
-    content = forms.CharField(widget=SummernoteWidget(),
-                              label=' المحتوى')
-    active = forms.BooleanField(label='تفعيل', required=False)
-    main_image = forms.ImageField(
-        required=False, label='الصورة الرئيسية (إختياري)')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['overview'].widget = forms.Textarea()
+        self.fields['content'].widget = SummernoteWidget()
+        self.fields['active'].required = False
+        self.fields['main_image'].required = False
 
     class Meta:
+        labels = {'title': _('Title'),
+                  'overview': _('Overview'),
+                  'content': _('Content'),
+                  'active': _('Activate'),
+                  'main_image': _('Main Image (Optional)')}
         model = Post
-        exclude = ['slug', 'author']
+        exclude = ['slug', 'author', 'published_date']
