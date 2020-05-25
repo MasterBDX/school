@@ -2,42 +2,37 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-7  m-auto">
 
-                <h1 class="">
+                <h1 class="text-center">
                     {% if object %}
-                    تعديل
-                    مادة
-                    {{object.name}}
+                    {% trans 'Edit Subject' %}
+                    {{object.get_name}}
+
                     {% else %}
-                    أضف
-                    مادة
+                    {% trans 'Add Subject' %}
+
                     {% endif %}
 
                     <hr />
 
                 </h1>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-6 m-auto">
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
                     {{form|crispy}}
-                    <div style="height:50px;"></div>
+
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
                             {% if object %}
-                            تعديل
+                            {% trans 'Edit' %}
                             {% else %}
-                            أضف
+                            {% trans 'Add' %}
                             {% endif %}
                         </button>
                     </div>

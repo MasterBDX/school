@@ -1,7 +1,8 @@
-from .vars import *
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import get_language
+
+from main.vars import *
 
 
 class Day(models.Model):
@@ -13,11 +14,18 @@ class Day(models.Model):
     class Meta:
         ordering = ['order', 'name']
 
-    # def __str__(self):
-    #     return self.name
+    def get_name(self):
+        _('Saturday')
+        _('Sunday')
+        _('Monday')
+        _('Tuesday')
+        _('Wednsday')
+        _('Thursday')
+        _('Friday')
+        return str(_(self.name))
 
     def __str__(self):
-        return str(_(self.name))
+        return self.get_name()
 
 
 class Article(models.Model):
@@ -26,11 +34,15 @@ class Article(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def get_name(self):
         lang = get_language()
         name = self.name
         if lang == 'en':
             name = self.en_name
+        return name
+
+    def __str__(self):
+        name = self.get_name()
         return name
 
 
@@ -91,8 +103,8 @@ class ExamTabel(models.Model):
     exam_type = models.CharField(max_length=255,
                                  choices=TYPE,
                                  default=1)
-    last_update_by = models.CharField(max_length=255, null=True,
-                                      blank=True)
+    last_editor = models.CharField(max_length=255, null=True,
+                                   blank=True)
     semester = models.CharField(max_length=255,
                                 choices=SEMESTERS,
                                 default=1)
@@ -116,12 +128,17 @@ class Exam(models.Model):
                                    null=True, blank=True)
     subject = models.CharField(max_length=255,)
 
-    day = models.CharField(max_length=255, null=True, blank=True)
+    day = models.ForeignKey(
+        Day, on_delete=models.CASCADE,
+        null=True, blank=True)
     start_time = models.TimeField()
     end_time = models.TimeField()
     the_date = models.DateField()
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['the_date', 'start_time']
 
     def __str__(self):
         return self.subject + ' ' + ' إمتحان ' + self.exam_tabel.__str__()

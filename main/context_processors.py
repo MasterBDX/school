@@ -7,4 +7,4 @@ def school_name(request):
         obj = qs.first()
         return {'school_ar_name': obj.name,
                 'school_en_name': obj.english_name}
-    return None
+    return {}

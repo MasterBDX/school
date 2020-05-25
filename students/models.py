@@ -6,7 +6,7 @@ from school_tabels.models import TheClass, Article, ClassRoom
 from .managers import SemesterManager, StudentManager
 from .mixins import SubjectsResultsMixin, FinalResultsMixin
 
-from .vars import *
+from main.vars import *
 
 
 class Student(models.Model):

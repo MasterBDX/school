@@ -2,21 +2,20 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-{% load get_student_filters %}
-
 
 <section>
-
     <div class="container">
         <div class="row">
-
-            <div class="col-md-12">
-
+            <div class="col-md-8 m-autos">
                 <h1 class="text-center">
-                    تعديل درجات الفصل
+                    {% if request.session.lang == 'ar' %}
+                    تعديل درجات الفترة
                     {{order}}
                     للصف
                     {{class_name}}
+                    {% else %}
+                    Edit the first semester grades for the eighth Class
+                    {% endif %}
                     <hr />
                 </h1>
             </div>

@@ -24,8 +24,9 @@ $(function () {
     }
     $('#schedule-search-form').submit(function (event) {
         event.preventDefault();
-        let form = $(this)
+
         const id = form.find('select').val()
+        console.log(id)
         const url = `/tabels/api/classroom-schedule/${id}`
         const lang = checkLang($('#lang-input-id').val())
         let element = $('#schedules-tabel-id')
@@ -99,6 +100,7 @@ $(function () {
 
             },
             error: (error) => {
+
                 if (error.status == 404) {
                     console.log(error.status)
                     const errorMsg = `
@@ -161,7 +163,8 @@ $(function () {
                                 <th scope="col">المادة</th>
                                 <th scope="col">وقت بداية الإمتحان </th>
                                 <th scope="col">وقت نهاية الإمتحان </th>
-                                <th scope="col" colspan="2">تاريخ الإمتحان </th>
+                                <th scope="col">يوم الإمتحان </th>
+                                <th scope="col">تاريخ الإمتحان </th>
                                 </tr>`
                 } else {
                     secondTr = `<tr>
@@ -182,7 +185,8 @@ $(function () {
                                     <th scope="col">Subject</th>
                                     <th scope="col">Exam start at </th>
                                     <th scope="col">Exam end at </th>
-                                    <th scope="col" colspan="2">Exam date </th>
+                                    <th scope="col">Exam Day </th>
+                                    <th scope="col" >Exam Date </th>
                                 </tr>`
 
 
@@ -196,6 +200,7 @@ $(function () {
                     <td>${i.subject}</td>
                     <td>${i.start_time}</td>
                     <td>${i.end_time}</td>
+                    <td>${i.day}</td>
                     <td colspan='2'>${i.the_date}</td>
                 </tr>
                     `
@@ -224,6 +229,7 @@ $(function () {
 
             },
             error: (error) => {
+                console.log(error.status)
                 if (error.status == 404) {
                     const errorMsg = `
                     <p class='lead errorMsg text-center'>

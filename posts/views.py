@@ -6,7 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib import messages
 
 from .models import Post
 from .forms import AddPostForm
@@ -53,3 +53,7 @@ class PostDeleteView(LoginRequiredMixin, OUOAndAdminMixin, SuccessMessageMixin, 
     template_name = 'posts/post_confirm_delete.html'
     success_url = reverse_lazy('main:posts-dashboard')
     success_message = _('Post has been deleted')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super().delete(request, *args, **kwargs)

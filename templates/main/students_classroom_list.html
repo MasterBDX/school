@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
 {% load get_student_filters %}
 {% load i18n %}
 <section class="dashboard">
@@ -60,7 +59,7 @@
                                     </td>
 
                                     <td>{{student.gender|lang_gender:request.session.lang}}</td>
-                                    <td>{{student.nationality|en_nly:request.session.lang}} </td>
+                                    <td>{% trans student.nationality %} </td>
                                     <td>{{student.id_number}}</td>
 
                                 </tr>

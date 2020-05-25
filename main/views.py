@@ -91,7 +91,7 @@ class ExamsDashboardView(ListView):
         return context
 
 
-class ClassesScheduleDashboardView(ListView):
+class ClassesScheduleDashboardView(LoginRequiredMixin, ListView):
     context_object_name = 'class_rooms'
     queryset = ClassRoom.objects.all()
     template_name = 'main/classes_schedule_dashboard.html'
@@ -109,7 +109,7 @@ class ClassroomsDashboardView(ListView):
     template_name = 'main/classrooms_dashboard.html'
 
 
-class SubjectsDashboardView(ListView):
+class SubjectsDashboardView(LoginRequiredMixin, ListView):
     context_object_name = 'subjects'
     queryset = Article.objects.all()
     template_name = 'main/subjects-dashboard.html'

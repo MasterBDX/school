@@ -1,11 +1,15 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import (CreateView, UpdateView, DeleteView, FormView)
-from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import JsonResponse
-from django.core import serializers
+from django.contrib.messages.views import SuccessMessageMixin
 
-from .mixins import LastUpdaterMixin
+from django.views.generic import (CreateView, UpdateView, DeleteView, FormView)
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse, reverse_lazy
+from django.http import JsonResponse
+from django.utils.translation import ugettext_lazy as _
+
+from .mixins import DeleteSuccessMessageMixin
 from .forms import (AddClassForm, AddExamTabelForm,
                     AddFullScheduleForm, AddFullScheduleModelForm,
                     ChooseExamInfoForm, AddClassRoomForm,
@@ -19,43 +23,48 @@ from .models import (Exam, ExamTabel, TheClass, Article,
 from students import models
 
 
-class AddSubjectView(CreateView):
+class AddSubjectView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = AddSubjectForm
     template_name = 'tabels/add_subject.html'
     success_url = reverse_lazy('main:subjects-dashboard')
+    success_message = _('A new subject has been added')
 
 
-class EditSubjectView(UpdateView):
+class EditSubjectView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     queryset = Article.objects.all()
     form_class = AddSubjectForm
     template_name = 'tabels/add_subject.html'
     success_url = reverse_lazy('main:subjects-dashboard')
+    success_message = _('The Subject has been modified')
 
 
-class DeleteSubjectView(DeleteView):
+class DeleteSubjectView(LoginRequiredMixin, DeleteSuccessMessageMixin, DeleteView):
     queryset = Article.objects.all()
-
     template_name = 'tabels/delete_subject_confirm.html'
     success_url = reverse_lazy('main:subjects-dashboard')
+    success_message = _('The Subject has been Deleted')
 
 
-class AddClassView(CreateView):
+class AddClassView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = AddClassForm
     template_name = 'tabels/add_class.html'
     success_url = reverse_lazy('main:classes-dashboard')
+    success_message = _('A new class has been added')
 
 
-class EditClassView(UpdateView):
+class EditClassView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     queryset = TheClass.objects.all()
     form_class = AddClassForm
     template_name = 'tabels/add_class.html'
     success_url = reverse_lazy('main:classes-dashboard')
+    success_message = _('The Class has been modified')
 
 
-class DeleteClassView(DeleteView):
+class DeleteClassView(LoginRequiredMixin, DeleteSuccessMessageMixin, DeleteView):
     queryset = TheClass.objects.all()
     template_name = 'tabels/delete_class_confirm.html'
     success_url = reverse_lazy('main:classes-dashboard')
+    success_message = _('The Class has been deleted')
 
 
 class AddClassRoomView(CreateView):
@@ -77,8 +86,9 @@ class DeleteClassroomView(DeleteView):
     success_url = reverse_lazy('main:classrooms-dashboard')
 
 
+@login_required
 def add_edit_exam_tabel_view(request, pk=None):
-    extra = 10
+    extra = 2
     instance = None
     delete = False
     queryset = Exam.objects.none()
@@ -92,36 +102,45 @@ def add_edit_exam_tabel_view(request, pk=None):
                                           queryset=queryset)
     if request.method == 'POST':
         if form.is_valid() and formset.is_valid():
-            obj = form.save()
+            obj = form.save(commit=False)
+            obj.last_editor = request.user.username
+            obj.save()
             for fm in formset:
                 date = fm.cleaned_data.get('the_date')
-                article = fm.cleaned_data.get('article')
+                article = fm.cleaned_data.get('subject')
                 if date and article:
                     exam_obj = fm.save(commit=False)
                     exam_obj.exam_tabel = obj
                     exam_obj.save()
+            msg = _('A new exams schedule has been added')
+            if instance:
+                msg = _('Exams schedule has been modified')
+            messages.add_message(request, messages.SUCCESS, msg)
             return redirect('main:exams-dashboard')
-    context = {'form': form, 'formset': formset}
+    context = {'form': form, 'formset': formset, 'object': instance}
     return render(request, 'tabels/add_exams_tabel.html', context)
 
 
-class DeleteExamTabelView(DeleteView):
+class DeleteExamTabelView(LoginRequiredMixin, DeleteSuccessMessageMixin, DeleteView):
     queryset = ExamTabel.objects.all()
     template_name = 'tabels/delete_exams_tabel_confirm.html'
     success_url = reverse_lazy('main:exams-dashboard')
+    success_message = _('Exams schedule has been deleted')
 
 
 HUMAN_COUNT = {'1': 'يوم واحد', '2': 'يومان', '3': 'ثلاث أيام',
                '4': 'أربع أيام', '5': 'خمس أيام'}
 
 
+@login_required
 def add_edit_full_schedule_view(request, class_id=''):
     data = {}
-    extra = 5
+    extra = 1
+    classroom = None
     qs = SchoolSchedule.objects.none()
     if class_id:
-        class_ = get_object_or_404(ClassRoom, id=class_id)
-        data['class_room'] = class_
+        classroom = get_object_or_404(ClassRoom, id=class_id)
+        data['class_room'] = classroom
         qs = SchoolSchedule.objects.filter(
             class_room__id=class_id).order_by('day')
         extra = 0
@@ -139,21 +158,27 @@ def add_edit_full_schedule_view(request, class_id=''):
                         obj = form.save(commit=False)
                         obj.class_room = class_room
                         obj.save()
-            msg = 'تم إضافة جدول حصص جديد'
+            msg = _('A new classes schedule has been added')
+            if classroom:
+                msg = _('The classes schedule has been modified')
             messages.add_message(request, messages.INFO, msg)
             return redirect('main:classes-tabel-dashboard')
-    context = {'formset': formset, 'classroom_form': classroom_form}
+
+    context = {'formset': formset,
+               'classroom_form': classroom_form,
+               'object': classroom}
     return render(request, 'tabels/add_full_schedule.html', context)
 
 
+@login_required
 def delete_full_schedule_view(request, class_id):
-    class_ = get_object_or_404(ClassRoom, id=class_id)
-    days_schedule = class_.days.all()
+    classroom = get_object_or_404(ClassRoom, id=class_id)
+    days_schedule = classroom.days.all()
     if request.method == 'POST':
         days_schedule.delete()
         url = reverse('main:classes-tabel-dashboard')
         return redirect(url + '#schedules-id')
-    context = {'object': class_}
+    context = {'classroom_name': classroom.name}
     return render(request, 'tabels/delete_full_schedule.html', context)
 
 

@@ -1,6 +1,8 @@
 import datetime
+import re
+
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import pgettext_lazy, ugettext_lazy as _
 
 from .models import (
     Exam, ExamTabel,
@@ -8,30 +10,35 @@ from .models import (
     Article, ClassRoom
 )
 
-from .vars import *
+from main.vars import (YEARS, YEARS_, BIRTH_YEARS, MONTHS,
+                       SEMESTERS, TYPE)
 
 
 class AddSubjectForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["name"].label = 'إسم المادة'
-
     class Meta:
+        help_texts = {
+            'name': _('Please don\'t forget to add al altaerif to the subject name')}
+        labels = {'name': _('Subject Arabian Name'),
+                  'en_name': _('Subject English Name')}
         model = Article
         fields = '__all__'
 
+    def clean_en_name(self):
+        en_name = self.cleaned_data.get('en_name')
+        if not re.findall('^[a-zA-Z\s]+$', en_name):
+            raise forms.ValidationError(
+                _("This field must have just english letters"))
+        return en_name
+
 
 class AddClassForm(forms.ModelForm):
-    name = forms.CharField(label='إسم الصف', widget=forms.TextInput(
-        attrs={'placeholder': 'أدخل إسم الفصل : الثامن على سبيل المثال'}))
-    order = forms.IntegerField(label='ترتيب الظهور')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["subjects"].help_text = 'يرجى الضغط على زر ctrl و إختيار المواد الدراسية لهذا الفصل '
-        self.fields["subjects"].label = 'المواد الدراسية'
-
     class Meta:
+        labels = {'name': _('Class Name'),
+                  'order': _('Appearance Order'),
+                  'subjects': _('Subjects')
+                  }
+        help_texts = {'name': _('Please write the class name in this format (الثامن, التاسع)'),
+                      'subjects': _('Please click the ctrl button and choose the subjects  for this Class')}
         model = TheClass
         exclude = ['subjects_num']
 
@@ -48,69 +55,58 @@ class AddClassRoomForm(forms.ModelForm):
 class AddExamTabelForm(forms.ModelForm):
     class Meta:
         model = ExamTabel
-        exclude = ['last_update_by']
+        exclude = ['last_editor']
         labels = {
-            'year': 'السنة',
-            'the_class': 'الصف',
-            'exam_type': 'نوع الإمتحان',
-            'semester': 'الفترة',
-            'class_room': 'الفصل الدراسي'
+            'title': _('Title'),
+            'en_title': _('English Title'),
+            'year': _('Year'),
+            'the_class': _('Class'),
+            'exam_type': _('Exams Type'),
+            'semester': _('Semester'),
+            'class_room': _('Classroom')
         }
 
 
 class AddExamForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        self.fields['article'].required = False
+        self.fields['subject'].required = False
         self.fields['the_date'].required = False
         self.fields['the_date'].widget = forms.SelectDateWidget(
-            empty_label=('السنة', 'الشهر', 'اليوم'),
+            empty_label=(_('Year'), _('Month'), _('Day')),
             years=YEARS_,
             months=MONTHS)
+        self.fields['start_time'].widget = forms.TimeInput(format='%H:%M')
+        self.fields['end_time'].widget = forms.TimeInput(format='%H:%M')
 
     class Meta:
         model = Exam
         exclude = ['exam_tabel', 'day']
         labels = {
-            'article': 'المادة',
-            'the_date': 'تاريخ الإمتحان',
-            'start_time': 'وقت بداية الإمتحان',
-            'end_time': 'وقت نهاية الإمتحان',
+            'subject': pgettext_lazy('for Subjects', 'Subject'),
+            'the_date': _('Exam Date'),
+            'start_time': _('Exam start time'),
+            'end_time': _('Exam end time'),
         }
 
 
 class AddFullScheduleForm(forms.Form):
     class_room = forms.ModelChoiceField(
-        label='الفصل الدراسي', queryset=ClassRoom.objects.all())
-
-    def clean(self):
-        class_room = self.cleaned_data.get('class_room')
-        days = class_room.days.all()
-        if days.count() > 5:
-            raise forms.ValidationError('لقد أدخلت جميع الحصص لهذا الفصل')
+        label=_('Class'), queryset=ClassRoom.objects.all())
 
 
 class AddFullScheduleModelForm(forms.ModelForm):
-    day = forms.ModelChoiceField(
-        label='اليوم', queryset=Day.objects.all())
-
-    class_1 = forms.ModelChoiceField(
-        label='الحصة الاولى', queryset=Article.objects.all())
-    class_2 = forms.ModelChoiceField(
-        label='الحصة الثانية', queryset=Article.objects.all())
-    class_3 = forms.ModelChoiceField(
-        label='الحصة الثاثة', queryset=Article.objects.all())
-    class_4 = forms.ModelChoiceField(
-        label='الحصة الرابعة', queryset=Article.objects.all())
-    class_5 = forms.ModelChoiceField(
-        label='الحصة الخامسة', queryset=Article.objects.all())
-    class_6 = forms.ModelChoiceField(
-        label='الحصة السادسة', queryset=Article.objects.all())
-    class_7 = forms.ModelChoiceField(
-        label='الحصة السابعة', queryset=Article.objects.all())
-
     class Meta:
+        labels = {
+            'day': _('Day'),
+            'class_1': _('First Class'),
+            'class_2': _('Second Class'),
+            'class_3': _('Third Class'),
+            'class_4': _('Fourth Class'),
+            'class_5': _('Fifth Class'),
+            'class_6': _('Sixth Class'),
+            'class_7': _('Seventh Class')
+        }
         model = SchoolSchedule
         exclude = ['class_room']
 

@@ -86,8 +86,8 @@ $(function () {
 
 
     });
-    $('input:checkbox').each(function () {
-        $(this).parent().find('label').text('حذف')
-    })
+    // $('input:checkbox').each(function () {
+    //     $(this).parent().find('label').text('حذف')
+    // })
 })
 

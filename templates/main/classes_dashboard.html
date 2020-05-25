@@ -1,28 +1,31 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
 {% load get_arabic_name %}
-{% load get_student_filters %}
-
+{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 m-auto">
+            <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
-                    الصفوف الدراسية
+                    {% trans 'Classes Dashboard' %}
                     <hr />
                 </h1>
 
             </div>
-            <div class="col-md-12">
+            <div class="col-md-7 m-auto ">
                 {% if messages %}
-                <ul class="messages">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    <p{% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
                         {% endfor %}
-                </ul>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                </div>
                 {% endif %}
             </div>
 
@@ -33,7 +36,7 @@
                         <p class="">
                             <a href="{% url 'tabels:add_class' %}" class="add-button">
                                 <i class="fas fa-plus fa-lg"></i>
-                                لإضافة صف جديد
+                                {% trans 'To add a new class' %}
                             </a>
                         </p>
                     </div>
@@ -42,13 +45,27 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">إسم الصف</th>
-                                    <th scope="col">عدد المواد</th>
-                                    <th scope="col">ترتيب الظهور</th>
-                                    <th scope="col">درجات الفصل الأول</th>
-                                    <th scope="col">درجات الفصل الثانية</th>
-                                    <th scope="col">درجات الفصل الثالث</th>
-                                    <th scope="col">التحكم</th>
+                                    <th scope="col">
+                                        {% trans 'Class Name' %}
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Subjects Count' %}
+
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Appearance Order' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'First Semester Degrees' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Second Semester Degrees' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Third Semester Degrees' %}
+                                    </th>
+                                    <th scope="col">{% trans 'Control' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,14 +78,14 @@
                                     <td>
                                         <a href="{% url 'students:edit-class-grades' pk=cls.id order='1' %}"
                                             class="btn btn-info">
-                                            إضافة أو تعديل
+                                            {% trans 'Add or Edit' %}
 
                                         </a>
                                     </td>
                                     <td>
                                         <a href="{% url 'students:edit-class-grades' pk=cls.id order='2' %}"
                                             class="btn btn-info">
-                                            إضافة أو تعديل
+                                            {% trans 'Add or Edit' %}
 
                                         </a>
                                     </td>
@@ -76,18 +93,18 @@
                                     <td>
                                         <a href="{% url 'students:edit-class-grades' pk=cls.id order='3' %}"
                                             class="btn btn-info">
-                                            إضافة أو تعديل
+                                            {% trans 'Add or Edit' %}
 
                                         </a>
                                     </td>
                                     <td>
                                         <a href="{% url 'tabels:edit_class' pk=cls.id %}?from_dash=1"
                                             class="btn btn-info">
-                                            تعديل
+                                            {%trans 'Edit' %}
                                         </a>
                                         <a href="{% url 'tabels:delete_class' pk=cls.id %}?from_dash=1"
                                             class="btn btn-danger">
-                                            حذف
+                                            {% trans 'Delete' %}
                                         </a>
                                     </td>
                                 </tr>

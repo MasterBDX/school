@@ -2,17 +2,22 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row tabel-row">
-            <div class="col-md-12">
+            <div class="col-md-8 m-auto">
 
-                <h1 class="">
+                <h1 class="text-center">
                     {% if object %}
-                    تعديل جدول حصص فصل {{object.name}}
+                    {% if request.session.lang == 'ar' %}
+                    تعديل جدول حصص للفصل
+                    {{object.name}}
                     {% else %}
-                    أضف جدول حصص
+                    Edit classes schedule for {{object.name}} classroom
+                    {% endif %}
+                    {% else %}
+                    {% trans 'Add a new Classes schedule' %}
                     {% endif %}
                     <hr />
 
@@ -24,10 +29,11 @@
                     {% csrf_token %}
                     <div class="row">
                         {% if  classroom_form %}
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                             {{classroom_form|crispy}}
                             <br />
                         </div>
+                        <div class="col-md-4"></div>
                         {% endif %}
 
 
@@ -50,7 +56,7 @@
                         </div>
                         <div class="col-md-4">
                             <div id='add-new-form'>
-                                <span>أضف المزيد <i class="fas fa-plus fa-lg"></i></span>
+                                <span>{% trans 'Add more' %} <i class="fas fa-plus fa-lg"></i></span>
 
                             </div>
                         </div>
@@ -59,7 +65,11 @@
                     </div>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
-                            حفظ
+                            {% if object %}
+                            {% trans 'Edit' %}
+                            {% else %}
+                            {% trans 'Add' %}
+                            {% endif %}
                         </button>
                     </div>
                 </form>

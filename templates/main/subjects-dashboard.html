@@ -6,57 +6,61 @@
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 m-auto">
+            <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
                     {% trans 'Subjects Dashboard' %}
                     <hr />
                 </h1>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-7 m-auto ">
                 {% if messages %}
-                <ul class="messages">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    <p{% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
                         {% endfor %}
-                </ul>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                </div>
                 {% endif %}
             </div>
-
 
             <div class="col-md-12">
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-8 m-auto">
                         <p class="">
                             <a href="{% url 'tabels:subjects-add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
-                                لإضافة مادة
+                                {% trans 'To Add Subject' %}
                             </a>
                         </p>
                     </div>
                     {% if subjects %}
-                    <div class="col-md-12">
+                    <div class="col-md-10 m-auto ">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">إسم المادة</th>
+                                    <th scope="col">{% trans 'Subject Name' %}</th>
 
-                                    <th scope="col">التحكم</th>
+                                    <th scope="col">{% trans 'Control' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for subject in subjects %}
                                 <tr>
-                                    <td>{{subject.name}}</td>
+                                    <td>{{subject.get_name}}</td>
 
                                     <td>
                                         <a href="{% url 'tabels:subjects-edit' pk=subject.id %}" class="btn btn-info">
-                                            تعديل
+                                            {% trans 'Edit' %}
                                         </a>
                                         <a href="{% url 'tabels:subjects-delete' pk=subject.id %}"
                                             class="btn btn-danger">
-                                            حذف
+                                            {% trans 'Delete' %}
                                         </a>
                                     </td>
                                 </tr>

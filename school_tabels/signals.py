@@ -2,9 +2,13 @@ import datetime
 from django.db.models.signals import pre_save, m2m_changed, post_save
 from django.dispatch import receiver
 
-from .models import Exam, TheClass
+from .models import ExamTabel, Exam, TheClass, Article, Day
 from students import models
 
+
+@receiver(pre_save, sender=Article)
+def subject_check_info(sender, instance, *args, **kwargs):
+    instance.en_name = instance.en_name.title()
 
 
 @receiver(m2m_changed, sender=TheClass.subjects.through)
@@ -40,6 +44,10 @@ def get_subjects_num(sender, instance, action, *args, **kwargs):
 @receiver(pre_save, sender=Exam)
 def get_arabic_weekday(sender, instance, *args, **kwargs):
     if not instance.day:
-        WEEK_DAYS = {'1': 'الإثنين', '2': 'الثلاثاء', '3': 'الإربعاء',
-                     '4': 'الخميس', '5': 'الجمعة', '6': 'السبت', '7': 'الأحد'}
-        instance.day = WEEK_DAYS.get(str(instance.the_date.isoweekday()))
+
+        WEEK_DAYS = {'1': '2', '2': '3',
+                     '3': '4', '4': '5',
+                     '5': '6', '6': '7',
+                     '7': '1'}
+        right_day = WEEK_DAYS.get(str(instance.the_date.isoweekday()))
+        instance.day = Day.objects.filter(order=right_day).first()

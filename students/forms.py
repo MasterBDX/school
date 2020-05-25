@@ -3,7 +3,7 @@ from django.core.exceptions import NON_FIELD_ERRORS
 from django.utils import timezone
 
 from school_tabels.models import TheClass, Article
-from .vars import *
+from main.vars import *
 from students.models import (Student, ResultsPaper,
                              SubjectResult, CompensatoryExam)
 
@@ -12,7 +12,7 @@ class AddStudent(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['birth_date'].widget = forms.SelectDateWidget(
-            empty_label=('السنة', 'الشهر', 'اليوم'), years=YEARS, months=MONTHS)
+            empty_label=('السنة', 'الشهر', 'اليوم'), years=BIRTH_YEARS, months=MONTHS)
 
         # self.fields['birth_date'].error_messages = {
         #     'invalid': 'يرجى إدخال التاريخ بطريقة صحيحة'}

@@ -1,38 +1,48 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
 {% load get_arabic_name %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8 m-auto">
 
                 <h1 class="">
-                    حذف جدول إمتحانات
+                    {% if request.session.lang == 'en' and object.en_title %}
+                    Delete {{object.en_title}} Schedule
+                    {% else %}
+                    حذف جدول {{object.title}}
+                    {% endif %}
                 </h1>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8 m-auto">
                 <form method="POST" id='add-post-form'>
                     {% csrf_token %}
                     <p class="lead">
+                        {% if request.session.lang == 'en' %}
+                        Are you sure you want to delete
+                        {{object.exam_type|type:request.session.lang}}
+                        exams schedule
+                        for {{object.the_class.name}} Class
+                        The {{object.semester|semester:request.session.lang}}
+                        Semester
+                        {% else %}
                         هل أنت متأكد أنك تريد حذف جدول الإمتحانات
-                        {{object.exam_type}}ال
+
+                        ال{{object.exam_type|type:request.session.lang}}
                         للصف
                         {{object.the_class.name}}
                         الفترة
-                        {{object.semester|semester}}
+                        {{object.semester|semester:request.session.lang}}
+                        {% endif %}
+
+
                         <hr />
                     </p>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
-                            حذف
+                            {% trans 'Delete' %}
                         </button>
                     </div>
                     <div style="height:100px;"></div>

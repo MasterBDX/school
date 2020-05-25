@@ -1,31 +1,32 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
+{% load i18n %}
+
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8 m-auto">
 
                 <h1 class="">
+                    {% if request.session.lang == 'ar' %}
                     حذف الصف
+                    {{object.name}}
+                    {% else %}
+                    Delete {{object.name}} Class
+                    {% endif %}
                 </h1>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8 m-auto">
                 <form method="POST" id='add-post-form'>
                     {% csrf_token %}
-                    <p class="lead">هل أنت متأكد أنك تريد حذف هذا الصف ؟
+                    <p class="lead">
+                        {% trans 'Are you sure you want to delete this Class ?' %}
                         <hr />
                     </p>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
-                            حذف
+                            {% trans 'Delete' %}
                         </button>
                     </div>
                     <div style="height:100px;"></div>

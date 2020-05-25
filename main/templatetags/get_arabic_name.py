@@ -1,5 +1,6 @@
 from django import template
 
+from main.vars import SEMESTERS_DIC, TYPE_DIC, HUMAN_COUNTER_DIC
 register = template.Library()
 
 
@@ -19,17 +20,17 @@ def get_weekday_name(text):
 
 
 @register.filter(name='semester')
-def get_arabic_season_name(text):
-
-    semesters = {'1': 'الأولى', '2': 'الثانية',
-                 '3': 'الثالثة'}
-
-    return semesters.get(text)
+def get_arabic_season_name(value, lang):
+    name = SEMESTERS_DIC.get(value).get(lang)
+    return name
 
 
-@register.filter(name='human_exam_type')
-def human_exam_type(text):
+@register.filter(name='type')
+def human_exam_type(value, lang):
+    type_ = TYPE_DIC.get(value).get(lang)
+    return type_
 
-    types = {'1': 'نصفي', '2': 'نهائي'}
 
-    return types.get(text)
+@register.filter(name="human_counter")
+def get_human_counter(word):
+    return HUMAN_COUNTER_DIC.get(str(word), str(word))
