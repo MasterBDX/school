@@ -2,33 +2,26 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
-
-                <h1 class="">
+            <div class="col-md-7 m-auto">
+                <h1 class="text-center">
                     {% if object %}
-                    تعديل
-                    بيانات
-                    الصف
+                    {% if request.session.lang == 'ar' %}
+                     تعديل بيانات الفصل
                     {{object.name}}
                     {% else %}
-                    أضف
-                    صف
+                    Edit {{object.name}} Classroom information
                     {% endif %}
-
+                    {% else %}
+                    {% trans 'Add a new classroom' %}
+                    {% endif %}
                     <hr />
-
                 </h1>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7 m-auto">
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
                     {{form|crispy}}
@@ -36,9 +29,9 @@
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
                             {% if object %}
-                            تعديل
+                            {% trans 'Edit' %}
                             {% else %}
-                            أضف
+                            {% trans 'Add' %}
                             {% endif %}
                         </button>
                     </div>

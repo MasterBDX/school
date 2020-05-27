@@ -4,8 +4,9 @@ from django.views.generic import (
     ListView, DetailView, CreateView,
     UpdateView, DeleteView
 )
+from django.utils.translation import get_language
 from django.http import JsonResponse
-
+from django.contrib import messages
 
 from .filters import get_stds_filters
 from .models import Student, ResultsPaper
@@ -21,7 +22,10 @@ from .models import (Student, Semester, SubjectResult,
 from .formsets import (subjects_results_formset,
                        edit_class_grades_formset,
                        com_exams_formset, edit_com_exams_formset)
+from main.vars import SEMESTERS_DIC
 
+
+LANG = get_language()
 
 class StudentDetail(DetailView):
     model = Student
@@ -136,26 +140,30 @@ def semester_edit_view(request, pk, std_id):
     return render(request, 'students/semester_edit.html', context)
 
 
-def get_human_order(order):
-    order_dic = {'1': 'الأول', '2': 'الثاني', '3': 'الثالث'}
-    return order_dic.get(order, 'الأول')
 
-
-def edit_class_grades_view(request, pk, order='1'):
+def edit_class_grades_view(request, pk, order=1):
     the_class = TheClass.objects.get(pk=pk)
     if not str(order) in ['1', '2', '3']:
         order = '1'
     qs = ClassGrade.objects.filter(the_class=the_class, order=order)
 
     formset = edit_class_grades_formset(request.POST or None, queryset=qs)
+    order = str(order)
     if request.method == 'POST':
         if formset.is_valid():
             for form in formset:
                 if form.is_valid():
                     form.save()
+            msg = 'The {} Semester grades for {} Class have been modified'.format(SEMESTERS_DIC.get(order),
+                                                                the_class.name) 
+            if LANG == 'ar':
+                msg = 'تم تعديل درجات الفترة {} للصف {}'.format(SEMESTERS_DIC.get(order),
+                                                                the_class.name)            
+            messages.success(request,msg)            
             return redirect('main:classes-dashboard')
     context = {'formset': formset,
-               'order': get_human_order(order),
+
+               'order': SEMESTERS_DIC.get(order),
                'class_name': the_class.name}
     return render(request, 'students/edit_class_grades.html', context)
 

@@ -1,6 +1,6 @@
 from django import template
+from main.vars import (SEMESTERS_DIC, TYPE_DIC, HUMAN_COUNTER_DIC,GENDER_DIC)
 
-from main.vars import SEMESTERS_DIC, TYPE_DIC, HUMAN_COUNTER_DIC
 register = template.Library()
 
 
@@ -9,13 +9,6 @@ def get_class_name(text):
     our_dic = {'1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع',
                '5': 'الخامس', '6': 'السادس', '7': 'السابع', '8': 'الثامن',
                '9': 'التاسع', }
-    return our_dic.get(text)
-
-
-@register.filter(name='arabic_weekday')
-def get_weekday_name(text):
-    our_dic = {'sunday': 'الأحد', 'monday': 'الإثنين', 'tuesday': 'الثلاثاء', 'wednesday': 'الأربعاء',
-               'tursday': 'الخميس', 'saturday': 'السبت'}
     return our_dic.get(text)
 
 
@@ -34,3 +27,7 @@ def human_exam_type(value, lang):
 @register.filter(name="human_counter")
 def get_human_counter(word):
     return HUMAN_COUNTER_DIC.get(str(word), str(word))
+
+@register.filter(name="lang_gender")
+def get_right_gender_name(value):
+    return GENDER_DIC.get(value)

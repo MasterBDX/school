@@ -98,11 +98,11 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{% url 'tabels:edit_class' pk=cls.id %}?from_dash=1"
+                                        <a href="{% url 'tabels:edit_class' pk=cls.id %}"
                                             class="btn btn-info">
                                             {%trans 'Edit' %}
                                         </a>
-                                        <a href="{% url 'tabels:delete_class' pk=cls.id %}?from_dash=1"
+                                        <a href="{% url 'tabels:delete_class' pk=cls.id %}"
                                             class="btn btn-danger">
                                             {% trans 'Delete' %}
                                         </a>

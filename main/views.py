@@ -80,7 +80,7 @@ def contact_view(request):
     return render(request, 'main/contact.html', context)
 
 
-class ExamsDashboardView(ListView):
+class ExamsDashboardView(LoginRequiredMixin, ListView):
     context_object_name = 'exams'
     queryset = Exam.objects.all()
     template_name = 'main/exams_dashboard.html'
@@ -97,13 +97,13 @@ class ClassesScheduleDashboardView(LoginRequiredMixin, ListView):
     template_name = 'main/classes_schedule_dashboard.html'
 
 
-class ClassesDashboardView(ListView):
+class ClassesDashboardView(LoginRequiredMixin,ListView):
     context_object_name = 'classes'
     queryset = TheClass.objects.all()
     template_name = 'main/classes_dashboard.html'
 
 
-class ClassroomsDashboardView(ListView):
+class ClassroomsDashboardView(LoginRequiredMixin,ListView):
     context_object_name = 'classrooms'
     queryset = ClassRoom.objects.all()
     template_name = 'main/classrooms_dashboard.html'
@@ -147,9 +147,9 @@ class StudentsDashboardView(ListView):
         context['classroom_name'] = self.obj.name
 
         for student in context['students']:
-            result = 'غير موجودة'
+            result = _('Not Exist')
             if student.get('id') in self.obj.get_results():
-                result = 'موجودة'
+                result = _('Exist')
             student.update({'result': result,
                             'full_name': self.get_full_name(student)})
         return context

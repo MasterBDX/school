@@ -3,14 +3,14 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_student_filters %}
-
+{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 m-auto">
+            <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
-                    الطلاب و النتائج
+                    {% trans 'Student & Results Dashboard' %}
                     <hr />
                 </h1>
 
@@ -23,7 +23,7 @@
                         <p class="">
                             <a href="{% url 'students:add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
-                                ﻹضافة طالب الجديد
+                                {% trans 'To add a new student' %}
                             </a>
                         </p>
 
@@ -38,9 +38,12 @@
                     <div class="col-md-12">
                         <div class="">
                             <h4>
+                             {% if request.session.lang == 'ar' %}
                                 الصف
                                 {{class.name}}
-
+                             {% else %}
+                             {{class.name}} Class
+                             {% endif %}
                             </h4>
                         </div>
 
@@ -48,10 +51,18 @@
                             <thead class="thead-dark">
                                 <tr>
 
-                                    <th scope="col">إسم الفصل </th>
-                                    <th scope="col">عدد الطلبة</th>
-                                    <th scope="col">جدول الطلبة</th>
-                                    <th scope="col"> النتائج لهذا الصف </th>
+                                    <th scope="col">
+                                    {% trans 'Class Name'%}
+                                     </th>
+                                    <th scope="col">
+                                    {% trans 'Students Count' %}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'Students List'%}
+                                    </th>
+                                    <th scope="col">
+                                     {% trans 'Class Results' %}
+                                      </th>
 
 
                                 </tr>
@@ -70,16 +81,18 @@
                                     <td>{{cm.get_stds_count}}</td>
 
                                     <td><a class="btn btn-info"
-                                            href='{% url "main:students-dashboard" pk=cm.pk %}'>مشاهدة</a>
+                                            href='{% url "main:students-dashboard" pk=cm.pk %}'>
+                                            {% trans 'View'%}</a>
                                     </td>
                                     <td>
                                         <a class="btn btn-warning"
-                                            href='{% url "students:results-activation-confirm" status=1 pk=cm.pk %}'>تنشيط
-                                            الكل</a>
+                                            href='{% url "students:results-activation-confirm" status=1 pk=cm.pk %}'>
+                                            {% trans 'Activate all' %}
+                                        </a>
                                         <a class="btn btn-danger"
-                                            href='{% url "students:results-activation-confirm" status=0 pk=cm.pk %}'>إلغاء
-                                            تنشيط
-                                            الكل</a>
+                                            href='{% url "students:results-activation-confirm" status=0 pk=cm.pk %}'>
+                                            {% trans 'Deactivate all' %}
+                                            </a>
                                     </td>
 
                                 </tr>

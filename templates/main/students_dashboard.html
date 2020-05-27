@@ -1,16 +1,23 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
-{% load get_student_filters %}
+{% load i18n %}
+{% load get_lang_names %}
+
 
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
+                {% if request.session.lang == 'ar' %}
                     طلاب الفصل {{classroom_name}}
+                {% else %}
+                {{classroom_name}}
+                   Classroom 
+                   Students
+                {% endif %}    
                     <hr />
                 </h1>
             </div>
@@ -18,9 +25,11 @@
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
                     <div class="col-md-6">
-                        <p class="lead">ﻹضافة طالب الجديد
+                        <p class="lead">
+                            {% trans 'To add a new student' %}
                             <br />
-                            <a href="{% url 'students:add' %}" class="btn btn-info">إضافة </a>
+                            <a href="{% url 'students:add' %}" class="btn btn-info">
+                            {% trans 'Add' %} </a>
                         </p>
                     </div>
 
@@ -29,13 +38,27 @@
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">إسم الطالب </th>
-                                    <th scope="col">الجنس</th>
-                                    <th scope="col">الجنسية</th>
-                                    <th scope="col">الرقم الوطني</th>
-                                    <th scope="col"> الصحيفة لهذا الفصل</th>
-                                    <th scope="col">التحكم </th>
+                                    <th scope="col">
+                                    {% trans 'ID' %}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'Student Name' %}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'Gender' %}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'Nationality' %}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'N.Number' %}
+                                    </th>
+                                    <th scope="col">
+                                     {% trans 'This class result' %}
+                                     </th>
+                                    <th scope="col">
+                                        {% trans 'Control' %}
+                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,8 +71,8 @@
                                         </a>
                                     </td>
 
-                                    <td>{{student.gender|arabic_gender}}</td>
-                                    <td>{{student.nationality}} </td>
+                                    <td>{{student.gender|lang_gender}}</td>
+                                    <td>{% trans student.nationality %} </td>
                                     <td>{{student.id_number}}</td>
                                     <td>
                                         {{student.result}}</td>
@@ -57,20 +80,20 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a href="{% url 'students:edit' pk=student.id %}" class="btn btn-info">
-                                                    تعديل البيانات
+                                                    {% trans 'Edit Information' %}
                                                 </a>
 
                                             </div>
                                             <div class="col-md-4">
                                                 <a href="{% url 'students:delete' pk=student.id %}"
                                                     class="btn btn-danger">
-                                                    حذف
+                                                    {% trans 'Delete' %}
                                                 </a>
                                             </div>
                                             <div class="col-md-4">
                                                 <a href="{% url 'students:add-results-paper'%}?std_id={{student.id}}"
                                                     class="btn btn-warning">
-                                                    إضافة صحيفة
+                                                    {% trans 'Add Result Paper' %}
                                                 </a>
                                             </div>
 
@@ -86,7 +109,7 @@
                     </div>
                     {% else %}
                     <div class="col-md-12">
-                        لم يتم إضافة أي طلاب لهذا الفصل
+                        {% trans 'No students have been added to this class' %}
                     </div>
                     {% endif %}
 

@@ -2,11 +2,11 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 m-autos">
+            <div class="col-md-8 m-auto">
                 <h1 class="text-center">
                     {% if request.session.lang == 'ar' %}
                     تعديل درجات الفترة
@@ -14,23 +14,28 @@
                     للصف
                     {{class_name}}
                     {% else %}
-                    Edit the first semester grades for the eighth Class
+                    Edit the  {{order}} semester grades for
+                     {{class_name}} 
+                     Class
                     {% endif %}
                     <hr />
                 </h1>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-10 m-auto">
                 <form enctype="multipart/form-data" method="POST" id='add-student-form'>
                     {% csrf_token %}
                     <div class="row">
-
                         {{ formset.management_form }}
-
                         {% for form in formset %}
                         <div class="col-md-4">
-                            <p class="lead">
+                            <p class="lead ">
+                            {% if request.session.lang == 'ar' %}
                                 مادة
-                                {{form.instance.subject.name}}
+                                {{form.instance.subject.get_name}}
+                                {% else %}
+                                {{form.instance.subject.get_name}}
+                                Subject
+                                {% endif %}
                                 <hr />
                             </p>
                             {{form|crispy}}
@@ -41,7 +46,7 @@
                             <div class="btn-test">
                                 <br />
                                 <button class="btn btn-info add-post-btn" type="submit">
-                                    حفظ
+                                    {% trans 'Save' %}
                                 </button>
                             </div>
                         </div>

@@ -16,7 +16,8 @@ PART = [('2', 'الثاني'),
         ('3', 'الثالث')]
 
 
-GENDER = [('ml', 'ذكر'), ('fl', 'أنثى')]
+GENDER = [('ml', _('Male')), ('fl', _('Female'))]
+GENDER_DIC = {'ml': _('Male'),'fl': _('Female')}
 
 STUDENTS_CLASSES = [('1', 'الأول'), ('2', 'الثاني'),
                     ('3', 'الثالث'), ('4', 'الرابع'),
@@ -30,9 +31,10 @@ SEMESTERS = [
     ('2', _('Second')),
     ('3', _('Third')),
 ]
-SEMESTERS_DIC = {'1': {'ar': 'الأولى', 'en': 'First'},
-                 '2': {'ar': 'الثانية', 'en': 'Second'},
-                 '3': {'ar': 'الثالثة', 'en': 'Third'}
+SEMESTERS_DIC = {
+                 '1': _('First'),
+                 '2': _('Second'),
+                 '3': _('Third')
                  }
 
 WEEK_DAYS = [('sunday', 'الأحد'), ('monday', 'الإثنين'),
@@ -102,3 +104,4 @@ NATIONALITY = [('Libyan', _('Libyan')),
                ('Lebanese', _('Lebanese')),
                ('Mauritanian', _('Mauritanian')),
                ('Emirati', _('Emirati')), ]
+

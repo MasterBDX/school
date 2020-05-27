@@ -1,26 +1,30 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
+{% load i18n %}
 {% load get_arabic_name %}
-{% load get_student_filters %}
 
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 m-auto">
+            <div class="col-md-7 m-auto">
                 <h1 class="text-center">
-                    الفصول الدراسية
+                    {% trans 'Classrooms Dashboard' %}
                     <hr />
                 </h1>
             </div>
-            <div class="col-md-12">
+          <div class="col-md-7 m-auto ">
                 {% if messages %}
-                <ul class="messages">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    <p {% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
                         {% endfor %}
-                </ul>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                </div>
                 {% endif %}
             </div>
 
@@ -31,7 +35,7 @@
                         <p class="">
                             <a href="{% url 'tabels:classrooms-add' %}" class="add-button">
                                 <i class="fas fa-plus"></i> 
-                                لإضافة فصل جديد
+                                {% trans 'To add a new classroom' %}
                             </a>
                         </p>
                     </div>
@@ -40,11 +44,17 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">إسم الفصل</th>
-                                    <th scope="col">الصف</th>
-                                    <th scope="col">ترتيب الظهور</th>
+                                    <th scope="col">
+                                    {% trans 'Classroom Name' %}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'Class'%}
+                                    </th>
+                                    <th scope="col">
+                                    {% trans 'Appearance Order' %}
+                                    </th>
 
-                                    <th scope="col">التحكم</th>
+                                    <th scope="col">{% trans 'Control' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,10 +68,10 @@
 
                                     <td>
                                         <a href="{% url 'tabels:classrooms-edit' pk=cls.id %}" class="btn btn-info">
-                                            تعديل
+                                            {% trans 'Edit' %}
                                         </a>
                                         <a href="{% url 'tabels:classrooms-delete' pk=cls.id %}" class="btn btn-danger">
-                                            حذف
+                                            {% trans 'Delete' %}
                                         </a>
                                     </td>
                                 </tr>

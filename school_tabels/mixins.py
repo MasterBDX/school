@@ -1,4 +1,4 @@
-
+from django.contrib import messages
 
 class DeleteSuccessMessageMixin:
     def delete(self, request, *args, **kwargs):

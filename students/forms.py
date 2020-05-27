@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import NON_FIELD_ERRORS
 from django.utils import timezone
-
+from django.utils.translation import ugettext_lazy as _
 from school_tabels.models import TheClass, Article
 from main.vars import *
 from students.models import (Student, ResultsPaper,
@@ -12,21 +12,19 @@ class AddStudent(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['birth_date'].widget = forms.SelectDateWidget(
-            empty_label=('السنة', 'الشهر', 'اليوم'), years=BIRTH_YEARS, months=MONTHS)
-
-        # self.fields['birth_date'].error_messages = {
-        #     'invalid': 'يرجى إدخال التاريخ بطريقة صحيحة'}
-
+            empty_label=(_('Year'), _('Month'), _('Day')),
+            years=BIRTH_YEARS, months=MONTHS)
         self.fields['nationality'].initial = 'ليبي'
 
     class Meta:
-        labels = {'first_name': 'الإسم الأول', 'father_name': 'إسم الأب',
-                  'grand_father_name': 'إسم الجد', 'surname': 'اللقب',
-                  'mother_name': 'إسم الأم', 'place_of_birth': 'مكان الولادة',
-                  'birth_date': 'تاريخ الميلاد', 'gender': 'الجنس',
-                  'cell_phone': 'رقم الهاتف', 'id_number': 'الرقم الوطني',
-                  'the_class': 'الصف', 'nationality': 'الجنسية',
-                  'classroom': 'الفصل الدراسي'
+        labels = {
+                'first_name': _('First Name'), 'father_name': _('Father Name'),
+                  'grand_father_name': _('Grandfather Name'), 'surname': _('Surname'),
+                  'mother_name': _('Mother Name'), 'place_of_birth': _('Place Of Birth'),
+                  'birth_date': _('Birth Date'), 'gender': _('Gender'),
+                  'cell_phone': _('Cell Phone Number'), 'id_number': _('Id Number'),
+                  'the_class': _('Class'), 'nationality': _('Nationality'),
+                  'classroom': _('Classroom')
                   }
         error_messages = {
             'birth_date': {
@@ -63,15 +61,11 @@ class AddSubjectResultForm(forms.ModelForm):
 
 
 class AddClassGradesForm(forms.ModelForm):
-    exam_grade = forms.IntegerField(initial=0, label='درجة الإمتحان')
-    exam_pass_grade = forms.IntegerField(
-        initial=0, label='درجة النجاح في الإمتحان')
-    grade_pass_subject = forms.IntegerField(
-        initial=0, label='درجة النجاح في المادة')
-    year_works_grade = forms.IntegerField(
-        initial=0, label='درجة باقي أعمال السنة')
-
     class Meta:
+        labels = {'exam_grade':_('Exam Grade'),
+                  'exam_pass_grade':_('Exam Pass Grade'),
+                  'grade_pass_subject':_('Subject Pass Grade'),
+                  'year_works_grade':_('Year Works Grade')}
         model = SubjectResult
         exclude = ['subject', 'order', 'the_class']
 

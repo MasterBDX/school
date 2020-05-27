@@ -57,34 +57,35 @@ class EditClassView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = AddClassForm
     template_name = 'tabels/add_class.html'
     success_url = reverse_lazy('main:classes-dashboard')
-    success_message = _('The Class has been modified')
+    success_message = _('The class has been modified')
 
 
 class DeleteClassView(LoginRequiredMixin, DeleteSuccessMessageMixin, DeleteView):
     queryset = TheClass.objects.all()
     template_name = 'tabels/delete_class_confirm.html'
     success_url = reverse_lazy('main:classes-dashboard')
-    success_message = _('The Class has been deleted')
+    success_message = _('The class has been deleted')
 
 
-class AddClassRoomView(CreateView):
+class AddClassRoomView(LoginRequiredMixin, SuccessMessageMixin,CreateView):
     form_class = AddClassRoomForm
     template_name = 'tabels/add_classroom.html'
     success_url = reverse_lazy('main:classrooms-dashboard')
+    success_message = _('A new classroom has been added')
 
-
-class EditClassRoomView(UpdateView):
+class EditClassRoomView(LoginRequiredMixin, SuccessMessageMixin,UpdateView):
     queryset = ClassRoom.objects.all()
     form_class = AddClassRoomForm
     template_name = 'tabels/add_classroom.html'
     success_url = reverse_lazy('main:classrooms-dashboard')
+    success_message = _('The classroom has been modified')
 
 
-class DeleteClassroomView(DeleteView):
+class DeleteClassroomView(LoginRequiredMixin, DeleteSuccessMessageMixin,DeleteView):
     queryset = ClassRoom.objects.all()
     template_name = 'tabels/delete_classroom_confirm.html'
     success_url = reverse_lazy('main:classrooms-dashboard')
-
+    success_message = _('The classroom has been deleted')
 
 @login_required
 def add_edit_exam_tabel_view(request, pk=None):
