@@ -8,6 +8,7 @@ $(function () {
             url: endpoint,
             success: (data) => {
                 console.log('success');
+                
                 element.text(data.active)
             },
             error: (error) => {

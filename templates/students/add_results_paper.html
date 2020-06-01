@@ -1,13 +1,8 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
+{% load i18n %}
 {% load crispy_forms_tags %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
 <section>
     <div class="container">
         <div class="row">
@@ -15,12 +10,14 @@
 
                 <h1 class="text-center">
                     {% if results_paper %}
-                    تعديل صحيفة
-                    الطالب
-                    {{student.get_std_name}}
+                   {% trans 'Edit results paper for student' %}
+                    {{results_paper.student.get_std_name}}
+
                     {% else %}
-                    أضف صحيفة جديد للطالب
+
+                    {% trans 'Add new results paper for student' %}
                     {{student.get_std_name}}
+                    
                     {% endif %}
                     <hr />
 
@@ -31,7 +28,7 @@
                     {% csrf_token %}
                     <div class=" m-auto">
                         {{form|crispy}}
-                        <input type="hidden" name="std_id" value="{{std_id}}">
+                        <input type="hidden" name="std_id" value="{{student.id}}">
                         <br />
                         <hr />
                     </div>
@@ -39,9 +36,9 @@
                     <div class="  btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
                             {% if object %}
-                            تعديل
+                            {% trans 'Edit' %}
                             {% else %}
-                            أضف
+                            {% trans 'Add' %}
                             {% endif %}
                         </button>
                     </div>

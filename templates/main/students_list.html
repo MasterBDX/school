@@ -6,97 +6,80 @@
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 m-auto">
+            <div class="col-md-8 m-auto">
 
                 <h1 class="text-center">
-                    {% trans 'Students List' %}
+
+                    {% trans  'Students list for' %}
+
+                    {{classroom_name}}
                     <hr />
                 </h1>
             </div>
 
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
-                    <div class="col-md-7 m-auto">
-                        <h4>{% trans  'Find a student' %}</h4>
-                    </div>
-                    <div class="col-md-7 m-auto">
-                        {% url 'students:search' as std_search %}
+                    {% if students %}
 
-                        {% include 'snippets/student_search_form.html' with action=std_search %}
-                    </div>
-
-                    {% if classes %}
-                    {% for class in classes %}
-                    {% if class.classrooms.all %}
                     <div class="col-md-12">
-                        <div class="">
-                            <h4>
 
-                                الصف
-                                {{class.name}}
-                            </h4>
-                        </div>
 
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
-
                                     <th scope="col">
-                                        {% trans 'Classroom Name' %}
+                                        {% trans 'ID' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Fullname' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Gender' %}
+                                    </th>
+                                    <th scope="col">
+                                        {% trans 'Nationality' %}
+
 
                                     </th>
                                     <th scope="col">
-                                        {% trans 'Students Number' %}
+                                        {% trans 'NID' %}
 
                                     </th>
-                                    <th scope="col">
-                                        {% trans 'Students List' %}
-
-                                    </th>
-
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for cm in class.classrooms.all %}
+                                {% for student in students %}
                                 <tr>
-
+                                    <th scope="row">{{student.id}}</th>
                                     <td>
 
-                                        {{cm.name}}
+                                        {{student.get_full_name}}
+
                                     </td>
 
-                                    <td>{{cm.get_stds_count}}</td>
-
-                                    <td><a class="btn btn-info"
-                                            href='{% url "main:students-classroom-list" pk=cm.pk %}'>
-                                            {% trans 'View' %}
-                                        </a>
-                                    </td>
+                                    <td>{% trans student.gender %}</td>
+                                    <td>{% trans student.nationality %} </td>
+                                    <td>{{student.nid_number}}</td>
 
                                 </tr>
                                 {% endfor %}
-
-
                             </tbody>
                         </table>
                     </div>
 
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                {% else %}
-                <div class="col-md-12">
-                    <div class="alert">
-                        <span class="display-4 text-center error-alert">
-                            {% trans 'No class found' %}
-                        </span>
+                    {% else %}
+                    <div class="col-md-12">
+                        <div class="alert">
+                            <span class="display-4 text-center error-alert">
+                                {% trans 'No Students found' %}
+                            </span>
+                        </div>
                     </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
-    </div>
     </div>
 </section>
 {% endblock %}

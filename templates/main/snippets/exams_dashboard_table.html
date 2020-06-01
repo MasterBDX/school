@@ -1,5 +1,5 @@
-{% load get_arabic_name %}
-{% load get_student_filters %}
+
+{% load get_lang_names %}
 {% load i18n %}
 <table class="table">
     <thead>
@@ -37,8 +37,8 @@
         {% for exam_tabel in qs %}
         <tr>
             <td>{{exam_tabel.year}}</td>
-            <td>{{exam_tabel.semester|semester:request.session.lang}}</td>
-            <td>{{exam_tabel.exam_type|type:request.session.lang}}</td>
+            <td>{{exam_tabel.semester|lang_semester}}</td>
+            <td>{{exam_tabel.exam_type|lang_type}}</td>
 
             <td>{{exam_tabel.class_room.name}}</td>
 

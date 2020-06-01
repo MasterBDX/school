@@ -7,14 +7,16 @@
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
                     {% trans 'Search results for' %}
 
-
+                    {% if request.GET.q == ' ' or request.GET.q == '' %}
+                    - - 
+                    {% else %}
                     {{request.GET.q}}
-
+                    {% endif %}
                     <hr />
                 </h1>
             </div>
@@ -77,16 +79,21 @@
                                         {{student.get_full_name}}
                                         {% endif %}
                                     </td>
-                                    <td>{{student.gender|lang_gender:request.session.lang|capfirst}}</td>
+                                    <td>
+                                    {% with gender=student.gender|capfirst  %}
+                                    {% trans gender  %}
+                                    {% endwith %}
+                                    </td>
                                     <td>
 
 
                                         {{student.the_class.name}}
 
                                     </td>
-                                    <td>{{student.id_number}}</td>
+                                    <td>{{student.nid_number}}</td>
 
                                     {% if request.user.is_authenticated %}
+                                    
                                     <td>
                                         <div class="row">
                                             <div class="col-md-4">

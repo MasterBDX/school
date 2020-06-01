@@ -9,13 +9,13 @@ from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
 from django.utils.translation import ugettext_lazy as _
 
-from .mixins import DeleteSuccessMessageMixin
+from main.mixins import DeleteSuccessMessageMixin
 from .forms import (AddClassForm, AddExamTabelForm,
                     AddFullScheduleForm, AddFullScheduleModelForm,
                     ChooseExamInfoForm, AddClassRoomForm,
                     AddSubjectForm, ScheduleSearchForm, ExamsTabelSearchForm)
 
-from .formsets import (schedule_formset, EditScheduleFormset,
+from .formsets import (schedule_formset,
                        exam_formset
                        )
 from .models import (Exam, ExamTabel, TheClass, Article,
@@ -137,9 +137,11 @@ HUMAN_COUNT = {'1': 'يوم واحد', '2': 'يومان', '3': 'ثلاث أيا�
 def add_edit_full_schedule_view(request, class_id=''):
     data = {}
     extra = 1
+    delete = False
     classroom = None
     qs = SchoolSchedule.objects.none()
     if class_id:
+        delete = True
         classroom = get_object_or_404(ClassRoom, id=class_id)
         data['class_room'] = classroom
         qs = SchoolSchedule.objects.filter(
@@ -147,7 +149,7 @@ def add_edit_full_schedule_view(request, class_id=''):
         extra = 0
     classroom_form = AddFullScheduleForm(request.POST or None, initial=data)
 
-    formset = schedule_formset(True, extra=extra)(request.POST or None,
+    formset = schedule_formset(delete, extra=extra)(request.POST or None,
                                                   queryset=qs)
     if request.method == 'POST':
         if classroom_form.is_valid() and formset.is_valid():

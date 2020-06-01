@@ -1,18 +1,20 @@
 from django.db import models
 from django_countries.fields import CountryField
 from django.urls import reverse
+from django_resized import ResizedImageField
 
 from school_tabels.models import TheClass, Article, ClassRoom
 from .managers import SemesterManager, StudentManager
 from .mixins import SubjectsResultsMixin, FinalResultsMixin
 
+from main.utils import students_image_random_name
 from main.vars import *
 
 
 class Student(models.Model):
     first_name = models.CharField(max_length=255)
-    surname = models.CharField(max_length=255)
     father_name = models.CharField(max_length=255)
+    surname = models.CharField(max_length=255)
     grand_father_name = models.CharField(max_length=255)
     mother_name = models.CharField(max_length=255)
 
@@ -26,10 +28,11 @@ class Student(models.Model):
         TheClass, related_name='students', on_delete=models.CASCADE)
     classroom = models.ForeignKey(
         ClassRoom, related_name='students', on_delete=models.CASCADE)
-    id_number = models.CharField(max_length=255, null=True, blank=True)
+    nid_number = models.CharField(max_length=255, null=True, blank=True)
     nationality = models.CharField(
         max_length=255, default='ليبي', choices=NATIONALITY)
-
+    image = ResizedImageField(size=[300, 300], blank=True, null=True,
+                                   upload_to=students_image_random_name)
     objects = StudentManager()
 
     def __str__(self):

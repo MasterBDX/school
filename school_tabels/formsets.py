@@ -8,15 +8,10 @@ def schedule_formset(delete, extra=0):
     ScheduleFormset = modelformset_factory(SchoolSchedule,
                                            form=AddFullScheduleModelForm,
                                            extra=extra,
+                                           can_delete=delete
                                            )
     return ScheduleFormset
 
-
-EditScheduleFormset = modelformset_factory(SchoolSchedule,
-                                           form=AddFullScheduleModelForm,
-                                           max_num=5,
-                                           extra=0
-                                           )
 
 
 def exam_formset(delete, extra=0):

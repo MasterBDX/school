@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
 
 class StudentManager(models.Manager):
     def same_class(self, id):
@@ -18,9 +18,9 @@ class SemesterManager(models.Manager):
             if obj.active:
                 obj.active = False
                 obj.save()
-                active = 'إظهار'
+                active = _('Show')
             else:
                 obj.active = True
                 obj.save()
-                active = 'إخفاء'
+                active = _('Hide')
         return obj, active

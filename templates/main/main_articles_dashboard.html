@@ -2,22 +2,21 @@
 {% load static %}
 {% block content %}
 {% load i18n %}
-{% load get_lang_names %}
-
 <section class="dashboard">
     <div class="container">
         <div class="row">
             <div class="col-md-7 m-auto">
                 <h1 class="text-center">
-                    {% trans 'Classrooms Dashboard' %}
+                    {% trans 'Main Quotes Dashboard' %}
                     <hr />
                 </h1>
+
             </div>
-          <div class="col-md-7 m-auto ">
+            <div class="col-md-7 m-auto ">
                 {% if messages %}
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {% for message in messages %}
-                    <p {% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
+                    <p{% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
                         {% endfor %}
 
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -28,51 +27,37 @@
                 {% endif %}
             </div>
 
-
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="">
-                            <a href="{% url 'tabels:classrooms-add' %}" class="add-button">
-                                <i class="fas fa-plus"></i> 
-                                {% trans 'To add a new classroom' %}
-                            </a>
-                        </p>
-                    </div>
-                    {% if classrooms %}
+
+                    {% if quotes %}
                     <div class="col-md-12">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">
-                                    {% trans 'Classroom Name' %}
+                                        {% trans 'Title' %}
+
                                     </th>
                                     <th scope="col">
-                                    {% trans 'Class'%}
-                                    </th>
-                                    <th scope="col">
-                                    {% trans 'Appearance Order' %}
+                                        {% trans 'English Title' %}
                                     </th>
 
                                     <th scope="col">{% trans 'Control' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for cls in classrooms %}
+                                {% for q in quotes %}
                                 <tr>
-                                    <td>{{cls.name}}</td>
-                                    <td>{{cls.the_class.name}}</td>
-
-                                    <th>{{cls.order|human_counter}}</th>
-
-
+                                    <td>{{q.title}}</td>
+                                    <td>{{q.english_title}}</td>
+                                    
                                     <td>
-                                        <a href="{% url 'tabels:classrooms-edit' pk=cls.id %}" class="btn btn-info">
-                                            {% trans 'Edit' %}
+                                        <a href="{% url 'main:main-articles-edit' pk=q.id %}"
+                                            class="btn btn-info">
+                                            {%trans 'Edit' %}
                                         </a>
-                                        <a href="{% url 'tabels:classrooms-delete' pk=cls.id %}" class="btn btn-danger">
-                                            {% trans 'Delete' %}
-                                        </a>
+                                        
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -80,6 +65,10 @@
 
                             </tbody>
                         </table>
+                    </div>
+                    {% else %}
+                    <div class="col-md-8 m-auto">
+                        <h3 class='text-center'>{% trans 'There is no quotes' %}</h3>
                     </div>
                     {% endif %}
 

@@ -28,3 +28,7 @@ class MainArticle(models.Model):
     english_title = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()
     english_desc = models.TextField(null=True, blank=True)
+
+
+    def __str__(self):
+        return self.title

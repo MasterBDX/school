@@ -2,12 +2,26 @@
 {% load static %}
 {% block content %}
 {% load i18n %}
-{% load get_lang_names %}
+
 
 
 <section class="dashboard">
     <div class="container">
         <div class="row">
+            <div class="col-md-7 m-auto ">
+                {% if messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {% for message in messages %}
+                    <p{% if message.tags %} class="message-p {{ message.tags }} text-center" {% endif %}>{{ message }}</p>
+                        {% endfor %}
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                </div>
+                {% endif %}
+            </div>
             <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
@@ -70,8 +84,7 @@
                                             {{student.full_name}}
                                         </a>
                                     </td>
-
-                                    <td>{{student.gender|lang_gender}}</td>
+                                    {% include 'main/snippets/gender.html' %}
                                     <td>{% trans student.nationality %} </td>
                                     <td>{{student.id_number}}</td>
                                     <td>

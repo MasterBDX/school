@@ -8,7 +8,8 @@ from .views import (HomeView, AboutusView, ClassesScheduleDashboardView,
                     PostsDashboardView, SubjectsDashboardView,
                     StudentsListView, StdsClassroomListView,
                     get_result_view, UsersDashboard,
-                    SchoolInfoEditView, main_articles_edit_view, lang_change_view)
+                    SchoolInfoEditView,MainArticlesDashboard,
+                    MainArticlesEditView, lang_change_view)
 
 
 app_name = 'main'
@@ -41,7 +42,9 @@ urlpatterns = [
     path('result-search', get_result_view, name='result-search'),
     #     path('result-doc', get_result_view, name='result-doc'),
     path('school-info/edit/', SchoolInfoEditView.as_view(), name='school-info-edit'),
-    path('main-articles/edit/', main_articles_edit_view,
+    path('main-articles-dashboard/', MainArticlesDashboard.as_view(),
+         name='main-articles-dashboard'),
+    path('main-articles/<int:pk>/edit/', MainArticlesEditView.as_view(),
          name='main-articles-edit'),
     re_path(r'^lang-change/(?P<lang>\w{2})/$', lang_change_view,
             name='lang-change')

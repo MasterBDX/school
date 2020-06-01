@@ -64,7 +64,7 @@
                     {% trans 'About School' %}
                 </h5>
                 {% if object.content %}
-                <p>{{object.content}}</p>
+                <p>{{object.safe_content}}</p>
                 {% endif %}
             </div>
         </div>

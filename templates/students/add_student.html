@@ -54,3 +54,20 @@
     </div>
 
     {% endblock %}
+    {% block js %}
+        <script>
+            $(function () {
+
+                let myvar = $('#id_image').fileuploader({
+                    limit: 1,
+                    maxSize: 1,
+                    fileMaxSize: 1,
+                    extensions: ['jpg', 'png', 'gif', 'tiff', 'psd'],
+
+                });
+                
+                
+
+            })
+        </script>
+    {% endblock %}

@@ -423,7 +423,7 @@ section.dashboard .btn-danger{
 }
 
 section.dashboard .btn-danger:hover{
-    background-color: #c82333;
+    background-color: hsl(354, 70%, 46%);
     color: #fff;
 }
 

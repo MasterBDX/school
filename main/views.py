@@ -16,7 +16,7 @@ from django.utils.translation import ugettext as _
 from django.utils.http import is_safe_url
 
 
-from .formsets import MainArticleFormset
+
 from .forms import (Contact, ResultSearchForm, MainArticleForm,
                     SchoolInfoForm, MainArticleForm)
 from posts.models import Post
@@ -39,7 +39,7 @@ class HomeView(TemplateView):
 
 class AboutusView(TemplateView):
     template_name = 'main/about_us.html'
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["object"] = SchoolInfo.objects.all().first()
@@ -156,13 +156,13 @@ class StudentsDashboardView(ListView):
 
 
 class StudentsListView(ListView):
-    template_name = 'main/students_list.html'
+    template_name = 'main/students_classroom_list.html'
     context_object_name = 'classes'
     queryset = TheClass.objects.all()
 
 
 class StdsClassroomListView(ListView):
-    template_name = 'main/students_classroom_list.html'
+    template_name = 'main/students_list.html'
     context_object_name = 'students'
 
     def get_queryset(self, *args, **kwargs):
@@ -212,7 +212,7 @@ class SchoolInfoEditView(UpdateView):
     queryset = SchoolInfo.objects.all()
     form_class = SchoolInfoForm
     template_name = 'main/school_info_edit.html'
-    success_url = reverse_lazy('main:school-info-edit')
+    success_url = reverse_lazy('main:about_us')
 
     def get_object(self, queryset=None):
         qs = SchoolInfo.objects.all()
@@ -223,17 +223,30 @@ class SchoolInfoEditView(UpdateView):
         raise Http404
 
 
-def main_articles_edit_view(request):
-    qs = MainArticle.objects.all()
-    formset = MainArticleFormset(request.POST or None, queryset=qs)
-    if request.method == 'POST':
-        if formset.is_valid():
-            for form in formset:
-                if form.is_valid():
-                    form.save()
-            return redirect(request.path)
-    context = {'formset': formset}
-    return render(request, 'main/main_articles_edit.html', context)
+class MainArticlesDashboard(ListView):
+    context_object_name = 'quotes'
+    queryset = MainArticle.objects.all()[:8]
+    template_name = 'main/main_articles_dashboard.html'
+
+
+class MainArticlesEditView(UpdateView):
+    queryset = MainArticle.objects.all()
+    form_class = MainArticleForm
+    template_name = 'main/main_articles_edit.html'
+    success_url = reverse_lazy('main:main-articles-dashboard')
+    
+
+# def main_articles_edit_view(request):
+#     qs = MainArticle.objects.all()
+#     formset = MainArticleFormset(request.POST or None, queryset=qs)
+#     if request.method == 'POST':
+#         if formset.is_valid():
+#             for form in formset:
+#                 if form.is_valid():
+#                     form.save()
+#             return redirect(request.path)
+#     context = {'formset': formset}
+#     return render(request, 'main/main_articles_edit.html', context)
 
 
 def lang_change_view(request, lang):

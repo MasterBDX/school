@@ -24,7 +24,7 @@ class Contact(forms.Form):
         matches = re.findall(r'^09\d{8}$', phone_number)
         if not matches:
             raise forms.ValidationError(
-                _('Please enter a valid phone number '))
+                _('Please enter a valid phone number'))
         return phone_number
 
 
@@ -46,6 +46,14 @@ class ResultSearchForm(forms.Form):
 
 class SchoolInfoForm(forms.ModelForm):
     class Meta:
+        labels = {'name':_('Name'),
+                  'en_name':_('English Name'),
+                  'content':_('Content'),
+                  'school_phone':_('Cell Phone Number'),
+                  'street':_('Street'),
+                  'city':_('City'),
+                  'municipality':_('Municipality'),
+                  'province':_('Province')}
         model = SchoolInfo
         fields = '__all__'
         widgets = {
@@ -53,17 +61,37 @@ class SchoolInfoForm(forms.ModelForm):
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
                 ['fontname', ['fontname']],
-                ['color', ['color']],
+                ['color', ['forecolor', 'backcolor']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['fullscreen', 'codeview', 'help']],
             ]}}),
-            # 'content': SummernoteInplaceWidget(),
+            
         }
+
+    def clean_school_phone(self):
+        school_phone = self.cleaned_data.get('school_phone')
+        matches = re.findall(r'^09\d{8}$', school_phone)
+        if not matches:
+            raise forms.ValidationError(_('Please enter a valid phone number'))
+        return school_phone
 
 
 class MainArticleForm(forms.ModelForm):
     class Meta:
+        labels = {'image':_('Image'),
+                  'title':_('Title'),
+                  'english_title':_('English Title'),
+                  'description':_('Description'),
+                  'english_desc':_('English Description')}
         model = MainArticle
-        fields = '__all__'
+        fields = ['title','english_title','description','english_desc','image']
+    
+    def clean_english_title(self):
+        english_title = self.cleaned_data.get('english_title')
+        if  english_title:
+            if not re.findall('^[a-zA-Z\s]+$', english_title):
+                raise forms.ValidationError(
+                    _("This field must have just english letters"))
+        return english_title

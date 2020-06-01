@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 from django_resized import ResizedImageField
 
-from .utils import main_image_random_name
+from main.utils import main_image_random_name
 from .managers import PostManager
 
 User = get_user_model()

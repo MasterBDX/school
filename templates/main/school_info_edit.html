@@ -1,7 +1,8 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block title %}
-تعديل معلومات المدرسة
+{% load i18n %}
+ {% trans 'Edit School Info' %}
 {% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
@@ -12,7 +13,7 @@
             <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
-                    تعديل معلومات المدرسة
+                    {% trans 'Edit School Info' %}
                     <hr />
 
                 </h1>
@@ -23,7 +24,7 @@
                     {{form|crispy}}
                     <div style="height:50px;"></div>
                         <button type="submit">
-                            تعديل
+                            {% trans 'Edit' %}
                         </button>
                 </form>
                 <br />
@@ -32,20 +33,4 @@
     </div>
     {% endblock %}
 
-    {% block js %}
-    <script>
-        $(function () {
-
-            $('#id_main_image').fileuploader({
-                limit: 1,
-                maxSize: 1,
-                fileMaxSize: 1,
-                extensions: ['jpg', 'png', 'gif', 'tiff', 'psd'],
-
-            });
-            const text = $('#myform').text()
-
-
-        })
-    </script>
-    {% endblock %}
+    

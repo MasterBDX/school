@@ -7,7 +7,7 @@ from .views import (StudentDetail, StudentPrintableDetail,
                     AddResultsPaperView, EditResultsPaperView,
                     DeleteResultsPaperView, semester_edit_view,
                     edit_class_grades_view, add_compensatory_view,
-                    semester_active_toggle_view, results_activation_confirm_view)
+                    semester_activation_toggle_view, results_activation_confirm_view)
 
 app_name = 'students'
 urlpatterns = [
@@ -43,7 +43,7 @@ urlpatterns = [
     path('compensatory-exam/add/<int:pk>/part-<int:part>/',
          add_compensatory_view, name='compensatory-exam-add'),
     path('semester-active-toggle/<int:pk>/',
-         semester_active_toggle_view, name='semester-active-toggle'),
+         semester_activation_toggle_view, name='semester-active-toggle'),
     path('results-activation-confirm/<int:status>/classroom-<int:pk>',
          results_activation_confirm_view, name='results-activation-confirm'),
 ]

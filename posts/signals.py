@@ -2,7 +2,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils import timezone
 from .models import Post
-from .utils import unique_slug_generator
+from main.utils import unique_slug_generator
 
 
 @receiver(pre_save, sender=Post)

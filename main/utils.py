@@ -56,3 +56,17 @@ def main_image_random_name(title, image_name):
 
     img_path = os.path.join('main_images', img_name)
     return img_path
+
+
+
+def students_image_random_name(title, image_name):
+    slug_title = slugify(title)
+    imgName, imgExt = os.path.splitext(image_name)
+    if 'png' in imgExt and '.png' != imgExt:
+        imgExt = '.png'
+
+    random_str = random_string_generator(size=6)
+    img_name = slug_title + random_str + imgExt
+
+    img_path = os.path.join('students_images', img_name)
+    return img_path

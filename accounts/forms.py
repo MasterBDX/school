@@ -55,7 +55,7 @@ class RegisterForm(forms.ModelForm):
         phone_number = self.cleaned_data.get('phone_number')
         matches = re.findall(r'^09\d{8}$', phone_number)
         if not matches:
-            raise forms.ValidationError('يرجي إدخال رقم هاتف صحيح ')
+            raise forms.ValidationError('يرجي إدخال رقم هاتف صحيح')
         return phone_number
 
     def clean_password1(self):

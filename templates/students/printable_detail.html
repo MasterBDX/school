@@ -1,83 +1,88 @@
 {% extends 'layout.html' %}
 {% load static %}
+{% block title %}
+{% if request.session.lang == 'ar' %}
+معلومات الطالب
+{{student.get_std_name}}
+{% else %}
+Student {{student.get_std_name}} Information
+{% endif %}
+{% endblock %}
 {% block content %}
-{% load get_student_filters %}
+{% load i18n %}
 
 <section>
     <div class="container">
-        <div class="paper-borders">
-            <h1 class="text-right">
-                <strong>نموذج بيانات الطالب</strong>
-            </h1>
-            <table class="row">
-                <tbody class="col-sm-12">
-                    <tr>
-                        <td>الإسم الأول</td>
-                        <td>{{student.first_name}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>إسم الأب</td>
-                        <td>{{student.father_name}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>إسم الأم</td>
-                        <td>{{student.mother_name}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>إسم الجد</td>
-                        <td>{{student.grand_father_name}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>اللقب</td>
-                        <td>{{student.surname}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>مكان الولادة</td>
-                        <td>{{student.place_of_birth}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>الجنس</td>
-                        <td>{{student.gender|arabic_gender}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>تاريخ الميلاد</td>
-                        <td>{{student.birth_date|date:"j-n-Y"}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>العمر</td>
-                        <td>{{student.age}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>الجنسية</td>
-                        <td>{{student.nationality}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>رقم الهاتف</td>
-                        <td>{{student.cell_phone}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>الصف</td>
-                        <td>{{student.the_class}}</td>
-                    </tr>
-
-                    <tr>
-                        <td>الرقن الوطني</td>
-                        <td>{{student.id_number}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <br />
+        <br />
+        <br />
+        <div class="">
+           <table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col">{% trans 'ID Number'%}</th>
+      <th scope="col">{% trans 'First Name' %}</th>
+      <th scope="col">{% trans 'Father Name' %}</th>
+      <th scope="col">{% trans 'Mother Name' %}</th>
+      <th scope="col">{% trans 'Grandfather Name' %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>{{student.id}}</th>
+      <td>{{student.first_name}}</td>
+      <td>{{student.father_name}}</td>
+      <td>{{student.mother_name}}</td>
+      <td>{{student.grand_father_name}}</td>
+    </tr>
+    <tr>
+      
+      <td colspan='5'></td>
+    </tr>
+    <tr>
+      <th scope="col">{% trans 'Surname' %}</th>
+      <th scope="col">{% trans 'Birth Date'%}</th>
+      <th scope="col">{% trans 'Age' %}</th>
+      <th scope="col">{% trans 'Gender'%}</th>
+      <th scope="col">{% trans 'Nationality' %}</th>
+    </tr>
+    <tr>
+      <td>{{student.surname}}</td>
+      <td>{{student.birth_date}}</td>
+      <td>{{student.age}}</td>
+      
+      {% include 'main/snippets/gender.html' %}
+      
+      <td>{% trans student.nationality %}</td>
+    </tr>
+    <tr>
+      <td colspan='5'></td>
+    </tr>
+    <tr>
+      <th scope="col">{% trans 'Cell Phone Number' %}</th>
+      <th scope="col">{% trans 'Class' %}</th>
+      <th scope="col">{% trans 'Classroom' %}</th>
+      <th scope="col">{% trans 'N.Id Number' %}</th>
+      <th scope="col">{% trans 'Place Of Birth' %} </th>
+      
+    </tr>
+    <tr>
+      <th>{{student.cell_phone}}</th>
+      <td>{{student.the_class.name}}</td>
+      <td>{{student.classroom.name}}</td>
+      <td>{{student.nid_number}}</td>
+      <td>{{student.place_of_birth}}</td>
+    </tr>
+      
+  </tbody>
+</table>
         </div>
     </div>
+     <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 </section>
 {% endblock %}

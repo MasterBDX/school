@@ -1,36 +1,34 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
+{% load i18n %}
 {% load crispy_forms_tags %}
-{% load get_student_filters %}
-<section>
-    <br />
-    <br />
-    <br />
-    <br />
-</section>
+
+
 <section>
     <div class="container">
         <div class="row tabel-row" >
-            <div class="col-md-12">
+            <div class="col-md-8 m-auto">
 
                 <h1 class="text-center">
-                  إضافة أو تعديل درجات 
-                  الدور 
+                {% if request.session.lang == 'ar' %}
+                  إضافة أو تعديل درجات  
                   {{part}}
+                  {% else %}
+                   Add or Edit {{part}} results
+                  {% endif %}
+                  <hr />
                 </h1>
             </div>
             <div class="col-md-12">
-             <hr />
+             
                 <form enctype="multipart/form-data" method="POST" id='add-student-form'>
                     {% csrf_token %}
                      <div class="row">
                         <div class="col-md-8 offset-md-4">
                         <input type="hidden" name='p' value="{{paper.id}}" />
-
                             {{form|crispy}}
-                            <br />
-                            
+                            <br />     
                             <br />
                         </div>
                         
@@ -38,7 +36,6 @@
                         {% for form in formset %}
                         <div class="col-md-4">
                             {{form|crispy}}
-                    
                             <br />
                             <hr />
                         </div>
@@ -47,16 +44,15 @@
                  
                         <div id='hidden-div' class="col-md-4">
                             <div class='empty-form-div' id="empty-form-div">
-                                {{formset.empty_form|crispy}}
-                                
+                                {{formset.empty_form|crispy}}             
                                  <br />
                             <hr />
                             </div>
                         </div>
                           <div class="col-md-4">
                             <div id='add-new-form'>
-                                <span>أضف المزيد <i class="fas fa-plus fa-lg"></i></span>
-                            
+                                <span>{% trans 'Add more' %}
+                                <i class="fas fa-plus fa-lg"></i></span>
                             </div>
                         </div>
                     </div>
@@ -64,7 +60,7 @@
                     </div>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
-                           حفظ
+                           {% trans 'Save' %}
                         </button>
                     </div>
                 </form>

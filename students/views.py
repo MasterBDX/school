@@ -4,9 +4,14 @@ from django.views.generic import (
     ListView, DetailView, CreateView,
     UpdateView, DeleteView
 )
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.utils.translation import get_language
+from django.utils.translation import ugettext_lazy as _
 from django.http import JsonResponse
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .filters import get_stds_filters
 from .models import Student, ResultsPaper
@@ -22,40 +27,41 @@ from .models import (Student, Semester, SubjectResult,
 from .formsets import (subjects_results_formset,
                        edit_class_grades_formset,
                        com_exams_formset, edit_com_exams_formset)
-from main.vars import SEMESTERS_DIC
+from main.vars import SEMESTERS_DIC,PART_DIC,HUMAN_COUNTER_DIC
+from main.mixins import DeleteSuccessMessageMixin,StudentSuccessUrlMixin
 
 
-LANG = get_language()
-
-class StudentDetail(DetailView):
+class StudentDetail(LoginRequiredMixin,DetailView):
     model = Student
     template_name = 'students/detail.html'
 
 
-class StudentPrintableDetail(DetailView):
+class StudentPrintableDetail(LoginRequiredMixin,DetailView):
     model = Student
     template_name = 'students/printable_detail.html'
+    
 
 
-class AddStudentView(CreateView):
+class AddStudentView(LoginRequiredMixin,SuccessMessageMixin,StudentSuccessUrlMixin,CreateView):
     form_class = AddStudent
     template_name = "students/add_student.html"
-    success_url = reverse_lazy("main:students-classrooms-dashboard")
-
-
-class EditStudentView(UpdateView):
+    success_message = _('A new student has been added')
+    
+    
+class EditStudentView(LoginRequiredMixin,SuccessMessageMixin,StudentSuccessUrlMixin,UpdateView):
     context_object_name = 'student'
     queryset = Student.objects.all()
     form_class = AddStudent
     template_name = "students/add_student.html"
-    success_url = reverse_lazy("main:students-classrooms-dashboard")
+    
+    success_message = _('The student information has been modified')
 
 
-class DeleteStudentView(DeleteView):
+class DeleteStudentView(LoginRequiredMixin,DeleteSuccessMessageMixin,StudentSuccessUrlMixin,DeleteView):
     queryset = Student.objects.all()
     template_name = "students/delete_student_confirm.html"
     success_url = reverse_lazy("main:students-classrooms-dashboard")
-
+    success_message = _('The student has been deleted')
 
 class SearchStudentsView(ListView):
     context_object_name = 'students'
@@ -71,9 +77,10 @@ class SearchStudentsView(ListView):
         return qs
 
 
-class AddResultsPaperView(CreateView):
+class AddResultsPaperView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     form_class = AddResultsPaperForm
     template_name = 'students/add_results_paper.html'
+    success_message = _('A new result paper has been added')
 
     def get_success_url(self, *args, **kwargs):
         return self.get_student(self.request.POST.get('std_id')).get_absolute_url()
@@ -100,30 +107,29 @@ class AddResultsPaperView(CreateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['std_id'] = self.request.GET.get('std_id')
+        context['student'] = self.get_student(self.request.GET.get('std_id'))
+        
         return context
 
 
-class EditResultsPaperView(UpdateView):
+class EditResultsPaperView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+    context_object_name = 'results_paper'
     queryset = ResultsPaper.objects.all()
     form_class = AddResultsPaperForm
     template_name = 'students/add_results_paper.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['std_id'] = self.request.GET.get('std_id')
-        return context
+    success_message = _('The result paper has been modified')
 
 
-class DeleteResultsPaperView(DeleteView):
+class DeleteResultsPaperView(LoginRequiredMixin,DeleteSuccessMessageMixin,DeleteView):
     queryset = ResultsPaper.objects.all()
     form_class = AddResultsPaperForm
     template_name = 'students/delete_results_papaer_confirm.html'
+    success_message = _('The result paper has been deleted')
 
     def get_success_url(self, *args, **kwargs):
         return self.object.student.get_absolute_url()
 
-
+@login_required
 def semester_edit_view(request, pk, std_id):
     semester = get_object_or_404(Semester, pk=pk)
 
@@ -134,13 +140,19 @@ def semester_edit_view(request, pk, std_id):
             for form in formset:
                 if form.is_valid():
                     form.save()
+            semester_order = SEMESTERS_DIC.get(str(semester.order))
+            if get_language() == 'ar':
+                msg = 'تم تعديل بيانات الفترة {}'.format(semester_order)
+            else:
+                msg = '{} semester info has been modified'.format(semester_order)
+            messages.success(request,msg.capitalize())
             return redirect('students:detail', pk=std_id)
 
     context = {'formset': formset, 'semester': semester}
     return render(request, 'students/semester_edit.html', context)
 
 
-
+@login_required
 def edit_class_grades_view(request, pk, order=1):
     the_class = TheClass.objects.get(pk=pk)
     if not str(order) in ['1', '2', '3']:
@@ -156,7 +168,7 @@ def edit_class_grades_view(request, pk, order=1):
                     form.save()
             msg = 'The {} Semester grades for {} Class have been modified'.format(SEMESTERS_DIC.get(order),
                                                                 the_class.name) 
-            if LANG == 'ar':
+            if get_language() == 'ar':
                 msg = 'تم تعديل درجات الفترة {} للصف {}'.format(SEMESTERS_DIC.get(order),
                                                                 the_class.name)            
             messages.success(request,msg)            
@@ -167,11 +179,7 @@ def edit_class_grades_view(request, pk, order=1):
                'class_name': the_class.name}
     return render(request, 'students/edit_class_grades.html', context)
 
-
-PART = {'2': 'الثاني',
-        '3': 'الثالث'}
-
-
+@login_required
 def add_compensatory_view(request, pk, part):
     qs = CompensatoryExam.objects.filter(results_paper__id=pk, part=part)
     formset = com_exams_formset(request.POST or None, queryset=qs)
@@ -184,35 +192,46 @@ def add_compensatory_view(request, pk, part):
                         obj = form.save(commit=False)
                         obj.results_paper = paper
                         obj.save()
-            return redirect('/')
-    context = {'formset': formset, 'paper': paper, 'part': PART.get(str(part))}
-    return render(request, 'students/add_compensatory_exam.html', context)
+            attempt = HUMAN_COUNTER_DIC.get(str(part))
+            if get_language() == 'ar':
+                msg = 'تم تعديل نتائج الدور {}'.format(attempt)
+            else:
+                msg = 'The {} attempt results have been modified '.format(attempt)
+            messages.success(request,msg)
+            return redirect(paper.student.get_absolute_url())
+    context = {'formset': formset, 'paper': paper,
+               'part': PART_DIC.get(str(part))}
+    return render(request, 'students/add_compensatory_exam_result.html', context)
 
-
-def semester_active_toggle_view(request, pk):
+@login_required
+def semester_activation_toggle_view(request, pk):
     semester, toggle = Semester.objects.toggle(pk)
     if request.is_ajax():
         json_data = {'active': toggle}
         return JsonResponse(json_data)
     return redirect(semester.get_absolute_url())
 
-
+@login_required
 def results_activation_confirm_view(request, status, pk):
     classroom = get_object_or_404(ClassRoom, pk=pk)
-    text = 'تنشيط'
+    text = _('Activate')
     if not bool(status):
-        text = 'إلغاء تنشيط'
+        text = _('Deactivate')
     if request.method == 'POST':
         results = ResultsPaper.objects.filter(student__classroom=classroom)
-        results.update(active=bool(status))
-
+        results.update(active=bool(status))        
+        if get_language() == 'ar':
+            msg = 'تم {} جميع نتائج الفصل {}'.format(text,classroom.name)
+        else :
+            msg = 'All {} results has been {}d'.format(classroom.name,text).capitalize()
+        messages.success(request,msg)
         return redirect('main:students-classrooms-dashboard')
     context = {
         'classroom_name': classroom.name,
         'status': text}
     return render(request, 'students/results_activation_confirm.html', context)
 
-
+@login_required
 def results_activation_toggle_view(request, pk, status):
     status = bool(status)
     classroom = get_object_or_404(ClassRoom, pk=pk)

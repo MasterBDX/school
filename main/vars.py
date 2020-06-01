@@ -1,5 +1,10 @@
-from django.utils.translation import pgettext_lazy, ugettext_lazy as _
+from django.utils.translation import (pgettext_lazy,
+                                      ugettext_lazy as _,
+                                      get_language)
 from datetime import datetime
+
+
+
 
 STUDENTS_CLASSES = [('1', 'الأول'), ('2', 'الثاني'),
                     ('3', 'الثالث'), ('4', 'الرابع'),
@@ -9,15 +14,17 @@ STUDENTS_CLASSES = [('1', 'الأول'), ('2', 'الثاني'),
                     ]
 
 
-SEMESTER = [('2', 'الثانية'),
-            ('3', 'الثالثة')]
+SEMESTER = [('2', _('Second')),
+            ('3', _('Third'))]
 
-PART = [('2', 'الثاني'),
-        ('3', 'الثالث')]
+PART = [('2', pgettext_lazy('second attempt','Second')),
+        ('3', pgettext_lazy('third attempt','Third'))]
 
+PART_DIC = {'2': pgettext_lazy('second attempt','Second attempt'),
+            '3':  pgettext_lazy('third attempt','Third attempt')}
 
-GENDER = [('ml', _('Male')), ('fl', _('Female'))]
-GENDER_DIC = {'ml': _('Male'),'fl': _('Female')}
+GENDER = [('male', _('Male')), ('female', _('Female'))]
+
 
 STUDENTS_CLASSES = [('1', 'الأول'), ('2', 'الثاني'),
                     ('3', 'الثالث'), ('4', 'الرابع'),
@@ -37,10 +44,6 @@ SEMESTERS_DIC = {
                  '3': _('Third')
                  }
 
-WEEK_DAYS = [('sunday', 'الأحد'), ('monday', 'الإثنين'),
-             ('tuesday', 'الثلاثاء'), ('wednesday', 'الأربعاء'),
-             ('thursday', 'الخميس')]
-
 # This for Choice Field in exam tabel search
 YEARS = [(str(x), str(x)) for x in range(2000, 2035)]
 
@@ -59,13 +62,14 @@ MONTHS = {1: _('January'), 2: _('February'),
           11: _('November'), 12: _('December'), }
 
 TYPE = [('1', _('Midterm')), ('2', _('Final')),
-        ('3', _('Second Round')), ('4', _('Third Round'))]
+        ('3', _('Second Attempt')), ('4', _('Third Attempt'))]
 
 
-TYPE_DIC = {'1': {'ar': 'نصفية', 'en': 'Midterm'},
-            '2': {'ar': 'نهائية', 'en': 'Final'},
-            '3': {'ar': 'دور ثاني', 'en': 'Second Round'},
-            '4': {'ar': 'دور ثالث', 'en': 'Third Round'}}
+TYPE_DIC = {'1': _('Midterm'),
+            '2': _('Final'),
+            '3': _('Second Attempt'),
+            '4': _('Third Attempt')
+            }
 
 
 HUMAN_COUNTER_DIC = {
@@ -82,8 +86,9 @@ HUMAN_COUNTER_DIC = {
 
 ORDER = [('1', 'الأول'), ('2', 'الثاني'), ('3', 'الثالث')]
 
-ENTRY = [('نظامي', 'نظامي'), ('منتسب', 'منتسب')]
-STATUS = [('مستجد', 'مستجد'), ('معيد', 'معيد')]
+ENTRY =  [('regular',_('Regular')),('associate',_('Associate'))]
+
+STATUS = [('new',_('New')),('repeater',_('Repeater'))]
 
 
 NATIONALITY = [('Libyan', _('Libyan')),
