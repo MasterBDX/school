@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-
+{% load i18n %}
 
 <section>
     <div class="container">
@@ -9,20 +9,21 @@
             <div class="col-md-9 m-auto ">
 
                 <h1 class="text-center">
-                    حذف
+                    {% trans 'Delete' %}
                     {{object.username}}
-                    من قاعدة البيانات
+                   
                 </h1>
             </div>
             <div class="col-md-9 m-auto ">
                 <form method="POST" id='add-post-form'>
                     {% csrf_token %}
-                    <p class="lead text-center">هل أنت متأكد أنك تريد حذف هذا المستخدم ؟
+                    <p class="lead text-center">
+                    {% trans 'Are you sure you want to delete this user ?' %}
                         <hr />
                     </p>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
-                            حذف
+                            {% trans 'Delete' %}
                         </button>
                     </div>
                     <div style="height:100px;"></div>

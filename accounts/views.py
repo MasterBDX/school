@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.contrib.auth import (login, get_user_model, logout, authenticate)
@@ -9,17 +10,23 @@ from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from django.utils.http import is_safe_url
 from defender.decorators import watch_login
-
+from django.utils.translation import get_language, ugettext as _,pgettext
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from .forms import (RegisterForm, LoginForm, UserEditForm, ChangePasswordForm)
+from .decorators import anonymous_required,admin_only
+from main.mixins import AdminPermission
+
 
 User = get_user_model()
 
-
+@login_required
+@admin_only
 def register_view(request):
     form = RegisterForm(request.POST or None)
     url = reverse('accounts:login')
-    msg = 'تم تسجيلك بنجاح يرجى الإنتظار حتى يتم تفعيل حسابك'
+    msg = _('You have been registered successfully Please wait for your account to be activated')
 
     if request.method == 'POST':
         if form.is_valid():
@@ -28,14 +35,14 @@ def register_view(request):
                 if request.user.is_admin:
                     obj.active = True
                     url = reverse('main:users-dashboard')
-                    msg = 'تم إضافة المستخدم بنجاح'
+                    msg = _('User has been added successfully')
             obj.save()
             messages.add_message(request, messages.SUCCESS, msg)
             return HttpResponseRedirect(url)
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
-
+@anonymous_required
 @watch_login()
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -66,42 +73,41 @@ def login_view(request):
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
-
-# class UserLoginView(LoginView):
-#     # form_class = LoginForm
-#     template_name = 'accounts/register.html'
-
-
-def logout_view(request):
+@login_required
+def logout_view(request):    
+    
+    lang = request.session.get('lang')
     logout(request)
+    request.session['lang'] = lang
     return HttpResponseRedirect(reverse('accounts:login'))
 
 
-class UserEditView(UpdateView):
+class UserEditView(LoginRequiredMixin,UpdateView):
     queryset = User.objects.all()
     form_class = UserEditForm
     context_object_name = 'user_object'
     template_name = 'accounts/profile_edit.html'
 
 
-class MyPasswordChangeView(auth_views.PasswordChangeView):
+class MyPasswordChangeView(LoginRequiredMixin,auth_views.PasswordChangeView):
     template_name = 'accounts/change_password.html'
     form_class = ChangePasswordForm
     success_url = reverse_lazy('accounts:password_change_done')
 
-
+@login_required
+@admin_only
 def users_activation_toggle_view(request, status, pk=None):
-    text = 'تنشيط'
+    text = _('Activate')
     users_status = User.objects.activetion_toggle(status, pk=pk)
     if users_status:
-        text = 'إلغاء تنشيط'
+        text = _('Deactivate')
     if request.is_ajax:
         data = {'text': text, 'status': int(not bool(status))}
         return JsonResponse(data)
     return redirect('main:users-dashboard')
 
 
-class UserDeleteView(DeleteView):
+class UserDeleteView(LoginRequiredMixin,AdminPermission,DeleteView):
     queryset = User.objects.all_users()
     template_name = 'accounts/delete_user_confirm.html'
     success_url = reverse_lazy('main:users-dashboard')

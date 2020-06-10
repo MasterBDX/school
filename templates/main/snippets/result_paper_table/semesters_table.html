@@ -1,0 +1,77 @@
+{% load i18n %}
+{% load get_lang_names %}
+    {% for semester in object.semesters.active %}
+    <thead>
+    <tr>
+                <th colspan='8' class='text-center'>
+                {% if request.session.lang == 'ar' %} 
+                الفترة
+                {{semester.order|lang_semester}}
+                {% else %}
+                {{semester.order|lang_semester}}
+                Semester
+                {% endif %}
+                </th>
+            </tr>
+        <tr>
+            <th scope="col">{% trans 'Subject' %}</th>
+            <th scope="col">{% trans 'Exam Grade' %}</th>
+            <th scope="col">{% trans 'Exam Pass Grade' %}</th>
+            <th scope="col">{% trans 'Need To Pass' %}</th>
+            <th colspan="1" scope="col">{% trans 'Year Works Grade' %}</th>
+            <th scope="col">{% trans 'Subject Pass Grade' %}</th>
+            <th scope="col">{% trans 'Total' %}</th>
+            <th scope="col">{% trans 'Status' %}</th>
+        </tr>
+
+    </thead>
+     <tbody>
+                   
+            {% for sr in semester.subjects_results.all  %}        
+            
+            <tr>
+                <td>{{sr.subject}}</td>
+                <td>{{sr.std_exam_grade}} \ {{sr.exam_grade}}</td>
+                <td>{{sr.exam_pass_grade}}</td>
+                <td>{{sr.need_to_pass_exam}}</td>
+                <td colspan="1">
+                {% if semester.order == '3' %}
+                 {{sr.get_total_subject_grades}}  
+                {% else %}
+                {{sr.std_year_works_grade}} \ {{sr.year_works_grade}} 
+                {% endif %}
+                </td>
+                <td>{{sr.grade_pass_subject}}</td>
+                <td>{{sr.total_subject_grades}}</td>
+                <td>
+                    {% if sr.passed %}
+                    {% trans 'Succeed' %}
+                    {% else %}
+                    {% trans 'Failed' %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            {% if semester.order != '3' %}
+            <tr>
+            
+                <td colspan="2">
+                    {% trans 'Total' %}  &nbsp;:&nbsp;
+                    {{semester.general_average}}
+
+                </td>
+                <td colspan="3">
+
+                    {% trans 'Rate' %}  &nbsp;:&nbsp;
+                    {{semester.total_percentage}} %
+
+                </td>
+                <td colspan="3">
+                    {% trans 'Estimate'%} &nbsp;:&nbsp; {{semester.get_estimate}}
+                </td>
+
+            </tr>
+            {% endif %}
+          
+            {% endfor %}
+    </tbody>

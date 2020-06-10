@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_resized import ResizedImageField
-
+from django.utils.translation import get_language
 
 class SchoolInfo(models.Model):
     name = models.CharField(max_length=255)
@@ -17,6 +17,14 @@ class SchoolInfo(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_name(self):
+        if get_language() == 'ar':
+            name = self.name
+        else:
+            name = self.english_name
+        return name
+
 
     def safe_content(self):
         return mark_safe(self.content)

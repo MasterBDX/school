@@ -23,12 +23,28 @@ def get_student_info(sender, instance, *args, **kwargs):
         except:
             pass
 
+#===================================================================
+
+def update_result_info(obj):
+    '''
+    this function to update total and percintage and 
+    estimate for result paper and semesters
+    '''
+    obj.total = obj.general_average()
+
 
 def get_subjects_results(semesters, instance):
+    
+    '''
+        this function to update subjects results when 
+        we make a new result paper or when make changes
+        on old one
+    '''
+
     subjects = instance.the_class.subjects.all()
     for semester in semesters:
         qs = SubjectResult.objects.filter(
-            semester=semester).exclude(semester__results_paper__the_class=instance.the_class)
+            semester=semester,semester__results_paper=instance).exclude(semester__results_paper__the_class=instance.the_class)
         if qs.exists():
             qs.delete()
         for subject in subjects:
@@ -46,6 +62,7 @@ def get_subjects_results(semesters, instance):
 
     return True
 
+#=======================================================================
 
 @receiver(pre_save, sender=ResultsPaper)
 def complete_the_results_paper_presave(sender, instance, *args, **kwargs):
@@ -53,6 +70,8 @@ def complete_the_results_paper_presave(sender, instance, *args, **kwargs):
     if semesters.exists():
         get_subjects_results(semesters, instance)
 
+
+#========================================================================
 
 @receiver(post_save, sender=ResultsPaper)
 def complete_the_results_paper_postsave(sender, instance, created, *args, **kwargs):
@@ -66,6 +85,8 @@ def complete_the_results_paper_postsave(sender, instance, created, *args, **kwar
         semesters = [semester1, semester2, semester3]
         get_subjects_results(semesters, instance)
 
+
+#=========================================================================
 
 @receiver(post_save, sender=ClassGrade)
 def fix_changed_results(sender, instance, created, *args, **kwargs):
@@ -82,6 +103,7 @@ def fix_changed_results(sender, instance, created, *args, **kwargs):
             subject.grade_pass_subject = instance.grade_pass_subject
             subject.save()
 
+#=========================================================================
 
 def can_pass(instance, subject_result=None, semester=None):
     std_total, total = instance.get_total()
@@ -107,7 +129,6 @@ def get_pass_boolean(sender, instance, *args, **kwargs):
     if qs.count() == 1:
         com_exam = qs.first()
         com_exam.save()
-
     can_pass(instance, semester=instance.semester.order)
 
 

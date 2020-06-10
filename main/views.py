@@ -24,11 +24,10 @@ from school_tabels.models import (Article, Exam, TheClass, ClassRoom)
 from students.models import Student, ResultsPaper
 from students.filters import get_stds_filters
 from .models import SchoolInfo, MainArticle
-
+from .mixins import AdminPermission
 
 class HomeView(TemplateView):
     template_name = 'main/home.html'
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         main_artcles = MainArticle.objects.all()[:3]
@@ -121,13 +120,13 @@ class PostsDashboardView(LoginRequiredMixin, ListView):
     template_name = 'main/posts-dashboard.html'
 
 
-class StudentsClassroomsDashboardView(ListView):
+class StudentsClassroomsDashboardView(LoginRequiredMixin,ListView):
     context_object_name = 'classes'
     queryset = TheClass.objects.all()
     template_name = 'main/students_classroom_dashboard.html'
 
 
-class StudentsDashboardView(ListView):
+class StudentsDashboardView(LoginRequiredMixin,ListView):
     context_object_name = 'students'
     template_name = 'main/students_dashboard.html'
 
@@ -177,38 +176,39 @@ class StdsClassroomListView(ListView):
 
         return context
 
-
 def get_result_view(request):
-    form = ResultSearchForm(request.POST or None)
+    form = ResultSearchForm(request.GET or None)
     result_paper = None
-    context = {'form': form}
-    if request.method == 'POST':
-        if form.is_valid():
-            the_class = form.cleaned_data.get('the_class')
-            std_id = form.cleaned_data.get('id_num')
-            qs = ResultsPaper.objects.filter(the_class=the_class).filter(
-                Q(student__id=std_id) | Q(student__id_number=std_id))
-            if qs.exists():
-                result_paper = qs.first()
-                context = {'object': result_paper}
-                return render(request, 'main/result_doc.html', context)
-            else:
-                msg = _(
-                    'You entered the data incorrectly Please check your information')
-                messages.add_message(request, messages.WARNING, msg)
-    return render(request, 'main/result_search.html', context)
+    if form.is_valid():
+        the_class = form.cleaned_data.get('the_class')
+        std_id = form.cleaned_data.get('id_num')
+        qs = ResultsPaper.objects.filter(the_class=the_class).filter(
+            Q(student__id=std_id) | Q(student__nid_number=std_id))
+        if qs.exists():
+            result_paper = qs.first()
+            context = {'object': result_paper}
+            return render(request, 'main/result_doc.html', context)
+        else:
+            msg = _(
+                'You entered the data incorrectly Please check your information')
+            messages.add_message(request, messages.WARNING, msg)
+    return redirect('main:result-search')
+
+
+class ResultSearchView(FormView):
+    form_class = ResultSearchForm
+    template_name = 'main/result_search.html'
 
 
 User = get_user_model()
 
-
-class UsersDashboard(ListView):
+class UsersDashboard(LoginRequiredMixin,AdminPermission,ListView):
     queryset = User.objects.all_users()
     template_name = 'main/users_dashboard.html'
     context_object_name = 'users'
 
 
-class SchoolInfoEditView(UpdateView):
+class SchoolInfoEditView(LoginRequiredMixin,AdminPermission,UpdateView):
     queryset = SchoolInfo.objects.all()
     form_class = SchoolInfoForm
     template_name = 'main/school_info_edit.html'
@@ -223,30 +223,18 @@ class SchoolInfoEditView(UpdateView):
         raise Http404
 
 
-class MainArticlesDashboard(ListView):
+class MainArticlesDashboard(LoginRequiredMixin,AdminPermission,ListView):
     context_object_name = 'quotes'
     queryset = MainArticle.objects.all()[:8]
     template_name = 'main/main_articles_dashboard.html'
 
 
-class MainArticlesEditView(UpdateView):
+class MainArticlesEditView(LoginRequiredMixin,AdminPermission,UpdateView):
     queryset = MainArticle.objects.all()
     form_class = MainArticleForm
     template_name = 'main/main_articles_edit.html'
     success_url = reverse_lazy('main:main-articles-dashboard')
     
-
-# def main_articles_edit_view(request):
-#     qs = MainArticle.objects.all()
-#     formset = MainArticleFormset(request.POST or None, queryset=qs)
-#     if request.method == 'POST':
-#         if formset.is_valid():
-#             for form in formset:
-#                 if form.is_valid():
-#                     form.save()
-#             return redirect(request.path)
-#     context = {'formset': formset}
-#     return render(request, 'main/main_articles_edit.html', context)
 
 
 def lang_change_view(request, lang):

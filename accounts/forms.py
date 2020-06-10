@@ -2,9 +2,11 @@ import re
 from django import forms
 from django.contrib.auth import (
     password_validation, authenticate, get_user_model)
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 
+from django.contrib.auth.forms import (ReadOnlyPasswordHashField,
+                                       PasswordChangeForm,
+                                       SetPasswordForm)
+from django.utils.translation import ugettext_lazy as _
 User = get_user_model()
 
 
@@ -37,25 +39,24 @@ class UserCreationForm(forms.ModelForm):
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(
-        label='كلمة المرور', widget=forms.PasswordInput)
+        label=_('Password'), widget=forms.PasswordInput)
     password2 = forms.CharField(
-        label='تأكيد  كلمة المرور', widget=forms.PasswordInput)
+        label=_('Confirm Password'), widget=forms.PasswordInput)
 
     class Meta:
         model = User
         error_messages = {'phone_number': {
-            'null': 'لا يمكن ترك هذا الحقل فارغ',
-            'unique': 'المسخدم برقم الهاتف هذا موجود بالفعل'}}
+            'unique': _('User with this phone number already exists')}}
         fields = ('phone_number', 'username', 'email')
-        labels = {'phone_number': 'رقم الهاتف',
-                  'username': 'إسم المستخدم',
-                  'email': 'البريد الإلكتروني', }
+        labels = {'phone_number': _('Phone Number'),
+                  'username': _('Username'),
+                  'email': _('Email'), }
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
         matches = re.findall(r'^09\d{8}$', phone_number)
         if not matches:
-            raise forms.ValidationError('يرجي إدخال رقم هاتف صحيح')
+            raise forms.ValidationError(_('Please enter a valid phone number'))
         return phone_number
 
     def clean_password1(self):
@@ -69,7 +70,7 @@ class RegisterForm(forms.ModelForm):
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
 
-            raise forms.ValidationError("حقلي كلمة المرور غير متطابقين.")
+            raise forms.ValidationError_(("Password fields do not match"))
         return password2
 
     def save(self, commit=True):
@@ -81,8 +82,9 @@ class RegisterForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='رقم الهاتف')
-    password = forms.CharField(label='كلمة المرور', widget=forms.PasswordInput)
+    username = forms.CharField(label=_('Phone Number'))
+    password = forms.CharField(label=_('Password'),
+                               widget=forms.PasswordInput)
 
     def clean(self):
         phone_number = self.cleaned_data.get('username')
@@ -92,18 +94,15 @@ class LoginForm(forms.Form):
             user = qs.first()
             if not user.is_active:
                 raise forms.ValidationError(
-                    'الحساب غير مفعل يرجى التأكد من المشرف حتى يتم تفعيل حسابك')
+                    _('Your account is not active, please check admin to activate your account'))
         user_authenticate = authenticate(
             username=phone_number, password=password)
 
         if not user_authenticate:
-            raise(forms.ValidationError(
-                'إسم المستخدم أو كلمة المرور غير صحيح يرجى التأكد من البيانات'))
-
+            raise(forms.ValidationError(_('username or password provided is incorrect')))
 
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
-
     class Meta:
         model = User
         fields = ('phone_number', 'username', 'email', 'password',
@@ -114,42 +113,20 @@ class UserChangeForm(forms.ModelForm):
 
 
 class UserEditForm(forms.ModelForm):
-
     class Meta:
         model = User
-        labels = {'phone_number': 'رقم الهاتف',
-                  'username': 'إسم  المستخدم',
-                  'email': 'البريد الإلكتروني'}
+        labels = {
+                  'username': _('Username'),
+                  'email': _('Email')}
 
         fields = ('username', 'email',)
 
 
-def get_data(self):
-    for x in dir(self.fields['new_password1']):
-        print(x)
-
-
 class ChangePasswordForm(PasswordChangeForm):
-    error_messages = {'password_mismatch': 'حقلي كلمة المرور غير متطابقين.',
-                      'password_incorrect': 'تم إدخال كلمة المرور القديمة بشكل غير صحيح. يرجى إدخاله مرة أخرى.'}
+    error_messages = {
+                      'password_mismatch': _('The two password fields didn’t match'),
+                      'password_incorrect': _('Your old password was entered incorrectly. Please enter it again')}
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['old_password'].label = 'كلمة المرور القديمة'
-        self.fields['new_password1'].label = 'كلمة المرور الجديدة'
-        self.fields['new_password1'].help_text = '''
-                    <ul class='text-right'>
-                        <li>يجب أن تكون كلمة المرور الخاصة بك على الأقل 8 حرورف</li>
-                        <li> يجب إستخدام الأبجدية الإنجليزية A-Z , a-z</li>
-                        <li>يجب أن تحتوي كلمة المرور على الأقل على حرف أبجدي صغير وحرف كبير</li>
-                        <li>يجب أن تحتوي كلمة المرور على الأقل على رقم واحد و رمز واحد مثل 
-                        :
-                        <br />
-                        ()[\]{}|\\`~!@#$%^&*_",<>./? .</li>
-                    </ul>
-                    '''
-
-        self.fields['new_password2'].label = 'تأكيد كلمة المرور الجديدة'
 
     def clean_new_password1(self):
         password = self.cleaned_data.get('new_password1')
@@ -168,8 +145,25 @@ class ChangePasswordForm(PasswordChangeForm):
         return password2
 
 
-class MyPasswordResetForm(PasswordResetForm):
-    pass
+class MySetPasswordForm(SetPasswordForm):
+    def clean_new_password1(self):
+        password = self.cleaned_data.get('new_password1')
+        password_validation.validate_password(password, self.user)
+        return password
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError(
+                    self.error_messages['password_mismatch'],
+                    code='password_mismatch',
+                )
+        return password2
+
+# class MyPasswordResetForm(PasswordResetForm):
+#     pass
     # def clean_email(self):
     #     email = self.cleaned_data.get('email')
     #     qs = User.objects.filter(email=email)

@@ -1,0 +1,19 @@
+                          
+{% for sr in qs %}
+<tr>
+<td >{{sr.subject}}</td>
+<td>{{sr.std_exam_grade}} \ {{sr.exam_grade}}</td>
+<td>{{sr.exam_pass_grade}}</td>
+<td>{{sr.need_to_pass_exam}}</td>
+<td >{{sr.std_year_works_grade}} \ {{sr.year_works_grade}} </td>
+<td>{{sr.grade_pass_subject}}</td>
+<td>{{sr.total_subject_grades}}</td>
+<td>
+    {% if sr.passed %}
+    ناجح
+    {% else %}
+    راسب
+    {% endif %}
+</td>
+</tr>
+{% endfor %}

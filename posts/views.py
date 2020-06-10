@@ -17,7 +17,8 @@ class PostsListView(ListView):
     context_object_name = 'posts'
     queryset = Post.objects.active()
     template_name = 'posts/posts_list_view.html'
-
+    paginate_by = 5
+    
 
 class PostDetailView(DetailView):
     queryset = Post.objects.active()

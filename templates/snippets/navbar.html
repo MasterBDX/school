@@ -3,13 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
         <a class="navbar-brand " href="{% url 'main:home' %}">
-            {% if request.session.lang == 'ar' %}
-            مدرسة
-            {{school_ar_name}}
-            {% else %}
-            {{school_en_name}}
-            School
-            {% endif %}
+          {{school_name}}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +45,7 @@
                         </a>
                     </div>
                 </li>
-
+                {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,6 +86,8 @@
 
                     </div>
                 </li>
+                {% endif %}
+                {% if request.user.is_admin %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -117,7 +113,7 @@
                         </a>
                     </div>
                 </li>
-
+                {% endif %}
                 {% if not request.user.is_authenticated %}
 
                 {% url 'accounts:login' as login %}

@@ -62,6 +62,8 @@ class ResultsPaper(models.Model, FinalResultsMixin):
     active = models.BooleanField(default=False)
     part2 = models.BooleanField(default=False)
     part3 = models.BooleanField(default=False)
+    total = models.CharField(max_length=255,
+                             blank=True,null=True)
 
     class Meta:
         ordering = ['the_class']
@@ -299,7 +301,7 @@ class CompensatoryExam(models.Model, SubjectsResultsMixin):
         ResultsPaper, on_delete=models.CASCADE, related_name='all_com_grades')
 
     class Meta:
-        ordering = ['subject']
+        ordering = ['subject',]
 
     def __str__(self):
         return '{} مادة - {} الدور - {} الفترة'.format(self.subject.name,

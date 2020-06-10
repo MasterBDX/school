@@ -1,0 +1,20 @@
+{% load i18n %}
+ <tbody>
+    {% if object.part2 and object.get_part2_grades %}
+            <tr>
+        <th class='text-center' colspan="8">
+        {% trans 'Second Attempt Results' %}
+        </th>
+            </tr> 
+        {% include 'main/snippets/result_paper_table/attempts_tr.html' with qs=object.get_part2_grades %}
+    {% endif %}
+        {% if object.part3 and object.get_part3_grades %}
+            <tr>
+        <th class='text-center' colspan="8">
+       {% trans 'Third Attempt Results' %}</th>
+            </tr> 
+        {% include 'main/snippets/result_paper_table/attempts_tr.html' with qs=object.get_part3_grades %}
+
+    {% endif %}
+   
+</tbody>

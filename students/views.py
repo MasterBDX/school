@@ -18,7 +18,9 @@ from .models import Student, ResultsPaper
 from school_tabels.models import ClassRoom
 
 from .forms import (AddStudent, AddResultsPaperForm,
-                    AddCompensatoryExamForm)
+                    AddCompensatoryExamForm,AddClassGradesForm,
+                    AddClassGradesSemester3Form,AddSubjectResultForm,
+                    AddSubjectResultSemester3Form)
 
 from school_tabels.models import TheClass
 from .models import (Student, Semester, SubjectResult,
@@ -133,8 +135,12 @@ class DeleteResultsPaperView(LoginRequiredMixin,DeleteSuccessMessageMixin,Delete
 def semester_edit_view(request, pk, std_id):
     semester = get_object_or_404(Semester, pk=pk)
 
-    formset = subjects_results_formset(
-        request.POST or None, queryset=SubjectResult.objects.filter(semester__id=pk))
+    if str(semester.order) == '3':
+        form = AddSubjectResultSemester3Form
+    else:
+        form = AddSubjectResultForm
+    
+    formset = subjects_results_formset(form)(request.POST or None, queryset=SubjectResult.objects.filter(semester__id=pk))
     if request.method == 'POST':
         if formset.is_valid():
             for form in formset:
@@ -158,9 +164,13 @@ def edit_class_grades_view(request, pk, order=1):
     if not str(order) in ['1', '2', '3']:
         order = '1'
     qs = ClassGrade.objects.filter(the_class=the_class, order=order)
-
-    formset = edit_class_grades_formset(request.POST or None, queryset=qs)
+    if str(order) != '3':
+        form = AddClassGradesForm
+    else :
+        form = AddClassGradesSemester3Form
+    formset = edit_class_grades_formset(form)(request.POST or None, queryset=qs)
     order = str(order)
+    
     if request.method == 'POST':
         if formset.is_valid():
             for form in formset:
@@ -187,11 +197,15 @@ def add_compensatory_view(request, pk, part):
     if request.method == 'POST':
         if formset.is_valid():
             for form in formset:
-                if form.is_valid():
-                    if form.instance.subject:
-                        obj = form.save(commit=False)
-                        obj.results_paper = paper
-                        obj.save()
+                if form.cleaned_data.get('DELETE'):
+                    if form.instance.id:
+                        form.instance.delete()
+                else:
+                    if form.is_valid():
+                        if form.instance.subject:
+                            obj = form.save(commit=False)
+                            obj.results_paper = paper
+                            obj.save()
             attempt = HUMAN_COUNTER_DIC.get(str(part))
             if get_language() == 'ar':
                 msg = 'تم تعديل نتائج الدور {}'.format(attempt)
@@ -210,6 +224,25 @@ def semester_activation_toggle_view(request, pk):
         json_data = {'active': toggle}
         return JsonResponse(json_data)
     return redirect(semester.get_absolute_url())
+
+@login_required
+def compensatory_toggle_view(request, paper_id, part):
+    toggle = {True:_('Hide'),False:_('Show')}
+    target = None
+    paper = get_object_or_404(ResultsPaper,id=paper_id)
+    if part == 2:
+        paper.part2 = not paper.part2
+        target = paper.part2
+    elif part == 3:
+        paper.part3 = not paper.part3
+        target = paper.part3
+    else:
+        return Http404
+    paper.save()
+    if request.is_ajax():
+        json_data = {'toggle': toggle.get(target)}
+        return JsonResponse(json_data)
+    return redirect(paper.get_absolute_url())
 
 @login_required
 def results_activation_confirm_view(request, status, pk):

@@ -177,12 +177,28 @@
                                         <a href="{% url 'students:compensatory-exam-add' part='2' pk=paper.id %}"
                                             class='btn btn-info'>
                                             {% trans 'Add or Edit' %}
+                                        <a class='compensatory-toggle btn btn-warning'
+                                            href="{% url 'students:compensatory-toggle' paper_id=paper.id part=2 %}">
+                                            {% if not paper.part2 %}
+                                            {% trans 'Show' %}
+                                            {% else %}
+                                            {% trans 'Hide' %}
+                                            {% endif %}
+                                        </a>
                                         </a>
                                     </td>
                                     <td class="text-center">
                                         <a href="{% url 'students:compensatory-exam-add' part='3' pk=paper.id %}"
                                             class='btn btn-info'>
                                              {% trans 'Add or Edit' %}
+                                        </a>
+                                        <a class='compensatory-toggle btn btn-warning'
+                                            href="{% url 'students:compensatory-toggle' paper_id=paper.id part=3 %}">
+                                            {% if not paper.part3 %}
+                                            {% trans 'Show' %}
+                                            {% else %}
+                                            {% trans 'Hide' %}
+                                            {% endif %}
                                         </a>
                                     </td>
 

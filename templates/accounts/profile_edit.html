@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
-
+{% load i18n %}
 {% block title %}
-الملف الشخصي
+{% trans 'Profile' %}
 {% endblock %}
 {% load static %}
 {% block content %}
@@ -10,14 +10,13 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-7 m-auto">
-
-
+            <div class="col-md-5  m-auto">
                 <h1 class="text-center">
-                    تعديل البيانات الشخصية
+                    {% trans 'Edit Profile' %}
                     <hr />
                 </h1>
             </div>
+            <div class="w-100"></div>
             <div class="col-md-6 m-auto">
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
@@ -25,13 +24,15 @@
                     <div style="height:50px;"></div>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
-                            تعديل
+                            {% trans 'Edit' %}
                         </button>
                     </div>
                 </form>
                 <br />
                 <div class="text-right">
-                    <a class="btn btn-link" href="{% url 'accounts:password_change' %}">لتغيير كلمة المرور</a>
+                    <a class="btn btn-link" href="{% url 'accounts:password_change' %}">
+                    {% trans  'Change Password' %}
+                    </a>
                 </div>
             </div>
         </div>

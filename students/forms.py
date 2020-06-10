@@ -49,11 +49,10 @@ class AddResultsPaperForm(forms.ModelForm):
                   'status': _('Student Status'),
                   'the_class': _('Class'),
                   'active': _('Activate'),
-                  'part2': _('Show the second attempt'),
-                  'part3': _ ('Show the third attempt')}
+                  }
         model = ResultsPaper
         fields = '__all__'
-        exclude = ['student']
+        exclude = ['student','part2','part3','total_summation']
     
 
 
@@ -66,6 +65,16 @@ class AddSubjectResultForm(forms.ModelForm):
                    'exam_pass_grade', 'year_works_grade', 'passed']
 
 
+class AddSubjectResultSemester3Form(forms.ModelForm):
+    class Meta:
+        labels = {'std_exam_grade': _('Exam Grade'),
+                  }
+        model = SubjectResult
+        exclude = ['semester', 'subject', 'exam_grade', 'grade_pass_subject',
+                   'exam_pass_grade', 'year_works_grade', 'passed',
+                   'std_year_works_grade']
+
+
 class AddClassGradesForm(forms.ModelForm):
     class Meta:
         labels = {'exam_grade':_('Exam Grade'),
@@ -74,6 +83,16 @@ class AddClassGradesForm(forms.ModelForm):
                   'year_works_grade':_('Year Works Grade')}
         model = SubjectResult
         exclude = ['subject', 'order', 'the_class']
+
+
+class AddClassGradesSemester3Form(forms.ModelForm):
+    class Meta:
+        labels = {'exam_grade':_('Exam Grade'),
+                  'exam_pass_grade':_('Exam Pass Grade'),
+                  'grade_pass_subject':_('Subject Pass Grade'),
+                  }
+        model = SubjectResult
+        exclude = ['subject', 'order', 'the_class','year_works_grade']
 
 
 class AddCompensatoryExamForm(forms.ModelForm):
@@ -121,10 +140,11 @@ class AddCompensatoryExamForm(forms.ModelForm):
         data = self.cleaned_data
         subject = data.get('subject')
         semester = data.get('semester')
-        passed, error_msg = self.pass_checker(subject, semester)
-        if passed:
-            return data
-        raise forms.ValidationError(error_msg)
+        if subject and semester:
+            passed, error_msg = self.pass_checker(subject, semester)
+            if passed:
+                return data
+            raise forms.ValidationError(error_msg)
 
 
 class EditCompensatoryExamForm(forms.ModelForm):

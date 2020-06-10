@@ -1,0 +1,44 @@
+{% load i18n %}
+
+    <thead>
+        <tr>
+            <th colspan='2' scope="col">
+                {% trans 'Student Name' %}
+            </th>
+            <th scope="col">
+            {% trans 'Registration Status' %}
+                </th>
+            <th scope="col">{% trans 'Class' %}</th>
+            <th colspan='2' scope="col">
+            {% trans 'Class Leader' %}</th>
+            <th colspan='1' scope="col">
+                {% trans 'Birth Date' %}
+                </th>
+            <th scope="col">
+                {% trans 'Student Status' %}
+                </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan='2' scope="col">
+            {{object.student.get_std_name}}</th>
+            <th scope="col">
+                {% with entry=object.entry|capfirst %}
+                {% trans entry %}
+                {% endwith %}
+            
+            </th>
+            <th scope="col">{{object.the_class.name}}</th>
+            <th colspan='2' scope="col"> {{object.class_leader_name}}</th>
+            <th colspan='1' scope="col">{{object.student.birth_date}}</th>
+            <th scope="col">
+            
+            {% with status=object.status|capfirst %}
+                {% trans status %}
+                {% endwith %}
+            </th>
+        </tr>
+        <tr><th colspan='8'></th></tr>
+    </tbody>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 22:32+0000\n"
+"POT-Creation-Date: 2020-06-08 09:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,56 +19,102 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: golden_pen/validators.py:13 golden_pen/validators.py:21
-msgid "يجب إستخدام حروف الأبجدية الإنجليزية فقط "
-msgstr ""
+#: accounts/forms.py:42 accounts/forms.py:86
+msgid "Password"
+msgstr "كلمة المرور"
 
-#: golden_pen/validators.py:33
-#, python-format
+#: accounts/forms.py:44
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: accounts/forms.py:49
+msgid "User with this phone number already exists"
+msgstr "المستخدم برقم الهاتف هذا موجود بالفعل"
+
+#: accounts/forms.py:51 accounts/forms.py:85 main/forms.py:18
+#: templates/main/snippets/html_message.html:6
+#: templates/main/snippets/message.txt:6 templates/main/users_dashboard.html:68
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: accounts/forms.py:52 accounts/forms.py:119
+#: templates/main/users_dashboard.html:65
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: accounts/forms.py:53 accounts/forms.py:120 main/forms.py:13
+#: templates/main/users_dashboard.html:71
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: accounts/forms.py:59 main/forms.py:27 main/forms.py:77 students/forms.py:37
+msgid "Please enter a valid phone number"
+msgstr "يرجي إدخال رقم هاتف صحيح"
+
+#: accounts/forms.py:97
+msgid "Your account is not active, please check admin to activate your account"
+msgstr "حسابك غير نشط ، يرجى التحقق من المسؤول لتفعيل حسابك"
+
+#: accounts/forms.py:102
+msgid "username or password provided is incorrect"
+msgstr "اسم المستخدم أو كلمة المرور غير صحيح"
+
+#: accounts/forms.py:127
+msgid "The two password fields didn’t match"
+msgstr "حقلي كلمة المرور غير متطابقين"
+
+#: accounts/forms.py:128
+msgid "Your old password was entered incorrectly. Please enter it again"
+msgstr "تم إدخال كلمة المرور القديمة بشكل غير صحيح. يرجى  إدخالها مرة أخرى"
+
+#: accounts/views.py:22
 msgid ""
-"This password is too short. It must contain at least %(min_length)d "
-"character."
-msgid_plural ""
-"كلمة المرور هذه قصيرة جدًا. يجب أن تحتوي على %(min_length)d  أحرف على الأقل."
-msgstr[0] ""
-msgstr[1] ""
+"You have been registered successfully Please wait for your account to be "
+"activated"
+msgstr "لقد تم تسجيلك بنجاح ، يرجى الانتظار حتى يتم تنشيط حسابك"
 
-#: golden_pen/validators.py:44
-#, python-format
-msgid "Your password must contain at least %(min_length)d character."
-msgid_plural "يجب أن تحتوي كلمة المرور على %(min_length)d من الأحرف على الأقل."
-msgstr[0] ""
-msgstr[1] ""
+#: accounts/views.py:31
+msgid "User has been added successfully"
+msgstr "تمت إضافة المستخدم بنجاح"
 
-#: golden_pen/validators.py:56
-msgid "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل ، 0-9."
+#: accounts/views.py:89 posts/forms.py:21 students/forms.py:51
+#: students/views.py:239 templates/main/users_dashboard.html:102
+msgid "Activate"
+msgstr "تنشيط"
+
+#: accounts/views.py:92 students/views.py:241
+#: templates/main/users_dashboard.html:107
+msgid "Deactivate"
+msgstr "إلغاء تنشيط"
+
+#: golden_pen/validators.py:11 golden_pen/validators.py:16
+msgid "Only English alphabet letters should be used"
+msgstr "يجب استخدام أحرف الأبجدية الإنجليزية فقط"
+
+#: golden_pen/validators.py:27 golden_pen/validators.py:33
+msgid "This password is too short. It must contain at least 8 characters"
 msgstr ""
+"كلمة المرور هذه قصيرة جدًا. يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل"
 
-#: golden_pen/validators.py:62
-msgid "Your password must contain at least 1 digit, 0-9."
-msgstr ""
+#: golden_pen/validators.py:39 golden_pen/validators.py:44
+msgid "Password must contain at least one number, 0-9"
+msgstr "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل ، 0-9"
 
-#: golden_pen/validators.py:72 golden_pen/validators.py:80
-msgid "يجب أن تحتوي كلمة المرور الخاصة بك على رقم واحد على الأقل ، 0-9."
-msgstr ""
+#: golden_pen/validators.py:51 golden_pen/validators.py:56
+msgid "Password must contain at least one uppercase letter, A-Z"
+msgstr "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل ، من A-Z"
 
-#: golden_pen/validators.py:90
-msgid "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل ، A-Z."
-msgstr ""
+#: golden_pen/validators.py:63 golden_pen/validators.py:67
+msgid "Password must contain at least one lowercase letter, a-z."
+msgstr "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل ، a-z."
 
-#: golden_pen/validators.py:98
-msgid "يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل ، من A إلى Z."
-msgstr ""
-
-#: golden_pen/validators.py:108 golden_pen/validators.py:116
-msgid "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل ، a-z."
-msgstr ""
-
-#: golden_pen/validators.py:125 golden_pen/validators.py:134
+#: golden_pen/validators.py:74 golden_pen/validators.py:78
 msgid ""
-"يجب أن تحتوي كلمة المرور على رمز واحد على الأقل:()[]{}|\\`~!@#$%^&*_-+=;:'\","
-"<>./?"
+"Password must contain at least one symbol: () [] {} | \\ `~! @ # $% ^ & * _- "
+"+ =;: '\", <> ./?"
 msgstr ""
+" يجب أن تحتوي كلمة المرور على رمز واحد على الأقل: () [] {} | \\ ` ~ ! @ # $ "
+"% ^ & * _ -  + = ; : ' \" , "
 
 #: main/forms.py:12 main/forms.py:49
 #: templates/main/snippets/html_message.html:3
@@ -76,22 +122,14 @@ msgstr ""
 msgid "Name"
 msgstr "الإسم"
 
-#: main/forms.py:13
-msgid "Email"
-msgstr "البريد الإلكتروني"
-
 #: main/forms.py:15
 msgid "Please enter a valid email"
 msgstr "يرجى إدخال بريد إلكتروني صحيح"
 
-#: main/forms.py:18 templates/main/snippets/html_message.html:6
-#: templates/main/snippets/message.txt:6
-msgid "Phone Number"
-msgstr "رقم الهاتف"
-
 #: main/forms.py:19 students/forms.py:81
 #: templates/main/snippets/html_message.html:9
 #: templates/main/snippets/message.txt:9
+#: templates/main/snippets/result_paper_table/semesters_table.html:17
 msgid "Subject"
 msgstr "الموضوع"
 
@@ -101,13 +139,10 @@ msgstr "الموضوع"
 msgid "Content"
 msgstr "المحتوى"
 
-#: main/forms.py:27 main/forms.py:77 students/forms.py:37
-msgid "Please enter a valid phone number"
-msgstr "يرجي إدخال رقم هاتف صحيح"
-
 #: main/forms.py:34 school_tabels/forms.py:63 school_tabels/forms.py:95
 #: students/forms.py:26 students/forms.py:50
 #: templates/main/classrooms_dashboard.html:51
+#: templates/main/snippets/result_paper_table/student_info_table.html:11
 #: templates/students/detail.html:67 templates/students/detail.html:133
 #: templates/students/printable_detail.html:63
 #: templates/students/search_students.html:52
@@ -127,10 +162,8 @@ msgid "This field must contain a positive integer"
 msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب"
 
 #: main/forms.py:50
-#, fuzzy
-#| msgid "Subject English Name"
 msgid "English Name"
-msgstr " اسم المادة باﻹنجليزي"
+msgstr " اﻹسم باﻹنجليزي"
 
 #: main/forms.py:52 students/forms.py:25 templates/students/detail.html:66
 #: templates/students/printable_detail.html:62
@@ -153,28 +186,32 @@ msgstr "البلدية"
 msgid "Province"
 msgstr "المقاطعة"
 
-#: main/forms.py:86
+#: main/forms.py:83
 msgid "Image"
 msgstr "الصورة"
 
-#: main/forms.py:87 posts/forms.py:18 school_tabels/forms.py:60
+#: main/forms.py:84 posts/forms.py:18 school_tabels/forms.py:60
 #: templates/main/main_articles_dashboard.html:39
 #: templates/main/posts-dashboard.html:53
 msgid "Title"
 msgstr "العنوان"
 
-#: main/forms.py:88 school_tabels/forms.py:61
+#: main/forms.py:85 school_tabels/forms.py:61
 #: templates/main/main_articles_dashboard.html:43
 msgid "English Title"
 msgstr "العنوان باللغة اﻹنجليزية"
 
-#: main/forms.py:89
+#: main/forms.py:86
 msgid "Description"
 msgstr "الوصف"
 
-#: main/forms.py:90
+#: main/forms.py:87
 msgid "English Description"
 msgstr "الوصف باللغة اﻹنجليزية"
+
+#: main/forms.py:96 school_tabels/forms.py:30
+msgid "This field must have just english letters"
+msgstr "يجب أن يحتوي هذا الحقل على أحرف إنجليزية فقط"
 
 #: main/vars.py:17 main/vars.py:38 main/vars.py:43
 msgid "Second"
@@ -195,15 +232,11 @@ msgid "Third"
 msgstr "الثالث"
 
 #: main/vars.py:23
-#, fuzzy
-#| msgid "Second Attempt"
 msgctxt "second attempt"
 msgid "Second attempt"
 msgstr "دور ثاني"
 
 #: main/vars.py:24
-#, fuzzy
-#| msgid "Third Attempt"
 msgctxt "third attempt"
 msgid "Third attempt"
 msgstr "دور ثالث"
@@ -503,10 +536,6 @@ msgstr "لقد قمت بإدخال البيانات بشكل خاطئ يرجى �
 msgid "Overview"
 msgstr "المقدمة"
 
-#: posts/forms.py:21 students/forms.py:51 students/views.py:217
-msgid "Activate"
-msgstr "تفعيل"
-
 #: posts/forms.py:22
 msgid "Main Image (Optional)"
 msgstr "الصورة الرئيسية (إختياري)"
@@ -534,10 +563,6 @@ msgstr "اسم المادة بالعربي"
 #: school_tabels/forms.py:22
 msgid "Subject English Name"
 msgstr " اسم المادة باﻹنجليزي"
-
-#: school_tabels/forms.py:30
-msgid "This field must have just english letters"
-msgstr "يجب أن يحتوي هذا الحقل على أحرف إنجليزية فقط"
 
 #: school_tabels/forms.py:36 templates/main/classes_dashboard.html:49
 #: templates/main/students_classroom_dashboard.html:69
@@ -758,7 +783,9 @@ msgstr "اسم اﻷم"
 msgid "Place Of Birth"
 msgstr "مكان الولادة"
 
-#: students/forms.py:24 templates/students/detail.html:46
+#: students/forms.py:24
+#: templates/main/snippets/result_paper_table/student_info_table.html:15
+#: templates/students/detail.html:46
 #: templates/students/printable_detail.html:44
 msgid "Birth Date"
 msgstr "تاريخ الميلاد"
@@ -786,6 +813,7 @@ msgid "Student Image"
 msgstr "صورة الطالب"
 
 #: students/forms.py:47
+#: templates/main/snippets/result_paper_table/student_info_table.html:13
 msgid "Class Leader"
 msgstr "رائد الصف"
 
@@ -794,30 +822,35 @@ msgid "Enrollment attribute"
 msgstr "صفة القيد"
 
 #: students/forms.py:49
+#: templates/main/snippets/result_paper_table/student_info_table.html:18
 msgid "Student Status"
 msgstr "حالة الطالب"
 
 #: students/forms.py:52
 msgid "Show the second attempt"
-msgstr "الدور الثاني"
+msgstr "أظهر الدور الثاني"
 
 #: students/forms.py:53
 msgid "Show the third attempt"
 msgstr "أظهر الدور الثالث"
 
 #: students/forms.py:62 students/forms.py:71
+#: templates/main/snippets/result_paper_table/semesters_table.html:18
 msgid "Exam Grade"
 msgstr "درجة الإمتحان"
 
 #: students/forms.py:63 students/forms.py:74
+#: templates/main/snippets/result_paper_table/semesters_table.html:21
 msgid "Year Works Grade"
 msgstr "درجة أعمال السنة"
 
 #: students/forms.py:72
+#: templates/main/snippets/result_paper_table/semesters_table.html:19
 msgid "Exam Pass Grade"
 msgstr "درجة النجاح في الإمتحان"
 
 #: students/forms.py:73
+#: templates/main/snippets/result_paper_table/semesters_table.html:22
 msgid "Subject Pass Grade"
 msgstr "درجة النجاح في المادة"
 
@@ -837,13 +870,46 @@ msgstr "لم يرسب الطالب في هذه المادة"
 msgid "An error has occurred, please refresh the page"
 msgstr "حدث خطأ ، يرجى تحديث الصفحة"
 
-#: students/managers.py:21 templates/students/detail.html:169
+#: students/managers.py:21 students/views.py:220
+#: templates/students/detail.html:169 templates/students/detail.html:183
+#: templates/students/detail.html:198
 msgid "Show"
 msgstr "إظهار"
 
-#: students/managers.py:25 templates/students/detail.html:171
+#: students/managers.py:25 students/views.py:220
+#: templates/students/detail.html:171 templates/students/detail.html:185
+#: templates/students/detail.html:200
 msgid "Hide"
 msgstr "إخفاء"
+
+#: students/mixins.py:43 students/mixins.py:45
+msgid "Excellent"
+msgstr "ممتاز"
+
+#: students/mixins.py:47
+msgid "Very Good"
+msgstr "جيد جدا"
+
+#: students/mixins.py:49
+msgid "Good"
+msgstr "جيد"
+
+#: students/mixins.py:51
+msgid "Fairly good"
+msgstr "مقبول"
+
+#: students/mixins.py:53
+msgid "Weak"
+msgstr "ضعيف"
+
+#: students/mixins.py:55
+msgid "Very weak"
+msgstr "ضعيف جدا"
+
+#: students/mixins.py:58
+#: templates/main/snippets/result_paper_table/semesters_table.html:50
+msgid "Failed"
+msgstr "راسب"
 
 #: students/views.py:48
 msgid "A new student has been added"
@@ -869,39 +935,191 @@ msgstr "تم تعديل الصحيفة"
 msgid "The result paper has been deleted"
 msgstr "تم حذف الصحيفة"
 
-#: students/views.py:219
-msgid "Deactivate"
-msgstr "إلغاء تنشيط"
+#: templates/accounts/change_password.html:4
+#: templates/accounts/change_password.html:16
+#: templates/accounts/profile_edit.html:34
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
 
-#: templates/accounts/password_reset_email.html:2
+#: templates/accounts/change_password.html:28
+msgid "Change"
+msgstr "تغيير"
+
+#: templates/accounts/delete_user_confirm.html:12
+#: templates/accounts/delete_user_confirm.html:26
+#: templates/main/classes_dashboard.html:107
+#: templates/main/classes_schedule_dashboard.html:66
+#: templates/main/classrooms_dashboard.html:74
+#: templates/main/posts-dashboard.html:83
+#: templates/main/snippets/exams_dashboard_table.html:59
+#: templates/main/students_dashboard.html:103
+#: templates/main/subjects-dashboard.html:63
+#: templates/main/users_dashboard.html:114
+#: templates/posts/post_confirm_delete.html:25
+#: templates/students/delete_student_confirm.html:26
+#: templates/students/detail.html:90 templates/students/detail.html:212
+#: templates/students/search_students.html:108
+#: templates/tabels/delete_class_confirm.html:29
+#: templates/tabels/delete_classroom_confirm.html:28
+#: templates/tabels/delete_exams_tabel_confirm.html:45
+#: templates/tabels/delete_full_schedule.html:29
+#: templates/tabels/delete_subject_confirm.html:38
+msgid "Delete"
+msgstr "حذف"
+
+#: templates/accounts/delete_user_confirm.html:21
+msgid "Are you sure you want to delete this user ?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا المستخدم؟"
+
+#: templates/accounts/password_change_done.html:4
+msgid "Password change done"
+msgstr "تم تغيير كلمة المرور"
+
+#: templates/accounts/password_change_done.html:21
+msgid "Done change Password Successfully"
+msgstr "تم تغيير كلمة المرور بنجاح"
+
+#: templates/accounts/password_change_done.html:26
+msgid "Return to the home page"
+msgstr "للرجوع إلى الصفحة الرئيسية"
+
+#: templates/accounts/password_reset_complete.html:4
+#: templates/accounts/password_reset_complete.html:16
+msgid "Password reset complete"
+msgstr "اكتملت إعادة تعيين كلمة المرور"
+
+#: templates/accounts/password_reset_complete.html:20
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "تم تعيين كلمة المرور الخاصة بك. بالامكان الاستمرار وتسجيل الدخول."
+
+#: templates/accounts/password_reset_complete.html:23
+#: templates/accounts/register.html:6 templates/accounts/register.html:24
+#: templates/accounts/register.html:43 templates/snippets/navbar.html:128
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/accounts/password_reset_confirm.html:4
+#: templates/accounts/password_reset_confirm.html:16
+msgid "Password reset confirm"
+msgstr "تأكيد إعادة تعيين كلمة المرور"
+
+#: templates/accounts/password_reset_confirm.html:29
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+#: templates/accounts/password_reset_confirm.html:36
+msgid "This link has expired"
+msgstr "لقد إنتهت صلاحية هذا الرابط"
+
+#: templates/accounts/password_reset_done.html:12
+msgid "Password reset data sent"
+msgstr "تم إرسال بيانات إعادة تعيين كلمة المرور"
+
+#: templates/accounts/password_reset_done.html:18
+msgid ""
+" \n"
+"                    We’ve emailed you instructions for setting your "
+"password, if an account exists with the email you entered.\n"
+"                    <br /> You should receive them shortly.\n"
+"                    If you don’t receive an email, please make sure you’ve "
+"entered the address you registered with, and check your spam folder.\n"
+"                    "
+msgstr ""
+" \n"
+"                    لقد أرسلنا إليك عبر البريد الإلكتروني تعليمات لتعيين "
+"كلمة المرور الخاصة بك ، إذا كان الحساب بالبريد الإلكتروني الذي أدخلته موجودا."
+"<br /> يجب أن تستقبلهم قريبًا.\n"
+"                    إذا لم تتلق بريدًا إلكترونيًا ، فيرجى التأكد من إدخال "
+"العنوان الذي قمت بالتسجيل به والتحقق من مجلد الرسائل غير المرغوب فيها.\n"
+"                    "
+
+#: templates/accounts/password_reset_email.html:4
 #, python-format
 msgid ""
+"\n"
 "You're receiving this email because you requested a password reset for your "
-"user account at\n"
-"%(site_name)s."
+"account at\n"
+"%(site_name)s\n"
 msgstr ""
-
-#: templates/accounts/password_reset_email.html:5
-msgid "Please go to the following page and choose a new password:"
-msgstr ""
+"\n"
+"تتلقى هذا البريد الإلكتروني لأنك طلبت إعادة تعيين كلمة المرور لحسابك في \n"
+"%(site_name)s\n"
 
 #: templates/accounts/password_reset_email.html:9
-msgid "Your username, in case you’ve forgotten:"
-msgstr ""
-
-#: templates/accounts/password_reset_email.html:11
-msgid "Thanks for using our site!"
-msgstr ""
+msgid "Please go to the following page and choose a new password : "
+msgstr "يرجى الانتقال إلى الصفحة التالية واختيار كلمة مرور جديدة : "
 
 #: templates/accounts/password_reset_email.html:13
+msgid "Your username, in case you’ve forgotten : "
+msgstr "اسم المستخدم الخاص بك ، في حالة نسيانك : "
+
+#: templates/accounts/password_reset_email.html:15
+msgid "Thanks for using our site"
+msgstr "شكرا لاستخدام موقعنا"
+
+#: templates/accounts/password_reset_email.html:17
 #, python-format
 msgid "The %(site_name)s team"
-msgstr ""
+msgstr "فريق %(site_name)s"
+
+#: templates/accounts/password_reset_form.html:4
+#: templates/accounts/password_reset_form.html:14
+msgid "Password Reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: templates/accounts/password_reset_form.html:22
+#: templates/main/contact.html:60
+msgid "Send"
+msgstr "أرسل"
 
 #: templates/accounts/password_reset_subject.txt:2
 #, python-format
 msgid "Password reset on %(site_name)s"
 msgstr ""
+
+#: templates/accounts/profile_edit.html:4 templates/snippets/navbar.html:141
+msgid "Profile"
+msgstr " الملف الشخصي"
+
+#: templates/accounts/profile_edit.html:15
+msgid "Edit Profile"
+msgstr "تعديل الملف الشخصي"
+
+#: templates/accounts/profile_edit.html:27
+#: templates/main/classes_dashboard.html:103
+#: templates/main/classes_schedule_dashboard.html:63
+#: templates/main/classrooms_dashboard.html:71
+#: templates/main/main_articles_dashboard.html:66
+#: templates/main/main_articles_edit.html:40
+#: templates/main/posts-dashboard.html:80
+#: templates/main/school_info_edit.html:27
+#: templates/main/snippets/exams_dashboard_table.html:56
+#: templates/main/subjects-dashboard.html:59 templates/posts/add_post.html:31
+#: templates/students/add_results_paper.html:39
+#: templates/students/add_student.html:44 templates/students/detail.html:208
+#: templates/students/search_students.html:101
+#: templates/tabels/add_class.html:34 templates/tabels/add_classroom.html:32
+#: templates/tabels/add_exams_tabel.html:70
+#: templates/tabels/add_full_schedule.html:69
+#: templates/tabels/add_subject.html:33
+msgid "Edit"
+msgstr "تعديل"
+
+#: templates/accounts/register.html:8
+msgid "Registration"
+msgstr "التسجيل"
+
+#: templates/accounts/register.html:26
+msgid "Register a new user"
+msgstr "تسجيل مستخدم جديد"
+
+#: templates/accounts/register.html:45
+msgid "Register"
+msgstr "تسجيل"
+
+#: templates/accounts/register.html:54
+msgid "Forgot your password"
+msgstr "نسيت كلمة المرور"
 
 #: templates/main/about_us.html:10 templates/main/about_us.html:64
 #: templates/snippets/footer.html:9 templates/snippets/header.html:23
@@ -950,7 +1168,8 @@ msgstr "درجات الفترة الثالثة"
 #: templates/main/posts-dashboard.html:67
 #: templates/main/snippets/exams_dashboard_table.html:32
 #: templates/main/students_dashboard.html:74
-#: templates/main/subjects-dashboard.html:49 templates/students/detail.html:152
+#: templates/main/subjects-dashboard.html:49
+#: templates/main/users_dashboard.html:74 templates/students/detail.html:152
 #: templates/students/search_students.html:62
 msgid "Control"
 msgstr "التحكم"
@@ -958,47 +1177,9 @@ msgstr "التحكم"
 #: templates/main/classes_dashboard.html:81
 #: templates/main/classes_dashboard.html:88
 #: templates/main/classes_dashboard.html:96 templates/students/detail.html:163
-#: templates/students/detail.html:179 templates/students/detail.html:185
+#: templates/students/detail.html:179 templates/students/detail.html:193
 msgid "Add or Edit"
 msgstr "أضف أو عدِل"
-
-#: templates/main/classes_dashboard.html:103
-#: templates/main/classes_schedule_dashboard.html:63
-#: templates/main/classrooms_dashboard.html:71
-#: templates/main/main_articles_dashboard.html:58
-#: templates/main/main_articles_edit.html:40
-#: templates/main/posts-dashboard.html:80
-#: templates/main/school_info_edit.html:27
-#: templates/main/snippets/exams_dashboard_table.html:56
-#: templates/main/subjects-dashboard.html:59 templates/posts/add_post.html:31
-#: templates/students/add_results_paper.html:39
-#: templates/students/add_student.html:44 templates/students/detail.html:192
-#: templates/students/search_students.html:101
-#: templates/tabels/add_class.html:34 templates/tabels/add_classroom.html:32
-#: templates/tabels/add_exams_tabel.html:70
-#: templates/tabels/add_full_schedule.html:69
-#: templates/tabels/add_subject.html:33
-msgid "Edit"
-msgstr "تعديل"
-
-#: templates/main/classes_dashboard.html:107
-#: templates/main/classes_schedule_dashboard.html:66
-#: templates/main/classrooms_dashboard.html:74
-#: templates/main/posts-dashboard.html:83
-#: templates/main/snippets/exams_dashboard_table.html:59
-#: templates/main/students_dashboard.html:103
-#: templates/main/subjects-dashboard.html:63
-#: templates/posts/post_confirm_delete.html:25
-#: templates/students/delete_student_confirm.html:26
-#: templates/students/detail.html:90 templates/students/detail.html:196
-#: templates/students/search_students.html:108
-#: templates/tabels/delete_class_confirm.html:29
-#: templates/tabels/delete_classroom_confirm.html:28
-#: templates/tabels/delete_exams_tabel_confirm.html:45
-#: templates/tabels/delete_full_schedule.html:29
-#: templates/tabels/delete_subject_confirm.html:38
-msgid "Delete"
-msgstr "حذف"
 
 #: templates/main/classes_schedule_dashboard.html:14
 msgid "Classes Schedules Dashboard"
@@ -1024,10 +1205,6 @@ msgstr "اسم الفصل"
 #: templates/main/contact.html:13 templates/snippets/footer.html:14
 msgid "Contact Us"
 msgstr "اتصل بنا"
-
-#: templates/main/contact.html:60
-msgid "Send"
-msgstr "أرسل"
 
 #: templates/main/exams_dashboard.html:12
 msgid "Exams Dashboard"
@@ -1061,12 +1238,15 @@ msgstr "نشرت في"
 msgid "Main Quotes Dashboard"
 msgstr "لوحة التحكم باﻹقتباسات الرئيسية"
 
-#: templates/main/main_articles_dashboard.html:71
+#: templates/main/main_articles_dashboard.html:56
+msgid "None"
+msgstr "لا يوجد"
+
+#: templates/main/main_articles_dashboard.html:79
 msgid "There is no quotes"
 msgstr "لا يوجد إقتباسات"
 
 #: templates/main/main_articles_edit.html:21
-
 msgid "The asterisk next to the field title means that field is not optional"
 msgstr "تعني العلامة النجمية بجوار عنوان الحقل أن ذلك الحقل ليس اختياريًا"
 
@@ -1091,11 +1271,28 @@ msgstr "تاريخ أخر تعديل"
 msgid "Publication Date"
 msgstr "تاريخ النشر"
 
+#: templates/main/result_doc.html:31
+msgid "Total Summation"
+msgstr "المجموع الكلي"
+
+#: templates/main/result_doc.html:37
+msgid "Overall Rate"
+msgstr "المعدل العام"
+
+#: templates/main/result_doc.html:42
+#: templates/main/snippets/result_paper_table/semesters_table.html:70
+msgid "Estimate"
+msgstr "التقدير"
+
+#: templates/main/result_doc.html:50
+msgid "Sorry, the result has not been announced yet"
+msgstr "عذرا ، لم تعلن النتيجة بعد"
+
 #: templates/main/result_search.html:14
 msgid "Find a result"
 msgstr "ابحث عن نتيجة"
 
-#: templates/main/result_search.html:34
+#: templates/main/result_search.html:26
 msgid "Search"
 msgstr "بحث"
 
@@ -1111,6 +1308,44 @@ msgstr "النوع"
 #: templates/main/snippets/exams_dashboard_table.html:25
 msgid "Last Editor"
 msgstr "آخر معدل"
+
+#: templates/main/snippets/result_paper_table/attempts_tbody.html:6
+msgid "Second Attempt Results"
+msgstr "نتائج الدور الثاني"
+
+#: templates/main/snippets/result_paper_table/attempts_tbody.html:14
+msgid "Third Attempt Results"
+msgstr "نتائج الدور الثالث"
+
+#: templates/main/snippets/result_paper_table/semesters_table.html:20
+msgid "Need To Pass"
+msgstr "يحتاج للنجاح"
+
+#: templates/main/snippets/result_paper_table/semesters_table.html:23
+#: templates/main/snippets/result_paper_table/semesters_table.html:59
+msgid "Total"
+msgstr "المجموع"
+
+#: templates/main/snippets/result_paper_table/semesters_table.html:24
+msgid "Status"
+msgstr "الحالة"
+
+#: templates/main/snippets/result_paper_table/semesters_table.html:48
+msgid "Succeed"
+msgstr "ناجح"
+
+#: templates/main/snippets/result_paper_table/semesters_table.html:65
+msgid "Rate"
+msgstr "المعدل"
+
+#: templates/main/snippets/result_paper_table/student_info_table.html:6
+#: templates/main/students_dashboard.html:59
+msgid "Student Name"
+msgstr "اسم الطلاب"
+
+#: templates/main/snippets/result_paper_table/student_info_table.html:9
+msgid "Registration Status"
+msgstr "صفة القيد"
 
 #: templates/main/students_classroom_dashboard.html:27
 msgid "Student & Results Dashboard"
@@ -1142,10 +1377,12 @@ msgid "View"
 msgstr "مشاهدة"
 
 #: templates/main/students_classroom_dashboard.html:104
+#: templates/main/users_dashboard.html:48
 msgid "Activate all"
 msgstr "تنشيط الكل"
 
 #: templates/main/students_classroom_dashboard.html:108
+#: templates/main/users_dashboard.html:52
 msgid "Deactivate all"
 msgstr "إلغاء تنشيط الكل"
 
@@ -1176,10 +1413,6 @@ msgstr "أضف"
 #: templates/students/search_students.html:38
 msgid "ID"
 msgstr "رقم القيد"
-
-#: templates/main/students_dashboard.html:59
-msgid "Student Name"
-msgstr "اسم الطلاب"
 
 #: templates/main/students_dashboard.html:68
 msgid "N.Number"
@@ -1230,6 +1463,27 @@ msgstr "ﻹضافة مادة"
 #: templates/main/subjects-dashboard.html:47
 msgid "Subject Name"
 msgstr "اسم المادة"
+
+#: templates/main/users_dashboard.html:5 templates/snippets/navbar.html:112
+msgid "Users"
+msgstr "المستخدمين"
+
+#: templates/main/users_dashboard.html:15
+msgid "Users Dashboard"
+msgstr "لوحة التحكم بالمستخدمين"
+
+#: templates/main/users_dashboard.html:44
+msgid "To add a new user"
+msgstr "ﻹضافة مستخدم جديد"
+
+#: templates/main/users_dashboard.html:63 templates/students/detail.html:25
+#: templates/students/printable_detail.html:23
+msgid "ID Number"
+msgstr "رقم القيد"
+
+#: templates/main/users_dashboard.html:129
+msgid "No user has been added"
+msgstr "لم يتم إضافة أي مستخدم"
 
 #: templates/posts/add_post.html:13
 msgid "Post Edit"
@@ -1309,21 +1563,9 @@ msgstr "معلومات المدرسة"
 msgid "Change Quotes"
 msgstr "تغيير الاقتباسات"
 
-#: templates/snippets/navbar.html:112
-msgid "Users"
-msgstr "المستخدمين"
-
 #: templates/snippets/navbar.html:116
 msgid "Add User"
 msgstr "إضافة مستخدم"
-
-#: templates/snippets/navbar.html:128
-msgid "Login"
-msgstr "تسجيل الدخول"
-
-#: templates/snippets/navbar.html:141
-msgid "Profile"
-msgstr " الملف الشخصي"
 
 #: templates/snippets/navbar.html:144
 msgid "Logout"
@@ -1377,11 +1619,6 @@ msgstr "حذف الطالب"
 msgid "Are you sure you want to delete this student?"
 msgstr "هل أنت متأكد أنك تريد حذف هذا الطالب ؟"
 
-#: templates/students/detail.html:25
-#: templates/students/printable_detail.html:23
-msgid "ID Number"
-msgstr "رقم القيد"
-
 #: templates/students/detail.html:47
 #: templates/students/printable_detail.html:45
 msgid "Age"
@@ -1419,7 +1656,7 @@ msgstr "درجات الدور الثاني"
 msgid "Third attempt grades"
 msgstr "درجات الدور الثالث"
 
-#: templates/students/detail.html:208
+#: templates/students/detail.html:224
 msgid "No results were added"
 msgstr "لم يتم إضافة أي نتائج "
 
@@ -1483,12 +1720,3 @@ msgstr "هل تريد بالتأكيد حذف جدول الحصص الدراسي
 #: templates/tabels/schedule_search.html:22
 msgid "Find"
 msgstr "ابحث"
-
-#~ msgid "This Field is optional"
-#~ msgstr "هذا الحقل إختياري"
-
-#~ msgid "Edit Quotes For Home Page"
-#~ msgstr "تعديل الاقتباسات للصفحة الرئيسية"
-
-#~ msgid "Article"
-#~ msgstr "العنصر"

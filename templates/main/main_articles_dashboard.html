@@ -50,7 +50,15 @@
                                 {% for q in quotes %}
                                 <tr>
                                     <td>{{q.title}}</td>
-                                    <td>{{q.english_title}}</td>
+
+                                    <td>
+                                    {% if not q.english_title %}
+                                        {% trans 'None' %}
+                                    {% else %}
+                                    {{q.english_title}}
+                                    
+                                    {% endif %}
+                                    </td>
                                     
                                     <td>
                                         <a href="{% url 'main:main-articles-edit' pk=q.id %}"

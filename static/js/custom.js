@@ -16,6 +16,24 @@ $(function () {
             }
         })
     })
+    
+    $('.compensatory-toggle').click(function (e) {
+        e.preventDefault();
+        let element = $(this);
+        const endpoint = element.attr('href')
+
+        $.ajax({
+            url: endpoint,
+            success: (data) => {
+                console.log('success');
+                element.text(data.toggle)
+            },
+            error: (error) => {
+                console.log(error)
+            }
+        })
+    })
+
     function checkLang(lang) {
         const langs = ['ar', 'en']
         if (!langs.includes(lang)) {

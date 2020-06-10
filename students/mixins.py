@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 class SubjectsResultsMixin:
     def need_to_pass_exam(self):
         result = "0"
@@ -31,26 +33,28 @@ class FinalResultsMixin:
 
     def general_average(self):
         std_total, total = self.get_total_grades()
-
         return '{} \ {}'.format(total, std_total)
 
     def get_estimate(self):
+        
         if self.passed_all():
             if self.total_percentage() <= 100 and self.total_percentage() > 84:
-                return 'ممتاز'
+                return _('Excellent')
+            elif self.total_percentage() > 100 and self.total_percentage() > 74:
+                return _('Excellent')
             elif self.total_percentage() <= 84 and self.total_percentage() > 74:
-                return 'جيد جدا'
+                return _('Very Good')
             elif self.total_percentage() <= 74 and self.total_percentage() > 64:
-                return 'جيد'
+                return _('Good')
             elif self.total_percentage() <= 64 and self.total_percentage() > 54:
-                return 'مقبول'
+                return _('Fairly good')
             elif self.total_percentage() <= 54 and self.total_percentage() > 30:
-                return 'ضعيف'
+                return _('Weak')
             elif self.total_percentage() <= 30 and self.total_percentage() >= 0:
-                return 'ضعيف جدا'
+                return _('Very weak')
             else:
                 return ' '
-        return 'راسب'
+        return _('Failed')
 
     def get_total_by_qs(self, qs):
         if qs.exists():

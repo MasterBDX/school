@@ -1,4 +1,5 @@
 from easy_thumbnails.conf import Settings as thumbnail_settings
+
 import os
 
 MYBASE = os.path.dirname(
@@ -8,6 +9,8 @@ BASE_DIR = os.path.dirname(MYBASE)
 
 FOLDER_NAME = os.path.basename(MYBASE)
 
+
+LOGIN_REDIRECT_URL = '/accounts/login/'
 
 MAIN_EMAIL = 'masterbdxteam@gmail.com'
 
@@ -22,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third party
-
+    'debug_toolbar',
     'rest_framework',
     'crispy_forms',
     'defender',
@@ -94,6 +97,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'defender.middleware.FailedLoginMiddleware',
@@ -103,6 +107,28 @@ MIDDLEWARE = [
 
 ]
 
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+
+# DEBUG_TOOLBAR_PANELS = [
+#     'debug_toolbar.panels.versions.VersionsPanel',
+#     'debug_toolbar.panels.timer.TimerPanel',
+#     'debug_toolbar.panels.settings.SettingsPanel',
+#     'debug_toolbar.panels.headers.HeadersPanel',
+#     'debug_toolbar.panels.request.RequestPanel',
+#     'debug_toolbar.panels.sql.SQLPanel',
+#     'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+#     'debug_toolbar.panels.templates.TemplatesPanel',
+#     'debug_toolbar.panels.cache.CachePanel',
+#     'debug_toolbar.panels.signals.SignalsPanel',
+#     'debug_toolbar.panels.logging.LoggingPanel',
+#     'debug_toolbar.panels.redirects.RedirectsPanel',
+#     'debug_toolbar.panels.profiling.ProfilingPanel',
+# ]
 
 ROOT_URLCONF = FOLDER_NAME + '.urls'
 
