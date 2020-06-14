@@ -3,6 +3,9 @@ from django.utils.safestring import mark_safe
 from django_resized import ResizedImageField
 from django.utils.translation import get_language
 
+
+from .utils import article_image_random_name
+
 class SchoolInfo(models.Model):
     name = models.CharField(max_length=255)
     english_name = models.CharField(max_length=255)
@@ -31,7 +34,7 @@ class SchoolInfo(models.Model):
 
 
 class MainArticle(models.Model):
-    image = ResizedImageField(size=[600, 600], blank=True, null=True)
+    image = ResizedImageField(size=[600, 600], blank=True, null=True,upload_to=article_image_random_name)
     title = models.CharField(max_length=255)
     english_title = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()

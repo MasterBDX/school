@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 09:30+0000\n"
+"POT-Creation-Date: 2020-06-14 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,22 +67,22 @@ msgstr "حقلي كلمة المرور غير متطابقين"
 msgid "Your old password was entered incorrectly. Please enter it again"
 msgstr "تم إدخال كلمة المرور القديمة بشكل غير صحيح. يرجى  إدخالها مرة أخرى"
 
-#: accounts/views.py:22
+#: accounts/views.py:29
 msgid ""
 "You have been registered successfully Please wait for your account to be "
 "activated"
 msgstr "لقد تم تسجيلك بنجاح ، يرجى الانتظار حتى يتم تنشيط حسابك"
 
-#: accounts/views.py:31
+#: accounts/views.py:38
 msgid "User has been added successfully"
 msgstr "تمت إضافة المستخدم بنجاح"
 
-#: accounts/views.py:89 posts/forms.py:21 students/forms.py:51
-#: students/views.py:239 templates/main/users_dashboard.html:102
+#: accounts/views.py:103 posts/forms.py:21 students/forms.py:51
+#: students/views.py:250 templates/main/users_dashboard.html:102
 msgid "Activate"
 msgstr "تنشيط"
 
-#: accounts/views.py:92 students/views.py:241
+#: accounts/views.py:106 students/views.py:252
 #: templates/main/users_dashboard.html:107
 msgid "Deactivate"
 msgstr "إلغاء تنشيط"
@@ -126,7 +126,7 @@ msgstr "الإسم"
 msgid "Please enter a valid email"
 msgstr "يرجى إدخال بريد إلكتروني صحيح"
 
-#: main/forms.py:19 students/forms.py:81
+#: main/forms.py:19 students/forms.py:100
 #: templates/main/snippets/html_message.html:9
 #: templates/main/snippets/message.txt:9
 #: templates/main/snippets/result_paper_table/semesters_table.html:17
@@ -140,12 +140,12 @@ msgid "Content"
 msgstr "المحتوى"
 
 #: main/forms.py:34 school_tabels/forms.py:63 school_tabels/forms.py:95
-#: students/forms.py:26 students/forms.py:50
-#: templates/main/classrooms_dashboard.html:51
+#: school_tabels/forms.py:132 students/forms.py:26 students/forms.py:50
+#: templates/main/classrooms_dashboard.html:54
 #: templates/main/snippets/result_paper_table/student_info_table.html:11
 #: templates/students/detail.html:67 templates/students/detail.html:133
 #: templates/students/printable_detail.html:63
-#: templates/students/search_students.html:52
+#: templates/students/search_students.html:60
 msgid "Class"
 msgstr "الصف الدراسي"
 
@@ -170,19 +170,19 @@ msgstr " اﻹسم باﻹنجليزي"
 msgid "Cell Phone Number"
 msgstr "رقم الهاتف"
 
-#: main/forms.py:53 templates/main/about_us.html:39
+#: main/forms.py:53 templates/main/about_us.html:42
 msgid "Street"
 msgstr "الشارع"
 
-#: main/forms.py:54 templates/main/about_us.html:43
+#: main/forms.py:54 templates/main/about_us.html:46
 msgid "City"
 msgstr "المدينة"
 
-#: main/forms.py:55 templates/main/about_us.html:47
+#: main/forms.py:55 templates/main/about_us.html:50
 msgid "Municipality"
 msgstr "البلدية"
 
-#: main/forms.py:56 templates/main/about_us.html:53
+#: main/forms.py:56 templates/main/about_us.html:56
 msgid "Province"
 msgstr "المقاطعة"
 
@@ -191,13 +191,13 @@ msgid "Image"
 msgstr "الصورة"
 
 #: main/forms.py:84 posts/forms.py:18 school_tabels/forms.py:60
-#: templates/main/main_articles_dashboard.html:39
-#: templates/main/posts-dashboard.html:53
+#: templates/main/main_articles_dashboard.html:42
+#: templates/main/posts-dashboard.html:56
 msgid "Title"
 msgstr "العنوان"
 
 #: main/forms.py:85 school_tabels/forms.py:61
-#: templates/main/main_articles_dashboard.html:43
+#: templates/main/main_articles_dashboard.html:46
 msgid "English Title"
 msgstr "العنوان باللغة اﻹنجليزية"
 
@@ -516,19 +516,19 @@ msgstr "موريتاني"
 msgid "Emirati"
 msgstr "إماراتي"
 
-#: main/views.py:77
+#: main/views.py:76
 msgid "Thank you for contacting us"
 msgstr "شكرا على تواصلك معنا "
 
-#: main/views.py:150
+#: main/views.py:149
 msgid "Not Exist"
 msgstr "غير موجودة"
 
-#: main/views.py:152
+#: main/views.py:151
 msgid "Exist"
 msgstr "موجودة"
 
-#: main/views.py:197
+#: main/views.py:193
 msgid "You entered the data incorrectly Please check your information"
 msgstr "لقد قمت بإدخال البيانات بشكل خاطئ يرجى التأكد من بياناتك"
 
@@ -540,15 +540,15 @@ msgstr "المقدمة"
 msgid "Main Image (Optional)"
 msgstr "الصورة الرئيسية (إختياري)"
 
-#: posts/views.py:31
+#: posts/views.py:32
 msgid "Post has been added"
 msgstr "تم إضافة المنشور"
 
-#: posts/views.py:48
+#: posts/views.py:49
 msgid "Post has been modified"
 msgstr "تم تعديل المنشور"
 
-#: posts/views.py:55
+#: posts/views.py:56
 msgid "Post has been deleted"
 msgstr "تم حذف المنشور"
 
@@ -564,17 +564,17 @@ msgstr "اسم المادة بالعربي"
 msgid "Subject English Name"
 msgstr " اسم المادة باﻹنجليزي"
 
-#: school_tabels/forms.py:36 templates/main/classes_dashboard.html:49
-#: templates/main/students_classroom_dashboard.html:69
+#: school_tabels/forms.py:36 templates/main/classes_dashboard.html:52
+#: templates/main/students_classroom_dashboard.html:72
 msgid "Class Name"
 msgstr "اسم الصف"
 
-#: school_tabels/forms.py:37 templates/main/classes_dashboard.html:57
-#: templates/main/classrooms_dashboard.html:54
+#: school_tabels/forms.py:37 templates/main/classes_dashboard.html:60
+#: templates/main/classrooms_dashboard.html:57
 msgid "Appearance Order"
 msgstr "ترتيب الظهور"
 
-#: school_tabels/forms.py:38 templates/snippets/navbar.html:68
+#: school_tabels/forms.py:38 templates/snippets/navbar.html:62
 msgid "Subjects"
 msgstr "المواد الدراسية"
 
@@ -588,7 +588,7 @@ msgstr "الرجاء النقر فوق الزر ctrl واختيار المواد
 
 #: school_tabels/forms.py:62 school_tabels/forms.py:76
 #: school_tabels/forms.py:131 students/forms.py:15
-#: templates/main/snippets/exams_dashboard_table.html:9
+#: templates/main/snippets/exams_dashboard_table.html:8
 msgid "Year"
 msgstr "السنة"
 
@@ -596,16 +596,17 @@ msgstr "السنة"
 msgid "Exams Type"
 msgstr "نوع اﻹمتحانات "
 
-#: school_tabels/forms.py:65 school_tabels/forms.py:135 students/forms.py:83
-#: templates/main/snippets/exams_dashboard_table.html:12
+#: school_tabels/forms.py:65 school_tabels/forms.py:135 students/forms.py:102
+#: templates/main/snippets/exams_dashboard_table.html:11
 msgid "Semester"
 msgstr "الفترة"
 
 #: school_tabels/forms.py:66 school_tabels/forms.py:122
 #: school_tabels/forms.py:136 students/forms.py:27
-#: templates/main/snippets/exams_dashboard_table.html:21
+#: templates/main/snippets/exams_dashboard_table.html:20
 #: templates/students/detail.html:68
 #: templates/students/printable_detail.html:64
+#: templates/students/search_students.html:65
 msgid "Classroom"
 msgstr "الفصل الدراسي"
 
@@ -614,7 +615,7 @@ msgid "Month"
 msgstr "الشهر"
 
 #: school_tabels/forms.py:76 school_tabels/forms.py:101 students/forms.py:15
-#: templates/main/classes_schedule_dashboard.html:74
+#: templates/main/classes_schedule_dashboard.html:77
 msgid "Day"
 msgstr "اليوم"
 
@@ -635,39 +636,44 @@ msgstr "وقت بداية اﻹمتحان"
 msgid "Exam end time"
 msgstr "وقت نهاية الإمتحان"
 
-#: school_tabels/forms.py:102 templates/main/classes_schedule_dashboard.html:77
+#: school_tabels/forms.py:102 templates/main/classes_schedule_dashboard.html:80
 msgid "First Class"
 msgstr "الحصة اﻷولى"
 
-#: school_tabels/forms.py:103 templates/main/classes_schedule_dashboard.html:81
+#: school_tabels/forms.py:103 templates/main/classes_schedule_dashboard.html:84
 msgid "Second Class"
 msgstr "الحصة الثانية"
 
-#: school_tabels/forms.py:104 templates/main/classes_schedule_dashboard.html:87
+#: school_tabels/forms.py:104 templates/main/classes_schedule_dashboard.html:90
 msgid "Third Class"
 msgstr "الحصة الثالثة"
 
-#: school_tabels/forms.py:105 templates/main/classes_schedule_dashboard.html:91
+#: school_tabels/forms.py:105 templates/main/classes_schedule_dashboard.html:94
 msgid "Fourth Class"
 msgstr "الحصة الرابعة"
 
-#: school_tabels/forms.py:106 templates/main/classes_schedule_dashboard.html:96
+#: school_tabels/forms.py:106 templates/main/classes_schedule_dashboard.html:99
 msgid "Fifth Class"
 msgstr "الحصة الخامسة"
 
 #: school_tabels/forms.py:107
-#: templates/main/classes_schedule_dashboard.html:100
+#: templates/main/classes_schedule_dashboard.html:103
 msgid "Sixth Class"
 msgstr "الحصة السادسة"
 
 #: school_tabels/forms.py:108
-#: templates/main/classes_schedule_dashboard.html:103
+#: templates/main/classes_schedule_dashboard.html:106
 msgid "Seventh Class"
 msgstr "الحصة السابعة"
 
 #: school_tabels/forms.py:134
 msgid "Exam Type"
 msgstr "نوع الإمتحان"
+
+#: school_tabels/forms.py:138
+msgid "if the exams Table for all classrooms please let this field empty"
+msgstr ""
+"إذا كان جدول الامتحانات لجميع الفصول الدراسية ، يرجى ترك هذا الحقل فارغًا"
 
 #: school_tabels/models.py:18
 msgid "Saturday"
@@ -745,11 +751,11 @@ msgstr "تم تعديل جدول الإمتحانات"
 msgid "Exams schedule has been deleted"
 msgstr "تم حذف جدول الإمتحانات"
 
-#: school_tabels/views.py:164
+#: school_tabels/views.py:160
 msgid "A new classes schedule has been added"
 msgstr "تم إضافة جدول حصص جديد"
 
-#: school_tabels/views.py:166
+#: school_tabels/views.py:162
 msgid "The classes schedule has been modified"
 msgstr "تم تعديل جدول الحصص"
 
@@ -790,10 +796,10 @@ msgstr "مكان الولادة"
 msgid "Birth Date"
 msgstr "تاريخ الميلاد"
 
-#: students/forms.py:24 templates/main/students_dashboard.html:62
-#: templates/main/students_list.html:37 templates/students/detail.html:48
+#: students/forms.py:24 templates/main/students_dashboard.html:71
+#: templates/main/students_list.html:40 templates/students/detail.html:48
 #: templates/students/printable_detail.html:46
-#: templates/students/search_students.html:47
+#: templates/students/search_students.html:55
 msgid "Gender"
 msgstr "الجنس"
 
@@ -802,8 +808,8 @@ msgstr "الجنس"
 msgid "N.Id Number"
 msgstr "الرقم الوطني"
 
-#: students/forms.py:26 templates/main/students_dashboard.html:65
-#: templates/main/students_list.html:40 templates/students/detail.html:49
+#: students/forms.py:26 templates/main/students_dashboard.html:74
+#: templates/main/students_list.html:43 templates/students/detail.html:49
 #: templates/students/printable_detail.html:47
 msgid "Nationality"
 msgstr "الجنسية"
@@ -826,112 +832,105 @@ msgstr "صفة القيد"
 msgid "Student Status"
 msgstr "حالة الطالب"
 
-#: students/forms.py:52
-msgid "Show the second attempt"
-msgstr "أظهر الدور الثاني"
-
-#: students/forms.py:53
-msgid "Show the third attempt"
-msgstr "أظهر الدور الثالث"
-
-#: students/forms.py:62 students/forms.py:71
+#: students/forms.py:61 students/forms.py:70 students/forms.py:80
+#: students/forms.py:90
 #: templates/main/snippets/result_paper_table/semesters_table.html:18
 msgid "Exam Grade"
 msgstr "درجة الإمتحان"
 
-#: students/forms.py:63 students/forms.py:74
+#: students/forms.py:62 students/forms.py:83
 #: templates/main/snippets/result_paper_table/semesters_table.html:21
 msgid "Year Works Grade"
 msgstr "درجة أعمال السنة"
 
-#: students/forms.py:72
+#: students/forms.py:81 students/forms.py:91
 #: templates/main/snippets/result_paper_table/semesters_table.html:19
 msgid "Exam Pass Grade"
 msgstr "درجة النجاح في الإمتحان"
 
-#: students/forms.py:73
+#: students/forms.py:82 students/forms.py:92
 #: templates/main/snippets/result_paper_table/semesters_table.html:22
 msgid "Subject Pass Grade"
 msgstr "درجة النجاح في المادة"
 
-#: students/forms.py:82
+#: students/forms.py:101
 msgid "Student Exam grade"
 msgstr "درجة إمتحان الطالب"
 
-#: students/forms.py:83
+#: students/forms.py:102
 msgid "Attempt"
 msgstr "الدور"
 
-#: students/forms.py:111
+#: students/forms.py:130
 msgid "The student has not failed in this subject"
 msgstr "لم يرسب الطالب في هذه المادة"
 
-#: students/forms.py:117
+#: students/forms.py:136
 msgid "An error has occurred, please refresh the page"
 msgstr "حدث خطأ ، يرجى تحديث الصفحة"
 
-#: students/managers.py:21 students/views.py:220
+#: students/managers.py:21 students/views.py:230
 #: templates/students/detail.html:169 templates/students/detail.html:183
 #: templates/students/detail.html:198
 msgid "Show"
 msgstr "إظهار"
 
-#: students/managers.py:25 students/views.py:220
+#: students/managers.py:25 students/views.py:230
 #: templates/students/detail.html:171 templates/students/detail.html:185
 #: templates/students/detail.html:200
 msgid "Hide"
 msgstr "إخفاء"
 
-#: students/mixins.py:43 students/mixins.py:45
+#: students/mixins.py:42 students/mixins.py:44
 msgid "Excellent"
 msgstr "ممتاز"
 
-#: students/mixins.py:47
+#: students/mixins.py:46
 msgid "Very Good"
 msgstr "جيد جدا"
 
-#: students/mixins.py:49
+#: students/mixins.py:48
 msgid "Good"
 msgstr "جيد"
 
-#: students/mixins.py:51
+#: students/mixins.py:50
 msgid "Fairly good"
 msgstr "مقبول"
 
-#: students/mixins.py:53
+#: students/mixins.py:52
 msgid "Weak"
 msgstr "ضعيف"
 
-#: students/mixins.py:55
+#: students/mixins.py:54
 msgid "Very weak"
 msgstr "ضعيف جدا"
 
-#: students/mixins.py:58
+#: students/mixins.py:57
 #: templates/main/snippets/result_paper_table/semesters_table.html:50
 msgid "Failed"
 msgstr "راسب"
 
-#: students/views.py:48
+#: students/views.py:50
 msgid "A new student has been added"
 msgstr "تم إضافة طالب جديدة"
 
-#: students/views.py:57
+#: students/views.py:59
 msgid "The student information has been modified"
 msgstr "تم تعديل معلومات الطالب"
 
-#: students/views.py:64
+#: students/views.py:66
 msgid "The student has been deleted"
 msgstr "تم حذف الطالب"
 
-#: students/views.py:83
+#: students/views.py:85
 msgid "A new result paper has been added"
 msgstr "تم إضافة صحيفة جديدة"
 
-#: students/views.py:120
+#: students/views.py:122
 msgid "The result paper has been modified"
 msgstr "تم تعديل الصحيفة"
 
-#: students/views.py:127
+#: students/views.py:129
 msgid "The result paper has been deleted"
 msgstr "تم حذف الصحيفة"
 
@@ -945,20 +944,24 @@ msgstr "تغيير كلمة المرور"
 msgid "Change"
 msgstr "تغيير"
 
-#: templates/accounts/delete_user_confirm.html:12
-#: templates/accounts/delete_user_confirm.html:26
-#: templates/main/classes_dashboard.html:107
-#: templates/main/classes_schedule_dashboard.html:66
-#: templates/main/classrooms_dashboard.html:74
-#: templates/main/posts-dashboard.html:83
-#: templates/main/snippets/exams_dashboard_table.html:59
-#: templates/main/students_dashboard.html:103
-#: templates/main/subjects-dashboard.html:63
+#: templates/accounts/delete_user_confirm.html:4
+msgid "Delete user confirmation"
+msgstr ""
+
+#: templates/accounts/delete_user_confirm.html:15
+#: templates/accounts/delete_user_confirm.html:29
+#: templates/main/classes_dashboard.html:110
+#: templates/main/classes_schedule_dashboard.html:69
+#: templates/main/classrooms_dashboard.html:77
+#: templates/main/posts-dashboard.html:86
+#: templates/main/snippets/exams_dashboard_table.html:58
+#: templates/main/students_dashboard.html:112
+#: templates/main/subjects-dashboard.html:66
 #: templates/main/users_dashboard.html:114
-#: templates/posts/post_confirm_delete.html:25
+#: templates/posts/post_confirm_delete.html:29
 #: templates/students/delete_student_confirm.html:26
 #: templates/students/detail.html:90 templates/students/detail.html:212
-#: templates/students/search_students.html:108
+#: templates/students/search_students.html:116
 #: templates/tabels/delete_class_confirm.html:29
 #: templates/tabels/delete_classroom_confirm.html:28
 #: templates/tabels/delete_exams_tabel_confirm.html:45
@@ -967,7 +970,7 @@ msgstr "تغيير"
 msgid "Delete"
 msgstr "حذف"
 
-#: templates/accounts/delete_user_confirm.html:21
+#: templates/accounts/delete_user_confirm.html:24
 msgid "Are you sure you want to delete this user ?"
 msgstr "هل أنت متأكد أنك تريد حذف هذا المستخدم؟"
 
@@ -994,7 +997,7 @@ msgstr "تم تعيين كلمة المرور الخاصة بك. بالامكا�
 
 #: templates/accounts/password_reset_complete.html:23
 #: templates/accounts/register.html:6 templates/accounts/register.html:24
-#: templates/accounts/register.html:43 templates/snippets/navbar.html:128
+#: templates/accounts/register.html:43 templates/snippets/navbar.html:124
 msgid "Login"
 msgstr "تسجيل الدخول"
 
@@ -1011,11 +1014,15 @@ msgstr "إعادة تعيين"
 msgid "This link has expired"
 msgstr "لقد إنتهت صلاحية هذا الرابط"
 
-#: templates/accounts/password_reset_done.html:12
+#: templates/accounts/password_reset_done.html:4
+msgid "Password Reset Done"
+msgstr "تم إعادة تعيين كلمة المرور"
+
+#: templates/accounts/password_reset_done.html:15
 msgid "Password reset data sent"
 msgstr "تم إرسال بيانات إعادة تعيين كلمة المرور"
 
-#: templates/accounts/password_reset_done.html:18
+#: templates/accounts/password_reset_done.html:21
 msgid ""
 " \n"
 "                    We’ve emailed you instructions for setting your "
@@ -1068,7 +1075,7 @@ msgid "Password Reset"
 msgstr "إعادة تعيين كلمة المرور"
 
 #: templates/accounts/password_reset_form.html:22
-#: templates/main/contact.html:60
+#: templates/main/contact.html:64
 msgid "Send"
 msgstr "أرسل"
 
@@ -1077,7 +1084,7 @@ msgstr "أرسل"
 msgid "Password reset on %(site_name)s"
 msgstr ""
 
-#: templates/accounts/profile_edit.html:4 templates/snippets/navbar.html:141
+#: templates/accounts/profile_edit.html:4 templates/snippets/navbar.html:137
 msgid "Profile"
 msgstr " الملف الشخصي"
 
@@ -1086,21 +1093,21 @@ msgid "Edit Profile"
 msgstr "تعديل الملف الشخصي"
 
 #: templates/accounts/profile_edit.html:27
-#: templates/main/classes_dashboard.html:103
-#: templates/main/classes_schedule_dashboard.html:63
-#: templates/main/classrooms_dashboard.html:71
-#: templates/main/main_articles_dashboard.html:66
-#: templates/main/main_articles_edit.html:40
-#: templates/main/posts-dashboard.html:80
+#: templates/main/classes_dashboard.html:106
+#: templates/main/classes_schedule_dashboard.html:66
+#: templates/main/classrooms_dashboard.html:74
+#: templates/main/main_articles_dashboard.html:69
+#: templates/main/main_articles_edit.html:47
+#: templates/main/posts-dashboard.html:83
 #: templates/main/school_info_edit.html:27
-#: templates/main/snippets/exams_dashboard_table.html:56
-#: templates/main/subjects-dashboard.html:59 templates/posts/add_post.html:31
+#: templates/main/snippets/exams_dashboard_table.html:55
+#: templates/main/subjects-dashboard.html:62 templates/posts/add_post.html:40
 #: templates/students/add_results_paper.html:39
 #: templates/students/add_student.html:44 templates/students/detail.html:208
-#: templates/students/search_students.html:101
-#: templates/tabels/add_class.html:34 templates/tabels/add_classroom.html:32
-#: templates/tabels/add_exams_tabel.html:70
-#: templates/tabels/add_full_schedule.html:69
+#: templates/students/search_students.html:109
+#: templates/tabels/add_class.html:48 templates/tabels/add_classroom.html:44
+#: templates/tabels/add_exams_tabel.html:82
+#: templates/tabels/add_full_schedule.html:81
 #: templates/tabels/add_subject.html:33
 msgid "Edit"
 msgstr "تعديل"
@@ -1121,104 +1128,109 @@ msgstr "تسجيل"
 msgid "Forgot your password"
 msgstr "نسيت كلمة المرور"
 
-#: templates/main/about_us.html:10 templates/main/about_us.html:64
-#: templates/snippets/footer.html:9 templates/snippets/header.html:23
+#: templates/main/about_us.html:4 templates/main/about_us.html:13
+#: templates/main/about_us.html:67 templates/snippets/footer.html:9
+#: templates/snippets/header.html:23
 msgid "About School"
 msgstr "حول المدرسة"
 
-#: templates/main/about_us.html:18
+#: templates/main/about_us.html:21
 msgid "School Name"
 msgstr "إسم المدرسة"
 
-#: templates/main/about_us.html:26
+#: templates/main/about_us.html:29
 msgid "School Phone Number"
 msgstr "رقم هاتف المدرسة"
 
-#: templates/main/about_us.html:33
+#: templates/main/about_us.html:36
 msgid "School Address"
 msgstr "عنوان المدرسة"
 
-#: templates/main/classes_dashboard.html:12
+#: templates/main/classes_dashboard.html:5
+#: templates/main/classes_dashboard.html:15
 msgid "Classes Dashboard"
 msgstr " لوحة التحكم بالصفوف الدراسية"
 
-#: templates/main/classes_dashboard.html:39
+#: templates/main/classes_dashboard.html:42
 msgid "To add a new class"
 msgstr " ﻹضافة صف جديد"
 
-#: templates/main/classes_dashboard.html:53
+#: templates/main/classes_dashboard.html:56
 msgid "Subjects Count"
 msgstr " عدد المواد"
 
-#: templates/main/classes_dashboard.html:60
+#: templates/main/classes_dashboard.html:63
 msgid "First Semester Degrees"
 msgstr "درجات الفترة الأولى"
 
-#: templates/main/classes_dashboard.html:63
+#: templates/main/classes_dashboard.html:66
 msgid "Second Semester Degrees"
 msgstr "درجات الفترة الثانية"
 
-#: templates/main/classes_dashboard.html:66
+#: templates/main/classes_dashboard.html:69
 msgid "Third Semester Degrees"
 msgstr "درجات الفترة الثالثة"
 
-#: templates/main/classes_dashboard.html:68
-#: templates/main/classrooms_dashboard.html:57
-#: templates/main/main_articles_dashboard.html:46
-#: templates/main/posts-dashboard.html:67
-#: templates/main/snippets/exams_dashboard_table.html:32
-#: templates/main/students_dashboard.html:74
-#: templates/main/subjects-dashboard.html:49
+#: templates/main/classes_dashboard.html:71
+#: templates/main/classrooms_dashboard.html:60
+#: templates/main/main_articles_dashboard.html:49
+#: templates/main/posts-dashboard.html:70
+#: templates/main/snippets/exams_dashboard_table.html:31
+#: templates/main/students_dashboard.html:83
+#: templates/main/subjects-dashboard.html:52
 #: templates/main/users_dashboard.html:74 templates/students/detail.html:152
-#: templates/students/search_students.html:62
+#: templates/students/search_students.html:70
 msgid "Control"
 msgstr "التحكم"
 
-#: templates/main/classes_dashboard.html:81
-#: templates/main/classes_dashboard.html:88
-#: templates/main/classes_dashboard.html:96 templates/students/detail.html:163
+#: templates/main/classes_dashboard.html:84
+#: templates/main/classes_dashboard.html:91
+#: templates/main/classes_dashboard.html:99 templates/students/detail.html:163
 #: templates/students/detail.html:179 templates/students/detail.html:193
 msgid "Add or Edit"
 msgstr "أضف أو عدِل"
 
-#: templates/main/classes_schedule_dashboard.html:14
+#: templates/main/classes_schedule_dashboard.html:5
+#: templates/main/classes_schedule_dashboard.html:17
 msgid "Classes Schedules Dashboard"
 msgstr " لوحة التحكم بجداول الحصص"
 
-#: templates/main/classes_schedule_dashboard.html:40
+#: templates/main/classes_schedule_dashboard.html:43
 msgid "To add a new classes schedule"
 msgstr " ﻹضافة جدول حصص جديد"
 
-#: templates/main/classrooms_dashboard.html:12
+#: templates/main/classrooms_dashboard.html:5
+#: templates/main/classrooms_dashboard.html:15
 msgid "Classrooms Dashboard"
 msgstr " لوحة التحكم بالفصول الدراسية"
 
-#: templates/main/classrooms_dashboard.html:38
+#: templates/main/classrooms_dashboard.html:41
 msgid "To add a new classroom"
 msgstr " ﻹضافة فصل جديد"
 
-#: templates/main/classrooms_dashboard.html:48
-#: templates/main/students_classroom_list.html:45
+#: templates/main/classrooms_dashboard.html:51
+#: templates/main/students_classroom_list.html:48
 msgid "Classroom Name"
 msgstr "اسم الفصل"
 
-#: templates/main/contact.html:13 templates/snippets/footer.html:14
+#: templates/main/contact.html:4 templates/main/contact.html:17
+#: templates/snippets/footer.html:14
 msgid "Contact Us"
 msgstr "اتصل بنا"
 
-#: templates/main/exams_dashboard.html:12
+#: templates/main/exams_dashboard.html:5 templates/main/exams_dashboard.html:15
 msgid "Exams Dashboard"
 msgstr "لوحة التحكم باﻹمتحانات"
 
-#: templates/main/exams_dashboard.html:38
+#: templates/main/exams_dashboard.html:41
 msgid "To add a new exams schedule"
 msgstr " ﻹضافة جدول إمتحانات"
 
-#: templates/main/exams_dashboard.html:57
+#: templates/main/exams_dashboard.html:60
 msgid "Midterm exams"
 msgstr "اﻹمتحانات  النصفية"
 
-#: templates/main/exams_dashboard.html:64
+#: templates/main/exams_dashboard.html:67
 msgid "Final exams"
 msgstr "الإمتحانات النهائية"
 
@@ -1226,7 +1238,8 @@ msgstr "الإمتحانات النهائية"
 msgid "Home Page"
 msgstr "الصفحة الرئيسية"
 
-#: templates/main/home.html:54 templates/snippets/navbar.html:25
+#: templates/main/home.html:54 templates/posts/posts_list_view.html:4
+#: templates/snippets/navbar.html:19
 msgid "Latest News"
 msgstr "أخر الأخبار"
 
@@ -1234,65 +1247,66 @@ msgstr "أخر الأخبار"
 msgid "Published at"
 msgstr "نشرت في"
 
-#: templates/main/main_articles_dashboard.html:10
+#: templates/main/main_articles_dashboard.html:5
+#: templates/main/main_articles_dashboard.html:13
 msgid "Main Quotes Dashboard"
 msgstr "لوحة التحكم باﻹقتباسات الرئيسية"
 
-#: templates/main/main_articles_dashboard.html:56
+#: templates/main/main_articles_dashboard.html:59
 msgid "None"
 msgstr "لا يوجد"
 
-#: templates/main/main_articles_dashboard.html:79
+#: templates/main/main_articles_dashboard.html:82
 msgid "There is no quotes"
 msgstr "لا يوجد إقتباسات"
 
-#: templates/main/main_articles_edit.html:21
+#: templates/main/main_articles_edit.html:28
 msgid "The asterisk next to the field title means that field is not optional"
 msgstr "تعني العلامة النجمية بجوار عنوان الحقل أن ذلك الحقل ليس اختياريًا"
 
-#: templates/main/posts-dashboard.html:13
+#: templates/main/posts-dashboard.html:5 templates/main/posts-dashboard.html:16
 msgid "Posts Dashboard"
 msgstr "لوحة التحكم بالمنشورات"
 
-#: templates/main/posts-dashboard.html:40
+#: templates/main/posts-dashboard.html:43
 msgid "New post"
 msgstr "منشور جديد"
 
-#: templates/main/posts-dashboard.html:56
+#: templates/main/posts-dashboard.html:59
 msgid "Creation Date"
 msgstr "تاريخ الإنشاء"
 
-#: templates/main/posts-dashboard.html:61
-#: templates/main/snippets/exams_dashboard_table.html:29
+#: templates/main/posts-dashboard.html:64
+#: templates/main/snippets/exams_dashboard_table.html:28
 msgid "Last Modified Date"
 msgstr "تاريخ أخر تعديل"
 
-#: templates/main/posts-dashboard.html:65
+#: templates/main/posts-dashboard.html:68
 msgid "Publication Date"
 msgstr "تاريخ النشر"
 
-#: templates/main/result_doc.html:31
+#: templates/main/result_doc.html:38
 msgid "Total Summation"
 msgstr "المجموع الكلي"
 
-#: templates/main/result_doc.html:37
+#: templates/main/result_doc.html:44
 msgid "Overall Rate"
 msgstr "المعدل العام"
 
-#: templates/main/result_doc.html:42
+#: templates/main/result_doc.html:49
 #: templates/main/snippets/result_paper_table/semesters_table.html:70
 msgid "Estimate"
 msgstr "التقدير"
 
-#: templates/main/result_doc.html:50
+#: templates/main/result_doc.html:57
 msgid "Sorry, the result has not been announced yet"
 msgstr "عذرا ، لم تعلن النتيجة بعد"
 
-#: templates/main/result_search.html:14
+#: templates/main/result_search.html:5 templates/main/result_search.html:17
 msgid "Find a result"
 msgstr "ابحث عن نتيجة"
 
-#: templates/main/result_search.html:26
+#: templates/main/result_search.html:41
 msgid "Search"
 msgstr "بحث"
 
@@ -1301,11 +1315,11 @@ msgstr "بحث"
 msgid "Edit School Info"
 msgstr "تعديل معلومات المدرسة"
 
-#: templates/main/snippets/exams_dashboard_table.html:16
+#: templates/main/snippets/exams_dashboard_table.html:15
 msgid "Type"
 msgstr "النوع"
 
-#: templates/main/snippets/exams_dashboard_table.html:25
+#: templates/main/snippets/exams_dashboard_table.html:24
 msgid "Last Editor"
 msgstr "آخر معدل"
 
@@ -1339,7 +1353,7 @@ msgid "Rate"
 msgstr "المعدل"
 
 #: templates/main/snippets/result_paper_table/student_info_table.html:6
-#: templates/main/students_dashboard.html:59
+#: templates/main/students_dashboard.html:68
 msgid "Student Name"
 msgstr "اسم الطلاب"
 
@@ -1347,124 +1361,122 @@ msgstr "اسم الطلاب"
 msgid "Registration Status"
 msgstr "صفة القيد"
 
-#: templates/main/students_classroom_dashboard.html:27
+#: templates/main/students_classroom_dashboard.html:5
+#: templates/main/students_classroom_dashboard.html:30
 msgid "Student & Results Dashboard"
 msgstr "لوحةالتحكم بالطلاب و النتائج"
 
-#: templates/main/students_classroom_dashboard.html:40
-#: templates/main/students_dashboard.html:43
+#: templates/main/students_classroom_dashboard.html:43
+#: templates/main/students_dashboard.html:52
 msgid "To add a new student"
 msgstr "ﻹضافة طالب جديد"
 
-#: templates/main/students_classroom_dashboard.html:72
+#: templates/main/students_classroom_dashboard.html:75
 msgid "Students Count"
 msgstr " عدد الطلاب"
 
-#: templates/main/students_classroom_dashboard.html:75
-#: templates/main/students_classroom_list.html:12
-#: templates/main/students_classroom_list.html:53
-#: templates/snippets/navbar.html:42
+#: templates/main/students_classroom_dashboard.html:78
+#: templates/main/students_classroom_list.html:4
+#: templates/main/students_classroom_list.html:15
+#: templates/main/students_classroom_list.html:56
+#: templates/snippets/navbar.html:36
 msgid "Students List"
 msgstr "قائمة الطلاب"
 
-#: templates/main/students_classroom_dashboard.html:78
+#: templates/main/students_classroom_dashboard.html:81
 msgid "Class Results"
 msgstr "نتائج الصف"
 
-#: templates/main/students_classroom_dashboard.html:99
-#: templates/main/students_classroom_list.html:73
+#: templates/main/students_classroom_dashboard.html:102
+#: templates/main/students_classroom_list.html:76
 msgid "View"
 msgstr "مشاهدة"
 
-#: templates/main/students_classroom_dashboard.html:104
+#: templates/main/students_classroom_dashboard.html:107
 #: templates/main/users_dashboard.html:48
 msgid "Activate all"
 msgstr "تنشيط الكل"
 
-#: templates/main/students_classroom_dashboard.html:108
+#: templates/main/students_classroom_dashboard.html:111
 #: templates/main/users_dashboard.html:52
 msgid "Deactivate all"
 msgstr "إلغاء تنشيط الكل"
 
-#: templates/main/students_classroom_list.html:20
+#: templates/main/students_classroom_list.html:23
 msgid "Find a student"
 msgstr "ابحث عن طالب"
 
-#: templates/main/students_classroom_list.html:49
+#: templates/main/students_classroom_list.html:52
 msgid "Students Number"
 msgstr "عدد الطلاب"
 
-#: templates/main/students_classroom_list.html:92
+#: templates/main/students_classroom_list.html:95
 msgid "No class found"
 msgstr "لم يتم العثور على فصل دراسي"
 
-#: templates/main/students_dashboard.html:46 templates/posts/add_post.html:33
+#: templates/main/students_dashboard.html:55 templates/posts/add_post.html:42
 #: templates/students/add_results_paper.html:41
-#: templates/students/add_student.html:46 templates/tabels/add_class.html:36
-#: templates/tabels/add_classroom.html:34
-#: templates/tabels/add_exams_tabel.html:72
-#: templates/tabels/add_full_schedule.html:71
+#: templates/students/add_student.html:46 templates/tabels/add_class.html:50
+#: templates/tabels/add_classroom.html:46
+#: templates/tabels/add_exams_tabel.html:84
+#: templates/tabels/add_full_schedule.html:83
 #: templates/tabels/add_subject.html:35
 msgid "Add"
 msgstr "أضف"
 
-#: templates/main/students_dashboard.html:56
-#: templates/main/students_list.html:31
-#: templates/students/search_students.html:38
+#: templates/main/students_dashboard.html:65
+#: templates/main/students_list.html:34
+#: templates/students/search_students.html:46
 msgid "ID"
 msgstr "رقم القيد"
 
-#: templates/main/students_dashboard.html:68
+#: templates/main/students_dashboard.html:77
 msgid "N.Number"
 msgstr "الرقم الوطني"
 
-#: templates/main/students_dashboard.html:71
+#: templates/main/students_dashboard.html:80
 msgid "This class result"
 msgstr "نتيجة هذا الصف"
 
-#: templates/main/students_dashboard.html:96 templates/students/detail.html:86
+#: templates/main/students_dashboard.html:105 templates/students/detail.html:86
 msgid "Edit Information"
 msgstr "تعديل البيانات"
 
-#: templates/main/students_dashboard.html:109
+#: templates/main/students_dashboard.html:118
 msgid "Add Result Paper"
 msgstr "اضف ورقة نتائج"
 
-#: templates/main/students_dashboard.html:125
+#: templates/main/students_dashboard.html:134
 msgid "No students have been added to this class"
 msgstr "لم يتم إضافة أي طلاب إلى هذا الفصل"
 
-#: templates/main/students_list.html:13
+#: templates/main/students_list.html:4 templates/main/students_list.html:17
 msgid "Students list for"
 msgstr "قائمة الطلاب للفصل"
 
-#: templates/main/students_list.html:34
-#: templates/students/search_students.html:43
+#: templates/main/students_list.html:37
+#: templates/students/search_students.html:51
 msgid "Fullname"
 msgstr "الإسم الكامل"
 
-#: templates/main/students_list.html:45
-#: templates/students/search_students.html:57
-msgid "NID"
-msgstr "الرقم الوطني"
-
-#: templates/main/students_list.html:75
+#: templates/main/students_list.html:78
 msgid "No Students found"
 msgstr "لم يتم العثور على أي طلاب "
 
-#: templates/main/subjects-dashboard.html:12
+#: templates/main/subjects-dashboard.html:5
+#: templates/main/subjects-dashboard.html:15
 msgid "Subjects Dashboard"
 msgstr "لوحة التحكم بالمواد"
 
-#: templates/main/subjects-dashboard.html:38
+#: templates/main/subjects-dashboard.html:41
 msgid "To Add Subject"
 msgstr "ﻹضافة مادة"
 
-#: templates/main/subjects-dashboard.html:47
+#: templates/main/subjects-dashboard.html:50
 msgid "Subject Name"
 msgstr "اسم المادة"
 
-#: templates/main/users_dashboard.html:5 templates/snippets/navbar.html:112
+#: templates/main/users_dashboard.html:5 templates/snippets/navbar.html:108
 msgid "Users"
 msgstr "المستخدمين"
 
@@ -1485,101 +1497,100 @@ msgstr "رقم القيد"
 msgid "No user has been added"
 msgstr "لم يتم إضافة أي مستخدم"
 
-#: templates/posts/add_post.html:13
+#: templates/posts/add_post.html:6 templates/posts/add_post.html:22
 msgid "Post Edit"
 msgstr "تعديل المنشور"
 
-#: templates/posts/add_post.html:16
+#: templates/posts/add_post.html:9 templates/posts/add_post.html:25
 msgid "Post Add"
 msgstr "أضف منشور"
 
-#: templates/posts/post_confirm_delete.html:12
+#: templates/posts/post_confirm_delete.html:5
+#: templates/posts/post_confirm_delete.html:16
 msgid "Delete Post"
-msgstr "حذف المنشور"
+msgstr "حذف منشور"
 
-#: templates/posts/post_confirm_delete.html:20
+#: templates/posts/post_confirm_delete.html:24
 msgid "Are you sure you want to delete this post ?"
 msgstr "هل أنت متأكد أنك تريد حذف هذا المنشور ؟"
 
-#: templates/posts/posts_list_view.html:43
+#: templates/posts/posts_list_view.html:46
 msgid "No Posts found"
 msgstr "لم يتم العثور على أية منشورات"
-
-#: templates/posts/posts_list_view.html:50
-msgid "Facebook Page"
-msgstr "صفحة الفيسبوك"
 
 #: templates/snippets/header.html:9
 msgid "Welcome to"
 msgstr "أهلا بكم في"
 
-#: templates/snippets/navbar.html:33
+#: templates/snippets/navbar.html:27
 msgid "Students"
 msgstr "الطلاب"
 
-#: templates/snippets/navbar.html:38
+#: templates/snippets/navbar.html:32
 msgid "Browse Results"
 msgstr "تصفح النتائج"
 
-#: templates/snippets/navbar.html:46 templates/snippets/navbar.html:72
-#: templates/tabels/exams_tabel_search.html:14
+#: templates/snippets/navbar.html:40 templates/snippets/navbar.html:66
+#: templates/tabels/exams_tabel_search.html:4
+#: templates/tabels/exams_tabel_search.html:17
 msgid "Exam Schedules"
 msgstr "جداول الإمتحانات"
 
-#: templates/snippets/navbar.html:50 templates/snippets/navbar.html:77
-#: templates/tabels/schedule_search.html:12
+#: templates/snippets/navbar.html:44 templates/snippets/navbar.html:71
+#: templates/tabels/schedule_search.html:5
+#: templates/tabels/schedule_search.html:15
 msgid "Class Schedules"
 msgstr "جداول الحصص"
 
-#: templates/snippets/navbar.html:59
+#: templates/snippets/navbar.html:53
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: templates/snippets/navbar.html:65
+#: templates/snippets/navbar.html:59
 msgid "Posts"
 msgstr "المنشورات"
 
-#: templates/snippets/navbar.html:81
-msgid "The Classes"
+#: templates/snippets/navbar.html:75
+msgid "Classes"
 msgstr "الصفوف الدراسية"
 
-#: templates/snippets/navbar.html:85
+#: templates/snippets/navbar.html:79
 msgid "Classrooms"
 msgstr "الفصول الدراسية"
 
-#: templates/snippets/navbar.html:89
+#: templates/snippets/navbar.html:83
 msgid "Students & Results"
 msgstr "الطلاب والنتائج"
 
-#: templates/snippets/navbar.html:98
+#: templates/snippets/navbar.html:94
 msgid "Admin"
 msgstr "المشرف"
 
-#: templates/snippets/navbar.html:104
+#: templates/snippets/navbar.html:100
 msgid "School Info"
 msgstr "معلومات المدرسة"
 
-#: templates/snippets/navbar.html:107
+#: templates/snippets/navbar.html:103
 msgid "Change Quotes"
 msgstr "تغيير الاقتباسات"
 
-#: templates/snippets/navbar.html:116
+#: templates/snippets/navbar.html:112
 msgid "Add User"
 msgstr "إضافة مستخدم"
 
-#: templates/snippets/navbar.html:144
+#: templates/snippets/navbar.html:140
 msgid "Logout"
 msgstr "تسجيل الخروج"
 
-#: templates/snippets/navbar.html:156
+#: templates/snippets/navbar.html:152
 msgid "Language"
 msgstr "اللغة"
 
-#: templates/snippets/navbar.html:162
+#: templates/snippets/navbar.html:158
 msgid "Arabic"
 msgstr "العربية"
 
-#: templates/snippets/navbar.html:166
+#: templates/snippets/navbar.html:162
 msgid "English"
 msgstr "الإنجليزية"
 
@@ -1588,8 +1599,8 @@ msgid "You can search using std name | std id | std N.number"
 msgstr "يمكنك البحث بإستخدام إسم الطالب | رقم القيد | الرقم الوطني"
 
 #: templates/students/add_compensatory_exam_result.html:54
-#: templates/tabels/add_exams_tabel.html:60
-#: templates/tabels/add_full_schedule.html:59
+#: templates/tabels/add_exams_tabel.html:72
+#: templates/tabels/add_full_schedule.html:71
 msgid "Add more"
 msgstr "أضف المزيد"
 
@@ -1660,39 +1671,43 @@ msgstr "درجات الدور الثالث"
 msgid "No results were added"
 msgstr "لم يتم إضافة أي نتائج "
 
-#: templates/students/search_students.html:13
+#: templates/students/search_students.html:4
+#: templates/students/search_students.html:22
 msgid "Search results for"
 msgstr "نتائج البحث عن"
 
-#: templates/students/search_students.html:115
+#: templates/students/search_students.html:123
 msgid "Add Result"
 msgstr "اضف نتيجة"
 
-#: templates/students/search_students.html:134
+#: templates/students/search_students.html:142
 msgid "Your search"
 msgstr "لم ينجح بحثك عن"
 
-#: templates/students/search_students.html:136
+#: templates/students/search_students.html:144
 msgid "did not match any results"
 msgstr "في إظهار أي نتائج"
 
-#: templates/tabels/add_class.html:21
+#: templates/tabels/add_class.html:14 templates/tabels/add_class.html:35
 msgid "Add a new class"
 msgstr " أضف صف جديد"
 
-#: templates/tabels/add_classroom.html:19
+#: templates/tabels/add_classroom.html:12
+#: templates/tabels/add_classroom.html:31
 msgid "Add a new classroom"
 msgstr " أضف فصل جديد"
 
-#: templates/tabels/add_exams_tabel.html:19
+#: templates/tabels/add_exams_tabel.html:12
+#: templates/tabels/add_exams_tabel.html:31
 msgid "Add Exams Schedule"
 msgstr " أضف جدول إمتحانات"
 
-#: templates/tabels/add_exams_tabel.html:36
+#: templates/tabels/add_exams_tabel.html:48
 msgid "Subjects & Dates"
 msgstr "المواد و المواعيد"
 
-#: templates/tabels/add_full_schedule.html:20
+#: templates/tabels/add_full_schedule.html:13
+#: templates/tabels/add_full_schedule.html:32
 msgid "Add a new Classes schedule"
 msgstr " أضف جدول حصص جديد"
 
@@ -1716,7 +1731,28 @@ msgstr "هل أنت متأكد أنك تريد حذف هذا الفصل ؟"
 msgid "Are you sure you want to delete classes schedule for this classroom ?"
 msgstr "هل تريد بالتأكيد حذف جدول الحصص الدراسية لهذا الفصل الدراسي ؟"
 
-#: templates/tabels/exams_tabel_search.html:26
-#: templates/tabels/schedule_search.html:22
+#: templates/tabels/exams_tabel_search.html:29
+#: templates/tabels/schedule_search.html:25
 msgid "Find"
 msgstr "ابحث"
+
+#~ msgid "Add Class"
+#~ msgstr "أضف صف دراسي"
+
+#~ msgid "Add Classroom"
+#~ msgstr "أضف فصل دراسي"
+
+#~ msgid "Add Exam Table"
+#~ msgstr " أضف جدول إمتحانات"
+
+#~ msgid "Show the second attempt"
+#~ msgstr "أظهر الدور الثاني"
+
+#~ msgid "Show the third attempt"
+#~ msgstr "أظهر الدور الثالث"
+
+#~ msgid "NID"
+#~ msgstr "الرقم الوطني"
+
+#~ msgid "Facebook Page"
+#~ msgstr "صفحة الفيسبوك"

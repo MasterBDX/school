@@ -1,8 +1,12 @@
 {% extends 'index.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans  'Students list for' %}
+    {{classroom_name}}
+{% endblock  %}
 {% load static %}
 {% block content %}
 {% load get_lang_names %}
-{% load i18n %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
@@ -11,7 +15,6 @@
                 <h1 class="text-center">
 
                     {% trans  'Students list for' %}
-
                     {{classroom_name}}
                     <hr />
                 </h1>
@@ -38,13 +41,8 @@
                                     </th>
                                     <th scope="col">
                                         {% trans 'Nationality' %}
-
-
                                     </th>
-                                    <th scope="col">
-                                        {% trans 'NID' %}
-
-                                    </th>
+                                   
 
                                 </tr>
                             </thead>
@@ -58,9 +56,14 @@
 
                                     </td>
 
-                                    <td>{% trans student.gender %}</td>
+                                    <td>
+                                    {% with gender=student.gender|capfirst %}
+                                    {% trans gender %}
+                                    {% endwith %}
+                                    </td>
+
                                     <td>{% trans student.nationality %} </td>
-                                    <td>{{student.nid_number}}</td>
+                                   
 
                                 </tr>
                                 {% endfor %}

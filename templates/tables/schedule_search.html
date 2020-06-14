@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+ {% trans 'Class Schedules' %}
+{% endblock  %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <h1 class="text-center">
+                    {% trans 'Class Schedules' %}
+                    <hr />
+                </h1>
+            </div>
+            <div id='schedules-id' class="col-md-8 m-auto">
+                <div class="row">
+                    <div class="col-md-7 m-auto">
+                        <form id='schedule-search-form'>
+                            {{form|crispy}}
+                            <input type="hidden" id='lang-input-id' name='lang' value='{{request.session.lang}}' />
+                            <button type="submit">{% trans 'Find' %}</button>
+                        </form>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+            <div id='exams-icon-div-id' class='exams-icon-div-id col-md-9 m-auto text-center'>
+                <i class="fas fa-spinner fa-pulse fa-2x "></i>
+            </div>
+            <div id='schedules-table-id' class="col-md-9 m-auto">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

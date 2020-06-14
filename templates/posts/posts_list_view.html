@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
+{% load i18n %}
+{% block title %}
+{% trans 'Latest News' %}
+{% endblock  %}
 {% load static %}
 {% block content %}
-{% load i18n %}
 <section>
     <div class="container">
         <div class="row">

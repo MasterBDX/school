@@ -1,5 +1,17 @@
 {% extends 'index.html' %}
 {% load static %}
+{% block title %}
+ {% if request.session.lang == 'ar' %}
+    حذف نتيجة الطالب 
+    {{object.student.get_std_name}}
+    للصف
+    {{object.the_class.name}}
+    {% else %}
+    Delete the student
+    {{object.student.get_std_name}}
+    result for  {{object.the_class.name}} class
+    {% endif %}
+{% endblock  %}
 {% block content %}
 {% load crispy_forms_tags %}
 

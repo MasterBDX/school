@@ -20,8 +20,8 @@ from django.utils.http import is_safe_url
 from .forms import (Contact, ResultSearchForm, MainArticleForm,
                     SchoolInfoForm, MainArticleForm)
 from posts.models import Post
-from school_tabels.models import (Article, Exam, TheClass, ClassRoom)
-from students.models import Student, ResultsPaper
+from school_tables.models import (Article, Exam, TheClass, ClassRoom)
+from students.models import Student, ResultsPaper,Semester
 from students.filters import get_stds_filters
 from .models import SchoolInfo, MainArticle
 from .mixins import AdminPermission
@@ -104,7 +104,7 @@ class ClassesDashboardView(LoginRequiredMixin,ListView):
 
 class ClassroomsDashboardView(LoginRequiredMixin,ListView):
     context_object_name = 'classrooms'
-    queryset = ClassRoom.objects.all()
+    queryset = ClassRoom.objects.select_related('the_class')
     template_name = 'main/classrooms_dashboard.html'
 
 
@@ -178,15 +178,15 @@ class StdsClassroomListView(ListView):
 
 def get_result_view(request):
     form = ResultSearchForm(request.GET or None)
-    result_paper = None
     if form.is_valid():
         the_class = form.cleaned_data.get('the_class')
         std_id = form.cleaned_data.get('id_num')
-        qs = ResultsPaper.objects.filter(the_class=the_class).filter(
-            Q(student__id=std_id) | Q(student__nid_number=std_id))
-        if qs.exists():
-            result_paper = qs.first()
-            context = {'object': result_paper}
+        obj = ResultsPaper.objects.select_related('student','the_class') \
+            .filter(the_class=the_class).filter(
+            Q(student__id=std_id) | Q(student__nid_number=std_id)).first()
+        if obj:
+            semesters = Semester.objects.active().filter(results_paper=obj)
+            context = {'object': obj,'semesters':semesters,'std_name':obj.student.get_std_name()}
             return render(request, 'main/result_doc.html', context)
         else:
             msg = _(

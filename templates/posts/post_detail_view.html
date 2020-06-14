@@ -1,4 +1,7 @@
 {% extends 'index.html' %}
+{% block title%}
+{{post.title}}
+{% endblock %}
 {% load static %}
 {% block content %}
 
@@ -31,18 +34,7 @@
                     <p class="lead">{{post.safe_content}}</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-10 m-auto">
-                <div class="fb-page"
-                    data-href="https://www.facebook.com/%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D9%84%D9%85-%D8%A7%D9%84%D8%B0%D9%87%D8%A8%D9%8A-776668812461360/"
-                    data-tabs="timeline" data-width="299" data-height="600" data-small-header="false"
-                    data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                    <blockquote
-                        cite="https://www.facebook.com/%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D9%84%D9%85-%D8%A7%D9%84%D8%B0%D9%87%D8%A8%D9%8A-776668812461360/"
-                        class="fb-xfbml-parse-ignore"><a
-                            href="https://www.facebook.com/%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D9%84%D9%85-%D8%A7%D9%84%D8%B0%D9%87%D8%A8%D9%8A-776668812461360/">‏مدرسة
-                            القلم الذهبي‏</a></blockquote>
-                </div>
-            </div>
+           
         </div>
     </div>
 </section>

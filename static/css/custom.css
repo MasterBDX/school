@@ -679,7 +679,7 @@ section.dashboard span.error-alert{
 }
 
 /* Start (Exams Tables Styling) */
-.tabel-row {
+.table-row {
     background-color: #3498db1c;
     border-radius: 10px;
 }
@@ -726,20 +726,20 @@ section.dashboard span.error-alert{
 /* End (Exams Tables Styling) */
 
 /* classroom Schedule */
-#schedules-tabel-id{
+#schedules-table-id{
     display: none;
 }
 /* End Classroom Schedule */
 
 
-/* Exams Tabel Ajax Styling */
-#exams-tabel-id{
+/* Exams table Ajax Styling */
+#exams-table-id{
     display: none;
 }
 .exams-icon-div-id{
     display: none;
 }
-/* End Exams Tabel Ajax  */
+/* End Exams table Ajax  */
 
 /* Start (About-School-Page) */
 .about-us p.lead{

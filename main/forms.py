@@ -1,6 +1,6 @@
 from django import forms
 
-from school_tabels.models import TheClass
+from school_tables.models import TheClass
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.utils.translation import ugettext_lazy as _
 from .models import SchoolInfo, MainArticle

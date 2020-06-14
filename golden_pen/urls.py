@@ -2,17 +2,26 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
+
+from main.sitemaps import PostSitemap,StaticSitesSitemap
 
 import debug_toolbar
 
+sitemaps = {
+    'posts':PostSitemap,
+    'static':StaticSitesSitemap
+}
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sitemaps.xml', sitemap,{'sitemaps':sitemaps }),
     path('admin/defender/', include('defender.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('', include('main.urls', namespace='main')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('posts/', include('posts.urls', namespace='posts')),
-    path('tabels/', include('school_tabels.urls', namespace='tabels')),
+    path('tables/', include('school_tables.urls', namespace='tables')),
     path('students/', include('students.urls', namespace='students')),
 
 

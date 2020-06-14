@@ -19,6 +19,8 @@ MAIN_EMAIL = 'masterbdxteam@gmail.com'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'main',
     'posts',
-    'school_tabels',
+    'school_tables',
     'students',
 ]
 THUMBNAIL_PROCESSORS = (
@@ -107,6 +109,7 @@ MIDDLEWARE = [
 
 ]
 
+SITE_ID=1
 
 INTERNAL_IPS = [
     # ...
@@ -173,7 +176,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Django Defender Settings
 DEFENDER_LOGIN_FAILURE_LIMIT = 3
-DEFENDER_COOLOFF_TIME = 30
+DEFENDER_COOLOFF_TIME = 120
 DEFENDER_LOCKOUT_TEMPLATE = 'accounts/register.html'
 
 LANGUAGE_CODE = 'en-us'

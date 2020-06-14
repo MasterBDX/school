@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block content %}
 {% load i18n %}
+{% block title %}
+ {% trans 'Subjects Dashboard' %}
+{% endblock  %}
+{% block content %}
 
 <section class="dashboard">
     <div class="container">
@@ -33,7 +36,7 @@
 
                     <div class="col-md-8 m-auto">
                         <p class="">
-                            <a href="{% url 'tabels:subjects-add' %}" class="add-button">
+                            <a href="{% url 'tables:subjects-add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
                                 {% trans 'To Add Subject' %}
                             </a>
@@ -55,10 +58,10 @@
                                     <td>{{subject.get_name}}</td>
 
                                     <td>
-                                        <a href="{% url 'tabels:subjects-edit' pk=subject.id %}" class="btn btn-info">
+                                        <a href="{% url 'tables:subjects-edit' pk=subject.id %}" class="btn btn-info">
                                             {% trans 'Edit' %}
                                         </a>
-                                        <a href="{% url 'tabels:subjects-delete' pk=subject.id %}"
+                                        <a href="{% url 'tables:subjects-delete' pk=subject.id %}"
                                             class="btn btn-danger">
                                             {% trans 'Delete' %}
                                         </a>

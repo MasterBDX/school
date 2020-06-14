@@ -1,8 +1,16 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load i18n %}
+{% block title %}
+{% if request.session.lang == 'ar' %}
+بيانات 
+{{student.get_std_name}}
+{% else %}
+{{student.get_std_name}} Info
+{% endif %}
+{% endblock  %}
 {% block content %}
 
-{% load i18n %}
 <div class="container">
    <div class="">
                 {% if messages %}

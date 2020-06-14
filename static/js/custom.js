@@ -1,4 +1,5 @@
 $(function () {
+    
     $('.semester-toggle').click(function (e) {
         e.preventDefault();
         let element = $(this);
@@ -43,15 +44,17 @@ $(function () {
     }
     $('#schedule-search-form').submit(function (event) {
         event.preventDefault();
-
+        const form = $(this)
         const id = form.find('select').val()
-        console.log(id)
-        const url = `/tabels/api/classroom-schedule/${id}`
+        const url = `/tables/api/classroom-schedule/${id}`
         const lang = checkLang($('#lang-input-id').val())
-        let element = $('#schedules-tabel-id')
+        
+        let iconDiv = $('#exams-icon-div-id')
+        iconDiv.show()
 
-
+        let element = $('#schedules-table-id')
         let firstTr;
+        
         if (lang == 'ar') {
             firstTr = `
                             <tr>
@@ -104,7 +107,7 @@ $(function () {
             url: url,
             success: (data) => {
                 console.log(data)
-                let tabel = `
+                let table = `
                 <table class="table table-bordered text-center">
                 <thead>
                     ${firstTr}
@@ -114,9 +117,8 @@ $(function () {
                 </tbody>
             </table>            
                 `
-                element.html(tabel)
-                element.slideDown()
-
+                element.html(table)
+               
             },
             error: (error) => {
 
@@ -131,23 +133,25 @@ $(function () {
                     element.html(errorMsg)
 
                 }
-                element.show()
-
+            
             }
-
         })
+        iconDiv.hide()
+        element.slideDown()
 
 
     })
 
-    $('#exams-tabel-search-form').submit(function (event) {
+    $('#exams-table-search-form').submit(function (event) {
         event.preventDefault();
+        
         let form = $(this)
         const formData = form.serialize()
         const lang = checkLang($('#lang-input-id').val())
-        const url = `/tabels/api/exams-tabel/?${formData}`
-        let element = $('#exams-tabel-id')
+        const url = `/tables/api/exams-table/?${formData}`
+        let element = $('#exams-table-id')
         let iconDiv = $('#exams-icon-div-id')
+        iconDiv.show()
         $.ajax({
             url: url,
             success: (data) => {
@@ -173,10 +177,10 @@ $(function () {
 
                     thirdTr = ` <tr>
                                     <td>${data.year}</td>
-                                    <td>${data.the_class.ar_name}</td>
-                                    <td>${data.exam_type.ar}</td>
-                                    <td>${data.semester.ar}</td>
-                                    <td>${data.class_room.ar_name}</td>
+                                    <td>${data.the_class}</td>
+                                    <td>${data.exam_type}</td>
+                                    <td>${data.semester}</td>
+                                    <td>${data.class_room}</td>
                                 </tr> `
                     fifthTr = `<tr>
                                 <th scope="col">المادة</th>
@@ -226,7 +230,7 @@ $(function () {
                     LastTrs += examTr
                 }
 
-                const examsTabel = `
+                const examstable = `
         <table class="table table-bordered text-center">
         <thead>
         ${firstTr}
@@ -242,10 +246,7 @@ $(function () {
     </table>
         
         `
-                iconDiv.show()
-                element.html(examsTabel)
-
-
+                element.html(examstable)
             },
             error: (error) => {
                 console.log(error.status)
@@ -256,19 +257,16 @@ $(function () {
                     يرجى التأكد من البيانات
                     </p>
                     `
-                    iconDiv.show()
                     element.html(errorMsg)
-
-
                 }
 
             }
 
         })
-        setTimeout(() => {
+            
             iconDiv.hide()
-            element.show()
-        }, 2000);
+            element.slideDown()
+        
 
     })
 

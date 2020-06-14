@@ -42,7 +42,7 @@ class AddPostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class EditPostView(LoginRequiredMixin, OwnUserObjectMixin, SuccessMessageMixin, UpdateView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.select_related('author')
     form_class = AddPostForm
     template_name = 'posts/add_post.html'
     success_url = reverse_lazy('main:posts-dashboard')
@@ -50,7 +50,7 @@ class EditPostView(LoginRequiredMixin, OwnUserObjectMixin, SuccessMessageMixin, 
 
 
 class PostDeleteView(LoginRequiredMixin, OUOAndAdminMixin, SuccessMessageMixin, DeleteView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.select_related('author')
     template_name = 'posts/post_confirm_delete.html'
     success_url = reverse_lazy('main:posts-dashboard')
     success_message = _('Post has been deleted')

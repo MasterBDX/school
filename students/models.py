@@ -3,7 +3,7 @@ from django_countries.fields import CountryField
 from django.urls import reverse
 from django_resized import ResizedImageField
 
-from school_tabels.models import TheClass, Article, ClassRoom
+from school_tables.models import TheClass, Article, ClassRoom
 from .managers import SemesterManager, StudentManager
 from .mixins import SubjectsResultsMixin, FinalResultsMixin
 
@@ -64,6 +64,14 @@ class ResultsPaper(models.Model, FinalResultsMixin):
     part3 = models.BooleanField(default=False)
     total = models.CharField(max_length=255,
                              blank=True,null=True)
+    
+    total = models.CharField(max_length=255,
+                             blank=True,null=True)
+    percentage = models.FloatField(blank=True,null=True)
+    
+    estimate = models.CharField(max_length=255,
+                             blank=True,null=True)
+    
 
     class Meta:
         ordering = ['the_class']
@@ -154,6 +162,12 @@ class Semester(models.Model, FinalResultsMixin):
     order = models.CharField(max_length=255,
                              choices=ORDER, default="1")
     active = models.BooleanField(default=False)
+    total = models.CharField(max_length=255,
+                             blank=True,null=True)
+    percentage = models.FloatField(blank=True,null=True)
+    
+    estimate = models.CharField(max_length=255,
+                             blank=True,null=True)
 
     class Meta:
         ordering = ['order']
@@ -215,6 +229,8 @@ class SubjectResult(models.Model, SubjectsResultsMixin):
     std_exam_grade = models.PositiveIntegerField(default=0)
     std_year_works_grade = models.PositiveIntegerField(default=0)
     passed = models.BooleanField(default=False)
+    total = models.CharField(max_length=255,
+                             blank=True,null=True)
     semester = models.ForeignKey(
         Semester, related_name='subjects_results',
         on_delete=models.CASCADE,
@@ -296,7 +312,8 @@ class CompensatoryExam(models.Model, SubjectsResultsMixin):
     passed = models.BooleanField(default=False)
     semester = models.CharField(choices=SEMESTER, default='2', max_length=120)
     part = models.CharField(choices=PART, max_length=120)
-
+    total = models.CharField(max_length=255,
+                             blank=True,null=True)
     results_paper = models.ForeignKey(
         ResultsPaper, on_delete=models.CASCADE, related_name='all_com_grades')
 

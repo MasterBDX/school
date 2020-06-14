@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block content %}
 {% load i18n %}
+{% block title %}
+{% trans 'Classrooms Dashboard' %}
+{% endblock  %}
+{% block content %}
 {% load get_lang_names %}
 
 <section class="dashboard">
@@ -33,7 +36,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p class="">
-                            <a href="{% url 'tabels:classrooms-add' %}" class="add-button">
+                            <a href="{% url 'tables:classrooms-add' %}" class="add-button">
                                 <i class="fas fa-plus"></i> 
                                 {% trans 'To add a new classroom' %}
                             </a>
@@ -67,10 +70,10 @@
 
 
                                     <td>
-                                        <a href="{% url 'tabels:classrooms-edit' pk=cls.id %}" class="btn btn-info">
+                                        <a href="{% url 'tables:classrooms-edit' pk=cls.id %}" class="btn btn-info">
                                             {% trans 'Edit' %}
                                         </a>
-                                        <a href="{% url 'tabels:classrooms-delete' pk=cls.id %}" class="btn btn-danger">
+                                        <a href="{% url 'tables:classrooms-delete' pk=cls.id %}" class="btn btn-danger">
                                             {% trans 'Delete' %}
                                         </a>
                                     </td>

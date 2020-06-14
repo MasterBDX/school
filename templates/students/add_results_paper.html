@@ -1,7 +1,19 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block content %}
 {% load i18n %}
+{% block title %}
+{% if results_paper %}
+    {% trans 'Edit results paper for student' %}
+    {{results_paper.student.get_std_name}}
+
+    {% else %}
+
+    {% trans 'Add new results paper for student' %}
+    {{student.get_std_name}}
+    
+    {% endif %}
+{% endblock %}
+{% block content %}
 {% load crispy_forms_tags %}
 <section>
     <div class="container">

@@ -1,8 +1,22 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load i18n %}
+{% block title %}
+{% if student %}
+    {% if request.session.lang == 'ar' %}
+    تعديل بيانات
+    الطالب 
+    {{student.get_std_name}}
+    {% else %}
+        
+    Edit Student {{student.get_std_name}}  information
+    {% endif %}
+    {% else %}
+    {% trans 'Add a new student' %}
+    {% endif %}
+{% endblock  %}
 {% block content %}
 {% load crispy_forms_tags %}
-{% load i18n %}
 <section>
     <div class="container">
         <div class="row">

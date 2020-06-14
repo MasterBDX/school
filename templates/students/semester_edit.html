@@ -1,9 +1,17 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load i18n %}
+{% block title %}
+    {% if request.session.lang == 'ar' %}
+    تعديل درجات الفترة
+    {{semester.order|human_counter}}
+    {% else %}
+    Edit {{semester.order|human_counter}} semester grades
+    {% endif %}
+{% endblock  %}
 {% block content %}
 {% load crispy_forms_tags %}
 {% load get_lang_names %}
-{% load i18n %}
 <section>
     <div class="container">
         <div class="row">

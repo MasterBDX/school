@@ -15,26 +15,26 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 from .filters import get_stds_filters
 from .models import Student, ResultsPaper
-from school_tabels.models import ClassRoom
+from school_tables.models import ClassRoom
 
 from .forms import (AddStudent, AddResultsPaperForm,
                     AddCompensatoryExamForm,AddClassGradesForm,
                     AddClassGradesSemester3Form,AddSubjectResultForm,
                     AddSubjectResultSemester3Form)
 
-from school_tabels.models import TheClass
+from school_tables.models import TheClass
 from .models import (Student, Semester, SubjectResult,
                      ClassGrade, CompensatoryExam)
 
 from .formsets import (subjects_results_formset,
                        edit_class_grades_formset,
-                       com_exams_formset, edit_com_exams_formset)
+                       com_exams_formset)
 from main.vars import SEMESTERS_DIC,PART_DIC,HUMAN_COUNTER_DIC
 from main.mixins import DeleteSuccessMessageMixin,StudentSuccessUrlMixin
 
 
 class StudentDetail(LoginRequiredMixin,DetailView):
-    model = Student
+    queryset = Student.objects.select_related('the_class','classroom')
     template_name = 'students/detail.html'
 
 
@@ -75,7 +75,7 @@ class SearchStudentsView(ListView):
         if not q or q.isspace():
             qs = Student.objects.none()
         else:
-            qs = Student.objects.filter(get_stds_filters(q))
+            qs = Student.objects.select_related('the_class','classroom').filter(get_stds_filters(q))
         return qs
 
 

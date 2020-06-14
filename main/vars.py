@@ -44,7 +44,7 @@ SEMESTERS_DIC = {
                  '3': _('Third')
                  }
 
-# This for Choice Field in exam tabel search
+# This for Choice Field in exam table search
 YEARS = [(str(x), str(x)) for x in range(2000, 2035)]
 
 # This for Add Exam Form

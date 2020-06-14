@@ -1,14 +1,18 @@
 {% extends 'index.html' %}
+{% load i18n %}
+{% block title %}
+{% trans 'Contact Us' %}
+{% endblock%}
+
 {% block content %}
 {% load crispy_forms_tags %}
-{% load i18n %}
 <!-- Contact Section -->
 <section class="page-section" id="contact">
   <div class="container">
 
     <!-- Contact Section Heading -->
     <div class="row">
-      <div class="col-md-8 m-auto">
+      <div class="col-md-7 m-auto">
         <h1 class="page-section-heading text-center text-uppercase mb-0">
           {% trans 'Contact Us' %}
           <hr />
@@ -28,7 +32,7 @@
 
     <!-- Contact Section Form -->
     <div class="row">
-      <div class="col-lg-8 mx-auto">
+      <div class="col-lg-6 mx-auto">
         {% if messages %}
         {% for message in messages %}
         <div class="

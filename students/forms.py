@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import NON_FIELD_ERRORS
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _,get_language
-from school_tabels.models import TheClass, Article
+from school_tables.models import TheClass, Article
 from main.vars import *
 from students.models import (Student, ResultsPaper,
                              SubjectResult, CompensatoryExam)
@@ -62,7 +62,7 @@ class AddSubjectResultForm(forms.ModelForm):
                   'std_year_works_grade': _('Year Works Grade')}
         model = SubjectResult
         exclude = ['semester', 'subject', 'exam_grade', 'grade_pass_subject',
-                   'exam_pass_grade', 'year_works_grade', 'passed']
+                   'exam_pass_grade', 'year_works_grade', 'passed','total']
 
 
 class AddSubjectResultSemester3Form(forms.ModelForm):
@@ -72,7 +72,7 @@ class AddSubjectResultSemester3Form(forms.ModelForm):
         model = SubjectResult
         exclude = ['semester', 'subject', 'exam_grade', 'grade_pass_subject',
                    'exam_pass_grade', 'year_works_grade', 'passed',
-                   'std_year_works_grade']
+                   'std_year_works_grade','total']
 
 
 class AddClassGradesForm(forms.ModelForm):
@@ -106,7 +106,7 @@ class AddCompensatoryExamForm(forms.ModelForm):
                    'results_paper', 'exam_grade',
                    'exam_pass_grade', 'year_works_grade',
                    'grade_pass_subject', 'std_year_works_grade',
-                   ]
+                   'total']
 
     def int_checker(self, num):
         try:
@@ -147,11 +147,11 @@ class AddCompensatoryExamForm(forms.ModelForm):
             raise forms.ValidationError(error_msg)
 
 
-class EditCompensatoryExamForm(forms.ModelForm):
-    class Meta:
-        labels = {
-            'std_exam_grade': 'درجة الإمتحان للطالب',
-            'semester': 'الفترة',
-        }
-        model = CompensatoryExam
-        fields = ['std_exam_grade', 'semester']
+# class EditCompensatoryExamForm(forms.ModelForm):
+#     class Meta:
+#         labels = {
+#             'std_exam_grade': 'درجة الإمتحان للطالب',
+#             'semester': 'الفترة',
+#         }
+#         model = CompensatoryExam
+#         fields = ['std_exam_grade', 'semester']

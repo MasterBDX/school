@@ -31,6 +31,9 @@ def update_result_info(obj):
     estimate for result paper and semesters
     '''
     obj.total = obj.general_average()
+    obj.percentage = obj.total_percentage()
+    obj.estimate = obj.get_estimate()
+    obj.save()
 
 
 def get_subjects_results(semesters, instance):
@@ -66,6 +69,8 @@ def get_subjects_results(semesters, instance):
 
 @receiver(pre_save, sender=ResultsPaper)
 def complete_the_results_paper_presave(sender, instance, *args, **kwargs):
+    ''' For update subjects results when we make any change on result paper   '''
+    
     semesters = Semester.objects.filter(results_paper=instance)
     if semesters.exists():
         get_subjects_results(semesters, instance)
@@ -106,6 +111,7 @@ def fix_changed_results(sender, instance, created, *args, **kwargs):
 #=========================================================================
 
 def can_pass(instance, subject_result=None, semester=None):
+    ''' Check if student can pass the subject'''
     std_total, total = instance.get_total()
     if not subject_result:
         subject_result = instance
@@ -122,7 +128,11 @@ def can_pass(instance, subject_result=None, semester=None):
 
 @receiver(pre_save, sender=SubjectResult)
 def get_pass_boolean(sender, instance, *args, **kwargs):
-    std_total, total = instance.get_total()
+    if instance.semester.order == '3':
+        instance.total = instance.get_total_subject_grades()
+    else:
+        instance.total = instance.total_subject_grades()
+
     qs = CompensatoryExam.objects.filter(subject=instance.subject,
                                          semester=instance.semester.order,
                                          results_paper=instance.semester.results_paper)
@@ -132,8 +142,21 @@ def get_pass_boolean(sender, instance, *args, **kwargs):
     can_pass(instance, semester=instance.semester.order)
 
 
+@receiver(post_save, sender=SubjectResult)
+def fix_result_paper_and_semester_info(sender, instance,created ,*args, **kwargs):
+    if not created:
+        update_result_info(instance.semester.results_paper)
+        update_result_info(instance.semester)
+    
+
+@receiver(post_save, sender=CompensatoryExam)
+def fix_result_paper_info(sender, instance,created ,*args, **kwargs):
+    update_result_info(instance.semester.results_paper)
+
+
 @receiver(pre_save, sender=CompensatoryExam)
 def get_compen_info(sender, instance, *args, **kwargs):
+    instance.total = instance.total_subject_grades()
     qs = SubjectResult.objects.filter(
         semester__results_paper=instance.results_paper,
         subject=instance.subject,
@@ -153,3 +176,4 @@ def get_compen_info(sender, instance, *args, **kwargs):
         instance.grade_pass_subject = subject_result.grade_pass_subject
         std_total, total = instance.get_total()
         can_pass(instance, subject_result=subject_result)
+

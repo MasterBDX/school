@@ -1,9 +1,12 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load i18n %}
+{% block title %}
+{% trans 'Find a result' %}
+{% endblock  %}
 {% block content %}
 {% load crispy_forms_tags %}
-{% load get_student_filters %}
-{% load i18n %}
+{% load get_lang_names %}
 <section>
     <div class="container">
         <div class="row">

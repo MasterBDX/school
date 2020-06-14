@@ -1,7 +1,7 @@
 from django.forms import modelformset_factory, formset_factory
 from .forms import (AddSubjectResultForm, SelectSubjectForm,
                     AddCompensatoryExamForm,
-                    EditCompensatoryExamForm)
+                    )
 from .models import SubjectResult, ClassGrade, CompensatoryExam
 
 
@@ -20,7 +20,7 @@ com_exams_formset = modelformset_factory(
     can_delete=True)
 
 
-edit_com_exams_formset = modelformset_factory(
-    CompensatoryExam,
-    form=EditCompensatoryExamForm,
-    extra=0)
+# edit_com_exams_formset = modelformset_factory(
+#     CompensatoryExam,
+#     form=EditCompensatoryExamForm,
+#     extra=0)

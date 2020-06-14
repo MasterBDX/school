@@ -57,9 +57,26 @@
             </div>
             {% endif %}
             {% if failure_limit %}
-            <div style='height: 200px;'>
-                لقد إستنفدت عدد المحاولات المتاحة {{failure_limit}} لتسجيل الدخول
-                يرجى المحاولة بعد {{cooloff_time_minutes}}
+            <div class="text-center" style='height: 200px;'>
+                {% if request.session.lang == 'ar' %}
+                لقد إستنفدت جميع المحاولات
+                (
+                {{failure_limit}}
+                )
+                المتاحة
+                
+                 لتسجيل الدخول
+                <br />
+                يرجى المحاولة بعد 
+                {{cooloff_time_minutes}}
+                دقيقة
+              
+                {% else %}
+                
+                You have exhausted all ({{failure_limit}}) attempts to log in
+                <br />
+                Please try after {{cooloff_time_minutes}} minute{{cooloff_time_minutes|pluralize}}
+                {% endif %}
             </div>
             {% endif %}
         </div>

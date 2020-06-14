@@ -1,9 +1,18 @@
 {% extends 'index.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans 'Search results for' %}
+    {% if request.GET.q == ' ' or request.GET.q == '' %}
+    - - 
+    {% else %}
+    {{request.GET.q}}
+    {% endif %}
+
+{% endblock  %}
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
-{% load get_student_filters %}
-{% load i18n %}
+{% load get_lang_names %}
 <section class="dashboard">
     <div class="container">
         <div class="row">
@@ -11,7 +20,6 @@
 
                 <h1 class="text-center">
                     {% trans 'Search results for' %}
-
                     {% if request.GET.q == ' ' or request.GET.q == '' %}
                     - - 
                     {% else %}
@@ -54,7 +62,7 @@
 
                                     </th>
                                     <th scope="col">
-                                        {% trans 'NID' %}
+                                        {% trans 'Classroom' %}
 
                                     </th>
                                     {% if request.user.is_authenticated %}
@@ -90,7 +98,7 @@
                                         {{student.the_class.name}}
 
                                     </td>
-                                    <td>{{student.nid_number}}</td>
+                                    <td>{{student.classroom.name}}</td>
 
                                     {% if request.user.is_authenticated %}
                                     

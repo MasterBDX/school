@@ -83,10 +83,13 @@ def logout_view(request):
 
 
 class UserEditView(LoginRequiredMixin,UpdateView):
-    queryset = User.objects.all()
     form_class = UserEditForm
     context_object_name = 'user_object'
     template_name = 'accounts/profile_edit.html'
+
+    def get_object(self,queryset=None):
+        obj = self.request.user
+        return obj 
 
 
 class MyPasswordChangeView(LoginRequiredMixin,auth_views.PasswordChangeView):

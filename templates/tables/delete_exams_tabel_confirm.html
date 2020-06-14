@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+    {% if request.session.lang == 'en' and object.en_title %}
+        Delete {{object.en_title}} Schedule
+        {% else %}
+        حذف جدول {{object.title}}
+        {% endif %}
+{% endblock  %}
+{% block content %}
+{% load get_lang_names %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+
+                <h1 class="">
+                    {% if request.session.lang == 'en' and object.en_title %}
+                    Delete {{object.en_title}} Schedule
+                    {% else %}
+                    حذف جدول {{object.title}}
+                    {% endif %}
+                </h1>
+            </div>
+            <div class="col-md-8 m-auto">
+                <form method="POST" id='add-post-form'>
+                    {% csrf_token %}
+                    <p class="lead">
+                        {% if request.session.lang == 'en' %}
+                        Are you sure you want to delete
+                        {{object.exam_type|lang_type}}
+                        exams schedule
+                        for {{object.the_class.name}} Class
+                        The {{object.semester|lang_semester}}
+                        Semester
+                        {% else %}
+                        هل أنت متأكد أنك تريد حذف جدول الإمتحانات
+
+                        ال{{object.exam_type|lang_type}}
+                        للصف
+                        {{object.the_class.name}}
+                        الفترة
+                        {{object.semester|lang_semester}}
+                        {% endif %}
+
+
+                        <hr />
+                    </p>
+                    <div class="btn-test">
+                        <button class="btn btn-info add-post-btn" type="submit">
+                            {% trans 'Delete' %}
+                        </button>
+                    </div>
+                    <div style="height:100px;"></div>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+    {% endblock %}

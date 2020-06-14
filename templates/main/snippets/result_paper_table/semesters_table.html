@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load get_lang_names %}
-    {% for semester in object.semesters.active %}
+    {% for semester in semesters %}
     <thead>
     <tr>
                 <th colspan='8' class='text-center'>
@@ -36,13 +36,13 @@
                 <td>{{sr.need_to_pass_exam}}</td>
                 <td colspan="1">
                 {% if semester.order == '3' %}
-                 {{sr.get_total_subject_grades}}  
+                 {{sr.total}}  
                 {% else %}
                 {{sr.std_year_works_grade}} \ {{sr.year_works_grade}} 
                 {% endif %}
                 </td>
                 <td>{{sr.grade_pass_subject}}</td>
-                <td>{{sr.total_subject_grades}}</td>
+                <td>{{sr.total}}</td>
                 <td>
                     {% if sr.passed %}
                     {% trans 'Succeed' %}
@@ -57,17 +57,17 @@
             
                 <td colspan="2">
                     {% trans 'Total' %}  &nbsp;:&nbsp;
-                    {{semester.general_average}}
+                    {{semester.total}}
 
                 </td>
                 <td colspan="3">
 
                     {% trans 'Rate' %}  &nbsp;:&nbsp;
-                    {{semester.total_percentage}} %
+                    {{semester.percentage}} %
 
                 </td>
                 <td colspan="3">
-                    {% trans 'Estimate'%} &nbsp;:&nbsp; {{semester.get_estimate}}
+                    {% trans 'Estimate'%} &nbsp;:&nbsp; {{semester.estimate}}
                 </td>
 
             </tr>

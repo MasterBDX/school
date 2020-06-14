@@ -1,7 +1,16 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block content %}
 {% load i18n %}
+{% block title %}
+  {% if request.session.lang == 'ar' %}
+                    طلاب الفصل {{classroom_name}}
+                {% else %}
+                {{classroom_name}}
+                   Classroom 
+                   Students
+                {% endif %}    
+{% endblock  %}
+{% block content %}
 
 
 
@@ -86,7 +95,7 @@
                                     </td>
                                     {% include 'main/snippets/gender.html' %}
                                     <td>{% trans student.nationality %} </td>
-                                    <td>{{student.id_number}}</td>
+                                    <td>{{student.nid_number}}</td>
                                     <td>
                                         {{student.result}}</td>
                                     <td>

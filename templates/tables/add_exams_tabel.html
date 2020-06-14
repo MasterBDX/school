@@ -1,0 +1,125 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block title %}
+ {% if object %}
+    {% if request.session.lang == 'en' and object.en_title %}
+    Edit
+    {{object.en_title}}
+    {% else %}
+    تعديل {{object.title}}
+    {% endif %}
+    {% else %}
+    {% trans 'Add Exams Schedule' %}
+    {% endif %}
+{% endblock %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<section>
+    <div class="container">
+        <div class="row table-row">
+            <div class="col-md-7 m-auto">
+                <h1 class="text-center">
+                    {% if object %}
+                    {% if request.session.lang == 'en' and object.en_title %}
+                    Edit
+                    {{object.en_title}}
+                    {% else %}
+                    تعديل {{object.title}}
+                    {% endif %}
+                    {% else %}
+                    {% trans 'Add Exams Schedule' %}
+                    {% endif %}
+                    <hr />
+
+                </h1>
+            </div>
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" method="POST" id='add-post-form'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 m-auto">
+                            {{form|crispy}}
+                            <br />
+                            <br />
+                        </div>
+                        <div class="col-md-12">
+                            <h4 class="">
+                                {% trans 'Subjects & Dates' %}
+                                <hr />
+                            </h4>
+                        </div>
+                        {{formset.management_form}}
+                        {% for form in formset %}
+                        <div class="col-md-4">
+                            {{form|crispy}}
+
+                            <br />
+                            <hr />
+                        </div>
+                        {% endfor %}
+
+
+                        <div id='hidden-div' class="col-md-4">
+                            <div class='empty-form-div' id="empty-form-div">
+                                {{formset.empty_form|crispy}}
+                                <br />
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div id='add-new-form'>
+                                <span>{% trans 'Add more' %} <i class="fas fa-plus fa-lg"></i></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height:50px;">
+                    </div>
+                    <div class="btn-test">
+                        <button class="btn btn-info add-post-btn" type="submit">
+                            {% if object %}
+                            {% trans 'Edit' %}
+                            {% else %}
+                            {% trans  'Add' %}
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+    {% block js %}
+    <script>
+        $(function () {
+            $("[id$=start_time]").timepicker({
+                timeFormat: 'H:mm',
+                interval: 15,
+                // defaultTime: '8',
+                startTime: '8:30',
+                minTime: '7:00',
+                maxTime: '13:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+
+            $("[id$=end_time]").timepicker({
+                timeFormat: 'H:mm',
+                interval: 15,
+                minTime: '9:00',
+                maxTime: '16:00',
+                // defaultTime: '10:30',
+                // startTime: '10:30',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        });
+
+
+    </script>
+    <script src={% static 'js/dynamic_forms.js' %}></script>
+    {% endblock %}
+    {% endblock %}
