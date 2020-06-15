@@ -54,9 +54,9 @@
 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'main:posts-dashboard' %}">
+                        <a class="dropdown-item" href="{% url 'main:students-classrooms-dashboard' %}">
+                            {% trans 'Students & Results' %}
 
-                            {% trans 'Posts' %}
                         </a>
                         <a class="dropdown-item" href="{% url 'main:subjects-dashboard' %}">
                             {% trans 'Subjects' %}
@@ -79,9 +79,9 @@
                             {% trans 'Classrooms' %}
 
                         </a>
-                        <a class="dropdown-item" href="{% url 'main:students-classrooms-dashboard' %}">
-                            {% trans 'Students & Results' %}
+                        <a class="dropdown-item" href="{% url 'main:posts-dashboard' %}">
 
+                            {% trans 'Posts' %}
                         </a>
 
                     </div>

@@ -61,14 +61,14 @@ Edit {{object.english_title}} Quote
      <script>
         $(function () {
             
-            $('#id_main_image').fileuploader({
+            $('#id_image').fileuploader({
                 limit: 1,
                 maxSize: 1,
                 fileMaxSize: 1,
                 extensions: ['jpg', 'png', 'gif', 'tiff', 'psd'],
 
             });
- })
+        })
     </script>
     
     {% endblock %}

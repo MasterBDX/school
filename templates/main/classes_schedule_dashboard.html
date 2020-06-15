@@ -136,7 +136,12 @@
                     </div>
                     {% endif %}
                     {% endfor %}
+                    {% else %}
+                     <div class="col-md-10 m-auto">
+                        <p class="text-center lead">{% trans 'No Classes schedule has been added yet' %}</p>
+                    </div>
                     {% endif %}
+                   
                 </div>
             </div>
         </div>

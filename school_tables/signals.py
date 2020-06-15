@@ -51,3 +51,7 @@ def get_arabic_weekday(sender, instance, *args, **kwargs):
                      '7': '1'}
         right_day = WEEK_DAYS.get(str(instance.the_date.isoweekday()))
         instance.day = Day.objects.filter(order=right_day).first()
+
+@receiver(pre_save, sender=Day)
+def capfirst_weekdays(sender, instance, *args, **kwargs):
+    instance.name = instance.name.capitalize()

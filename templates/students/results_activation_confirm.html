@@ -7,19 +7,31 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 m-auto">
 
                 <h1 class="">
+                    {% if request.session.lang == 'ar' %}
                     {{status}} جميع الصحائف للفصل
                     {{classroom_name}}
+                    {% else %}
+                     {{status}} all results for {{classroom_name}}
+                    classroom
+                    {% endif %}
+                   
                 </h1>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 m-auto">
                 <form method="POST" id='add-post-form'>
                     {% csrf_token %}
-                    <p class="lead">هل أنت متأكد أنك تريد
+                    <p class="lead">
+                    {% if request.session.lang == 'ar' %}
+                    هل أنت متأكد أنك تريد
                         {{status}}
                         الصحائف لهذا الفصل
+                    {% else %}
+                    Are you sure you want to {{status}} sheets for this 
+                    classroom?
+                    {% endif %}
                         <hr />
                     </p>
                     <div class="btn-test">
