@@ -24,7 +24,16 @@
             </div>
             <div class="col-lg-6 order-lg-1">
                 <div class="p-5">
-                    {% if article.english_title and article.english_desc %}
+                    {% if request.session.lang == 'ar' %}
+                        <h2 class="">
+                            {{article.title}}
+                        </h2>
+                        <p>
+                            {{article.description}}
+                        </p>
+                  
+                    {% else %}
+                      {% if article.english_title and article.english_desc %}
                     <h2 class="">
                         {{article.english_title}}
                     </h2>
@@ -38,6 +47,7 @@
                     <p>
                         {{article.description}}
                     </p>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>

@@ -34,8 +34,8 @@
             <div class="col-md-12">
                 <div class="row">
 
-                    <div class="col-md-8 m-auto">
-                        <p class="">
+                    <div class="col-md-7 m-auto">
+                        <p class="text-center">
                             <a href="{% url 'tables:subjects-add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
                                 {% trans 'To Add Subject' %}
@@ -74,8 +74,10 @@
                         </table>
                     </div>
                     {% else %}
-                     <div class="col-md-10 m-auto">
-                        <p class="text-center lead">{% trans 'No subjects have been added yet' %}</p>
+                    <div class="col-md-7 m-auto">
+                        <div class="alert alert-info" role="alert">
+                             <span>{% trans 'No subjects have been added yet' %}</span>
+                        </div>
                     </div>
                     {% endif %}
 

@@ -10,7 +10,7 @@
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 m-auto">
+            <div class="col-md-7 m-auto">
 
                 <h1 class="text-center">
                     {% trans 'Posts Dashboard' %}
@@ -35,8 +35,8 @@
             </div>
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-3">
-                        <p class="add-post">
+                    <div class="col-md-7 m-auto">
+                        <p class="text-center">
 
                             <a href="{% url 'posts:add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
@@ -92,10 +92,10 @@
                         </table>
                     </div>
                     {% else %}
-                    <div class="col-md-12">
-                        <h4 class='text-center'>
-                            لم يتم إضافة أي منشورات بعد
-                        </h4>
+                    <div class="col-md-7 m-auto">
+                        <div class="alert alert-info">
+                           <span>لم يتم إضافة أي منشورات بعد</span>
+                        </div>
                     </div>
                     {% endif %}
                 </div>

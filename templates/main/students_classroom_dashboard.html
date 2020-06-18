@@ -10,7 +10,7 @@
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-7 m-auto ">
+            <div class="col-md-6 m-auto ">
                     {% if messages %}
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {% for message in messages %}
@@ -36,22 +36,23 @@
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
 
-                    <div class="col-md-6">
-                        <p class="">
+                    <div class="col-md-7 m-auto">
+                        {% url 'students:search' as std_search %}
+                        {% include 'snippets/student_search_form.html' with action=std_search %}
+                    </div>
+                    <div class="col-md-7 m-auto">
+                        <p class="text-center">
                             <a href="{% url 'students:add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
                                 {% trans 'To add a new student' %}
                             </a>
                         </p>
+                    </div>
 
-                    </div>
-                    <div class="col-md-6">
-                        {% url 'students:search' as std_search %}
-                        {% include 'snippets/student_search_form.html' with action=std_search %}
-                    </div>
                     {% if classes %}
                     {% for class in classes %}
                     {% if class.classrooms.all and class.students.all %}
+                    
                     <div class="col-md-12">
                         <div class="">
                             <h4>

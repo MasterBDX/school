@@ -35,8 +35,7 @@
                     {% csrf_token %}
                     {{form|crispy}}
                     {% if request.GET.next %}
-                    <input type="hidden" name="url" value="{{request.GET.next}}" {% endif %} <div style="height:50px;">
-            </div>
+                    <input type="hidden" name="url" value="{{request.GET.next}}" {% endif %}
             <div class="btn-test">
                 <button class="btn btn-info add-post-btn" type="submit">
                     {% if request.path == login %}

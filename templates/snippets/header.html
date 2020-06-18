@@ -12,16 +12,15 @@
 
                 {% if request.session.lang == 'ar' %}
                 مدرسة
-                {{school_ar_name}}
+                {{school_name}}
                 {% else %}
-                {{school_en_name}}
+                {{school_name}}
                 School
                 {% endif %}
 
             </h1>
             <a href="{% url 'main:about_us' %}" class="main-btn btn btn-primary btn-xl rounded-pill mt-5">
                 {% trans 'About School' %}
-
             </a>
-        </div </div>
+        </div>
 </header>

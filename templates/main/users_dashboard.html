@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             
-            <div class="col-md-6 m-auto">
+            <div class="col-md-7 m-auto">
                 <h1 class="text-center">
                     {% trans 'Users Dashboard' %}
                     <hr />
@@ -33,8 +33,6 @@
 
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
-                   
-                   
 
                     {% if users %}
                     <div class="col-md-6">
@@ -124,10 +122,10 @@
 
                     {% else %}
                     
-                    <div class="col-md-12">
-                        <h4 class="text-center">
-                           {% trans 'No user has been added' %}
-                        </h4>
+                    <div class="col-md-7 m-auto">
+                        <div class="alert alert-info">
+                           <span>{% trans 'No user has been added' %}</span>
+                        </div>
                         <br />
                         <br />
                         <br />

@@ -10,7 +10,7 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-5  m-auto">
+            <div class="col-md-6 m-auto">
                 <h1 class="text-center">
                     {% trans 'Edit Profile' %}
                     <hr />
@@ -21,7 +21,6 @@
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
                     {{form|crispy}}
-                    <div style="height:50px;"></div>
                     <div class="btn-test">
                         <button class="btn btn-info add-post-btn" type="submit">
                             {% trans 'Edit' %}
@@ -31,7 +30,7 @@
                 <br />
                 <div class="text-right">
                     <a class="btn btn-link" href="{% url 'accounts:password_change' %}">
-                    {% trans  'Change Password' %}
+                        {% trans  'Change Password' %}
                     </a>
                 </div>
             </div>

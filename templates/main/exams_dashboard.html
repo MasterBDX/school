@@ -31,11 +31,11 @@
                 {% endif %}
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12 m-auto">
                 <div class="row">
 
-                    <div class="col-md-12">
-                        <p class="">
+                    <div class="col-md-7 m-auto">
+                        <p class="text-center">
                             <a href="{% url 'tables:exams-tables-add' %}" class="add-button">
                                 <i class="fas fa-plus"></i>
                                 {% trans 'To add a new exams schedule' %}
@@ -76,10 +76,10 @@
 
                     {% endfor %}
                     {% else %}
-                    <div class="col-md-12">
-                        <h4 class='text-center'>
-                           {% trans 'No Exams schedule has been added yet' %}
-                        </h4>
+                    <div class="col-md-7 m-auto">
+                        <div class="alert alert-info">
+                           <span>{% trans 'No Exams schedule has been added yet' %}</span>
+                        </div>
                     </div>
                     {% endif %}
                 </div>
