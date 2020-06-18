@@ -21,15 +21,13 @@
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
                     {{form|crispy}}
-                    <div class="btn-test">
-                        <button class="btn btn-info add-post-btn" type="submit">
+                        <button type="submit">
                             {% trans 'Edit' %}
                         </button>
-                    </div>
                 </form>
                 <br />
-                <div class="text-right">
-                    <a class="btn btn-link" href="{% url 'accounts:password_change' %}">
+                <div class="change-password">
+                    <a href="{% url 'accounts:password_change' %}">
                         {% trans  'Change Password' %}
                     </a>
                 </div>

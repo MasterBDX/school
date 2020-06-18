@@ -10,6 +10,7 @@ section.dashboard h4,
 section.dashboard table th,
 section.dashboard table td,
 #contact-id,
+.change-password,
 .btn-test,
 .paper-borders table tr td,
 small.text-muted,
@@ -64,3 +65,4 @@ footer ul li{
 label{
     float: right !important;
 }
+

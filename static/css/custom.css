@@ -60,6 +60,25 @@ h1 hr{
     color: #222;
 }
 
+.change-password a{
+    font-family: var(--main-font);
+    color: #555;
+    font-weight: lighter;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.change-password a:hover{
+    color: var(--main-color);
+    text-transform: capitalize;
+}
+
+.alert span{
+    font-size: 20px;
+    font-family: var(--main-font);
+    text-transform: capitalize;
+}
+
     /* Start (Form-Design) */
 form label{
     color: #444;
@@ -110,6 +129,16 @@ button[type="submit"]{
 button[type="submit"]:hover{
     background-color: #222 !important;
     color: #fff;
+}
+
+small#hint_id_new_password1 ul{
+
+}
+
+small#hint_id_new_password1 ul li{
+    font-family: var(--main-font);
+    color: #666;
+    font-size: 14px;
 }
     /* End (Form-Design) */
 
@@ -327,12 +356,6 @@ h5.card-title:hover::before{
 }
 
 /* Start (Post-Page) */
-
-.alert span{
-    font-size: 20px;
-    font-family: var(--main-font);
-    text-transform: capitalize;
-}
 
 .publisher, .publish-date{
     color: #333;

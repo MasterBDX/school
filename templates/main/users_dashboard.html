@@ -10,13 +10,14 @@
     <div class="container">
         <div class="row">
             
-            <div class="col-md-7 m-auto">
+            <div class="col-md-6 m-auto">
                 <h1 class="text-center">
                     {% trans 'Users Dashboard' %}
                     <hr />
                 </h1>
             </div>
-             <div class="col-md-7 m-auto ">
+            <div class="w-100"></div>
+             <div class="col-md-6 m-auto ">
                 {% if messages %}
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {% for message in messages %}
@@ -122,7 +123,7 @@
 
                     {% else %}
                     
-                    <div class="col-md-7 m-auto">
+                    <div class="col-md-6 m-auto">
                         <div class="alert alert-info">
                            <span>{% trans 'No user has been added' %}</span>
                         </div>
