@@ -45,77 +45,76 @@
                     </div>
                     {% if classes %}
                     <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        {% trans 'Class Name' %}
+                        <div class="table-scroll">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            {% trans 'Class Name' %}
 
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Subjects Count' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Subjects Count' %}
 
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Appearance Order' %}
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'First Semester Degrees' %}
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Second Semester Degrees' %}
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Third Semester Degrees' %}
-                                    </th>
-                                    <th scope="col">{% trans 'Control' %}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for cls in classes %}
-                                <tr>
-                                    <td>{{cls.name}}</td>
-                                    <th>{{cls.subjects_num}}</th>
-                                    <th>{{cls.order|human_counter}}</th>
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Appearance Order' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'First Semester Degrees' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Second Semester Degrees' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Third Semester Degrees' %}
+                                        </th>
+                                        <th scope="col">{% trans 'Control' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cls in classes %}
+                                    <tr>
+                                        <td>{{cls.name}}</td>
+                                        <th>{{cls.subjects_num}}</th>
+                                        <th>{{cls.order|human_counter}}</th>
 
-                                    <td>
-                                        <a href="{% url 'students:edit-class-grades' pk=cls.id order='1' %}"
-                                            class="btn btn-info">
-                                            {% trans 'Add or Edit' %}
+                                        <td>
+                                            <a href="{% url 'students:edit-class-grades' pk=cls.id order='1' %}"
+                                                class="btn btn-info">
+                                                {% trans 'Add or Edit' %}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'students:edit-class-grades' pk=cls.id order='2' %}"
+                                                class="btn btn-info">
+                                                {% trans 'Add or Edit' %}
+                                            </a>
+                                        </td>
 
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{% url 'students:edit-class-grades' pk=cls.id order='2' %}"
-                                            class="btn btn-info">
-                                            {% trans 'Add or Edit' %}
-
-                                        </a>
-                                    </td>
-
-                                    <td>
-                                        <a href="{% url 'students:edit-class-grades' pk=cls.id order='3' %}"
-                                            class="btn btn-info">
-                                            {% trans 'Add or Edit' %}
-
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{% url 'tables:edit_class' pk=cls.id %}"
-                                            class="btn btn-info">
-                                            {%trans 'Edit' %}
-                                        </a>
-                                        <a href="{% url 'tables:delete_class' pk=cls.id %}"
-                                            class="btn btn-danger">
-                                            {% trans 'Delete' %}
-                                        </a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
+                                        <td>
+                                            <a href="{% url 'students:edit-class-grades' pk=cls.id order='3' %}"
+                                                class="btn btn-info">
+                                                {% trans 'Add or Edit' %}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'tables:edit_class' pk=cls.id %}"
+                                                class="btn btn-info">
+                                                {%trans 'Edit' %}
+                                            </a>
+                                            <a href="{% url 'tables:delete_class' pk=cls.id %}"
+                                                class="btn btn-danger">
+                                                {% trans 'Delete' %}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                      {% else %}
                      <div class="col-md-7 m-auto">
@@ -124,11 +123,8 @@
                         </div>
                     </div>
                     {% endif %}
-                   
-
                 </div>
             </div>
-
         </div>
     </div>
 </section>

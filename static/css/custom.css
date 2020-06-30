@@ -20,6 +20,10 @@ p{
     font-size: 17px;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 h1.main-heading{
     color: #fff !important;
     font-size: 34px;
@@ -43,6 +47,31 @@ h1 hr{
     width: inherit !important;
 }
 
+h4{
+    font-family: var(--main-font);
+}
+
+h4 hr{
+    height: 1.4px !important;
+    width: 10% !important;
+    background-color: var(--main-color) !important;
+    margin-top: 10px !important;
+}
+
+h5{
+    color: #444;
+    font-weight: 100;
+    text-transform: capitalize;
+    font-family: var(--main-font);
+}
+
+form strong{
+    display: block;
+    font-size: 15px;
+    font-weight: 100;
+    font-family: var(--main-font);
+}
+
 .main-btn{
     background-color: #222 !important;
     border: 1px solid #222;
@@ -60,12 +89,19 @@ h1 hr{
     color: #222;
 }
 
+.table-scroll{
+    overflow-x: auto;
+}
+
 .change-password a{
     font-family: var(--main-font);
     color: #555;
     font-weight: lighter;
     padding: 0 10px;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 .change-password a:hover{
@@ -73,10 +109,26 @@ h1 hr{
     text-transform: capitalize;
 }
 
-.alert span{
+.alert span,
+.alert p{
     font-size: 20px;
     font-family: var(--main-font);
     text-transform: capitalize;
+    margin: 10px 0;
+}
+
+.alert#schedules-table-id{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+button.close{
+    padding: 0 10px !important;
+}
+
+.alert-dismissible{
+    padding: 20px;
+    text--align: center;
 }
 
     /* Start (Form-Design) */
@@ -103,10 +155,59 @@ form select{
     resize: none;
 }
 
+form div select{
+    margin: 10px 0;
+}
+
+form div#div_id_birth_date{
+    margin: 40px 0;
+}
+
+form div#div_id_birth_date div{
+    display: flex;
+}
+
+form div#div_id_birth_date div select{
+    margin: 5px;
+    flex: 1;
+}
+
+form div#div_id_image > label{
+    display: block;
+    width: 100%;
+}
+
+form div#div_id_image > div{
+    font-family: var(--main-font);
+}
+
+form div input[type="checkbox"]{
+    float: right;
+    margin: 6px 4px;
+}
+
+form div label[for="image-clear_id"]{
+    float: right;
+    font-weight: lighter;
+}
+
+form div#div_id_image > div > a{
+    color: var(--main-color);
+}
+
+form div#div_id_image > div > a:hover{
+    text-decoration: underline;
+}
+
+form div input.clearablefileinput{
+    margin-top: 5px;
+} 
+
 button[type="submit"]{
     display: block;
     margin: auto;
     margin-top: 40px;
+    margin-bottom: 20px;
     color: #222;
     background-color: transparent !important;
     border: 1px solid #222 !important;
@@ -129,10 +230,6 @@ button[type="submit"]{
 button[type="submit"]:hover{
     background-color: #222 !important;
     color: #fff;
-}
-
-small#hint_id_new_password1 ul{
-
 }
 
 small#hint_id_new_password1 ul li{
@@ -182,6 +279,14 @@ small#hint_id_new_password1 ul li{
     overflow: hidden;
     color: #fff;
     font-weight: lighter;
+}
+
+.navbar-custom .navbar-nav .nav-item .nav-link:hover i{
+    color: var(--main-color);
+    transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
 }
 
 .navbar-custom .navbar-nav .nav-item .nav-link:active{ color: var(--main-color); }
@@ -244,66 +349,128 @@ small#hint_id_new_password1 ul li{
 }
     /* End (Navbar) */
 
-    /* Start (Card-Design) */
-.card{
-    border: 1px solid #bbb;
-}
-
-h5.card-title{
-    font-family: var(--main-font);
-    color: #333;
-    font-size: 19px;
-    font-weight: bold;
-    display: inline-block;
-    margin: 5px 0 20px 0;
-}
-
-h5.card-title::before{
-    content:" - ";
-    font-size: 20px;
-    color: #444;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-}
-
-h5.card-title:hover::before{
-    margin-left: 9px;
-}
-
-.post-image{
-    max-height: 100%;
-}
-.post a{
+    /* Start (Post-Design) */
+a.post-card:hover{
     text-decoration: none;
 }
 
-.post-detail{
-    border-left: solid #ccc 1px;
+.card{
+    border: 1px solid #bbb;
+    box-shadow: 0 0 5px 0px #aaa;
+    display: flex;
+    margin: 2.4em 0;
 }
 
-@media screen and (max-width: 991px){
-    .post-detail{
-        border: none;
-        border-bottom: solid #ccc 1px;
-        margin-bottom: 40px !important;
-    }
+.card-body{
+    padding: 1.1em;
+}
+
+.card h4.card-title{
+    color: #333;
+    font-family: var(--main-font);
+    text-align: left;
+}
+
+.card p.card-text{
+    font-size: 17px;
+    font-weight: normal;
+    font-family: var(--main-font);
+    color: #555;
+    margin-top: 1em;
+    text-align: left;
+}
+
+.card p.card-pub-date{
+    font-size: 19px;
+    font-family: var(--main-font);
+    color: #555;
+    margin-top: 2.4em;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.card p.card-pub-date i{
+    font-size: 15px;
+}
+
+.card .card-image{
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.card img.post-image{
+    border-radius: 0;
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 100%;
 }
 
 .post-main-image{
-    height: 375px !important;
+    height: 25em !important;
     width: 96%;
+    margin: auto;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -o-border-radius: 4px;
     border: 1px solid #a0a0a0;
-    box-shadow: 0px 0px 10px inset #ccc;
+    box-shadow: 0px 0px 10px inset #666;
+    background-position: center;
 }
-    /* End (Card-Design) */
+ 
+.post-detail .post-content p.lead{
+    color: #444;
+    font-size: 18px;
+    font-family: var(--main-font);
+}
+
+.post-detail .post-content p span{
+    color: #555;
+    font-size: 16px;
+} 
+
+    /* End (Post-Design) */
+
+    /* Start (Paginator) */
+.pagination{
+    padding: 0 20px !important;
+    justify-content: center !important;
+}
+
+.pagination li{
+    margin: 0 2px;
+}
+
+.pagination li.active a{
+    background-color: #555 !important;
+}
+
+.pagination li a{
+    border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+    background-color: #fff;
+    border: none;
+    font-family: var(--main-font);
+    color: #444;
+    transition: all .3s ease;
+    font-size: 17px;
+}
+
+.pagination li a:hover{
+    color: #444;
+}
+
+.pagination li a:focus{
+    box-shadow: none;
+}
+    /* End (Paginator) */
 
 /* End { Multiple-Page-Design } */    
+
+/* Start Home-Page */
 
 /* Header Img (Start) */
 
@@ -323,6 +490,13 @@ h5.card-title:hover::before{
     z-index: 2;
 }
 
+.header-img{
+    height: 500px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
+}
+
 .header-img .header-content{
     position: absolute;
     z-index: 3;
@@ -338,9 +512,23 @@ h5.card-title:hover::before{
 
 .header-img .header-content h2{
     color: var(--main-color);
+    font-family: var(--main-font);
 }
 
 /* Header Img (End) */
+
+.home-cards h2{
+    margin-bottom: .7em;
+    font-family: var(--main-font);
+    color: #333;
+}
+
+.home-cards p{
+    font-family: var(--main-font);
+    color: #555;
+}
+
+/* End Home-Page */
 
 .fb-p{
     color: #333;
@@ -369,6 +557,7 @@ h5.card-title:hover::before{
     content: "-";
     color: #222;
     font-size: 15px;
+    margin: ;
 }
 
 .publisher strong, .publish-date strong{
@@ -390,11 +579,30 @@ section.dashboard{
 }
 
 section.dashboard h4{
-    color: #444;
+    color: #333;
     font-weight: normal;
-    font-family: var(--main-font);
-    margin-bottom: 15px;
+    margin-top: 5px;
+    padding: 10px 0 15px;
+    text-align: center !important;
 }
+
+@media screen and (min-width: 992px){
+
+    section.dashboard h4{
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width: 991px){
+
+    section.dashboard table .btn{
+        margin: 4px 0;
+    }
+
+}
+
+section.dashboard h4.class-name{  border-bottom: 1px solid #aaa; }
 
 section.dashboard hr{
     background-color:#aaa;
@@ -410,9 +618,13 @@ section.dashboard p{
     font-family: var(--main-font);
 }
 
-section.dashboard .btn-warning,
-section.dashboard .btn-info,
-section.dashboard .btn-danger{
+section.dashboard table td a{
+    font-family: var(--main-font);
+}
+
+.btn-warning,
+.btn-info,
+.btn-danger{
     padding: 6px 15px;
     font-family: var(--main-font);
     margin: 0 5px;    
@@ -423,24 +635,51 @@ section.dashboard .btn-danger{
     -o-transition: all 0.3s ease;
 }
 
-section.dashboard .btn-info{
+.btn-info{
     border: 1px solid #138496;
     color: #138496;
 }
 
-section.dashboard .btn-info:hover{
+.btn-info:hover{
     background-color: #138496;
     color: #fff;
 }
 
-section.dashboard .btn-danger{
+.btn-danger{
     border: 1px solid #c82333;
     color: #c82333;
 }
 
-section.dashboard .btn-danger:hover{
+.btn-danger:hover{
     background-color: hsl(354, 70%, 46%);
     color: #fff;
+}
+
+.btn-warning{
+    border: 1px solid #e7b00d;
+    color: #222 !important;
+}
+
+.btn-warning:hover{
+    background-color: #e7b00d;
+}
+
+.print-btn{
+    font-family: var(--main-font);
+    color: #444;
+    font-weight: normal;
+    padding: 0 10px;
+    font-size: 17px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.print-btn:hover{
+    color: var(--main-color);
+    text-transform: capitalize;
 }
 
 section.dashboard .add-button{
@@ -477,11 +716,15 @@ section.dashboard .add-button:hover{
 }
 
 section.dashboard table{
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 }
 
-section.dashboard table tr{
-    overflow-x: auto;
+@media screen and (min-width: 992px){
+
+    section.dashboard table{
+        margin-bottom: 40px;
+    }
+
 }
 
 section.dashboard table thead tr{
@@ -563,59 +806,41 @@ section.dashboard div.alert{
     text-align: center;
 }
 
-section.dashboard span.error-alert{
-    font-size: 26px;
-    margin-bottom: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-family: var(--main-font);
-    color: #444;
-    display: inline-block;
-    padding: .4em 2em;
-    background: #ffe4e4;
-    border: 1px solid #f6b1b1;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -o-border-radius: 2px;
-}
-
 /* End (Students-Distribution) Page */
 
-/* Start (Add-Student) */
+/* Start (Student-Info) Page */
 
-.btn-test{
-    text-align: center !important;
+table.student-info{
+    font-family: var(--main-font);
 }
 
-.btn-test button{
-    font-size: 17px;
-    border: 1px solid #444 !important;
-    background-color: transparent !important;
-    color: #444;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
+table.student-info th{
+    background-color: #222 !important;
+    color: #fff !important;
+    padding: .5em !important;
+    border-color: #2f2f2f;
 }
 
-.btn-test button:hover{
-    background-color: #444 !important;
-    border: 1px solid #444 !important;
+table.student-info th,
+table.student-info td{
+    padding: .6em !important;
 }
 
-/* End (Add-Student) */
+table.student-info td[colspan="5"]{
+    background-color: #aaa;
+    padding: .2em !important;
+}
+
+/* End Student-Info-Page */
 
 .more-height{
-    height: 250px;
+    height: 30px;
 }
 
 #sendMessageButton {
     background-color: #4c4c4c;
     border: solid 1px #FFF;
 }
-
-
 
 .form-check{
     display: inline;
@@ -627,9 +852,6 @@ section.dashboard span.error-alert{
     margin-left: 0.3em;
 }
 
-.btn-test{
-    width: 100%;
-}
 #id_content_iframe{
     display: block;
     width: 100%;
@@ -708,14 +930,17 @@ section.dashboard span.error-alert{
 }
 
 /* Start (Exams Tables Styling) */
+
 .table-row {
     background-color: #3498db1c;
     border-radius: 10px;
 }
+
 #add-new-form{
     background-color: #3498db54;
     border-radius: 10px;
-    min-height: 100%;
+    min-height: 497px;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -764,6 +989,8 @@ section.dashboard span.error-alert{
 /* Exams table Ajax Styling */
 #exams-table-id{
     display: none;
+    padding-left: 0;
+    padding-right: 0;
 }
 .exams-icon-div-id{
     display: none;

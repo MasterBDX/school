@@ -8,8 +8,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 m-auto">
-
-                <h1 class="">
+                <div style="height:50px;"></div>
+                <h1 class="delete-msg">
                     {% if request.session.lang == 'ar' %}
                     {{status}} جميع الصحائف للفصل
                     {{classroom_name}}
@@ -23,7 +23,7 @@
             <div class="col-md-9 m-auto">
                 <form method="POST" id='add-post-form'>
                     {% csrf_token %}
-                    <p class="lead">
+                    <p class="delete-msg">
                     {% if request.session.lang == 'ar' %}
                     هل أنت متأكد أنك تريد
                         {{status}}
@@ -34,12 +34,11 @@
                     {% endif %}
                         <hr />
                     </p>
-                    <div class="btn-test">
-                        <button class="btn btn-info add-post-btn" type="submit">
+                    <div class="">
+                        <button class="" type="submit">
                             {{status}}
                         </button>
                     </div>
-                    <div style="height:100px;"></div>
                 </form>
                 <br />
             </div>

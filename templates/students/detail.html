@@ -13,21 +13,21 @@
 
 <div class="container">
    <div class="">
-                {% if messages %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {% for message in messages %}
-                    <p {% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
-                        {% endfor %}
+        {% if messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</p>
+            {% endfor %}
 
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
-                </div>
-                {% endif %}
-            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+    </div>
     <section>
-            <table class="table table-bordered text-center">
+        <div class="table-scroll">
+            <table class="table table-bordered text-center student-info">
                 <thead>
                     <tr>
                     <th scope="col">{% trans 'ID Number'%}</th>
@@ -39,7 +39,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <th>{{student.id}}</th>
+                    <td>{{student.id}}</td>
                     <td>{{student.first_name}}</td>
                     <td>{{student.father_name}}</td>
                     <td>{{student.mother_name}}</td>
@@ -79,7 +79,7 @@
                     
                     </tr>
                     <tr>
-                    <th>{{student.cell_phone}}</th>
+                    <td>{{student.cell_phone}}</td>
                     <td>{{student.the_class.name}}</td>
                     <td>{{student.classroom.name}}</td>
                     <td>{{student.nid_number}}</td>
@@ -88,48 +88,49 @@
                     
                 </tbody>
             </table>
-            <div class="row text-center">
-                    <div class="col-md-4">
-                        <a href="{% url 'students:edit' pk=student.id %}" class="btn btn-info">
-                            {% trans 'Edit Information' %}
-                        </a>
-                         <a href="{% url 'students:delete' pk=student.id %}"
-                            class="btn btn-danger">
-                            {% trans 'Delete' %}
-                        </a>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                            <a href="{% url 'students:printable-detail' pk=student.id %}" 
-                            class="btn btn-link">
-                            <span>
-                            {% trans 'Printable Configuration' %}
-                            </span>
-                            </a>
-                          
-                    </div>
+        </div>    
+        <div class="more-height"></div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <a href="{% url 'students:edit' pk=student.id %}" class="btn btn-info">
+                    {% trans 'Edit Information' %}
+                </a>
+                <a href="{% url 'students:delete' pk=student.id %}"
+                    class="btn btn-danger">
+                    {% trans 'Delete' %}
+                </a>
+            </div>
+            <div class="col-md-4">
+                <div class="more-height"></div>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'students:printable-detail' pk=student.id %}" 
+                    class="print-btn">
+                    <span>
+                        {% trans 'Printable Configuration' %}
+                    </span>
+                </a>
+            </div>
 
         </div>
-              <hr />
-                            <br />
+    <hr />
 </section>
 <section class='dashboard'>     
     <div class='row'>       
             <div class="col-md-12">   
                 <div class="row">
                     <div class='col-md-6 m-auto'>
-                    <h1 class="text-center"> {% trans 'Student results' %} 
-                    <hr />
-                    </h1>
+                        <h4 class="text-center"> 
+                            {% trans 'Student results' %} 
+                            <hr />
+                        </h4>
                     </div>
-                    <div class="col-md-12 ">
+                    <div class="col-md-7 m-auto text-center">
                         <a href="{% url 'students:add-results-paper' %}?std_id={{student.id}}" 
                         class="add-button">
                             <i class="fas fa-plus fa-lg"></i>
                            {% trans 'Add result' %} 
                         </a>
-                        <br />
-                        <br />
                     </div>
 
                     {% if student.papers.all %}
@@ -228,8 +229,11 @@
                         </table>
                     </div>
                     {% else %}
-                    <div class="col-md-5">
-                        <p>{% trans 'No results were added' %}</p>
+                    <div class="w-100"></div>
+                    <div class="col-md-4 m-auto">
+                        <div class="alert alert-info mt-3">
+                            <span>{% trans 'No results were added' %}</span>
+                        </div>
                     </div>
                     {% endif %}
 

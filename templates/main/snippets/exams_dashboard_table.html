@@ -1,64 +1,66 @@
 {% load get_lang_names %}
 {% load i18n %}
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">
+<div class="table-scroll">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
 
-                {% trans 'Year' %}
-            </th>
-            <th scope="col">
-                {% trans 'Semester' %}
-            </th>
-            <th scope="col">
+                    {% trans 'Year' %}
+                </th>
+                <th scope="col">
+                    {% trans 'Semester' %}
+                </th>
+                <th scope="col">
 
-                {% trans 'Type' %}
-            </th>
+                    {% trans 'Type' %}
+                </th>
 
-            <th scope="col">
+                <th scope="col">
 
-                {% trans 'Classroom' %}
-            </th>
-            <th scope="col">
+                    {% trans 'Classroom' %}
+                </th>
+                <th scope="col">
 
-                {% trans 'Last Editor'%}
-            </th>
-            <th scope="col">
+                    {% trans 'Last Editor'%}
+                </th>
+                <th scope="col">
 
-                {% trans 'Last Modified Date' %}
-            </th>
-            <th scope="col">
-                {% trans 'Control' %}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for exam_table in qs %}
-        <tr>
-            <td>{{exam_table.year}}</td>
-            <td>{{exam_table.semester|lang_semester}}</td>
-            <td>{{exam_table.exam_type|lang_type}}</td>
+                    {% trans 'Last Modified Date' %}
+                </th>
+                <th scope="col">
+                    {% trans 'Control' %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exam_table in qs %}
+            <tr>
+                <td>{{exam_table.year}}</td>
+                <td>{{exam_table.semester|lang_semester}}</td>
+                <td>{{exam_table.exam_type|lang_type}}</td>
 
-            <td>{{exam_table.class_room.name}}</td>
+                <td>{{exam_table.class_room.name}}</td>
 
 
-            <td>
+                <td>
 
-                {{exam_table.last_editor}}
+                    {{exam_table.last_editor}}
 
-            </td>
+                </td>
 
-            <td>{{exam_table.updated}}</td>
+                <td>{{exam_table.updated}}</td>
 
-            <td>
-                <a href="{% url 'tables:exams-tables-edit' pk=exam_table.id %}" class="btn btn-info">
-                    {% trans 'Edit' %}
-                </a>
-                <a href="{% url 'tables:exams-tables-delete' pk=exam_table.id %}" class="btn btn-danger">
-                    {% trans 'Delete' %}
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+                <td>
+                    <a href="{% url 'tables:exams-tables-edit' pk=exam_table.id %}" class="btn btn-info">
+                        {% trans 'Edit' %}
+                    </a>
+                    <a href="{% url 'tables:exams-tables-delete' pk=exam_table.id %}" class="btn btn-danger">
+                        {% trans 'Delete' %}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>    

@@ -2,23 +2,33 @@ body{
     direction: rtl;
 }
 
+.home-cards p,
+h1.post-title,
+.post-content p.lead,
+h4.card-title,
+p.card-text,
+p.card-pub-date,
 h2,
+strong,
 .lang-ar,
 .dropdown-menu .dropdown-item,
-p,
-section.dashboard h4,
 section.dashboard table th,
 section.dashboard table td,
 #contact-id,
 .change-password,
+form div#div_id_image > label,
+form div#div_id_image > div,
 .btn-test,
 .paper-borders table tr td,
 small.text-muted,
 .about-us h5,
+h5.exams-type,
 .about-us div .school-address-heading,
 .about-us ul li,
+.delete-msg,
 footer ul li{
-    text-align: right;
+    text-align: right !important;
+    font-family: var(--main-font);
 }
 
 /* Start (Nav-Bar) */
@@ -60,6 +70,15 @@ footer ul li{
     -webkit-border-radius: 4px 0 0 4px;
     -moz-border-radius: 4px 0 0 4px;
     -o-border-radius: 4px 0 0 4px;
+}
+
+form div input[type="checkbox"]{
+    float: left !important;
+    margin: 7px 3px !important;
+}
+
+form div label[for="image-clear_id"]{
+    float: left !important;
 }
 
 label{

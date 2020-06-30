@@ -35,7 +35,6 @@
                     <div class="col-md-12">
                         <div class="">
                             <h4>
-
                                 الصف
                                 {{class.name}}
                             </h4>
@@ -66,13 +65,13 @@
                                 <tr>
 
                                     <td>
-
                                         {{cm.name}}
                                     </td>
 
                                     <td>{{cm.get_stds_count}}</td>
 
-                                    <td><a class="btn btn-info"
+                                    <td>
+                                        <a class="btn btn-info"
                                             href='{% url "main:students-classroom-list" pk=cm.pk %}'>
                                             {% trans 'View' %}
                                         </a>

@@ -11,7 +11,7 @@
 
 <div class="container">
     {% for article in main_articles %}
-    <section>
+    <section class="home-cards">
         <div class="row align-items-center">
             <div class="col-lg-6 
             {% if not forloop.counter == 2 %} 
@@ -57,42 +57,50 @@
     {% endfor %}
     <section>
         {% if last_posts %}
+        <hr />
         <section>
             <div class="row">
-                <div class="col-md-8">
-                    <h1>
+                <div class="col-md-9 m-auto">
+                    <h1 class="text-center">
                         {% trans 'Latest News' %}
-                    </h1>
                     <hr />
+                    </h1>
                 </div>
 
-                <div class="col-md-8 ">
+                <div class="col-md-9 m-auto">
                     {% for post in  last_posts %}
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-8">
-                                <div class="card-body ">
-                                    <h5 class="card-title">{{post.title}}</h5>
-                                    <p class="card-text">{{post.overview|truncatewords:30}}</p>
-                                    <p class="card-text">
-                                        <small class="text-muted">
+                     <a class="post-card" href={{post.get_absolute_url}}>
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-8">
+                            
+                                    <div class="card-body ">
+                                    
+                                        <h4 class="card-title">{{post.title}}</h4>
+                                        <p class="card-text">{{post.overview|truncatewords:30}}</p>
+                                        <p class="card-pub-date">
+                                            <i class="far fa-clock"></i>
+                                            <small class="text-muted">
 
-                                            {% trans 'Published at' %} :
+                                                {% trans 'Published at' %} :
 
-                                            {{post.timestamp}}
+                                                {{post.timestamp}}
 
-                                        </small>
-                                    </p>
-
+                                            </small>
+                                        </p>
+                                
+                                    </div>
                                 </div>
+                                {% if post.main_image %}
+                                <div class="col-md-4">
+                                    <div class="card-image">
+                                        <img src="{{post.main_image.url}}" class="card-img post-image" alt="...">
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
-                            {% if post.main_image %}
-                            <div class="col-md-4">
-                                <img src="{{post.main_image.url}}" class="card-img post-image" alt="...">
-                            </div>
-                            {% endif %}
                         </div>
-                    </div>
+                      </a>
                     {% endfor %}
                 </div>
             </div>

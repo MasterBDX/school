@@ -17,7 +17,7 @@
 <section class="dashboard">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 m-auto ">
+            <div class="col-md-7 m-auto ">
                 {% if messages %}
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {% for message in messages %}
@@ -47,91 +47,84 @@
 
             <div id='schedules-id' class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="lead">
-                            {% trans 'To add a new student' %}
-                            <br />
-                            <a href="{% url 'students:add' %}" class="btn btn-info">
-                            {% trans 'Add' %} </a>
+                    <div class="col-md-7 m-auto">
+                        <p class="text-center">
+                            <a href="{% url 'students:add' %}" class="add-button">
+                                <i class="fa fa-plus"></i>
+                                {% trans 'To add a new student' %}
+                            </a>
                         </p>
                     </div>
 
                     {% if students %}
                     <div class="col-md-12">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">
-                                    {% trans 'ID' %}
-                                    </th>
-                                    <th scope="col">
-                                    {% trans 'Student Name' %}
-                                    </th>
-                                    <th scope="col">
-                                    {% trans 'Gender' %}
-                                    </th>
-                                    <th scope="col">
-                                    {% trans 'Nationality' %}
-                                    </th>
-                                    <th scope="col">
-                                    {% trans 'N.Number' %}
-                                    </th>
-                                    <th scope="col">
-                                     {% trans 'This class result' %}
-                                     </th>
-                                    <th scope="col">
-                                        {% trans 'Control' %}
-                                     </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for student in students %}
-                                <tr>
-                                    <th scope="row">{{student.id}}</th>
-                                    <td>
-                                        <a href="{% url 'students:detail' pk=student.id %}">
-                                            {{student.full_name}}
-                                        </a>
-                                    </td>
-                                    {% include 'main/snippets/gender.html' %}
-                                    <td>{% trans student.nationality %} </td>
-                                    <td>{{student.nid_number}}</td>
-                                    <td>
-                                        {{student.result}}</td>
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <a href="{% url 'students:edit' pk=student.id %}" class="btn btn-info">
-                                                    {% trans 'Edit Information' %}
-                                                </a>
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="{% url 'students:delete' pk=student.id %}"
-                                                    class="btn btn-danger">
-                                                    {% trans 'Delete' %}
-                                                </a>
-                                            </div>
-                                            <div class="col-md-4">
+                        <div class="table-scroll">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">
+                                        {% trans 'ID' %}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'Student Name' %}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'Gender' %}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'Nationality' %}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'N.Number' %}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'This class result' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Control' %}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in students %}
+                                    <tr>
+                                        <th scope="row">{{student.id}}</th>
+                                        <td>
+                                            <a href="{% url 'students:detail' pk=student.id %}">
+                                                {{student.full_name}}
+                                            </a>
+                                        </td>
+                                        {% include 'main/snippets/gender.html' %}
+                                        <td>{% trans student.nationality %} </td>
+                                        <td>{{student.nid_number}}</td>
+                                        <td>
+                                            {{student.result}}</td>
+                                        <td>
+                                            <a href="{% url 'students:edit' pk=student.id %}" class="btn btn-info">
+                                                {% trans 'Edit Information' %}
+                                            </a>
+                                            <a href="{% url 'students:delete' pk=student.id %}"
+                                            class="btn btn-danger">
+                                                {% trans 'Delete' %}
+                                            </a>
                                                 <a href="{% url 'students:add-results-paper'%}?std_id={{student.id}}"
                                                     class="btn btn-warning">
                                                     {% trans 'Add Result Paper' %}
                                                 </a>
-                                            </div>
-
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 {% endfor %}
 
 
-                            </tbody>
-                        </table>
-
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     {% else %}
-                    <div class="col-md-12">
-                        {% trans 'No students have been added to this class' %}
+                    <div class="col-md-7 m-auto">
+                        <div class="alert alert-warning">
+                            <span>{% trans 'No students have been added to this class' %}</span>
+                        </div    
                     </div>
                     {% endif %}
 

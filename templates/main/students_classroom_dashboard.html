@@ -64,60 +64,61 @@
                              {% endif %}
                             </h4>
                         </div>
+                        <div class="table-scroll">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
 
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-
-                                    <th scope="col">
-                                    {% trans 'Class Name'%}
-                                     </th>
-                                    <th scope="col">
-                                    {% trans 'Students Count' %}
-                                    </th>
-                                    <th scope="col">
-                                    {% trans 'Students List'%}
-                                    </th>
-                                    <th scope="col">
-                                     {% trans 'Class Results' %}
-                                      </th>
+                                        <th scope="col">
+                                        {% trans 'Class Name'%}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'Students Count' %}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'Students List'%}
+                                        </th>
+                                        <th scope="col">
+                                        {% trans 'Class Results' %}
+                                        </th>
 
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for cm in class.classrooms.all %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cm in class.classrooms.all %}
 
-                                <tr>
+                                    <tr>
 
-                                    <td>
+                                        <td>
 
-                                        {{cm.name}}
+                                            {{cm.name}}
 
-                                    </td>
+                                        </td>
 
-                                    <td>{{cm.get_stds_count}}</td>
+                                        <td>{{cm.get_stds_count}}</td>
 
-                                    <td><a class="btn btn-info"
-                                            href='{% url "main:students-dashboard" pk=cm.pk %}'>
-                                            {% trans 'View'%}</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-warning"
-                                            href='{% url "students:results-activation-confirm" status=1 pk=cm.pk %}'>
-                                            {% trans 'Activate all' %}
-                                        </a>
-                                        <a class="btn btn-danger"
-                                            href='{% url "students:results-activation-confirm" status=0 pk=cm.pk %}'>
-                                            {% trans 'Deactivate all' %}
+                                        <td><a class="btn btn-info"
+                                                href='{% url "main:students-dashboard" pk=cm.pk %}'>
+                                                {% trans 'View'%}</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning"
+                                                href='{% url "students:results-activation-confirm" status=1 pk=cm.pk %}'>
+                                                {% trans 'Activate all' %}
                                             </a>
-                                    </td>
+                                            <a class="btn btn-danger"
+                                                href='{% url "students:results-activation-confirm" status=0 pk=cm.pk %}'>
+                                                {% trans 'Deactivate all' %}
+                                            </a>
+                                        </td>
 
-                                </tr>
-                                {% endfor %}
+                                    </tr>
+                                    {% endfor %}
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     {% endif %}
                     {% endfor %}

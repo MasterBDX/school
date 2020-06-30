@@ -50,20 +50,20 @@
                     <div class="col-md-12">
                         <div>
                             <br />
-                            <h4 class="">
+                            <h4 class="class-name">
                                 الصف
                                 {{class.name}}
                             </h4>
 
                             {% if class.get_mid_exams.all %}
-                            <h5>
+                            <h5 class="exams-type">
                                 {% trans 'Midterm exams' %}
                             </h5>
                             {% include 'main/snippets/exams_dashboard_table.html' with qs=class.get_mid_exams.all %}
                             {% endif %}
 
                             {% if class.get_final_exams.all %}
-                            <h5>
+                            <h5 class="exams-type">
                                 {% trans 'Final exams' %}
                             </h5>
                             {% include 'main/snippets/exams_dashboard_table.html' with qs=class.get_final_exams.all %}

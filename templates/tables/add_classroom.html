@@ -37,8 +37,7 @@
                 <form enctype="multipart/form-data" method="POST" id='add-post-form'>
                     {% csrf_token %}
                     {{form|crispy}}
-                    <div style="height:50px;"></div>
-                    <div class="btn-test">
+                    <div class="">
                         <button class="btn btn-info add-post-btn" type="submit">
                             {% if object %}
                             {% trans 'Edit' %}

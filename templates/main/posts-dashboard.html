@@ -47,54 +47,56 @@
                     </div>
                     {% if posts %}
                     <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
+                        <div class="table-scroll">
+                            <table class="table">
+                                <thead>
+                                    <tr>
 
-                                    <th scope="col">
+                                        <th scope="col">
 
-                                        {% trans 'Title' %}
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Creation Date' %}
+                                            {% trans 'Title' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Creation Date' %}
 
 
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Last Modified Date' %}
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Last Modified Date' %}
 
-                                    </th>
-                                    <th scope="col">
-                                        {% trans 'Publication Date' %}
-                                    </th>
-                                    <th scope="col">{% trans 'Control' %}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for post in posts %}
-                                <tr>
+                                        </th>
+                                        <th scope="col">
+                                            {% trans 'Publication Date' %}
+                                        </th>
+                                        <th scope="col">{% trans 'Control' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for post in posts %}
+                                    <tr>
 
-                                    <td>{{post.title}}</td>
-                                    <td>{{post.timestamp}}</td>
-                                    <td>{{post.updated}}</td>
-                                    <td>{{post.published_date}}</td>
-                                    <td>
-                                        <a href="{% url 'posts:edit' slug=post.slug %}" class="btn btn-info">
-                                            {% trans 'Edit' %}
-                                        </a>
-                                        <a href="{% url 'posts:delete' slug=post.slug %}" class="btn btn-danger">
-                                            {% trans 'Delete' %}
-                                        </a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                                        <td><a href="{{post.get_absolute_url}}"> {{post.title}} </a></td>
+                                        <td>{{post.timestamp}}</td>
+                                        <td>{{post.updated}}</td>
+                                        <td>{{post.published_date}}</td>
+                                        <td>
+                                            <a href="{% url 'posts:edit' slug=post.slug %}" class="btn btn-info">
+                                                {% trans 'Edit' %}
+                                            </a>
+                                            <a href="{% url 'posts:delete' slug=post.slug %}" class="btn btn-danger">
+                                                {% trans 'Delete' %}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     {% else %}
                     <div class="col-md-7 m-auto">
                         <div class="alert alert-info">
-                           <span>لم يتم إضافة أي منشورات بعد</span>
+                           <span>{% trans 'No posts have been added yet' %}</span>
                         </div>
                     </div>
                     {% endif %}
