@@ -9,6 +9,8 @@ BASE_DIR = os.path.dirname(MYBASE)
 
 FOLDER_NAME = os.path.basename(MYBASE)
 
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
