@@ -85,6 +85,7 @@ class LoginForm(forms.Form):
     username = forms.CharField(label=_('Phone Number'))
     password = forms.CharField(label=_('Password'),
                                widget=forms.PasswordInput)
+    remember_me = forms.BooleanField(label=_('Remember Me'),required=False)
 
     def clean(self):
         phone_number = self.cleaned_data.get('username')

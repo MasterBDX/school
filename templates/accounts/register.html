@@ -3,7 +3,7 @@
 {% block title %}
 {% url 'accounts:login' as login %}
 {% if request.path == login %}
-{% trans 'Login'%}
+{% trans 'Login' %}
 {% else %}
 {% trans 'Registration' %}
 {% endif %}

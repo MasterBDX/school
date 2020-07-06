@@ -9,6 +9,7 @@ BASE_DIR = os.path.dirname(MYBASE)
 
 FOLDER_NAME = os.path.basename(MYBASE)
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
 

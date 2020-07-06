@@ -54,6 +54,9 @@ def login_view(request):
             if user:
                 if user.is_active:
                     login(request, user)
+                    remember_me = form.cleaned_data.get('remember_me', None)
+                    if remember_me:
+                        request.session.set_expiry(1209600)
                     next_ = request.POST.get('url')
 
                     if next_:
