@@ -11,6 +11,9 @@ FOLDER_NAME = os.path.basename(MYBASE)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
+MANAGERS = (('masterbdx', DEFAULT_FROM_EMAIL),)
+ADMINS = MANAGERS
+
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
