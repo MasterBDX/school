@@ -11,6 +11,7 @@ class LangSessionMiddletware:
 
         # Code to be executed for each request before
         # the view (and later middleware) are called.
+        
         if not request.session.get('lang'):
             request.session['lang'] = 'en'
         translation.activate(request.session['lang'])
