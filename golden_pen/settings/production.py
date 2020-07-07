@@ -6,7 +6,6 @@ from .base import *
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
