@@ -1,33 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html dir="rtl" lang="ar">
 
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
-    {% include 'snippets/meta_tags.html' %}
-
-    <title>
-
-        {% block title %} {% endblock %}
-    </title>
-    {% include 'snippets/css.html' %}
-</head>
-
-<body>
-    {% block index %}
-
-    {% endblock %}
-    {% block content %}
-
-    {% endblock %}
+{% block title %}
     
-    {% include 'snippets/footer.html' %}
-    <!-- Bootstrap core JavaScript -->
-    {% include 'snippets/js.html' %}
+{% endblock  %}
     
-    {% block js %}
-    {% endblock %}
-    
-</body>
 
-</html>
+{% block content %}
+    
+{% endblock  %}
+    
+
+{% block js %}
+    
+{% endblock  %}
+    
