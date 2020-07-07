@@ -17,11 +17,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-DEFAULT_FROM_EMAIL = 'masterbdxteam@gmail.com'
-
-MANAGERS = (('masterbdx', 'masterbdxteam@gmail.com'),)
-ADMINS = MANAGERS
-
 DEBUG = False
 
 ALLOWED_HOSTS = ['https://masterbdx-school.herokuapp.com/']
@@ -39,16 +34,23 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CORS_REPLACE_HTTPS_REFERER = True
-HOST_SCHEME = "https://"
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_SECONDS = 1000000
-SECURE_FRAME_DENY = True
+# CORS_REPLACE_HTTPS_REFERER = True
+# HOST_SCHEME = "https://"
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_SECONDS = 1000000
+# SECURE_FRAME_DENY = True
 
 
 
 django_heroku.settings(locals())
+
+
+
+
+
+SECRET_KEY = 'p6h2t2+i+2fh)8yfu%_d_#p17lopc@iwa4d*-rln^fi#p1*h_b'
+DROPBOX_OAUTH2_TOKEN = '32423534kdfnvfkeesq34r3rb'
