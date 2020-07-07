@@ -20,6 +20,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+django_heroku.settings(locals())
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -46,4 +47,3 @@ SECURE_FRAME_DENY = True
 
 
 
-django_heroku.settings(locals())
