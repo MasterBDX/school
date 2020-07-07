@@ -16,13 +16,34 @@ EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+
+MANAGERS = [('masterbdx', DEFAULT_FROM_EMAIL)]
+ADMINS = MANAGERS
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
 
 DEBUG = False
 
 ALLOWED_HOSTS = ['https://masterbdx-school.herokuapp.com/']
 
-
-django_heroku.settings(locals())
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -48,7 +69,7 @@ SECURE_FRAME_DENY = True
 
 
 
-
+django_heroku.settings(locals())
 
 
 
