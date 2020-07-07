@@ -11,27 +11,9 @@ FOLDER_NAME = os.path.basename(MYBASE)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
-MANAGERS = [('masterbdx', DEFAULT_FROM_EMAIL)]
+MANAGERS = os.environ.get('MANAGERS')
+
 ADMINS = MANAGERS
-
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -131,7 +113,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'golden_pen.middleware.LangSessionMiddletware'
-
 ]
 
 SITE_ID=1
