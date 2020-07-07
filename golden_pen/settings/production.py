@@ -199,7 +199,7 @@ EMAIL_USE_TLS = True
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://masterbdx-school.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 STATIC_URL = '/static/'
