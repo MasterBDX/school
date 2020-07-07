@@ -6,13 +6,12 @@ MYBASE = os.path.dirname(
     os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(MYBASE)
 
-
 FOLDER_NAME = os.path.basename(MYBASE)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
-MANAGERS = [('masterbdx', DEFAULT_FROM_EMAIL)]
-ADMINS = MANAGERS
+
+ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
