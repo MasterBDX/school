@@ -1,5 +1,6 @@
 import os
 import django_heroku
+
 from .base import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(
@@ -7,24 +8,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER = 'apikey'
+# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'assassinbd9@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-django_heroku.settings(locals())
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_OAUTH2_TOKEN')
@@ -46,3 +51,4 @@ SECURE_FRAME_DENY = True
 
 
 
+django_heroku.settings(locals())
