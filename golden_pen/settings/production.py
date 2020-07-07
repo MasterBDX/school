@@ -19,7 +19,7 @@ EMAIL_USE_TLS = True
 MANAGERS = (('masterbdx', 'assassinbd9@gmail.com'),)
 ADMINS = MANAGERS
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://masterbdx-school.herokuapp.com/']
 
