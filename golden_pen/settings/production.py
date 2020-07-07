@@ -1,6 +1,5 @@
 import os
 import django_heroku
-
 from .base import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(

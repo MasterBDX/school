@@ -1,22 +1,21 @@
 from easy_thumbnails.conf import Settings as thumbnail_settings
-
 import os
 
 MYBASE = os.path.dirname(
     os.path.dirname(os.path.abspath(__file__)))
-    
+
 BASE_DIR = os.path.dirname(MYBASE)
 
 FOLDER_NAME = os.path.basename(MYBASE)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
-
 ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
+
 DEFENDER_REDIS_URL = os.environ.get('REDIS_URL')
 
 
@@ -119,11 +118,11 @@ MIDDLEWARE = [
 
 SITE_ID=1
 
-# INTERNAL_IPS = [
-#     # ...
-#     '127.0.0.1',
-#     # ...
-# ]
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
 
 # DEBUG_TOOLBAR_PANELS = [
 #     'debug_toolbar.panels.versions.VersionsPanel',
