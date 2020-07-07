@@ -8,13 +8,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER = 'apikey'
+# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'assassinbd9@gmail.com'
+EMAIL_HOST_PASSWORD = 'Baleead9@21112004'
+
+SERVER_EMAIL = 'assassinbd9@gmail.com'
 
 DEBUG = False
 
