@@ -74,8 +74,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # SECURE_FRAME_DENY = True
 
 
-from .local import SECRET_KEY
-DROPBOX_OAUTH2_TOKEN = 'ewfwe'
 # django_heroku.settings(locals())
 
 STATICFILES_DIRS = [
