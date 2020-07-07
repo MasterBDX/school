@@ -16,10 +16,13 @@ EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-MANAGERS = (('masterbdx', 'assassinbd9@gmail.com'),)
+
+DEFAULT_FROM_EMAIL = 'masterbdxteam@gmail.com'
+
+MANAGERS = (('masterbdx', 'masterbdxteam@gmail.com'),)
 ADMINS = MANAGERS
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://masterbdx-school.herokuapp.com/']
 
