@@ -27,8 +27,9 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
@@ -52,3 +53,7 @@ SECURE_FRAME_DENY = True
 
 
 django_heroku.settings(locals())
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
