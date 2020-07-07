@@ -16,10 +16,10 @@ EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-MANAGERS = (('masterbdx', 'assassinbd9@gmail.com'),)
+MANAGERS = [('masterbdx', 'assassinbd9@gmail.com'),]
 ADMINS = MANAGERS
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
