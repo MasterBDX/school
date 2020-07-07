@@ -201,8 +201,6 @@ AUTH_USER_MODEL = 'accounts.User'
 
 STATIC_URL = '/static/'
 
-# LOCALE_PATHS = [
-#     os.path.join(BASE_DIR, "locale")
-# ]
+
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
