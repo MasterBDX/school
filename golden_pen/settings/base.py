@@ -1,22 +1,22 @@
 from easy_thumbnails.conf import Settings as thumbnail_settings
+
 import os
 
 MYBASE = os.path.dirname(
     os.path.dirname(os.path.abspath(__file__)))
-
 BASE_DIR = os.path.dirname(MYBASE)
 
 FOLDER_NAME = os.path.basename(MYBASE)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
+
 ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
-
-DEFENDER_REDIS_URL = os.environ.get('REDIS_URL')
+DEFENDER_REDIS_URL = os.environ.get('DEFENDER_REDIS_URL')
 
 
 MAIN_EMAIL = DEFAULT_FROM_EMAIL
@@ -120,6 +120,7 @@ SITE_ID=1
 
 
 
+
 ROOT_URLCONF = FOLDER_NAME + '.urls'
 
 TEMPLATES = [
@@ -176,9 +177,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 AUTH_USER_MODEL = 'accounts.User'
 
 STATIC_URL = '/static/'
+
 
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
