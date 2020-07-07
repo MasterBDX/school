@@ -16,7 +16,7 @@ ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
-DEFENDER_REDIS_URL = os.environ.get('DEFENDER_REDIS_URL')
+DEFENDER_REDIS_URL = os.environ.get('REDIS_URL')
 
 
 MAIN_EMAIL = DEFAULT_FROM_EMAIL
