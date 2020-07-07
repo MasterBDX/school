@@ -19,7 +19,9 @@ EMAIL_USE_TLS = True
 MANAGERS = [('masterbdx', 'assassinbd9@gmail.com'),]
 ADMINS = MANAGERS
 
-DEBUG = True
+DEFENDER_REDIS_URL = os.environb('DEFENDER_REDIS_URL')
+
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
