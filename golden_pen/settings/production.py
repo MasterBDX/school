@@ -52,3 +52,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 django_heroku.settings(locals())
+
+SECRET_KEY = 'p6h2t2+i+2fh)8yfu%_d_#p17lopc@ip1*h_b'
+DROPBOX_OAUTH2_TOKEN = 'w3rf34wv43'
