@@ -1,42 +1,12 @@
 import os
 import django_heroku
 
-from .base import *
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console':{
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
 
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -63,19 +33,68 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# CORS_REPLACE_HTTPS_REFERER = True
-# HOST_SCHEME = "https://"
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_SECONDS = 1000000
-# SECURE_FRAME_DENY = True
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'defender.middleware.FailedLoginMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'golden_pen.middleware.LangSessionMiddletware'
+
+]
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # third party
+    'debug_toolbar',
+    'rest_framework',
+    'crispy_forms',
+    'defender',
+    'django_summernote',
+    'django_countries',
+    'easy_thumbnails',
+    'image_cropping',
 
 
-# django_heroku.settings(locals())
+    # my apps
+    'accounts',
+    'main',
+    'posts',
+    'school_tables',
+    'students',
+]
+
+SITE_ID=1
+
+ROOT_URLCONF = 'golden_pen.urls'
+
+WSGI_APPLICATION = 'golden_pen.wsgi.application'
+
+CORS_REPLACE_HTTPS_REFERER = True
+HOST_SCHEME = "https://"
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_SECONDS = 1000000
+SECURE_FRAME_DENY = True
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+django_heroku.settings(locals())

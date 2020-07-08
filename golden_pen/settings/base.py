@@ -2,14 +2,9 @@ from easy_thumbnails.conf import Settings as thumbnail_settings
 
 import os
 
-MYBASE = os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(MYBASE)
-
-FOLDER_NAME = os.path.basename(MYBASE)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
-
 
 ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 
@@ -51,6 +46,7 @@ INSTALLED_APPS = [
     'school_tables',
     'students',
 ]
+
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
@@ -119,9 +115,7 @@ MIDDLEWARE = [
 SITE_ID=1
 
 
-
-
-ROOT_URLCONF = FOLDER_NAME + '.urls'
+ROOT_URLCONF = 'golden_pen.urls'
 
 TEMPLATES = [
     {
@@ -141,7 +135,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = FOLDER_NAME + '.wsgi.application'
+WSGI_APPLICATION = 'golden_pen.wsgi.application'
 
 
 DATABASES = {
