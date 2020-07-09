@@ -11,8 +11,13 @@ ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
+
 DEFENDER_REDIS_URL = os.environ.get('REDIS_URL')
 
+# Django Defender Settings
+DEFENDER_LOGIN_FAILURE_LIMIT = 3
+DEFENDER_COOLOFF_TIME = 120
+DEFENDER_LOCKOUT_TEMPLATE = 'accounts/register.html'
 
 MAIN_EMAIL = DEFAULT_FROM_EMAIL
 
@@ -109,7 +114,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'golden_pen.middleware.LangSessionMiddletware'
-
 ]
 
 SITE_ID=1
