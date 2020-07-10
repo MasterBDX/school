@@ -47,7 +47,7 @@ class ResultSearchForm(forms.Form):
 class SchoolInfoForm(forms.ModelForm):
     class Meta:
         labels = {'name':_('Name'),
-                  'en_name':_('English Name'),
+                  'english_name':_('English Name'),
                   'content':_('Content'),
                   'school_phone':_('Cell Phone Number'),
                   'street':_('Street'),

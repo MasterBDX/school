@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-10 19:47+0000\n"
+"POT-Creation-Date: 2020-07-10 20:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,7 +167,7 @@ msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب
 
 #: main/forms.py:50
 msgid "English Name"
-msgstr " اﻹسم باﻹنجليزي"
+msgstr "اﻹسم بالإنجليزي"
 
 #: main/forms.py:52 students/forms.py:25 templates/students/detail.html:74
 #: templates/students/printable_detail.html:62
