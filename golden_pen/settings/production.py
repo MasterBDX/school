@@ -98,3 +98,5 @@ STATICFILES_DIRS = [
 ]
 
 django_heroku.settings(locals())
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]

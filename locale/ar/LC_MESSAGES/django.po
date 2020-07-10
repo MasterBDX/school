@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-06 21:03+0000\n"
+"POT-Creation-Date: 2020-07-10 19:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -679,31 +679,31 @@ msgid "if the exams Table for all classrooms please let this field empty"
 msgstr ""
 "إذا كان جدول الامتحانات لجميع الفصول الدراسية ، يرجى ترك هذا الحقل فارغًا"
 
-#: school_tables/models.py:18
+#: school_tables/models.py:17
 msgid "Saturday"
 msgstr "السبت"
 
-#: school_tables/models.py:19
+#: school_tables/models.py:18
 msgid "Sunday"
 msgstr "الأحد"
 
-#: school_tables/models.py:20
+#: school_tables/models.py:19
 msgid "Monday"
 msgstr "الإثنين"
 
-#: school_tables/models.py:21
+#: school_tables/models.py:20
 msgid "Tuesday"
 msgstr "الثلاثاء"
 
-#: school_tables/models.py:22
+#: school_tables/models.py:21
 msgid "Wednsday"
 msgstr "الأربعاء"
 
-#: school_tables/models.py:23
+#: school_tables/models.py:22
 msgid "Thursday"
 msgstr "الخميس"
 
-#: school_tables/models.py:24
+#: school_tables/models.py:23
 msgid "Friday"
 msgstr "الجمعة"
 
