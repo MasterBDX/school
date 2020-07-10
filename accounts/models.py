@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 from django.urls import reverse
 
@@ -55,9 +56,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     phone_number = models.CharField(
-        verbose_name='phone number',
+        verbose_name=_('Phone Number'),
         max_length=255,
         unique=True,
+
     )
     email = models.EmailField(
         verbose_name='email address',
