@@ -141,7 +141,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'golden_pen.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
