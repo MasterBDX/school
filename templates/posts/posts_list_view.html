@@ -53,6 +53,7 @@
                     {% endif %}
                 </div>
                 <div>
+                    {% if posts.exists %}
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             {% if page_obj.has_previous %}
@@ -92,14 +93,23 @@
                         {% endif %}
                     </ul>
                 </nav>
+                {% else %}
+                    <div class="col-md-12">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                {% endif %}
             
             </div>
-            <div class="col-md-12">
-            <br />
-            <br />
-            <br />
-            <br />
-            </div>
+            
         </div>
     </div>
 </section>
