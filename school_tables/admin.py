@@ -5,6 +5,7 @@ from .models import (TheClass, Day,
                      SchoolSchedule, Exam,
                      )
 
+
 admin.site.register(TheClass)
 admin.site.register(Day)
 admin.site.register(Article)

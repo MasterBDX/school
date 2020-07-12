@@ -2,18 +2,24 @@ from easy_thumbnails.conf import Settings as thumbnail_settings
 
 import os
 
-MYBASE = os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(MYBASE)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
-FOLDER_NAME = os.path.basename(MYBASE)
+ADMINS = [('MasterBDX', 'masterbdxteam@gmail.com')]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
 
-MAIN_EMAIL = 'masterbdxteam@gmail.com'
+DEFENDER_REDIS_URL = os.environ.get('REDIS_URL')
+
+# Django Defender Settings
+DEFENDER_LOGIN_FAILURE_LIMIT = 3
+DEFENDER_COOLOFF_TIME = 120
+DEFENDER_LOCKOUT_TEMPLATE = 'accounts/register.html'
+
+MAIN_EMAIL = DEFAULT_FROM_EMAIL
 
 # Application definition
 
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
     'school_tables',
     'students',
 ]
+
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
@@ -107,34 +114,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'golden_pen.middleware.LangSessionMiddletware'
-
 ]
 
 SITE_ID=1
 
-INTERNAL_IPS = [
-    # ...
-    '127.0.0.1',
-    # ...
-]
 
-# DEBUG_TOOLBAR_PANELS = [
-#     'debug_toolbar.panels.versions.VersionsPanel',
-#     'debug_toolbar.panels.timer.TimerPanel',
-#     'debug_toolbar.panels.settings.SettingsPanel',
-#     'debug_toolbar.panels.headers.HeadersPanel',
-#     'debug_toolbar.panels.request.RequestPanel',
-#     'debug_toolbar.panels.sql.SQLPanel',
-#     'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-#     'debug_toolbar.panels.templates.TemplatesPanel',
-#     'debug_toolbar.panels.cache.CachePanel',
-#     'debug_toolbar.panels.signals.SignalsPanel',
-#     'debug_toolbar.panels.logging.LoggingPanel',
-#     'debug_toolbar.panels.redirects.RedirectsPanel',
-#     'debug_toolbar.panels.profiling.ProfilingPanel',
-# ]
-
-ROOT_URLCONF = FOLDER_NAME + '.urls'
+ROOT_URLCONF = 'golden_pen.urls'
 
 TEMPLATES = [
     {
@@ -154,8 +139,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = FOLDER_NAME + '.wsgi.application'
-
+WSGI_APPLICATION = 'golden_pen.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -195,8 +179,6 @@ AUTH_USER_MODEL = 'accounts.User'
 
 STATIC_URL = '/static/'
 
-# LOCALE_PATHS = [
-#     os.path.join(BASE_DIR, "locale")
-# ]
+
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
