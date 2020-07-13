@@ -8,27 +8,30 @@
 <section>
     <div class="container about-us">
         <div class="row">
-            <div class="col-md-7 m-auto text-right">
+            <div class="col-md-7 m-auto">
                 <h1 class="text-center">
                     {% trans 'About School' %}
                     <hr />
                 </h1>
             </div>
+            <div class="w-100"></div>
             <div class="col-md-7 m-auto">
-
-                <p class="lead">
-                    <span>
-                        {% trans 'School Name' %}
-
-
-                    </span> {{object.name}}
-                </p>
-                <p class="lead">
-                    <span>
-
-                        {% trans 'School Phone Number' %}
-                    </span> {{object.school_phone}}
-                </p>
+                <div class="row school-info">
+                    <div class="col-md-6">
+                        <p class="lead text-center">
+                            <span>
+                                {% trans 'School Name' %}
+                            </span> {{object.name}}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="lead text-center">
+                            <span>
+                                {% trans 'School Phone Number' %}
+                            </span> {{object.school_phone}}
+                        </p>
+                    </div>
+                </div>    
             </div>
             <div class="col-md-7 m-auto">
                 <span class="school-address-heading">
@@ -63,11 +66,10 @@
                 <hr class="content-divder" />
 
                 <h5>
-
                     {% trans 'About School' %}
                 </h5>
                 {% if object.content %}
-                <p>{{object.safe_content}}</p>
+                <p class="text-center">{{object.safe_content}}</p>
                 {% endif %}
             </div>
         </div>
