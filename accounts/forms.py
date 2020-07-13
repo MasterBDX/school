@@ -54,8 +54,9 @@ class RegisterForm(forms.ModelForm):
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
-        matches = re.findall(r'^09\d{8}$', phone_number)
-        if not matches:
+        # matches = re.findall(r'^09\d{8}$', phone_number)
+        # if not matches:
+        if not phone_number.isdigit():   
             raise forms.ValidationError(_('Please enter a valid phone number'))
         return phone_number
 

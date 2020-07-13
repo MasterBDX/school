@@ -5,7 +5,8 @@ from students.models import (Student, ResultsPaper, ClassGrade,
 
 admin.site.register(Student)
 admin.site.register(ResultsPaper)
-admin.site.register(Semester)
-admin.site.register(SubjectResult)
-admin.site.register(ClassGrade)
-admin.site.register(CompensatoryExam)
+
+# admin.site.register(Semester)
+# admin.site.register(SubjectResult)
+# admin.site.register(ClassGrade)
+# admin.site.register(CompensatoryExam)
