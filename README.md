@@ -1,7 +1,6 @@
 # MasterBDX School *****
 MasterBDX School is an amazing school managment system and awesome website too , it have great components  
 <br> what can you find in this project ??
-<br>
 1 - a great Authentication system
 <br>
 2 -  interactive Admin system to control your database
