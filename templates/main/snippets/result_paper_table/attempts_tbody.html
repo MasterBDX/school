@@ -1,19 +1,20 @@
 {% load i18n %}
  <tbody>
-    {% if object.part2 and object.get_part2_grades %}
+    {% if part2.exists %}
             <tr>
         <th class='text-center' colspan="8">
         {% trans 'Second Attempt Results' %}
         </th>
             </tr> 
-        {% include 'main/snippets/result_paper_table/attempts_tr.html' with qs=object.get_part2_grades %}
+        {% include 'main/snippets/result_paper_table/attempts_tr.html' with qs=part2 %}
     {% endif %}
-        {% if object.part3 and object.get_part3_grades %}
+        
+    {% if part3.exists %}
             <tr>
         <th class='text-center' colspan="8">
        {% trans 'Third Attempt Results' %}</th>
             </tr> 
-        {% include 'main/snippets/result_paper_table/attempts_tr.html' with qs=object.get_part3_grades %}
+        {% include 'main/snippets/result_paper_table/attempts_tr.html' with qs=part3 %}
 
     {% endif %}
    

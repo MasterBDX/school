@@ -21,7 +21,7 @@ from .forms import (Contact, ResultSearchForm, MainArticleForm,
                     SchoolInfoForm, MainArticleForm)
 from posts.models import Post
 from school_tables.models import (Article, Exam, TheClass, ClassRoom)
-from students.models import Student, ResultsPaper,Semester
+from students.models import Student, ResultsPaper,Semester,CompensatoryExam
 from students.filters import get_stds_filters
 from .models import SchoolInfo, MainArticle
 from .mixins import AdminPermission
@@ -176,24 +176,68 @@ class StdsClassroomListView(ListView):
 
         return context
 
+# def get_result_view(request):
+#     form = ResultSearchForm(request.GET or None)
+#     if form.is_valid():
+#         the_class = form.cleaned_data.get('the_class')
+#         std_id = form.cleaned_data.get('id_num')
+#         obj = ResultsPaper.objects.select_related('student','the_class') \
+#             .filter(the_class=the_class).filter(
+#             Q(student__id=std_id) | Q(student__nid_number=std_id)).first()
+#         if obj:
+#             semesters = Semester.objects.active().filter(results_paper=obj)
+#             context = {'object': obj,'semesters':semesters,'std_name':obj.student.get_std_name()}
+#             return render(request, 'main/result_doc.html', context)
+#         else:
+#             msg = _(
+#                 'You entered the data incorrectly Please check your information')
+#             messages.add_message(request, messages.WARNING, msg)
+#     return redirect('main:result-search')
+
+
 def get_result_view(request):
     form = ResultSearchForm(request.GET or None)
     if form.is_valid():
+        # Forms Fields
+        
         the_class = form.cleaned_data.get('the_class')
         std_id = form.cleaned_data.get('id_num')
+        semester_order = form.cleaned_data.get('semester')
+
+        ########################################################
+        
+        # Result Object 
+        
         obj = ResultsPaper.objects.select_related('student','the_class') \
             .filter(the_class=the_class).filter(
             Q(student__id=std_id) | Q(student__nid_number=std_id)).first()
+
+        ###################################################################
+        
         if obj:
-            semesters = Semester.objects.active().filter(results_paper=obj)
-            context = {'object': obj,'semesters':semesters,'std_name':obj.student.get_std_name()}
-            return render(request, 'main/result_doc.html', context)
+            
+            semester = Semester.objects.active().filter(results_paper=obj,order=semester_order).first()
+            com_exams_part2_result = CompensatoryExam.objects.filter(results_paper=obj,
+                                                                     results_paper__part2=True,
+                                                                     semester=semester_order,
+                                                                     part='2')
+            com_exams_part3_result = CompensatoryExam.objects.filter(results_paper=obj,
+                                                                     results_paper__part3=True,
+                                                                     semester=semester_order,
+                                                                     part='3')
+            
+            context = {'object': obj,
+                       'semester':semester,
+                       'std_name':obj.student.get_std_name(),
+                       'part2':com_exams_part2_result,
+                       'part3':com_exams_part3_result}
+            return render(request, 'main/result_paper.html', context)
+        
         else:
             msg = _(
                 'You entered the data incorrectly Please check your information')
             messages.add_message(request, messages.WARNING, msg)
     return redirect('main:result-search')
-
 
 class ResultSearchView(FormView):
     form_class = ResultSearchForm

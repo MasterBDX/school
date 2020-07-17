@@ -13,6 +13,13 @@ class SubjectsResultsMixin:
         return result
 
     def get_total(self):
+
+        ''' 
+            Get grades for the semester 1 or 2 not 3
+            return 2 grades values one for student and
+            other one for subject
+        '''
+
         total = self.exam_grade + self.year_works_grade
         std_total = self.std_exam_grade + self.std_year_works_grade
         return std_total, total
@@ -36,7 +43,6 @@ class FinalResultsMixin:
         return '{} \ {}'.format(total, std_total)
 
     def get_estimate(self):
-        
         if self.passed_all():
             if self.total_percentage() <= 100 and self.total_percentage() > 84:
                 return _('Excellent')
@@ -61,3 +67,5 @@ class FinalResultsMixin:
             total = sum([x[0] for x in qs])
             return total
         return 0
+    
+    

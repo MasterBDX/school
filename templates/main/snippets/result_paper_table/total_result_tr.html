@@ -1,0 +1,26 @@
+{% load i18n %}
+<tr>
+    <td colspan="3">
+        {% trans 'Total Summation' %}   &nbsp;&nbsp;:&nbsp;&nbsp;
+        {% if semester.order == '3' %}
+        {{object.total}}
+        {% elif semester.order == '2' %}
+        {{semester.general_average_after_fail}}
+        {% endif %}
+    </td>
+        <td colspan="3">
+
+        {% trans 'Overall Rate' %}  &nbsp;&nbsp;:&nbsp;&nbsp;
+       
+        {% if semester.order == '3' %}
+        {{object.percentage}}
+        {% elif semester.order == '2' %}
+        {{semester.total_percentage_after_fail}}
+        {% endif %}
+
+    </td>
+    <td colspan="2">
+        {% trans 'Estimate' %} &nbsp;:&nbsp; {{object.estimate}}
+    </td>
+
+</tr>

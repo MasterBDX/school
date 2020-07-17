@@ -1,17 +1,16 @@
 {% load i18n %}
 {% load get_lang_names %}
-    {% for semester in semesters %}
     <thead>
     <tr>
-                <th colspan='8' class='text-center'>
-                {% if request.session.lang == 'ar' %} 
-                الفترة
-                {{semester.order|lang_semester}}
-                {% else %}
-                {{semester.order|lang_semester}}
-                Semester
-                {% endif %}
-                </th>
+            <th colspan='8' class='text-center'>
+            {% if request.session.lang == 'ar' %} 
+            الفترة
+            {{semester.order|lang_semester}}
+            {% else %}
+            {{semester.order|lang_semester}}
+            Semester
+            {% endif %}
+            </th>
             </tr>
         <tr>
             <th scope="col">{% trans 'Subject' %}</th>
@@ -36,13 +35,15 @@
                 <td>{{sr.need_to_pass_exam}}</td>
                 <td colspan="1">
                 {% if semester.order == '3' %}
-                 {{sr.total}}  
+                 {{sr.get_total_subject_year_grades}}  
                 {% else %}
                 {{sr.std_year_works_grade}} \ {{sr.year_works_grade}} 
                 {% endif %}
                 </td>
                 <td>{{sr.grade_pass_subject}}</td>
-                <td>{{sr.total}}</td>
+                
+                <td>{{sr.total_subject_grades}}</td>
+                
                 <td>
                     {% if sr.passed %}
                     {% trans 'Succeed' %}
@@ -52,7 +53,7 @@
                 </td>
             </tr>
             {% endfor %}
-            {% if semester.order != '3' %}
+           {% if semester.order != '3' %}
             <tr>
             
                 <td colspan="2">
@@ -71,7 +72,11 @@
                 </td>
 
             </tr>
-            {% endif %}
+            {% else %}
+            {% include 'main/snippets/result_paper_table/total_result_tr.html' %}
+          {% endif %}
           
-            {% endfor %}
+           
     </tbody>
+
+    

@@ -32,10 +32,22 @@ class AddStudent(forms.ModelForm):
         
     def clean_cell_phone(self):
         cell_phone = self.cleaned_data.get('cell_phone')
-        matches = re.findall(r'^09\d{8}$', cell_phone)
-        if not matches:
+        if not cell_phone.isdigit():   
             raise forms.ValidationError(_('Please enter a valid phone number'))
         return cell_phone
+    
+    def clean_nid_number(self):
+        nid_number = self.cleaned_data.get('nid_number')
+        if not nid_number.isdigit():   
+            raise forms.ValidationError(_('Please enter a valid phone number'))
+        return nid_number
+    
+    # def clean_cell_phone(self):
+    #     cell_phone = self.cleaned_data.get('cell_phone')
+    #     matches = re.findall(r'^09\d{8}$', cell_phone)
+    #     if not matches:
+    #         raise forms.ValidationError(_('Please enter a valid phone number'))
+    #     return cell_phone
 
 class SelectSubjectForm(forms.Form):
     subject = forms.ModelChoiceField(

@@ -17,7 +17,8 @@
                 <br />
                 <br />
                 <br />
-                {% if  semesters %}
+                
+                {% if semester %}
                 <table class="table table-bordered">
                     {% include 'main/snippets/result_paper_table/student_info_table.html' %}
                     
@@ -29,24 +30,9 @@
                <td colspan='8'></td>
                
                 </tr>
-                <tr>
-        <td colspan="3">
-
-            {% trans 'Total Summation' %}   &nbsp;&nbsp;:&nbsp;&nbsp;
-            {{object.total}}
-
-        </td>
-            <td colspan="3">
-
-            {% trans 'Overall Rate' %}  &nbsp;&nbsp;:&nbsp;&nbsp;
-            {{object.percentage}}
-
-        </td>
-        <td colspan="2">
-            {% trans 'Estimate' %} &nbsp;:&nbsp; {{object.estimate}}
-        </td>
-
-    </tr>
+                    {% if part2 or part3 %}
+                       {% include 'main/snippets/result_paper_table/total_result_tr.html' %}
+                    {% endif %}
                 </table>
 
                 {% else %}

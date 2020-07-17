@@ -1,8 +1,9 @@
 from django import forms
-
-from school_tables.models import TheClass
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.utils.translation import ugettext_lazy as _
+
+from .vars import SEMESTERS
+from school_tables.models import TheClass
 from .models import SchoolInfo, MainArticle
 
 import re
@@ -35,7 +36,9 @@ class ResultSearchForm(forms.Form):
         error_messages={'required': _('This field is required')})
     id_num = forms.CharField(label=_('Registration number / national number'),
                              error_messages={'required': _('This field is required')})
-
+    semester = forms.ChoiceField(label=_('Semester'),
+                                 choices=SEMESTERS)
+    
     def clean_id_num(self):
         id_num = self.cleaned_data.get('id_num')
         if not id_num.isdigit():

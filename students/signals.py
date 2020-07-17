@@ -128,11 +128,6 @@ def can_pass(instance, subject_result=None, semester=None):
 
 @receiver(pre_save, sender=SubjectResult)
 def get_pass_boolean(sender, instance, *args, **kwargs):
-    if instance.semester.order == '3':
-        instance.total = instance.get_total_subject_grades()
-    else:
-        instance.total = instance.total_subject_grades()
-
     qs = CompensatoryExam.objects.filter(subject=instance.subject,
                                          semester=instance.semester.order,
                                          results_paper=instance.semester.results_paper)
@@ -151,7 +146,11 @@ def fix_result_paper_and_semester_info(sender, instance,created ,*args, **kwargs
 
 @receiver(post_save, sender=CompensatoryExam)
 def fix_result_paper_info(sender, instance,created ,*args, **kwargs):
-    update_result_info(instance.semester.results_paper)
+    semester = instance.results_paper.semesters.filter(order=instance.semester).first()
+    
+    update_result_info(instance.results_paper)
+    if semester:
+        update_result_info(semester)
 
 
 @receiver(pre_save, sender=CompensatoryExam)

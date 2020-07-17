@@ -4,16 +4,6 @@ from django.utils.translation import (pgettext_lazy,
 from datetime import datetime
 
 
-
-
-STUDENTS_CLASSES = [('1', 'الأول'), ('2', 'الثاني'),
-                    ('3', 'الثالث'), ('4', 'الرابع'),
-                    ('5', 'الخامس'), ('6', 'السادس'),
-                    ('7', 'السابع'), ('8', 'الثامن'),
-                    ('9', 'التاسع')
-                    ]
-
-
 SEMESTER = [('2', _('Second')),
             ('3', _('Third'))]
 

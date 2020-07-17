@@ -52,8 +52,8 @@ h4{
 }
 
 h4 hr{
-    height: 1.4px !important;
-    width: 10% !important;
+    height: 1.3px !important;
+    width: 9em !important;
     background-color: var(--main-color) !important;
     margin-top: 10px !important;
 }
@@ -603,15 +603,6 @@ section.dashboard h4{
 }
 
 section.dashboard h4.class-name{  border-bottom: 1px solid #aaa; }
-
-section.dashboard hr{
-    background-color:#aaa;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    display: block;
-    width: 19%;
-    height: 0.2px;
-}
 
 section.dashboard p{
     color: #555;
