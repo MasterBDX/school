@@ -1,5 +1,11 @@
 class SemesterFunctionMixin:
     def passed_all(self):
+        
+        '''
+            this check if all results subjects has been passed 
+            before second attempt (before the compensatory exams) 
+        '''
+
         passed = 0
         qs = self.subjects_results.values_list('passed', 'subject')
         for x in qs:
@@ -25,7 +31,12 @@ class SemesterFunctionMixin:
                             passed += 1
         return passed == qs.count()
 
-    def get_total_grades(self):
+    def total_grades(self):
+        '''
+            this function to  get total grades before 
+            calculate the second  and third attempts  
+        '''
+        
         qs = self.subjects_results.values_list('exam_grade',
                                                'year_works_grade')
         qs2 = self.subjects_results.values_list('std_exam_grade',
@@ -37,8 +48,8 @@ class SemesterFunctionMixin:
 
     def total_comps_grades(self, part='2'):
         '''
-          this func to get total grades for
-           just one attempt results
+            this function to get total grades for just
+            one attempt results (The second one)
         '''
         qs = self.results_paper.all_com_grades.filter(
             part=part,
@@ -47,8 +58,8 @@ class SemesterFunctionMixin:
     
     def total_none_passed_exams(self):  
         ''' 
-            this func to get the semester subjects results
-            grades that not passed 
+            this function to get the semester 
+            subjects results grades that not passed 
         '''
 
         qs = self.subjects_results.filter(
@@ -58,11 +69,12 @@ class SemesterFunctionMixin:
 
     def total_after_fail(self):
         ''' 
-            this func to manage how to get total grades
-             whether if part2 or part3 are active 
+            this function to get total semester grades whether 
+            if was second attempt or third one is active
+
         '''
 
-        total, std_total = self.get_total_grades()
+        total, std_total = self.total_grades()
         if self.results_paper.part2 and not self.results_paper.part3:
             std_total = std_total - self.total_none_passed_exams() + \
                 self.total_comps_grades(
@@ -74,6 +86,11 @@ class SemesterFunctionMixin:
         return total, std_total
 
     def total_percentage_after_fail(self):
+        
+        '''
+            get total semester percentage after 
+            attempts are include in calculation
+        '''
         total, std_total = self.total_after_fail()
         try:
             return round(std_total / total * 100, 1)
@@ -81,5 +98,9 @@ class SemesterFunctionMixin:
             return 0
 
     def general_average_after_fail(self):
+        '''
+            get total semester general average 
+            after attempts include in calculation
+        '''
         std_total, total = self.total_after_fail()
         return '{} \ {}'.format(total, std_total)

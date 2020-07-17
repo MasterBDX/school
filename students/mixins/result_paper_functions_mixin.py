@@ -2,15 +2,15 @@ class ResultPaperFunctionMixin:
     
     def get_part2_grades(self):
         '''  
-            This function to get all second attempt compensatoires 
-            exams grades related to this result paper
+            This function to get all second attempt compensatory 
+            exams grades that related to this result paper
         '''
         return self.all_com_grades.filter(part='2')
 
     def get_part3_grades(self):
         '''  
-            This function to get all third attempt compensatoires 
-            exams grades related to this result paper
+            This function to get all third attempt compensatory 
+            exams grades that related to this result paper
         '''
         return self.all_com_grades.filter(part='3')
 
@@ -65,8 +65,10 @@ class ResultPaperFunctionMixin:
 
     def total_none_passed_exams(self):
 
-        ''' this func to get the semester subjects results
-             exams grades that not passed yet '''
+        ''' 
+            this function to get the semester 
+            subjects results grades that not passed yet
+         '''
 
         order = self.current_final_semester()
         
@@ -84,16 +86,18 @@ class ResultPaperFunctionMixin:
 
     def total_comps_grades(self, part=''):
         '''
-          this func to get total grades for
-           just one attempt results
+          this function to get total grades
+          for just one attempt results
         '''
         qs = self.all_com_grades.filter(
             part=part).values_list('std_exam_grade')
         return self.get_total_by_qs(qs)
 
     def get_total_grades(self):
-        ''' this func to manage how to get total grades
-             whether if part2 or part3 are active '''
+        ''' 
+            this function  to get total grades for result paper  
+            whether if second or third attempt are active
+         '''
 
         total, std_total = self.total_grades()
         if self.part2 and not self.part3:
