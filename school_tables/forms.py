@@ -37,7 +37,7 @@ class AddClassForm(forms.ModelForm):
                   'order': _('Appearance Order'),
                   'subjects': _('Subjects')
                   }
-        help_texts = {'name': _('Please write the class name in this format (الثامن, التاسع)'),
+        help_texts = {
                       'subjects': _('Please click the ctrl button and choose the subjects  for this Class')}
         model = TheClass
         exclude = ['subjects_num']

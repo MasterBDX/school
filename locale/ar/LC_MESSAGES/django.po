@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-10 20:00+0000\n"
+"POT-Creation-Date: 2020-07-18 18:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: accounts/forms.py:42 accounts/forms.py:86
+#: accounts/forms.py:42 accounts/forms.py:87
 msgid "Password"
 msgstr "كلمة المرور"
 
@@ -31,43 +31,44 @@ msgstr "تأكيد كلمة المرور"
 msgid "User with this phone number already exists"
 msgstr "المستخدم برقم الهاتف هذا موجود بالفعل"
 
-#: accounts/forms.py:51 accounts/forms.py:85 main/forms.py:18
-#: templates/main/snippets/html_message.html:6
+#: accounts/forms.py:51 accounts/forms.py:86 accounts/models.py:59
+#: main/forms.py:19 templates/main/snippets/html_message.html:6
 #: templates/main/snippets/message.txt:6 templates/main/users_dashboard.html:67
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: accounts/forms.py:52 accounts/forms.py:120
+#: accounts/forms.py:52 accounts/forms.py:121
 #: templates/main/users_dashboard.html:64
 msgid "Username"
 msgstr "اسم المستخدم"
 
-#: accounts/forms.py:53 accounts/forms.py:121 main/forms.py:13
+#: accounts/forms.py:53 accounts/forms.py:122 main/forms.py:14
 #: templates/main/users_dashboard.html:70
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
-#: accounts/forms.py:59 main/forms.py:27 main/forms.py:77 students/forms.py:37
+#: accounts/forms.py:60 main/forms.py:28 main/forms.py:80 students/forms.py:36
+#: students/forms.py:42
 msgid "Please enter a valid phone number"
 msgstr "يرجي إدخال رقم هاتف صحيح"
 
-#: accounts/forms.py:88
+#: accounts/forms.py:89
 msgid "Remember Me"
 msgstr "تذكرني"
 
-#: accounts/forms.py:98
+#: accounts/forms.py:99
 msgid "Your account is not active, please check admin to activate your account"
 msgstr "حسابك غير نشط ، يرجى التحقق من المسؤول لتفعيل حسابك"
 
-#: accounts/forms.py:103
+#: accounts/forms.py:104
 msgid "username or password provided is incorrect"
 msgstr "اسم المستخدم أو كلمة المرور غير صحيح"
 
-#: accounts/forms.py:128
+#: accounts/forms.py:129
 msgid "The two password fields didn’t match"
 msgstr "حقلي كلمة المرور غير متطابقين"
 
-#: accounts/forms.py:129
+#: accounts/forms.py:130
 msgid "Your old password was entered incorrectly. Please enter it again"
 msgstr "تم إدخال كلمة المرور القديمة بشكل غير صحيح. يرجى  إدخالها مرة أخرى"
 
@@ -81,7 +82,7 @@ msgstr "لقد تم تسجيلك بنجاح ، يرجى الانتظار حتى 
 msgid "User has been added successfully"
 msgstr "تمت إضافة المستخدم بنجاح"
 
-#: accounts/views.py:106 posts/forms.py:21 students/forms.py:51
+#: accounts/views.py:106 posts/forms.py:21 students/forms.py:63
 #: students/views.py:250 templates/main/users_dashboard.html:101
 msgid "Activate"
 msgstr "تنشيط"
@@ -120,31 +121,31 @@ msgstr ""
 " يجب أن تحتوي كلمة المرور على رمز واحد على الأقل: () [] {} | \\ ` ~ ! @ # $ "
 "% ^ & * _ -  + = ; : ' \" , "
 
-#: main/forms.py:12 main/forms.py:49
+#: main/forms.py:13 main/forms.py:52
 #: templates/main/snippets/html_message.html:3
 #: templates/main/snippets/message.txt:3
 msgid "Name"
 msgstr "الإسم"
 
-#: main/forms.py:15
+#: main/forms.py:16
 msgid "Please enter a valid email"
 msgstr "يرجى إدخال بريد إلكتروني صحيح"
 
-#: main/forms.py:19 students/forms.py:100
+#: main/forms.py:20 students/forms.py:114
 #: templates/main/snippets/html_message.html:9
 #: templates/main/snippets/message.txt:9
-#: templates/main/snippets/result_paper_table/semesters_table.html:17
+#: templates/main/snippets/result_paper_table/semesters_table.html:16
 msgid "Subject"
 msgstr "الموضوع"
 
-#: main/forms.py:20 main/forms.py:51 posts/forms.py:20
+#: main/forms.py:21 main/forms.py:54 posts/forms.py:20
 #: templates/main/snippets/html_message.html:12
 #: templates/main/snippets/message.txt:12
 msgid "Content"
 msgstr "المحتوى"
 
-#: main/forms.py:34 school_tables/forms.py:63 school_tables/forms.py:95
-#: school_tables/forms.py:132 students/forms.py:26 students/forms.py:50
+#: main/forms.py:35 school_tables/forms.py:63 school_tables/forms.py:95
+#: school_tables/forms.py:132 students/forms.py:26 students/forms.py:62
 #: templates/main/classrooms_dashboard.html:54
 #: templates/main/snippets/result_paper_table/student_info_table.html:11
 #: templates/students/detail.html:75 templates/students/detail.html:142
@@ -153,370 +154,375 @@ msgstr "المحتوى"
 msgid "Class"
 msgstr "الصف الدراسي"
 
-#: main/forms.py:35 main/forms.py:37
+#: main/forms.py:36 main/forms.py:38
 msgid "This field is required"
 msgstr "هذا الحقل مطلوب"
 
-#: main/forms.py:36
+#: main/forms.py:37
 msgid "Registration number / national number"
 msgstr "رقم القيد / الرقم الوطني"
 
-#: main/forms.py:43
+#: main/forms.py:39 school_tables/forms.py:65 school_tables/forms.py:135
+#: students/forms.py:116 templates/main/snippets/exams_dashboard_table.html:12
+msgid "Semester"
+msgstr "الفترة"
+
+#: main/forms.py:46
 msgid "This field must contain a positive integer"
 msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب"
 
-#: main/forms.py:50
+#: main/forms.py:53
 msgid "English Name"
 msgstr "اﻹسم بالإنجليزي"
 
-#: main/forms.py:52 students/forms.py:25 templates/students/detail.html:74
+#: main/forms.py:55 students/forms.py:25 templates/students/detail.html:74
 #: templates/students/printable_detail.html:62
 msgid "Cell Phone Number"
 msgstr "رقم الهاتف"
 
-#: main/forms.py:53 templates/main/about_us.html:42
+#: main/forms.py:56 templates/main/about_us.html:45
 msgid "Street"
 msgstr "الشارع"
 
-#: main/forms.py:54 templates/main/about_us.html:46
+#: main/forms.py:57 templates/main/about_us.html:49
 msgid "City"
 msgstr "المدينة"
 
-#: main/forms.py:55 templates/main/about_us.html:50
+#: main/forms.py:58 templates/main/about_us.html:53
 msgid "Municipality"
 msgstr "البلدية"
 
-#: main/forms.py:56 templates/main/about_us.html:56
+#: main/forms.py:59 templates/main/about_us.html:59
 msgid "Province"
 msgstr "المقاطعة"
 
-#: main/forms.py:83
+#: main/forms.py:86
 msgid "Image"
 msgstr "الصورة"
 
-#: main/forms.py:84 posts/forms.py:18 school_tables/forms.py:60
+#: main/forms.py:87 posts/forms.py:18 school_tables/forms.py:60
 #: templates/main/main_articles_dashboard.html:42
 #: templates/main/posts-dashboard.html:57
 msgid "Title"
 msgstr "العنوان"
 
-#: main/forms.py:85 school_tables/forms.py:61
+#: main/forms.py:88 school_tables/forms.py:61
 #: templates/main/main_articles_dashboard.html:46
 msgid "English Title"
 msgstr "العنوان باللغة اﻹنجليزية"
 
-#: main/forms.py:86
+#: main/forms.py:89
 msgid "Description"
 msgstr "الوصف"
 
-#: main/forms.py:87
+#: main/forms.py:90
 msgid "English Description"
 msgstr "الوصف باللغة اﻹنجليزية"
 
-#: main/forms.py:96 school_tables/forms.py:30
+#: main/forms.py:99 school_tables/forms.py:30
 msgid "This field must have just english letters"
 msgstr "يجب أن يحتوي هذا الحقل على أحرف إنجليزية فقط"
 
-#: main/vars.py:17 main/vars.py:38 main/vars.py:43
+#: main/vars.py:7 main/vars.py:28 main/vars.py:33
 msgid "Second"
 msgstr "الثانية"
 
-#: main/vars.py:18 main/vars.py:39 main/vars.py:44
+#: main/vars.py:8 main/vars.py:29 main/vars.py:34
 msgid "Third"
 msgstr "الثالثة"
 
-#: main/vars.py:20
+#: main/vars.py:10
 msgctxt "second attempt"
 msgid "Second"
 msgstr "الثاني"
 
-#: main/vars.py:21
+#: main/vars.py:11
 msgctxt "third attempt"
 msgid "Third"
 msgstr "الثالث"
 
-#: main/vars.py:23
+#: main/vars.py:13
 msgctxt "second attempt"
 msgid "Second attempt"
 msgstr "دور ثاني"
 
-#: main/vars.py:24
+#: main/vars.py:14
 msgctxt "third attempt"
 msgid "Third attempt"
 msgstr "دور ثالث"
 
-#: main/vars.py:26
+#: main/vars.py:16
 msgid "Male"
 msgstr "ذكر"
 
-#: main/vars.py:26
+#: main/vars.py:16
 msgid "Female"
 msgstr "أنثى"
 
-#: main/vars.py:37 main/vars.py:42
+#: main/vars.py:27 main/vars.py:32
 msgid "First"
 msgstr "الأولى"
 
-#: main/vars.py:57
+#: main/vars.py:47
 msgid "January"
 msgstr "يناير"
 
-#: main/vars.py:57
+#: main/vars.py:47
 msgid "February"
 msgstr "فبراير"
 
-#: main/vars.py:58
+#: main/vars.py:48
 msgid "March"
 msgstr "مارس"
 
-#: main/vars.py:58
+#: main/vars.py:48
 msgid "April"
 msgstr "أبريل"
 
-#: main/vars.py:59
+#: main/vars.py:49
 msgid "May"
 msgstr "مايو"
 
-#: main/vars.py:59
+#: main/vars.py:49
 msgid "June"
 msgstr "يونيو"
 
-#: main/vars.py:60
+#: main/vars.py:50
 msgid "July"
 msgstr "يوليو"
 
-#: main/vars.py:60
+#: main/vars.py:50
 msgid "August "
 msgstr "أغسطس"
 
-#: main/vars.py:61
+#: main/vars.py:51
 msgid "September"
 msgstr "سبتمبر"
 
-#: main/vars.py:61
+#: main/vars.py:51
 msgid "October "
 msgstr "أكتوبر"
 
-#: main/vars.py:62
+#: main/vars.py:52
 msgid "November"
 msgstr "نوفمبر"
 
-#: main/vars.py:62
+#: main/vars.py:52
 msgid "December"
 msgstr "ديسمبر"
 
-#: main/vars.py:64 main/vars.py:68
+#: main/vars.py:54 main/vars.py:58
 msgid "Midterm"
 msgstr "نصفية"
 
-#: main/vars.py:64 main/vars.py:69
+#: main/vars.py:54 main/vars.py:59
 msgid "Final"
 msgstr "نهائية"
 
-#: main/vars.py:65 main/vars.py:70
+#: main/vars.py:55 main/vars.py:60
 msgid "Second Attempt"
 msgstr "دور ثاني"
 
-#: main/vars.py:65 main/vars.py:71
+#: main/vars.py:55 main/vars.py:61
 msgid "Third Attempt"
 msgstr "دور ثالث"
 
-#: main/vars.py:76
+#: main/vars.py:66
 msgid "Zero"
 msgstr "صفر"
 
-#: main/vars.py:76
+#: main/vars.py:66
 msgctxt "Appearance Order"
 msgid "First"
 msgstr "اﻷول"
 
-#: main/vars.py:76
+#: main/vars.py:66
 msgctxt "Appearance Order"
 msgid "Second"
 msgstr "الثاني"
 
-#: main/vars.py:77
+#: main/vars.py:67
 msgctxt "Appearance Order"
 msgid "Third"
 msgstr "الثالث"
 
-#: main/vars.py:77
+#: main/vars.py:67
 msgctxt "Appearance Order"
 msgid "Fourth"
 msgstr "الرابع"
 
-#: main/vars.py:77
+#: main/vars.py:67
 msgctxt "Appearance Order"
 msgid "Fifth"
 msgstr "الخامس"
 
-#: main/vars.py:78
+#: main/vars.py:68
 msgctxt "Appearance Order"
 msgid "Sixth"
 msgstr "السادس"
 
-#: main/vars.py:78
+#: main/vars.py:68
 msgctxt "Appearance Order"
 msgid "Seventh"
 msgstr "السابع"
 
-#: main/vars.py:78
+#: main/vars.py:68
 msgid "Eighth"
 msgstr "الثامن"
 
-#: main/vars.py:79
+#: main/vars.py:69
 msgid "Ninth"
 msgstr "التاسع"
 
-#: main/vars.py:79
+#: main/vars.py:69
 msgid "Tenth"
 msgstr "العاشر"
 
-#: main/vars.py:79
+#: main/vars.py:69
 msgid "Eleventh"
 msgstr "الحادي عشر"
 
-#: main/vars.py:80
+#: main/vars.py:70
 msgid "Twelfth"
 msgstr "الثاني عشر"
 
-#: main/vars.py:80
+#: main/vars.py:70
 msgid "Thirteenth"
 msgstr "الثالث عشر"
 
-#: main/vars.py:80
+#: main/vars.py:70
 msgid "Fourteenth"
 msgstr "الرابع عشر"
 
-#: main/vars.py:81
+#: main/vars.py:71
 msgid "Fifteenth"
 msgstr "الخامس عشر"
 
-#: main/vars.py:81
+#: main/vars.py:71
 msgid "Sixteenth"
 msgstr "السادس عشر"
 
-#: main/vars.py:81
+#: main/vars.py:71
 msgid "Seventeenth"
 msgstr "السابع عشر"
 
-#: main/vars.py:82
+#: main/vars.py:72
 msgid "Eighteenth"
 msgstr "الثامن عشر"
 
-#: main/vars.py:82
+#: main/vars.py:72
 msgid "Nineteenth"
 msgstr "التاسع عشر"
 
-#: main/vars.py:82
+#: main/vars.py:72
 msgid "Twentieth"
 msgstr "العشرون"
 
-#: main/vars.py:83
+#: main/vars.py:73
 msgid "Twenty-first"
 msgstr "الحادي و العشرون"
 
-#: main/vars.py:83
+#: main/vars.py:73
 msgid "Twenty-second"
 msgstr "الثاني و العشرون"
 
-#: main/vars.py:83
+#: main/vars.py:73
 msgid "Twenty-third"
 msgstr "الثالث و العشرون"
 
-#: main/vars.py:84
+#: main/vars.py:74
 msgid "Twenty-fourth"
 msgstr "الرابع و العشرون"
 
-#: main/vars.py:84
+#: main/vars.py:74
 msgid "Twenty-fifth"
 msgstr "الخامس و العشرون"
 
-#: main/vars.py:89
+#: main/vars.py:79
 msgid "Regular"
 msgstr "نظامي"
 
-#: main/vars.py:89
+#: main/vars.py:79
 msgid "Associate"
 msgstr "منتسب"
 
-#: main/vars.py:91
+#: main/vars.py:81
 msgid "New"
 msgstr "مستجد"
 
-#: main/vars.py:91
+#: main/vars.py:81
 msgid "Repeater"
 msgstr "معيد"
 
-#: main/vars.py:94 students/forms.py:17
+#: main/vars.py:84 students/forms.py:17
 msgid "Libyan"
 msgstr "ليبي"
 
-#: main/vars.py:95
+#: main/vars.py:85
 msgid "Egyptian"
 msgstr "مصري"
 
-#: main/vars.py:96
+#: main/vars.py:86
 msgid "Tunisian"
 msgstr "تونسي"
 
-#: main/vars.py:97
+#: main/vars.py:87
 msgid "Algerian"
 msgstr "جزائري"
 
-#: main/vars.py:98
+#: main/vars.py:88
 msgid "Moroccan"
 msgstr "مغربي"
 
-#: main/vars.py:99
+#: main/vars.py:89
 msgid "Somali"
 msgstr "صومالي"
 
-#: main/vars.py:100
+#: main/vars.py:90
 msgid "Sudanese"
 msgstr "سوداني"
 
-#: main/vars.py:101
+#: main/vars.py:91
 msgid "Syrian"
 msgstr "سوري"
 
-#: main/vars.py:102
+#: main/vars.py:92
 msgid "Qatari"
 msgstr "قطري"
 
-#: main/vars.py:103
+#: main/vars.py:93
 msgid "Iraqi"
 msgstr "عراقي"
 
-#: main/vars.py:104
+#: main/vars.py:94
 msgid "Palestinian"
 msgstr "فلسطيني"
 
-#: main/vars.py:105
+#: main/vars.py:95
 msgid "Jordanian"
 msgstr "أردني"
 
-#: main/vars.py:106
+#: main/vars.py:96
 msgid "Saudi"
 msgstr "سعودي"
 
-#: main/vars.py:107
+#: main/vars.py:97
 msgid "Nigerian"
 msgstr "نيجيري"
 
-#: main/vars.py:108
+#: main/vars.py:98
 msgid "Turkish"
 msgstr "تركي"
 
-#: main/vars.py:109
+#: main/vars.py:99
 msgid "Lebanese"
 msgstr "لبناني"
 
-#: main/vars.py:110
+#: main/vars.py:100
 msgid "Mauritanian"
 msgstr "موريتاني"
 
-#: main/vars.py:111
+#: main/vars.py:101
 msgid "Emirati"
 msgstr "إماراتي"
 
@@ -532,7 +538,7 @@ msgstr "غير موجودة"
 msgid "Exist"
 msgstr "موجودة"
 
-#: main/views.py:193
+#: main/views.py:238
 msgid "You entered the data incorrectly Please check your information"
 msgstr "لقد قمت بإدخال البيانات بشكل خاطئ يرجى التأكد من بياناتك"
 
@@ -582,10 +588,6 @@ msgstr "ترتيب الظهور"
 msgid "Subjects"
 msgstr "المواد الدراسية"
 
-#: school_tables/forms.py:40
-msgid "Please write the class name in this format (الثامن, التاسع)"
-msgstr "يرجى كتابة اسم الصف على هذا الشكل ( الثامن ، التاسع)"
-
 #: school_tables/forms.py:41
 msgid "Please click the ctrl button and choose the subjects  for this Class"
 msgstr "الرجاء النقر فوق الزر ctrl واختيار المواد لهذه الصف"
@@ -599,11 +601,6 @@ msgstr "السنة"
 #: school_tables/forms.py:64
 msgid "Exams Type"
 msgstr "نوع اﻹمتحانات "
-
-#: school_tables/forms.py:65 school_tables/forms.py:135 students/forms.py:102
-#: templates/main/snippets/exams_dashboard_table.html:12
-msgid "Semester"
-msgstr "الفترة"
 
 #: school_tables/forms.py:66 school_tables/forms.py:122
 #: school_tables/forms.py:136 students/forms.py:27
@@ -822,54 +819,54 @@ msgstr "الجنسية"
 msgid "Student Image"
 msgstr "صورة الطالب"
 
-#: students/forms.py:47
+#: students/forms.py:59
 #: templates/main/snippets/result_paper_table/student_info_table.html:13
 msgid "Class Leader"
 msgstr "رائد الصف"
 
-#: students/forms.py:48
+#: students/forms.py:60
 msgid "Enrollment attribute"
 msgstr "صفة القيد"
 
-#: students/forms.py:49
+#: students/forms.py:61
 #: templates/main/snippets/result_paper_table/student_info_table.html:18
 msgid "Student Status"
 msgstr "حالة الطالب"
 
-#: students/forms.py:61 students/forms.py:70 students/forms.py:80
-#: students/forms.py:90
-#: templates/main/snippets/result_paper_table/semesters_table.html:18
+#: students/forms.py:75 students/forms.py:84 students/forms.py:94
+#: students/forms.py:104
+#: templates/main/snippets/result_paper_table/semesters_table.html:17
 msgid "Exam Grade"
 msgstr "درجة الإمتحان"
 
-#: students/forms.py:62 students/forms.py:83
-#: templates/main/snippets/result_paper_table/semesters_table.html:21
+#: students/forms.py:76 students/forms.py:97
+#: templates/main/snippets/result_paper_table/semesters_table.html:20
 msgid "Year Works Grade"
 msgstr "درجة أعمال السنة"
 
-#: students/forms.py:81 students/forms.py:91
-#: templates/main/snippets/result_paper_table/semesters_table.html:19
+#: students/forms.py:95 students/forms.py:105
+#: templates/main/snippets/result_paper_table/semesters_table.html:18
 msgid "Exam Pass Grade"
 msgstr "درجة النجاح في الإمتحان"
 
-#: students/forms.py:82 students/forms.py:92
-#: templates/main/snippets/result_paper_table/semesters_table.html:22
+#: students/forms.py:96 students/forms.py:106
+#: templates/main/snippets/result_paper_table/semesters_table.html:21
 msgid "Subject Pass Grade"
 msgstr "درجة النجاح في المادة"
 
-#: students/forms.py:101
+#: students/forms.py:115
 msgid "Student Exam grade"
 msgstr "درجة إمتحان الطالب"
 
-#: students/forms.py:102
+#: students/forms.py:116
 msgid "Attempt"
 msgstr "الدور"
 
-#: students/forms.py:130
+#: students/forms.py:144
 msgid "The student has not failed in this subject"
 msgstr "لم يرسب الطالب في هذه المادة"
 
-#: students/forms.py:136
+#: students/forms.py:150
 msgid "An error has occurred, please refresh the page"
 msgstr "حدث خطأ ، يرجى تحديث الصفحة"
 
@@ -885,32 +882,33 @@ msgstr "إظهار"
 msgid "Hide"
 msgstr "إخفاء"
 
-#: students/mixins.py:42 students/mixins.py:44
+#: students/mixins/common_functions_mixin.py:48
+#: students/mixins/common_functions_mixin.py:50
 msgid "Excellent"
 msgstr "ممتاز"
 
-#: students/mixins.py:46
+#: students/mixins/common_functions_mixin.py:52
 msgid "Very Good"
 msgstr "جيد جدا"
 
-#: students/mixins.py:48
+#: students/mixins/common_functions_mixin.py:54
 msgid "Good"
 msgstr "جيد"
 
-#: students/mixins.py:50
+#: students/mixins/common_functions_mixin.py:56
 msgid "Fairly good"
 msgstr "مقبول"
 
-#: students/mixins.py:52
+#: students/mixins/common_functions_mixin.py:58
 msgid "Weak"
 msgstr "ضعيف"
 
-#: students/mixins.py:54
+#: students/mixins/common_functions_mixin.py:60
 msgid "Very weak"
 msgstr "ضعيف جدا"
 
-#: students/mixins.py:57
-#: templates/main/snippets/result_paper_table/semesters_table.html:50
+#: students/mixins/common_functions_mixin.py:63
+#: templates/main/snippets/result_paper_table/semesters_table.html:51
 msgid "Failed"
 msgstr "راسب"
 
@@ -1137,20 +1135,20 @@ msgid "Forgot your password"
 msgstr "نسيت كلمة المرور"
 
 #: templates/main/about_us.html:4 templates/main/about_us.html:13
-#: templates/main/about_us.html:67 templates/snippets/footer.html:9
+#: templates/main/about_us.html:69 templates/snippets/footer.html:9
 #: templates/snippets/header.html:23
 msgid "About School"
 msgstr "حول المدرسة"
 
-#: templates/main/about_us.html:21
+#: templates/main/about_us.html:23
 msgid "School Name"
 msgstr "إسم المدرسة"
 
-#: templates/main/about_us.html:29
+#: templates/main/about_us.html:30
 msgid "School Phone Number"
 msgstr "رقم هاتف المدرسة"
 
-#: templates/main/about_us.html:36
+#: templates/main/about_us.html:39
 msgid "School Address"
 msgstr "عنوان المدرسة"
 
@@ -1313,20 +1311,23 @@ msgstr "تاريخ النشر"
 msgid "No posts have been added yet"
 msgstr "لم يتم إضافة أي منشورات بعد"
 
-#: templates/main/result_doc.html:38
+#: templates/main/result_doc.html:35
+#: templates/main/snippets/result_paper_table/total_result_tr.html:4
 msgid "Total Summation"
 msgstr "المجموع الكلي"
 
-#: templates/main/result_doc.html:44
+#: templates/main/result_doc.html:41
+#: templates/main/snippets/result_paper_table/total_result_tr.html:13
 msgid "Overall Rate"
 msgstr "المعدل العام"
 
-#: templates/main/result_doc.html:49
-#: templates/main/snippets/result_paper_table/semesters_table.html:70
+#: templates/main/result_doc.html:46
+#: templates/main/snippets/result_paper_table/semesters_table.html:71
+#: templates/main/snippets/result_paper_table/total_result_tr.html:23
 msgid "Estimate"
 msgstr "التقدير"
 
-#: templates/main/result_doc.html:57
+#: templates/main/result_doc.html:54 templates/main/result_paper.html:40
 msgid "Sorry, the result has not been announced yet"
 msgstr "عذرا ، لم تعلن النتيجة بعد"
 
@@ -1355,28 +1356,28 @@ msgstr "آخر معدل"
 msgid "Second Attempt Results"
 msgstr "نتائج الدور الثاني"
 
-#: templates/main/snippets/result_paper_table/attempts_tbody.html:14
+#: templates/main/snippets/result_paper_table/attempts_tbody.html:15
 msgid "Third Attempt Results"
 msgstr "نتائج الدور الثالث"
 
-#: templates/main/snippets/result_paper_table/semesters_table.html:20
+#: templates/main/snippets/result_paper_table/semesters_table.html:19
 msgid "Need To Pass"
 msgstr "يحتاج للنجاح"
 
-#: templates/main/snippets/result_paper_table/semesters_table.html:23
-#: templates/main/snippets/result_paper_table/semesters_table.html:59
+#: templates/main/snippets/result_paper_table/semesters_table.html:22
+#: templates/main/snippets/result_paper_table/semesters_table.html:60
 msgid "Total"
 msgstr "المجموع"
 
-#: templates/main/snippets/result_paper_table/semesters_table.html:24
+#: templates/main/snippets/result_paper_table/semesters_table.html:23
 msgid "Status"
 msgstr "الحالة"
 
-#: templates/main/snippets/result_paper_table/semesters_table.html:48
+#: templates/main/snippets/result_paper_table/semesters_table.html:49
 msgid "Succeed"
 msgstr "ناجح"
 
-#: templates/main/snippets/result_paper_table/semesters_table.html:65
+#: templates/main/snippets/result_paper_table/semesters_table.html:66
 msgid "Rate"
 msgstr "المعدل"
 
@@ -1638,7 +1639,7 @@ msgstr "أضف المزيد"
 
 #: templates/students/add_compensatory_exam_result.html:71
 #: templates/students/edit_class_grades.html:61
-#: templates/students/semester_edit.html:56
+#: templates/students/semester_edit.html:57
 msgid "Save"
 msgstr "حفظ"
 
@@ -1771,6 +1772,9 @@ msgstr "هل تريد بالتأكيد حذف جدول الحصص الدراسي
 #: templates/tables/schedule_search.html:25
 msgid "Find"
 msgstr "ابحث"
+
+#~ msgid "Please write the class name in this format (الثامن, التاسع)"
+#~ msgstr "يرجى كتابة اسم الصف على هذا الشكل ( الثامن ، التاسع)"
 
 #~ msgid "Add Class"
 #~ msgstr "أضف صف دراسي"

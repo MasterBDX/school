@@ -64,7 +64,9 @@ class AddResultsPaperForm(forms.ModelForm):
                   }
         model = ResultsPaper
         fields = '__all__'
-        exclude = ['student','part2','part3','total_summation']
+        exclude = ['student','part2','part3',
+                   'total_summation','total',
+                   'percentage','estimate']
     
 
 
