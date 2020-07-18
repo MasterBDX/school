@@ -30,7 +30,7 @@ what can you find in this project ??
 <br>
 6 - The Website is translated also to arabic language
 <br>
-7 - The website is very dynamic and sensitive in handling data
+7 - The website is very dynamic and sensitive in processing data
 <br>
 8 - more and more you have to take a look 
 <br>
@@ -38,6 +38,8 @@ what can you find in this project ??
 Try it as admin :
 <br>
 &nbsp; * phone number : 0911138673
+
+
 &nbsp; * password : Abc12345@
 <br />
 <br />
