@@ -34,6 +34,13 @@ what can you find in this project ??
 <br>
 8 - more and more you have to take a look 
 <br>
+<br>
+Try it as admin :
+<br>
+&nbsp; * phone number : 0911138673
+&nbsp; * password : Abc12345@
+<br />
+<br />
 
 Clone This Project (Make Sure You Have Git Installed)
 
