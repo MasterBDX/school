@@ -1,8 +1,11 @@
 # MasterBDX School *****
 
 MasterBDX School is an amazing school managment system and awesome website too , it have a great components  
+
+
 what can you find in this project ??
 <br> 
+
 1 - a great Authentication system
 <br>
 2 -  interactive Admin system to control your database
@@ -30,10 +33,20 @@ what can you find in this project ??
 <br>
 6 - The Website is translated also to arabic language
 <br>
-7 - The website is very dynamic and sensitive in handling data
+7 - The website is very dynamic and sensitive in processing data
 <br>
 8 - more and more you have to take a look 
 <br>
+<br>
+Try it as an admin :
+
+
+&nbsp; * phone number : 0911138673
+
+
+&nbsp; * password : Abc12345@
+<br />
+<br />
 
 Clone This Project (Make Sure You Have Git Installed)
 
