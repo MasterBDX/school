@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-18 18:58+0000\n"
+"POT-Creation-Date: 2020-07-19 22:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,8 +47,7 @@ msgstr "اسم المستخدم"
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
-#: accounts/forms.py:60 main/forms.py:28 main/forms.py:80 students/forms.py:36
-#: students/forms.py:42
+#: accounts/forms.py:60 main/forms.py:28 main/forms.py:80 students/forms.py:37
 msgid "Please enter a valid phone number"
 msgstr "يرجي إدخال رقم هاتف صحيح"
 
@@ -82,7 +81,7 @@ msgstr "لقد تم تسجيلك بنجاح ، يرجى الانتظار حتى 
 msgid "User has been added successfully"
 msgstr "تمت إضافة المستخدم بنجاح"
 
-#: accounts/views.py:106 posts/forms.py:21 students/forms.py:63
+#: accounts/views.py:106 posts/forms.py:21 students/forms.py:65
 #: students/views.py:250 templates/main/users_dashboard.html:101
 msgid "Activate"
 msgstr "تنشيط"
@@ -131,7 +130,7 @@ msgstr "الإسم"
 msgid "Please enter a valid email"
 msgstr "يرجى إدخال بريد إلكتروني صحيح"
 
-#: main/forms.py:20 students/forms.py:114
+#: main/forms.py:20 students/forms.py:116
 #: templates/main/snippets/html_message.html:9
 #: templates/main/snippets/message.txt:9
 #: templates/main/snippets/result_paper_table/semesters_table.html:16
@@ -145,7 +144,7 @@ msgid "Content"
 msgstr "المحتوى"
 
 #: main/forms.py:35 school_tables/forms.py:63 school_tables/forms.py:95
-#: school_tables/forms.py:132 students/forms.py:26 students/forms.py:62
+#: school_tables/forms.py:132 students/forms.py:27 students/forms.py:64
 #: templates/main/classrooms_dashboard.html:54
 #: templates/main/snippets/result_paper_table/student_info_table.html:11
 #: templates/students/detail.html:75 templates/students/detail.html:142
@@ -163,7 +162,7 @@ msgid "Registration number / national number"
 msgstr "رقم القيد / الرقم الوطني"
 
 #: main/forms.py:39 school_tables/forms.py:65 school_tables/forms.py:135
-#: students/forms.py:116 templates/main/snippets/exams_dashboard_table.html:12
+#: students/forms.py:118 templates/main/snippets/exams_dashboard_table.html:12
 msgid "Semester"
 msgstr "الفترة"
 
@@ -175,7 +174,7 @@ msgstr "يجب أن يحتوي هذا الحقل على عدد صحيح موجب
 msgid "English Name"
 msgstr "اﻹسم بالإنجليزي"
 
-#: main/forms.py:55 students/forms.py:25 templates/students/detail.html:74
+#: main/forms.py:55 students/forms.py:26 templates/students/detail.html:74
 #: templates/students/printable_detail.html:62
 msgid "Cell Phone Number"
 msgstr "رقم الهاتف"
@@ -200,7 +199,7 @@ msgstr "المقاطعة"
 msgid "Image"
 msgstr "الصورة"
 
-#: main/forms.py:87 posts/forms.py:18 school_tables/forms.py:60
+#: main/forms.py:87 posts/forms.py:18
 #: templates/main/main_articles_dashboard.html:42
 #: templates/main/posts-dashboard.html:57
 msgid "Title"
@@ -592,6 +591,10 @@ msgstr "المواد الدراسية"
 msgid "Please click the ctrl button and choose the subjects  for this Class"
 msgstr "الرجاء النقر فوق الزر ctrl واختيار المواد لهذه الصف"
 
+#: school_tables/forms.py:60
+msgid "Arabic Title"
+msgstr "العنوان باللغة العربية"
+
 #: school_tables/forms.py:62 school_tables/forms.py:76
 #: school_tables/forms.py:131 students/forms.py:15
 #: templates/main/snippets/exams_dashboard_table.html:9
@@ -603,7 +606,7 @@ msgid "Exams Type"
 msgstr "نوع اﻹمتحانات "
 
 #: school_tables/forms.py:66 school_tables/forms.py:122
-#: school_tables/forms.py:136 students/forms.py:27
+#: school_tables/forms.py:136 students/forms.py:28
 #: templates/main/snippets/exams_dashboard_table.html:21
 #: templates/students/detail.html:76
 #: templates/students/printable_detail.html:64
@@ -760,113 +763,121 @@ msgstr "تم إضافة جدول حصص جديد"
 msgid "The classes schedule has been modified"
 msgstr "تم تعديل جدول الحصص"
 
-#: students/forms.py:21 templates/students/detail.html:34
+#: students/forms.py:20
+msgid "if student was foreign please let it empty "
+msgstr "إذا كان الطالب أجنبياً ، يرجى ترك الحقل فارغس"
+
+#: students/forms.py:22 templates/students/detail.html:34
 #: templates/students/printable_detail.html:24
 msgid "First Name"
 msgstr "اﻹسم الأول"
 
-#: students/forms.py:21 templates/students/detail.html:35
+#: students/forms.py:22 templates/students/detail.html:35
 #: templates/students/printable_detail.html:25
 msgid "Father Name"
 msgstr "اسم الأب"
 
-#: students/forms.py:22 templates/students/detail.html:37
+#: students/forms.py:23 templates/students/detail.html:37
 #: templates/students/printable_detail.html:27
 msgid "Grandfather Name"
 msgstr "اسم الجد"
 
-#: students/forms.py:22 templates/students/detail.html:53
+#: students/forms.py:23 templates/students/detail.html:53
 #: templates/students/printable_detail.html:43
 msgid "Surname"
 msgstr "اللقب"
 
-#: students/forms.py:23 templates/students/detail.html:36
+#: students/forms.py:24 templates/students/detail.html:36
 #: templates/students/printable_detail.html:26
 msgid "Mother Name"
 msgstr "اسم اﻷم"
 
-#: students/forms.py:23 templates/students/detail.html:78
+#: students/forms.py:24 templates/students/detail.html:78
 #: templates/students/printable_detail.html:66
 msgid "Place Of Birth"
 msgstr "مكان الولادة"
 
-#: students/forms.py:24
+#: students/forms.py:25
 #: templates/main/snippets/result_paper_table/student_info_table.html:15
 #: templates/students/detail.html:54
 #: templates/students/printable_detail.html:44
 msgid "Birth Date"
 msgstr "تاريخ الميلاد"
 
-#: students/forms.py:24 templates/main/students_dashboard.html:72
+#: students/forms.py:25 templates/main/students_dashboard.html:72
 #: templates/main/students_list.html:40 templates/students/detail.html:56
 #: templates/students/printable_detail.html:46
 #: templates/students/search_students.html:55
 msgid "Gender"
 msgstr "الجنس"
 
-#: students/forms.py:25 templates/students/detail.html:77
+#: students/forms.py:26 templates/students/detail.html:77
 #: templates/students/printable_detail.html:65
 msgid "N.Id Number"
 msgstr "الرقم الوطني"
 
-#: students/forms.py:26 templates/main/students_dashboard.html:75
+#: students/forms.py:27 templates/main/students_dashboard.html:75
 #: templates/main/students_list.html:43 templates/students/detail.html:57
 #: templates/students/printable_detail.html:47
 msgid "Nationality"
 msgstr "الجنسية"
 
-#: students/forms.py:27
+#: students/forms.py:28
 msgid "Student Image"
 msgstr "صورة الطالب"
 
-#: students/forms.py:59
+#: students/forms.py:44
+msgid "Please enter a valid national ID number"
+msgstr "يرجى إدخال رقم وطني صالح"
+
+#: students/forms.py:61
 #: templates/main/snippets/result_paper_table/student_info_table.html:13
 msgid "Class Leader"
 msgstr "رائد الصف"
 
-#: students/forms.py:60
+#: students/forms.py:62
 msgid "Enrollment attribute"
 msgstr "صفة القيد"
 
-#: students/forms.py:61
+#: students/forms.py:63
 #: templates/main/snippets/result_paper_table/student_info_table.html:18
 msgid "Student Status"
 msgstr "حالة الطالب"
 
-#: students/forms.py:75 students/forms.py:84 students/forms.py:94
-#: students/forms.py:104
+#: students/forms.py:77 students/forms.py:86 students/forms.py:96
+#: students/forms.py:106
 #: templates/main/snippets/result_paper_table/semesters_table.html:17
 msgid "Exam Grade"
 msgstr "درجة الإمتحان"
 
-#: students/forms.py:76 students/forms.py:97
+#: students/forms.py:78 students/forms.py:99
 #: templates/main/snippets/result_paper_table/semesters_table.html:20
 msgid "Year Works Grade"
 msgstr "درجة أعمال السنة"
 
-#: students/forms.py:95 students/forms.py:105
+#: students/forms.py:97 students/forms.py:107
 #: templates/main/snippets/result_paper_table/semesters_table.html:18
 msgid "Exam Pass Grade"
 msgstr "درجة النجاح في الإمتحان"
 
-#: students/forms.py:96 students/forms.py:106
+#: students/forms.py:98 students/forms.py:108
 #: templates/main/snippets/result_paper_table/semesters_table.html:21
 msgid "Subject Pass Grade"
 msgstr "درجة النجاح في المادة"
 
-#: students/forms.py:115
+#: students/forms.py:117
 msgid "Student Exam grade"
 msgstr "درجة إمتحان الطالب"
 
-#: students/forms.py:116
+#: students/forms.py:118
 msgid "Attempt"
 msgstr "الدور"
 
-#: students/forms.py:144
+#: students/forms.py:146
 msgid "The student has not failed in this subject"
 msgstr "لم يرسب الطالب في هذه المادة"
 
-#: students/forms.py:150
+#: students/forms.py:152
 msgid "An error has occurred, please refresh the page"
 msgstr "حدث خطأ ، يرجى تحديث الصفحة"
 

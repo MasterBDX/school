@@ -45,11 +45,13 @@ def get_subjects_num(sender, instance, action, *args, **kwargs):
 def get_arabic_weekday(sender, instance, *args, **kwargs):
     if not instance.day:
 
-        WEEK_DAYS = {'1': '2', '2': '3',
-                     '3': '4', '4': '5',
-                     '5': '6', '6': '7',
-                     '7': '1'}
-        right_day = WEEK_DAYS.get(str(instance.the_date.isoweekday()))
+        # WEEK_DAYS = {'1': '1', '2': '2',
+        #              '3': '3', '4': '4',
+        #              '5': '5', '6': '6',
+        #              '7': '7'}
+        # right_day = WEEK_DAYS.get(str(instance.the_date.isoweekday()))
+
+        right_day = str(instance.the_date.isoweekday())
         instance.day = Day.objects.filter(order=right_day).first()
 
 @receiver(pre_save, sender=Day)

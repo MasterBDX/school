@@ -33,7 +33,8 @@ class Student(models.Model):
         TheClass, related_name='students', on_delete=models.CASCADE)
     classroom = models.ForeignKey(
         ClassRoom, related_name='students', on_delete=models.CASCADE)
-    nid_number = models.CharField(max_length=255, null=True, blank=True)
+    nid_number = models.CharField(max_length=255,
+                                  null=True, blank=True)
     nationality = models.CharField(
         max_length=255, default='ليبي', choices=NATIONALITY)
     image = ResizedImageField(size=[300, 300], blank=True, null=True,

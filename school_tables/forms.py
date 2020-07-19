@@ -57,7 +57,7 @@ class AddExamTableForm(forms.ModelForm):
         model = ExamTable
         exclude = ['last_editor']
         labels = {
-            'title': _('Title'),
+            'title': _('Arabic Title'),
             'en_title': _('English Title'),
             'year': _('Year'),
             'the_class': _('Class'),

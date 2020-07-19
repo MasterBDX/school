@@ -17,8 +17,9 @@ class AddStudent(forms.ModelForm):
         self.fields['nationality'].initial = _('Libyan')
 
     class Meta:
+        help_texts = {'nid_number':_('if student was foreign please let it empty ')}
         labels = {
-                'first_name': _('First Name'), 'father_name': _('Father Name'),
+                  'first_name': _('First Name'), 'father_name': _('Father Name'),
                   'grand_father_name': _('Grandfather Name'), 'surname': _('Surname'),
                   'mother_name': _('Mother Name'), 'place_of_birth': _('Place Of Birth'),
                   'birth_date': _('Birth Date'), 'gender': _('Gender'),
@@ -38,8 +39,9 @@ class AddStudent(forms.ModelForm):
     
     def clean_nid_number(self):
         nid_number = self.cleaned_data.get('nid_number')
-        if not nid_number.isdigit():   
-            raise forms.ValidationError(_('Please enter a valid phone number'))
+        if not nid_number.isdigit():
+            if nid_number != ' ' or nid_number != None :   
+                raise forms.ValidationError(_('Please enter a valid national ID number'))
         return nid_number
     
     # def clean_cell_phone(self):
