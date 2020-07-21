@@ -96,7 +96,13 @@
                                         </td>
                                         {% include 'main/snippets/gender.html' %}
                                         <td>{% trans student.nationality %} </td>
-                                        <td>{{student.nid_number}}</td>
+                                        <td>
+                                            {% if student.nid_number %}
+                                                {{student.nid_number}}
+                                            {% else %}
+                                                {% trans 'Foreign' %}
+                                            {% endif %}
+                                        </td>
                                         <td>
                                             {{student.result}}</td>
                                         <td>

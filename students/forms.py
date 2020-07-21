@@ -33,14 +33,15 @@ class AddStudent(forms.ModelForm):
         
     def clean_cell_phone(self):
         cell_phone = self.cleaned_data.get('cell_phone')
-        if not cell_phone.isdigit():   
-            raise forms.ValidationError(_('Please enter a valid phone number'))
+        if cell_phone != ' ' and cell_phone != None :
+            if not cell_phone.isdigit():   
+                raise forms.ValidationError(_('Please enter a valid phone number'))
         return cell_phone
     
     def clean_nid_number(self):
         nid_number = self.cleaned_data.get('nid_number')
-        if not nid_number.isdigit():
-            if nid_number != ' ' or nid_number != None :   
+        if nid_number != ' ' and nid_number != None :   
+            if not nid_number.isdigit():
                 raise forms.ValidationError(_('Please enter a valid national ID number'))
         return nid_number
     
