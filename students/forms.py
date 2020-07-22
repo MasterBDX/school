@@ -40,9 +40,21 @@ class AddStudent(forms.ModelForm):
     
     def clean_nid_number(self):
         nid_number = self.cleaned_data.get('nid_number')
+        std_id = self.data.get('id','1')
         if nid_number != ' ' and nid_number != None :   
             if not nid_number.isdigit():
                 raise forms.ValidationError(_('Please enter a valid national ID number'))
+            else:
+                qs = Student.objects.filter(nid_number=nid_number)
+                if qs.count() < 1:
+                    pass
+                else:
+                    obj = qs.first()
+                    if std_id.isdigit():
+                        if std_id == obj.id:
+                            pass
+                        else:
+                            raise forms.ValidationError(_('Student with this national number already exists'))                    
         return nid_number
     
     # def clean_cell_phone(self):

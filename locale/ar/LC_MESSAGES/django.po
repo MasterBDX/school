@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 18:36+0000\n"
+"POT-Creation-Date: 2020-07-22 19:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr "لقد تم تسجيلك بنجاح ، يرجى الانتظار حتى 
 msgid "User has been added successfully"
 msgstr "تمت إضافة المستخدم بنجاح"
 
-#: accounts/views.py:106 posts/forms.py:21 students/forms.py:66
+#: accounts/views.py:106 posts/forms.py:21 students/forms.py:78
 #: students/views.py:250 templates/main/users_dashboard.html:101
 msgid "Activate"
 msgstr "تنشيط"
@@ -130,7 +130,7 @@ msgstr "الإسم"
 msgid "Please enter a valid email"
 msgstr "يرجى إدخال بريد إلكتروني صحيح"
 
-#: main/forms.py:20 students/forms.py:117
+#: main/forms.py:20 students/forms.py:129
 #: templates/main/snippets/html_message.html:9
 #: templates/main/snippets/message.txt:9
 #: templates/main/snippets/result_paper_table/semesters_table.html:16
@@ -144,7 +144,7 @@ msgid "Content"
 msgstr "المحتوى"
 
 #: main/forms.py:35 school_tables/forms.py:63 school_tables/forms.py:95
-#: school_tables/forms.py:132 students/forms.py:27 students/forms.py:65
+#: school_tables/forms.py:132 students/forms.py:27 students/forms.py:77
 #: templates/main/classrooms_dashboard.html:54
 #: templates/main/snippets/result_paper_table/student_info_table.html:11
 #: templates/students/detail.html:75 templates/students/detail.html:142
@@ -162,7 +162,7 @@ msgid "Registration number / national number"
 msgstr "رقم القيد / الرقم الوطني"
 
 #: main/forms.py:39 school_tables/forms.py:65 school_tables/forms.py:135
-#: students/forms.py:119 templates/main/snippets/exams_dashboard_table.html:12
+#: students/forms.py:131 templates/main/snippets/exams_dashboard_table.html:12
 msgid "Semester"
 msgstr "الفترة"
 
@@ -826,58 +826,62 @@ msgstr "الجنسية"
 msgid "Student Image"
 msgstr "صورة الطالب"
 
-#: students/forms.py:45
+#: students/forms.py:46
 msgid "Please enter a valid national ID number"
 msgstr "يرجى إدخال رقم وطني صالح"
 
-#: students/forms.py:62
+#: students/forms.py:57
+msgid "Student with this national number already exists"
+msgstr "المستخدم بالرقم الوطني هذا موجود بالفعل"
+
+#: students/forms.py:74
 #: templates/main/snippets/result_paper_table/student_info_table.html:13
 msgid "Class Leader"
 msgstr "رائد الصف"
 
-#: students/forms.py:63
+#: students/forms.py:75
 msgid "Enrollment attribute"
 msgstr "صفة القيد"
 
-#: students/forms.py:64
+#: students/forms.py:76
 #: templates/main/snippets/result_paper_table/student_info_table.html:18
 msgid "Student Status"
 msgstr "حالة الطالب"
 
-#: students/forms.py:78 students/forms.py:87 students/forms.py:97
-#: students/forms.py:107
+#: students/forms.py:90 students/forms.py:99 students/forms.py:109
+#: students/forms.py:119
 #: templates/main/snippets/result_paper_table/semesters_table.html:17
 msgid "Exam Grade"
 msgstr "درجة الإمتحان"
 
-#: students/forms.py:79 students/forms.py:100
+#: students/forms.py:91 students/forms.py:112
 #: templates/main/snippets/result_paper_table/semesters_table.html:20
 msgid "Year Works Grade"
 msgstr "درجة أعمال السنة"
 
-#: students/forms.py:98 students/forms.py:108
+#: students/forms.py:110 students/forms.py:120
 #: templates/main/snippets/result_paper_table/semesters_table.html:18
 msgid "Exam Pass Grade"
 msgstr "درجة النجاح في الإمتحان"
 
-#: students/forms.py:99 students/forms.py:109
+#: students/forms.py:111 students/forms.py:121
 #: templates/main/snippets/result_paper_table/semesters_table.html:21
 msgid "Subject Pass Grade"
 msgstr "درجة النجاح في المادة"
 
-#: students/forms.py:118
+#: students/forms.py:130
 msgid "Student Exam grade"
 msgstr "درجة إمتحان الطالب"
 
-#: students/forms.py:119
+#: students/forms.py:131
 msgid "Attempt"
 msgstr "الدور"
 
-#: students/forms.py:147
+#: students/forms.py:159
 msgid "The student has not failed in this subject"
 msgstr "لم يرسب الطالب في هذه المادة"
 
-#: students/forms.py:153
+#: students/forms.py:165
 msgid "An error has occurred, please refresh the page"
 msgstr "حدث خطأ ، يرجى تحديث الصفحة"
 
@@ -1120,7 +1124,7 @@ msgstr "تعديل الملف الشخصي"
 #: templates/main/snippets/exams_dashboard_table.html:56
 #: templates/main/subjects-dashboard.html:62 templates/posts/add_post.html:40
 #: templates/students/add_results_paper.html:51
-#: templates/students/add_student.html:54 templates/students/detail.html:217
+#: templates/students/add_student.html:55 templates/students/detail.html:217
 #: templates/students/search_students.html:109
 #: templates/tables/add_class.html:48 templates/tables/add_classroom.html:43
 #: templates/tables/add_exams_table.html:82
@@ -1315,7 +1319,7 @@ msgid "Last Modified Date"
 msgstr "تاريخ أخر تعديل"
 
 #: templates/main/posts-dashboard.html:69
-#: templates/posts/post_detail_view.html:24
+#: templates/posts/post_detail_view.html:41
 msgid "Publication Date"
 msgstr "تاريخ النشر"
 
@@ -1546,7 +1550,7 @@ msgstr "أضف منشور"
 
 #: templates/posts/add_post.html:42
 #: templates/students/add_results_paper.html:53
-#: templates/students/add_student.html:56 templates/tables/add_class.html:50
+#: templates/students/add_student.html:57 templates/tables/add_class.html:50
 #: templates/tables/add_classroom.html:45
 #: templates/tables/add_exams_table.html:84
 #: templates/tables/add_full_schedule.html:82
@@ -1563,7 +1567,7 @@ msgstr "حذف منشور"
 msgid "Are you sure you want to delete this post ?"
 msgstr "هل أنت متأكد أنك تريد حذف هذا المنشور ؟"
 
-#: templates/posts/post_detail_view.html:23
+#: templates/posts/post_detail_view.html:40
 msgid "Publisher"
 msgstr "الناشر"
 
