@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 20:07+0000\n"
+"POT-Creation-Date: 2020-07-22 18:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1315,6 +1315,7 @@ msgid "Last Modified Date"
 msgstr "تاريخ أخر تعديل"
 
 #: templates/main/posts-dashboard.html:69
+#: templates/posts/post_detail_view.html:24
 msgid "Publication Date"
 msgstr "تاريخ النشر"
 
@@ -1561,6 +1562,10 @@ msgstr "حذف منشور"
 #: templates/posts/post_confirm_delete.html:24
 msgid "Are you sure you want to delete this post ?"
 msgstr "هل أنت متأكد أنك تريد حذف هذا المنشور ؟"
+
+#: templates/posts/post_detail_view.html:23
+msgid "Publisher"
+msgstr "الناشر"
 
 #: templates/posts/posts_list_view.html:50
 msgid "No Posts found"

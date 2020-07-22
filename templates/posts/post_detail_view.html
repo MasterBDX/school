@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load i18n %}
 {% block title%}
 {{post.title}}
 {% endblock %}
@@ -17,20 +18,27 @@
                 </div>
                 {% endif %}
 
-                <div class="text-right">
-                    <br />
-                    <span class="publisher">الناشر <strong>{{post.author.username}}</strong> </span><br />
-                    <span class="publish-date"> تاريخ النشر <strong>{{post.timestamp}}</strong> </span>
-                </div>
-
                 <div class="post-content">
-                    <h1 class="post-title">
+                    <h1 class="post-title text-center">
+                        <br />
                         {{post.title}}
                         <hr />
                     </h1>
 
-                    <p class="lead">{{post.overview}}</p>
-                    <p class="lead">{{post.safe_content}}</p>
+                    <p class="lead">
+                        {{post.overview}}
+                        <br />
+                        <br />
+                    </p>
+                    <p class="lead">
+                        {{post.safe_content}}
+                    </p>
+                </div>
+                <hr />
+                <div class="post-publisher">
+                    <br />
+                    <span class="publisher">{% trans 'Publisher' %} <strong>{{post.author.username}}</strong> </span><br />
+                    <span class="publish-date"> {% trans 'Publication Date' %} <strong>{{post.timestamp}}</strong> </span>
                 </div>
             </div>
            
