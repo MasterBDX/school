@@ -32,14 +32,14 @@ class SubjectsResultsMixin:
 
 class FinalResultsMixin:
     def total_percentage(self):
-        total, std_total = self.get_total_grades()
+        total, std_total = self.total_grades()
         try:
             return round(std_total / total * 100, 1)
         except:
             return 0
 
     def general_average(self):
-        std_total, total = self.get_total_grades()
+        std_total, total = self.total_grades()
         return '{} \ {}'.format(total, std_total)
 
     def get_estimate(self):

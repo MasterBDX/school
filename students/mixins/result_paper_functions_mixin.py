@@ -57,7 +57,7 @@ class ResultPaperFunctionMixin:
         qs = self.semesters.active()
 
         for semester in qs:
-            t, s = semester.get_total_grades()
+            t, s = semester.total_grades()
             total += t
             std_total += s
         
