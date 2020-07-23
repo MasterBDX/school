@@ -19,7 +19,13 @@
             {% endif %}
             ">
                 <div class="p-5">
-                    <img class="img-fluid " src="{{article.image.url}}" alt="">
+                    <img class="img-fluid "
+                         src="
+                         {% if article.image.url != None %}
+                         {{article.image.url}}
+                         {% endif %}
+                         " 
+                         alt="">
                 </div>
             </div>
             <div class="col-lg-6 order-lg-1">
@@ -94,7 +100,12 @@
                                 {% if post.main_image %}
                                 <div class="col-md-4">
                                     <div class="card-image">
-                                        <img src="{{post.main_image.url}}" class="card-img post-image" alt="...">
+                                        <img src="
+                                        {% if post.main_image.url != None %}
+                                            {{post.main_image.url}}
+                                        {% endif %}
+                                        
+                                        " class="card-img post-image" alt="...">
                                     </div>
                                 </div>
                                 {% endif %}
