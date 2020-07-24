@@ -46,7 +46,9 @@ class ResultPaperFunctionMixin:
         # return all(lis)
 
         passed = self.semesters.active().filter(
-             order=self.current_final_semester()).first().passed_after_fail()
+             order=self.current_final_semester()).first()
+        if passed :
+            passed = passed.passed_after_fail()
         return passed
 
 

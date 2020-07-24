@@ -4,7 +4,7 @@ body{
 }
 
 :root{
-    --main-font: 'Tajawal', sans-serif;;
+    --main-font: 'Cairo', sans-serif;
     --main-color: #e74c3c;
 }
 
@@ -13,6 +13,10 @@ body{
 }
 
 /* Start { Multiple-Page-Design } */
+
+button, a, p,{
+    letter-spacing: normal !important;
+}
 
 p{
     font-family: var(--main-font);
@@ -278,7 +282,7 @@ small#hint_id_new_password1 ul li{
     position: relative;
     overflow: hidden;
     color: #fff;
-    font-weight: lighter;
+    font-weight: normal;
 }
 
 .navbar-custom .navbar-nav .nav-item .nav-link:hover i{
