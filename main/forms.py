@@ -94,7 +94,7 @@ class MainArticleForm(forms.ModelForm):
     def clean_english_title(self):
         english_title = self.cleaned_data.get('english_title')
         if  english_title:
-            if not re.findall('^[a-zA-Z\s]+$', english_title):
+            if not re.findall('^[a-zA-Z0-9\s]+$', english_title):
                 raise forms.ValidationError(
                     _("This field must have just english letters"))
         return english_title
